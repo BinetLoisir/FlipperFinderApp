@@ -29,7 +29,7 @@
         android:name=".MyApplication"
         android:icon="@drawable/ic_launcher_vectorise_v2"
         android:theme="@style/Theme.AppCompat.Light"
-        android:label="Flipper Finder">
+        android:label="Flip Finder">
 
         <activity
             android:name="fr.fafsapp.flipper.finder.MainActivity">
