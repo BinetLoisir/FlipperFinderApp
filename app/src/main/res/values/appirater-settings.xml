@@ -4,7 +4,7 @@
     	Google Play = market://details?id=%s
     	Amazon App Store = http://www.amazon.com/gp/mas/dl/android?p=%s
      -->
-    <string name="appirator_app_title">Flipper Finder</string>
+    <string name="appirator_app_title">Flip Finder</string>
     <string name="appirator_market_url">market://details?id=fr.fafsapp.flipper.finder</string>
     <!--
     <string name="appirator_market_url">http://www.amazon.fr/gp/mas/dl/android?p=fr.fafsapp.flipper.finder</string>
