@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Flipper Finder</string>
+    <string name="app_name">Flip Finder</string>
     <string name="BoutonAccueilSignaler">Signaler un flipper</string>
     <string name="BoutonAccueilRechercher">Rechercher un flipper</string>
     <string name="BoutonAccueilTournoi">Rechercher un tournoi LNJF</string>
