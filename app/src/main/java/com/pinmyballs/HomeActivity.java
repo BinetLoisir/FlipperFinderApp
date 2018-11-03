@@ -128,9 +128,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 editor.apply();
             }
         }
-        //Reading of preference file for Lat Lng from List View
-        latFromPref = Double.valueOf(settings.getString(PagePreferences.KEY_PREFERENCES_CURRENT_LOCATION_LATITUDE, "0"));
-        longFromPref = Double.valueOf(settings.getString(PagePreferences.KEY_PREFERENCES_CURRENT_LOCATION_LONGITUDE, "0"));
     }
 
 
@@ -324,7 +321,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         inflater.inflate(R.menu.home_menu, menu);
 
         MenuItem item = menu.findItem(R.id.action_admin);
-        item.setVisible(false);
+        item.setVisible(true);
         return true;
     }
 
