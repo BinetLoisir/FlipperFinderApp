@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c4aad50-9848-4a74-9539-f4db1b581bc8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/ic_flipsmarker_new-web.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/ic_flipsmarkerstest-web.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/LoginActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PopNewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/ResetPasswordActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/SignupActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/TestActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/EditCommentDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentCommentairesDeleted.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentCommentairesNew.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentCommentairesPost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ProgressBarHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_content_paste_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_delete_forever_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_edit_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_person_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_reset_password.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signup.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_test.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_editcomment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_commentaires_deleted.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_commentaires_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_commentaires_post.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/pop_newmodel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipsmarker_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipsmarker_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipsmarker_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipsmarker_grey.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipsmarker_grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database 28-01-2017/commentaire.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database 28-01-2017/commentaire.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database 28-01-2017/enseigne.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database 28-01-2017/enseigne.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database 28-01-2017/flipper.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database 28-01-2017/flipper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database 28-01-2017/modele_flipper.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database 28-01-2017/modele_flipper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database 28-01-2017/text" beforeDir="false" afterPath="$PROJECT_DIR$/Database 28-01-2017/text" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database 28-01-2017/tournoi.json" beforeDir="false" afterPath="$PROJECT_DIR$/Database 28-01-2017/tournoi.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/captures/com.pinmyballs_2018.06.02_21.36.li" beforeDir="false" afterPath="$PROJECT_DIR$/app/captures/com.pinmyballs_2018.06.02_21.36.li" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/captures/com.pinmyballs_2018.06.02_21.37.li" beforeDir="false" afterPath="$PROJECT_DIR$/app/captures/com.pinmyballs_2018.06.02_21.37.li" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sampledata/confirmations" beforeDir="false" afterPath="$PROJECT_DIR$/app/sampledata/confirmations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sampledata/distances" beforeDir="false" afterPath="$PROJECT_DIR$/app/sampledata/distances" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sampledata/enseignes.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/sampledata/enseignes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/sampledata/modeles" beforeDir="false" afterPath="$PROJECT_DIR$/app/sampledata/modeles" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/pinmyballs/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/pinmyballs/ApplicationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/COMMENTAIRE.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/COMMENTAIRE.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/ENSEIGNE.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/ENSEIGNE.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/FLIPPER.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/FLIPPER.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/MODELE_FLIPPER.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/MODELE_FLIPPER.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/TOURNOI.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/assets/TOURNOI.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/assets/fonts/gestblc_.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_flip_blue-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_flip_blue-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_flipmarker_blue-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_flipmarker_blue-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_flipmarker_grey-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_flipmarker_grey-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_flipmarker_lightblue-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_flipmarker_lightblue-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_flipmarker_new-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_flipmarker_new-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_flipmarker_red-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_flipmarker_red-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_launcher2-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_launcher2-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/ic_launcher3-web.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/ic_launcher3-web.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/AsyncTaskInitDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/AsyncTaskInitDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/AsyncTaskMajDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/AsyncTaskMajDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/AsyncTaskMajDatabaseBackground.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/AsyncTaskMajDatabaseBackground.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/CommentaireActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/CommentaireActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/ListeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/ListeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/MyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/MyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageAdmin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/AdminActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageCarteFlipper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageFlipper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageInfoFlipperPager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageInfoFlipperPager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageInfoTournoi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageListeResultat.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PageListeResultatTournois.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PagePreferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PreferencesActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PopLegend.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PopLegend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PopMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PopMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PopScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/PopScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/SectionsPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/SectionsPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/SignalementActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/SignalementActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/SignalementMailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/SignalementMailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/Splash.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/Splash.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/TournoiActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/TournoiActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/DAOBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/DAOBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/FlipperDatabaseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/FlipperDatabaseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/CommentaireDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/CommentaireDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/EnseigneDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/EnseigneDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/FlipperDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/FlipperDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/ModeleDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/ModeleDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/ScoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/ScoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/TournoiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/database/dao/TournoiDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/DatePickerFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/DatePickerFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentActionsFlipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentActionsFlipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentCarteFlipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentCarteFlipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentCommentaireFlipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentCommentaireFlipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentDialogScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentDialogScore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentFlipperActions.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentFlipperAvis.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentFlipperInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentScoreFlipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentScoreFlipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentSignalementAdresse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentSignalementAdresse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentSignalementMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentSignalementMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentSignalementModele.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentSignalementModele.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentTournoiListe.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentTournoiListe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentTournoiMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentTournoiMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentTournoiNew.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/FragmentTournoiNew.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/InfoFlipperPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/InfoFlipperPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/SignalementPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/SignalementPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/SignalementWizardFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/fragment/SignalementWizardFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Commentaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Commentaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Enseigne.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Enseigne.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Flipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Flipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/ModeleFlipper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/ModeleFlipper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Score.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Tournoi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/metier/Tournoi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/CommentaireService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/CommentaireService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/EnseigneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/EnseigneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/FlipperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/FlipperService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/GlobalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/GlobalService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ModeleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ModeleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ParseCloudService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ParseCloudService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ParseFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ParseFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/ScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseCommentaireService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseCommentaireService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseEnseigneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseEnseigneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseModeleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseModeleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseTournoiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/base/BaseTournoiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseCommentaireService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseCommentaireService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseEnseigneService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseEnseigneService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseFlipperService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseFlipperService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseModeleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseModeleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseScoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseScoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseTournoiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseTournoiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseVersionBaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/service/parse/ParseVersionBaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/AnalyticsApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/BottomNavigationViewHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/BottomNavigationViewHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/FontManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ListeCommentaireAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ListeCommentaireAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ListeFlipperAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ListeFlipperAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ListeScoresAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ListeScoresAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/ListeTournoiAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/LocationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/LocationUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/MyLocation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/MyLocation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/NetworkUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/NetworkUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/OtherFlipperAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/OtherFlipperAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/TournoiAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/utils/TournoiAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/z_MainActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/pinmyballs/z_PageSignalementTournoi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_down.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_down.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/anim/slide_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/anim/slide_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/custom_affichercarte.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/custom_affichercarte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/custom_enveloppe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/custom_icone_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/custom_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_location_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_action_search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_centermap.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_centermap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_content_remove.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_content_remove.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_delete.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_flipper.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_flipper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_flipper_orange.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_flipper_orange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_flipper_vert.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_flipper_vert.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher_vectorise_v2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_launcher_vectorise_v2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_navigation.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_navigation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_tab_maj_db.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_tab_maj_db.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_tristesse.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/ic_tristesse.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/tab_divider.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/tab_divider.9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/tete_martiens.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/tete_martiens.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/custom_affichercarte.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/custom_affichercarte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/custom_enveloppe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/custom_icone_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/custom_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_action_location_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_clear_search_api_holo_light.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_clear_search_api_holo_light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_delete.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_flipper.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_flipper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_flipper_orange.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_flipper_orange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_flipper_vert.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_flipper_vert.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_launcher_vectorise_v2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_launcher_vectorise_v2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_navigation.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_navigation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_tab_maj_db.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/ic_tab_maj_db.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/tete_martiens.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-ldpi/tete_martiens.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/custom_affichercarte.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/custom_affichercarte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/custom_enveloppe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/custom_icone_carte.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/custom_icone_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/custom_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_location_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_action_search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_centermap.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_centermap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_content_remove.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_content_remove.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_delete.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_flipper.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_flipper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_flipper_orange.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_flipper_orange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_flipper_vert.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_flipper_vert.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher_vectorise_v2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_launcher_vectorise_v2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_navigation.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_navigation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_tab_maj_db.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/ic_tab_maj_db.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/tete_martiens.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/tete_martiens.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/custom_affichercarte.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/custom_affichercarte.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/custom_enveloppe.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/custom_icone_info.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/custom_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/header_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/header_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/header_icon_tournoi.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/header_icon_tournoi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_location_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_action_search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_centermap.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_centermap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_clear_search_api_holo_light.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_clear_search_api_holo_light.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_content_remove.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_content_remove.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_delete.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_delete.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipmarker_blue_medium.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipmarker_blue_medium.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipper.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipper.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipper_orange.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipper_orange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipper_vert.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_flipper_vert.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher_vectorise_v2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_launcher_vectorise_v2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_navigation.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_navigation.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_tab_maj_db.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_tab_maj_db.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_tristesse.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/ic_tristesse.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/item_focused.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/item_focused.9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/item_pressed.9.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/item_pressed.9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tete_martiens.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/tete_martiens.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_centermap.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_centermap.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_flipmarker_blue_large.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/ic_flipmarker_blue_large.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/background_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/background_splash.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/card_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/card_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/circular_texview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circular_texview.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/finish_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/finish_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_add_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_add_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bug_report_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_bug_report_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_build_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_build_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_chat_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_chat_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_clear_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_clear_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_close_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_close_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_comment_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_comment_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_date_range_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_date_range_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_email_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_email_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_event_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_event_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_feedback_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_feedback_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_green.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_green.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_grey.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_grey.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_orange.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_orange.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_red.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_flip_red.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_format_list_bulleted_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_format_list_bulleted_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_info_outline_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_info_outline_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_lock_outline_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_lock_outline_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_map_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_map_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_my_location_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_my_location_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_settings_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_settings_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sync_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_sync_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_trophy_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_trophy_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_view_list_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_view_list_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_warning_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_warning_black_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/navbar_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/navbar_selector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_corners.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/rounded_corners.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/selectable_item_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/selectable_item_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/tab_bg_selected.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab_bg_selected.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/tab_bg_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab_bg_selector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/tab_bg_unselected.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab_bg_unselected.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/tab_text_selector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tab_text_selector.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/white_grey_border_bottom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/white_grey_border_bottom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/white_grey_border_top.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/white_grey_border_top.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_actus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_actus.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_admin.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_info_flipper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_info_flipper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_map_flipper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_page_flipper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_page_signalement_tournoi.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_preferences.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_signalement.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signalement.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_signalement_1page.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_signalement_mail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_signalement_mail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_webview_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_webview_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_info_contents.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_info_contents.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_infowindow_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_infowindow_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_enterscore.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_enterscore.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_action_flipper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_action_flipper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_change_modele_flipper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_change_modele_flipper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_commentaire_flipper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_commentaire_flipper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map_flipper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map_flipper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab1_info.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab2_actions.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tab3_avis.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tournoi_liste.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tournoi_liste.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tournoi_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tournoi_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tournoi_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_tournoi_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wizard_adresse.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wizard_adresse.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wizard_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wizard_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wizard_modele.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_wizard_modele.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom_navigation_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_bottom_navigation_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_center_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_center_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_center_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_center_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_center_viewpager.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_center_viewpager.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/layout_top_tabs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/layout_top_tabs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/localisation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/localisation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/localisationsignalement.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/localisationsignalement.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pop_legend.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pop_legend.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pop_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pop_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/pop_score.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/pop_score.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_commentaire.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_commentaire.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_flipper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_flipper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_modele.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_modele.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_score.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/simple_list_item_score.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/simple_liste_item_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/simple_liste_item_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/snippet_date.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/snippet_date.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_actusbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_actusbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_homebar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_homebar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_listbar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_listbar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_tournoibar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/snippet_top_tournoibar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/test.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_liste_resultat.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_liste_resultat.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_liste_resultat_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_liste_resultat_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_map_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/z_activity_map_search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/z_simple_list_item_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/z_simple_list_item_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/bottom_navigation_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/home_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/home_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/list_menu.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/list_menu.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_page_flipper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_page_info_flipper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_page_info_flipper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_page_tournoi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_page_tournoi.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_preferences.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_preferences.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/menu_signalementnew.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/menu_signalementnew.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher2_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher2_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher3_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_launcher3_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_blue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_blue_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_blue_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_lightblue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_lightblue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_new.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_new.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_flipmarker_red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher2_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher2_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher3.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher3_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher3_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_blue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_blue_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_blue_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_lightblue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_lightblue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_new.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_new.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_flipmarker_red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher2_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher2_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher3.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher3_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher3_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_blue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_blue_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_blue_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_lightblue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_lightblue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_new.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_new.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_flipmarker_red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher2_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher2_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher3.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher3_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher3_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_blue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_blue_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_blue_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_lightblue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_lightblue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_new.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_new.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_flipmarker_red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher2_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher2_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher3.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher3_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher3_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_blue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_blue_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_blue_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_lightblue.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_lightblue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_new.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_new.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_red.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_flipmarker_red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher2.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher2_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher2_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher3.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher3_round.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher3_round.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_launcher_foreground.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-v11/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-v11/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/analytics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/analytics.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/ic_flipmarker_blue_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/ic_flipmarker_blue_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/icons.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/icons.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/backup_descriptor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/backup_descriptor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/xml/global_tracker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/xml/global_tracker.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon/PinBall.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon/PinBall.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon/map-icons-50666.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon/map-icons-50666.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon/nothing" beforeDir="false" afterPath="$PROJECT_DIR$/icon/nothing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon/pinball.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/icon/pinball.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon2/appicon-funky.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon2/appicon-funky.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon2/appicon-funky.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon2/appicon-funky.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon2/appicon-normal.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon2/appicon-normal.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon2/appicon-normal.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon2/appicon-normal.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon2/ball-156742.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon2/ball-156742.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon2/nothing" beforeDir="false" afterPath="$PROJECT_DIR$/icon2/nothing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker blue.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker blue.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker grey.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker grey.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker grey.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker grey.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker lightblue.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker lightblue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker lightblue.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker lightblue.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker red.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker red.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker red.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker red.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker_blue.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker_blue.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker_blue128.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker_blue128.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker_blue_medium.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker_blue_medium.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker_new.png" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker_new.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipmarker_new.svg" beforeDir="false" afterPath="$PROJECT_DIR$/icon3/ic_flipmarker_new.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ic_flipper.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ico_flip.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/ico_flip_round.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/if_map-marker_173052.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/icon3/if_map-marker_173052.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/.bowerrc" beforeDir="false" afterPath="$PROJECT_DIR$/www/.bowerrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/www/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/bower.json" beforeDir="false" afterPath="$PROJECT_DIR$/www/bower.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/css/cyborg/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/css/cyborg/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/css/fonts" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/css/fonts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/baseRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/baseRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/collections/bars.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/collections/bars.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/collections/pinballModels.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/collections/pinballModels.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/collections/pinballs.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/collections/pinballs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/models/bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/models/bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/models/pinball.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/models/pinball.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/models/pinballModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/models/pinballModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/nls/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/nls/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/nls/fr-fr/colors.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/nls/fr-fr/colors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/nls/fr-fr/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/nls/fr-fr/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/nls/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/nls/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/templates/bar/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/templates/bar/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/templates/bar/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/templates/bar/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/templates/pinball/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/templates/pinball/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/templates/pinball/view.html" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/templates/pinball/view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/views/bars.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/views/bars.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/views/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/views/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/views/nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/views/nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/js/views/pinballs.js" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/js/views/pinballs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/v1/bars" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/v1/bars" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/v1/models" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/v1/models" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/www/public/v1/pinballs" beforeDir="false" afterPath="$PROJECT_DIR$/www/public/v1/pinballs" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="140" />
+    <option name="y" value="43" />
+    <option name="width" value="1400" />
+    <option name="height" value="916" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PinMyBalls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PinMyBalls" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="PinMyBalls" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PinMyBalls" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PinMyBalls" type="1abcf292:AndroidViewProjectNode" />
+              <item name="PinMyBalls" type="e9137016:NonAndroidModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="PinMyBalls" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PinMyBalls" type="616d4139:PackageViewModuleNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c4aad50-9848-4a74-9539-f4db1b581bc8" name="Default Changelist" comment="" />
+      <created>1550946664058</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1550946664058</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="140" y="43" width="1400" height="916" extended-state="0" />
+    <layout>
+      <window_info id="Resources Explorer" />
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.33505154" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Logcat" order="1" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Android Profiler" order="5" show_stripe_button="false" />
+      <window_info anchor="right" id="Assistant" visible="true" weight="0.3298969" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
+    </layout>
+  </component>
+</project>
