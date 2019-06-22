@@ -2,15 +2,15 @@ package com.pinmyballs.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.pinmyballs.PageCarteFlipper;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Flipper;
@@ -61,7 +61,7 @@ public class OtherFlipperAdapter extends ArrayAdapter<Flipper> {
             Flipper flipper = getItem((Integer) v.getTag());
             if (flipper != null){
                 Intent infoActivite = new Intent(getContext(), PageInfoFlipperPager.class);
-                infoActivite.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO, flipper);
+                infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
                 infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
                 getContext().startActivity(infoActivite);
             }

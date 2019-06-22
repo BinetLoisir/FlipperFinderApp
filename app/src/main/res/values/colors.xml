@@ -4,7 +4,7 @@
 	<color name="transparent">#00000000</color>
 	<color name="selectable_background_pressed">#1f000000</color>
 	<color name="review_green">#ff669900</color>
-	<color name="accent_material_light">#2979ff</color>
+	<color name="accent_material_light2">#2979ff</color>
 	<color name="accent">#2979ff</color>
 	<color name="warning">#ff3300</color>
 	<color name="grey">#bfbfbf</color>

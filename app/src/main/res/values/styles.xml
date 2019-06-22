@@ -18,23 +18,17 @@
         <item name="android:background">@color/divider</item>
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
+    <!--<style name="Theme.AppCompat.Light.NoActionBar" parent="@style/Theme.AppCompat.Light">
         <item name="android:windowNoTitle">true</item>
-    </style>
+    </style>-->
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/background_splash</item>
     </style>
 
-    <style name="Theme.AppCompat.Light.NoActionBar2" parent="@style/Theme.AppCompat.Light">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
 
     <style name="Theme.AppCompat.Light.Dialog.NoActionBar" parent="@style/Theme.AppCompat.Light.Dialog">
         <item name="windowNoTitle">true</item>
-
     </style>
 
     <style name="TextAppearanceFinish" parent="android:TextAppearance.Holo.Medium">
@@ -47,10 +41,12 @@
         <item name="android:orientation">vertical</item>
     </style>
 
-    <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    
+    <style name="NoActionBar" parent="Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 
 </resources>

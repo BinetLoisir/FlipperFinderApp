@@ -2,24 +2,19 @@ package com.pinmyballs;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.SaveCallback;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pinmyballs.fragment.FragmentDialogScore;
 import com.pinmyballs.fragment.FragmentScoreFlipper;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
-import com.pinmyballs.service.GlobalService;
-import com.pinmyballs.service.ParseFactory;
 import com.pinmyballs.service.ScoreService;
 import com.pinmyballs.utils.ListeScoresAdapter;
 
@@ -65,7 +60,7 @@ public class PopScore extends AppCompatActivity {
 
         //Get flipper
         Intent intent = getIntent();
-        flipper = (Flipper) intent.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
+        flipper = (Flipper) intent.getSerializableExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO);
 
         //GetScores
         scoreService = new ScoreService(new FragmentScoreFlipper.FragmentCallback() {

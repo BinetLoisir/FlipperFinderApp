@@ -6,12 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PointF;
 
-import java.util.ArrayList;
-
 import com.pinmyballs.database.DAOBase;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.utils.LocationUtil;
+
+import java.util.ArrayList;
 
 public class EnseigneDAO extends DAOBase{
 

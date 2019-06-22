@@ -1,20 +1,18 @@
 package com.pinmyballs.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-
 import android.content.Context;
 
 import com.pinmyballs.fragment.FragmentActionsFlipper.FragmentActionCallback;
 import com.pinmyballs.metier.Commentaire;
-import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.metier.Flipper;
-import com.pinmyballs.metier.ModeleFlipper;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
 import com.pinmyballs.service.parse.ParseFlipperService;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class FlipperService {
 
@@ -72,7 +70,7 @@ public class FlipperService {
         nouveauFlipper.setEnseigne(flipper.getEnseigne());
         Commentaire commentaireToAdd = null;
         if (commentaire != null && commentaire.length() > 0) {
-            commentaireToAdd = new Commentaire(dateDuJour.getTime(), dateDuJour.getTime(), commentaire, dateMaj,
+            commentaireToAdd = new Commentaire(dateDuJour.getTime(), dateDuJour.getTime(), commentaire, Commentaire.TYPE_REPLACE, dateMaj,
                     pseudo, true);
         }
 
@@ -98,7 +96,7 @@ public class FlipperService {
         //commentaire
         Commentaire commentaire = new Commentaire();
         if (commentaireString != null && commentaireString.length() > 0) {
-            commentaire = new Commentaire(dateDuJour.getTime(), flipID, commentaireString, dateMaj, pseudo, true);
+            commentaire = new Commentaire(dateDuJour.getTime(), flipID, commentaireString, Commentaire.TYPE_ADDITIONAL, dateMaj, pseudo, true);
             commentaire.setFlipper(flipper);
         }
 

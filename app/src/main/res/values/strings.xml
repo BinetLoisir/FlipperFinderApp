@@ -1,6 +1,8 @@
 <resources>
 
     <string name="app_name">Pin my Balls</string>
+    <string name="apiKey">AIzaSyBWzLO7XJTK0qp3hWkX599YdiUWGc_yFYc</string>
+
     <string name="BoutonAccueilRechercher">Rechercher un flipper</string>
     <string name="BoutonAccueilSignaler">Signaler un flipper</string>
     <string name="HeaderTournois">Tournois &amp; Evènements</string>
@@ -78,6 +80,7 @@
 
     <string name="boutonValideScore">Valider</string>
     <string name="boutonValideChangementModele">Valider le nouveau modèle</string>
+    <string name="boutonValideNouveauFlipper">Valider le flipper supplémentaire</string>
     <string name="dialogtitleNewScore">Entrer un nouveau score</string>
 
     <string name="headerRecherche">Recherche</string>
@@ -96,7 +99,7 @@
     <string name="mailContact">flipper.finder2@gmail.com</string>
 
     <string name="pseudoCommentaireAnonyme">Anonyme</string>
-    <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %2$s à %3$s]]> </Data></string>
+    <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %1$s à %2$s]]> </Data></string>
     <string name="fulltextCommentaire"><Data><![CDATA[<b>%1$s</b> à propos d\'un %2$s à %3$s]]> </Data></string>
     <string name="fulltextCommentaire2"><Data><![CDATA[<b>%1$s</b> sur le %2$s du <u>%4$s</u> à %3$s]]> </Data></string>
     <string name="fulltextCommentaire3"><Data><![CDATA[<b>%1$s</b> sur le <font color="black">%2$s </font> du <u>%4$s</u> à %3$s]]> </Data></string>
@@ -150,7 +153,7 @@
 
     <string name="admin">Admin</string>
 
-    <string name="searchByNumberTitle">Pinball number</string>
+    <string name="searchByNumberTitle">Pinball ID</string>
     <string name="searchByNumberButtonTitle">Go</string>
     <string name="searchByNumberResultTitle">Résultats</string>
     <string name="searchByNumberResultFlipID">FlipID</string>
@@ -160,7 +163,7 @@
     <string name="searchByNumberResultFlipEnseigneVille">FlipVille</string>
     <string name="searchByNumberResultFlipModelID">FlipModeleID</string>
     <string name="searchByNumberResultFlipModel">FlipModele</string>
-    <string name="saveButton">Save</string>
+    <string name="saveButton">Update</string>
 
     <string name="currentlatng_text">Coordonnées</string>
     <string name="dbchrono_text">Version de la database</string>
@@ -224,12 +227,42 @@
     <string name="homeMenu_action_pref_text">Préférences</string>
     <string name="homeMenu_action_email">Feedback</string>
     <string name="homeMenu_action_bug_text">Bugs</string>
+    <string name="homeMenu_action_login">Se connecter</string>
+
 
     <string name="legend_title">Signification des icônes</string>
     <string name="legend_green">Signalé ou actualisé cette semaine</string>
     <string name="legend_orange">Actualisé il y a moins d\'1 mois</string>
-    <string name="legend_red">.Actualisé il y a plus de 3 mois</string>
+    <string name="legend_red">Actualisé il y moins d\'un an</string>
     <string name="legend_grey">Non actualisé depuis plus d\'1 an</string>
+    <string name="title_activity_test">TestActivity</string>
+
+    <string name="title_activity_login">Se connecter</string>
+    <string name="title_activity_signup">Créer un compte</string>
+    <string name="title_activity_reset">Mot de passe oublié</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_initials">Initiales</string>
+    <string name="prompt_name">Nom (optionel)</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Mot de passe</string>
+    <string name="prompt_password_confirm">Confirmer le mot de passe</string>
+
+    <string name="action_sign_in">Se connecter</string>
+    <string name="action_sign_in_short">Se connecter</string>
+    <string name="action_sign_up">Créer le compte</string>
+    <string name="action_reset">Réinitialiser le mot de passe</string>
+
+    <string name="error_invalid_email">Email invalide</string>
+    <string name="error_invalid_name">Nom invalide</string>
+    <string name="error_invalid_initials">3 initiales minimum</string>
+    <string name="error_invalid_password">Mot de passe trop court</string>
+    <string name="error_incorrect_password">Mot de passe incorrect</string>
+    <string name="error_incorrect_password_confirm">Mots de passe différents</string>
+    <string name="error_field_required">Champ requis</string>
+    <string name="account_create">Créer votre compte</string>
+    <string name="account_forgot_password">Vous avez oublié votre mot de passe?</string>
+    <string name="reset_instructions">Entrez votre email pour réinitialiser votre mot de passe</string>
 
 
 </resources>

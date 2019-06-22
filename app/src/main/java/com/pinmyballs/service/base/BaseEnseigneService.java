@@ -3,10 +3,10 @@ package com.pinmyballs.service.base;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.List;
-
 import com.pinmyballs.database.dao.EnseigneDAO;
 import com.pinmyballs.metier.Enseigne;
+
+import java.util.List;
 
 public class BaseEnseigneService {
 

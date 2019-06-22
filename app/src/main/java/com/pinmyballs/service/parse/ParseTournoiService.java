@@ -6,14 +6,13 @@ import android.widget.Toast;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.parse.SaveCallback;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.metier.Tournoi;
 import com.pinmyballs.service.ParseFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParseTournoiService {
 

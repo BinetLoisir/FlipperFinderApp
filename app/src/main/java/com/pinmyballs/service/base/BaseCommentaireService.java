@@ -3,11 +3,11 @@ package com.pinmyballs.service.base;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pinmyballs.database.dao.CommentaireDAO;
 import com.pinmyballs.metier.Commentaire;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseCommentaireService {
 
@@ -28,6 +28,25 @@ public class BaseCommentaireService {
 		commentaireDao.close();
 		return listeRetour;
 	}
+
+    public ArrayList<Commentaire> getLastCommentaireType(Context pContext, int nbMaxCommentaire, String type, boolean includeNull) {
+        ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+        CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
+        commentaireDao.open();
+        listeRetour = commentaireDao.getLastCommentaireType(nbMaxCommentaire, type, includeNull);
+        commentaireDao.close();
+        return listeRetour;
+    }
+
+    //TODO lastCOMMENTAIRE AROUND
+	/*public ArrayList<Commentaire> getLastCommentaireAround(Context pContext, int nbMaxCommentaire, LatLng latLng){
+		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
+		commentaireDao.open();
+		listeRetour = commentaireDao.getLastCommentaireAround(nbMaxCommentaire);
+		commentaireDao.close();
+		return listeRetour;
+	}*/
 
 	public boolean addCommentaire(Commentaire commentaire, Context pContext){
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);

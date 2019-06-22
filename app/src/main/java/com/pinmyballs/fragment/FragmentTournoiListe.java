@@ -3,9 +3,6 @@ package com.pinmyballs.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +11,10 @@ import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Switch;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Tournoi;
@@ -77,10 +78,10 @@ public class FragmentTournoiListe extends Fragment{
             Tournois = baseTournoiService.getAllTournoi(getActivity().getBaseContext()); //IMPORTANT
         }
 
-        // Tri les tournois du plus récent au plus ancient.
+        // Tri les tournois du plus ancien au plus récent.
         Collections.sort(Tournois, new Comparator<Tournoi>() {
                     @Override
-                    public int compare(Tournoi t1, Tournoi t2) {
+                    public int compare(Tournoi t2, Tournoi t1) {
                         String t1date = t1.getDate();
                         String t2date = t2.getDate();
                         int result = 0;

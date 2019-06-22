@@ -1,11 +1,12 @@
 package com.pinmyballs.service;
 
-import java.util.List;
-
 import android.content.Context;
+
 import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.service.base.BaseEnseigneService;
 import com.pinmyballs.service.parse.ParseEnseigneService;
+
+import java.util.List;
 
 public class EnseigneService {
 

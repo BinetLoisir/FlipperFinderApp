@@ -2,22 +2,18 @@ package com.pinmyballs.service.parse;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.Display;
 import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.metier.ModeleFlipper;
+import com.pinmyballs.service.ParseFactory;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.parse.SaveCallback;
-import com.pinmyballs.database.FlipperDatabaseHandler;
-import com.pinmyballs.metier.Commentaire;
-import com.pinmyballs.metier.Flipper;
-import com.pinmyballs.metier.ModeleFlipper;
-import com.pinmyballs.service.ParseFactory;
 
 public class ParseModeleService {
     private static final String TAG = "ParseModeleService";
@@ -92,7 +88,7 @@ public class ParseModeleService {
 		}
 	}
 
-	public boolean ajouterModele(final Context pContext, ModeleFlipper modeleFlipper) {
+    public boolean ajouterModele(final Context pContext, final ModeleFlipper modeleFlipper) {
 
 		ParseFactory parseFactory = new ParseFactory();
 		//creation d'une liste d'envoi
@@ -101,14 +97,11 @@ public class ParseModeleService {
 		// On créé l'objet du nouveau flipper et on l'ajoute à la liste d'envoi
 		objectsToSend.add(parseFactory.getParseObject(modeleFlipper));
 
-		//Begin to send
-		Toast toast = Toast.makeText(pContext, "Envoi en cours", Toast.LENGTH_SHORT);
-		toast.show();
 
 		ParseObject.saveAllInBackground(objectsToSend, new SaveCallback() {
 			@Override
 			public void done(ParseException e) {
-				Toast toast = Toast.makeText(pContext, "Envoi effectué, Merci pour votre contribution :)", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(pContext, modeleFlipper.getNomComplet() + "ajouté.", Toast.LENGTH_LONG);
 				toast.show();
 			}
 		});

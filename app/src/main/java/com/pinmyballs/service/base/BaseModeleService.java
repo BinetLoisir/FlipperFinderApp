@@ -3,11 +3,12 @@ package com.pinmyballs.service.base;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.pinmyballs.database.dao.ModeleDAO;
 import com.pinmyballs.metier.ModeleFlipper;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class BaseModeleService {
 
@@ -39,6 +40,26 @@ public class BaseModeleService {
 		}
 		return listeRetour;
 	}
+
+    public ArrayList<Long> getAllIdModeleFlipper(Context pContext) {
+        ArrayList<Long> listeRetour = new ArrayList<Long>();
+        ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);
+        for (ModeleFlipper modeleFlipper : listeModeleFlipper) {
+            listeRetour.add(modeleFlipper.getId());
+        }
+        return listeRetour;
+    }
+
+    public Long getMaxIdModeleFlipper(Context pContext) {
+        ArrayList<Long> liste = new ArrayList<Long>();
+        ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);
+        for (ModeleFlipper modeleFlipper : listeModeleFlipper) {
+            liste.add(modeleFlipper.getId());
+        }
+        if (liste.size() > 0) {
+            return Collections.max(liste);
+        } else return (long) 0;
+    }
 
 	public ArrayList<String> getAllNomModeleFlipperAvecMarque(Context pContext){
 		ArrayList<String> listeRetour = new ArrayList<String>();

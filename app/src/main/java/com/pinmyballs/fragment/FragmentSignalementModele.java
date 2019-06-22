@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
-import com.pinmyballs.PagePreferences;
+import com.pinmyballs.PreferencesActivity;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.metier.Flipper;
@@ -79,8 +78,8 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
         hashMapModeles = new HashMap();
 
         // Initialisation du champ Pseudo
-        settings = getActivity().getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
-        String pseudoText = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "");
+        settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+        String pseudoText = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "");
         champPseudo.setText(pseudoText);
 
         // Initialisation du champ Modele
@@ -120,6 +119,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
             commentaireToAdd = new Commentaire(getParentActivity().getNewId(),
                     getParentActivity().getNewId(),
                     htmlString,
+                    Commentaire.TYPE_NEW,
                     new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour),
                     pseudoCommentaire,
                     true);

@@ -16,7 +16,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewAutocomplete"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -29,12 +29,12 @@
                 android:layout_gravity="center_vertical">
 
                 <fragment
-                    android:id="@+id/place_autocomplete_fragment_list"
-                    android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                    android:id="@+id/autocomplete_fragment"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                    android:layout_height="wrap_content" />
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
             <ImageButton
                 android:id="@+id/buttonMyLocation"
@@ -48,41 +48,51 @@
 
         </LinearLayout>
 
-
-        <FrameLayout
+        <androidx.cardview.widget.CardView
             android:id="@+id/listefilters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/listeparameters"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="8dp">
 
-
-            <AutoCompleteTextView
-                android:id="@+id/autocompleteModeleFlipper"
+            <FrameLayout
+                android:id="@+id/listefiltersframe"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp">
 
 
-                android:hint="@string/hintFiltreModele"
-                android:imeOptions="actionDone"
-                android:inputType="textFilter|textNoSuggestions"
-                android:maxLines="1"
-                android:textSize="16sp" />
-
-            <ImageButton
-                android:id="@+id/buttonClearModeleFlipper"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|center_vertical"
-                android:layout_marginRight="8dp"
-                android:contentDescription="BoutonAnnuler"
-                android:background="@color/transparent"
-                app:srcCompat="@drawable/ic_clear_black_24dp" />
+                <AutoCompleteTextView
+                    android:id="@+id/autocompleteModeleFlipper"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
 
-        </FrameLayout>
+                    android:hint="@string/hintFiltreModele"
+                    android:imeOptions="actionDone"
+                    android:inputType="textFilter|textNoSuggestions"
+                    android:maxLines="1"
+                    android:textSize="16sp" />
 
+                <ImageButton
+                    android:id="@+id/buttonClearModeleFlipper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_marginRight="8dp"
+                    android:background="@color/transparent"
+                    android:contentDescription="BoutonAnnuler"
+                    app:srcCompat="@drawable/ic_clear_black_24dp" />
+
+
+            </FrameLayout>
+        </androidx.cardview.widget.CardView>
 
         <ListView
             android:id="@+id/listViewFlippers"

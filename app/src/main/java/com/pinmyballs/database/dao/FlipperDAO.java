@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PointF;
 
-import com.parse.GetDataStreamCallback;
 import com.pinmyballs.database.DAOBase;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.metier.Enseigne;
@@ -216,18 +215,28 @@ public class FlipperDAO extends DAOBase {
         String strActif = " AND " + FlipperDatabaseHandler.FLIPPER_ACTIF + " = 1 ";
 
         // Et on balance la purée
-        Cursor cursor = mDb.rawQuery("SELECT " + FlipperDatabaseHandler.FLIPPER_ID + " , "
-                + FlipperDatabaseHandler.FLIPPER_MODELE + " , " + FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E + " , "
-                + FlipperDatabaseHandler.FLIPPER_ENSEIGNE + " , " + FlipperDatabaseHandler.FLIPPER_DATMAJ + " , "
-                + FlipperDatabaseHandler.FLIPPER_ACTIF + " , " + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " , "
-                + FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE + " , " + FlipperDatabaseHandler.MODELE_FLIPPER_NOM + " , "
+        Cursor cursor = mDb.rawQuery("SELECT "
+                + FlipperDatabaseHandler.FLIPPER_ID + " , "
+                + FlipperDatabaseHandler.FLIPPER_MODELE + " , "
+                + FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E + " , "
+                + FlipperDatabaseHandler.FLIPPER_ENSEIGNE + " , "
+                + FlipperDatabaseHandler.FLIPPER_DATMAJ + " , "
+                + FlipperDatabaseHandler.FLIPPER_ACTIF + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_NOM + " , "
                 + FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT + " , "
                 + FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_ID + " , " + FlipperDatabaseHandler.ENSEIGNE_TYPE + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_NOM + " , " + FlipperDatabaseHandler.ENSEIGNE_HORAIRE + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " , " + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_ADRESSE + " , " + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_VILLE + " , " + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_ID + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_TYPE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_NOM + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_HORAIRE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_ADRESSE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_VILLE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
                 + FlipperDatabaseHandler.ENSEIGNE_DATMAJ + " FROM "
                 + FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
                 + FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE

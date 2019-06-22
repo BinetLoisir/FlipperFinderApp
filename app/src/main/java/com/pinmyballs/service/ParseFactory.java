@@ -1,9 +1,7 @@
 package com.pinmyballs.service;
 
 import android.util.Log;
-import android.widget.Filter;
 
-import com.parse.Parse;
 import com.parse.ParseGeoPoint;
 import com.parse.ParseObject;
 import com.pinmyballs.database.FlipperDatabaseHandler;
@@ -60,7 +58,7 @@ public class ParseFactory {
         parseModele.put(FlipperDatabaseHandler.MODELE_FLIPPER_NOM, modeleFlipper.getNom());
         parseModele.put(FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE, modeleFlipper.getMarque());
         parseModele.put(FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT, modeleFlipper.getAnneeLancement());
-        parseModele.put(FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID, modeleFlipper.getObjectId());
+        //parseModele.put(FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID, modeleFlipper.getObjectId());
         return parseModele;
     }
 
@@ -148,6 +146,7 @@ public class ParseFactory {
         parseCommentaire.put(FlipperDatabaseHandler.COMM_DATE, commentaire.getDate());
         parseCommentaire.put(FlipperDatabaseHandler.COMM_PSEUDO, commentaire.getPseudo());
         parseCommentaire.put(FlipperDatabaseHandler.COMM_TEXTE, commentaire.getTexte());
+        parseCommentaire.put(FlipperDatabaseHandler.COMM_TYPE, commentaire.getType());
         parseCommentaire.put(FlipperDatabaseHandler.COMM_ACTIF, commentaire.getActif());
         return parseCommentaire;
     }
@@ -215,6 +214,7 @@ public class ParseFactory {
         commentaire.setFlipperId(PO.getLong(FlipperDatabaseHandler.COMM_FLIPPER_ID));
         commentaire.setDate(PO.getString(FlipperDatabaseHandler.COMM_DATE));
         commentaire.setTexte(PO.getString(FlipperDatabaseHandler.COMM_TEXTE));
+        commentaire.setType(PO.getString(FlipperDatabaseHandler.COMM_TYPE));
         commentaire.setPseudo(PO.getString(FlipperDatabaseHandler.COMM_PSEUDO));
         return commentaire;
     }

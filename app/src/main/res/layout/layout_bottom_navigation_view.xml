@@ -16,6 +16,7 @@
             app:menu = "@menu/bottom_navigation_menu">
         </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
 
+
     </RelativeLayout>
 
 </merge>

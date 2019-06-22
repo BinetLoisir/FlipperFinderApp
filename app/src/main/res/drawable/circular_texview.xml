@@ -11,7 +11,9 @@
             android:topLeftRadius="65dp"
             android:topRightRadius="65dp" />
 
-    <stroke android:width="2dp" android:color="@color/accent_material_light"/>
+        <stroke
+            android:width="2dp"
+            android:color="@color/accent_material_light2" />
 
 
 </shape>

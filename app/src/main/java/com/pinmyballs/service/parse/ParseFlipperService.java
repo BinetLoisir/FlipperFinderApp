@@ -11,7 +11,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.SaveCallback;
-import com.pinmyballs.PagePreferences;
+import com.pinmyballs.PreferencesActivity;
 import com.pinmyballs.R;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.fragment.FragmentActionsFlipper.FragmentActionCallback;
@@ -20,6 +20,7 @@ import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.ParseFactory;
 import com.pinmyballs.service.base.BaseCommentaireService;
 import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.utils.ProgressBarHandler;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,10 +28,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import static android.support.constraint.Constraints.TAG;
-
 public class ParseFlipperService {
 
+    private static final String TAG = "ParseFlipperService";
     private FragmentActionCallback mFragmentCallback;
 
     public ParseFlipperService(FragmentActionCallback fragmentCallback) {
@@ -95,6 +95,8 @@ public class ParseFlipperService {
     }
 
     public boolean updateDateFlipper(final Context pContext, final Flipper flipper, final String dateToSave) {
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
+        mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -106,6 +108,7 @@ public class ParseFlipperService {
                         @Override
                         public void done(ParseException e) {
                             if (e == null) {
+                                mProgressBarHandler.hide();
                                 BaseFlipperService baseFlipperService = new BaseFlipperService();
                                 flipper.setDateMaj(dateToSave);
                                 baseFlipperService.majFlipper(flipper, pContext);
@@ -127,6 +130,8 @@ public class ParseFlipperService {
     }
 
     public boolean supprimeFlipper(final Context pContext, final Flipper ancienflipper) {
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
+        mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, ancienflipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -151,6 +156,7 @@ public class ParseFlipperService {
                         ParseObject.saveAllInBackground(listParseToSave, new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
+                                //mProgressBarHandler.hide();
                                 if (e == null) {
                                     // Ca s'est bien passé, on sauvegarde les flippers
                                     List<Flipper> listBaseToSave = new ArrayList<Flipper>();
@@ -180,6 +186,8 @@ public class ParseFlipperService {
     }
 
     public boolean modifieEtatFlipper(final Context pContext, final Flipper flipper) {
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
+        mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -189,8 +197,8 @@ public class ParseFlipperService {
                 Date datedujour = new Date();
                 String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(datedujour);
                 SharedPreferences settings;
-                settings = pContext.getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
-                String pseudo = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "SYS");
+                settings = pContext.getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+                String pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "SYS");
 
                 final Commentaire commentaire = new Commentaire();
                 commentaire.setId(datedujour.getTime());
@@ -208,12 +216,15 @@ public class ParseFlipperService {
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
                         commentaire.setTexte("Réinstallé");
+                        commentaire.setType(Commentaire.TYPE_REINSTALL);
                         // Si le flip est actif, on le désactive
                     } else {
                         // On passe le flipper inactif et on update la date de màj
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_ACTIF, false);
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
                         commentaire.setTexte("Supprimé");
+                        commentaire.setType(Commentaire.TYPE_DELETE);
+
 
                     }
                     // On met le tout dans une liste
@@ -223,14 +234,20 @@ public class ParseFlipperService {
                     ParseObject commentairePO = new ParseFactory().getParseObject(commentaire);
                     //Pointer sur le flip
                     commentairePO.put(FlipperDatabaseHandler.COMM_FLIP_POINTER, objects.get(0));
-                    //TODO comprendre pourquoi ca bug avec le commenatire
                     listParseToSave.add(commentairePO);
+
+                    //TODO Mettre inactif tous les commentaires liés à ce flip.
+                    List<Commentaire> associatedComments = new ArrayList<Commentaire>();
+                    BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
+                    associatedComments = baseCommentaireService.getCommentaireByFlipperId(pContext, flipper.getId());
+                    
 
 
                     // Et on balance in da cloud!
                     ParseObject.saveAllInBackground(listParseToSave, new SaveCallback() {
                         @Override
                         public void done(ParseException e) {
+                            mProgressBarHandler.hide();
                             if (e == null) {
                                 Log.d(TAG, "SaveInBackground successful");
                                 // Ca s'est bien passé, on sauvegarde les flippers
@@ -266,6 +283,8 @@ public class ParseFlipperService {
 
 
     public boolean remplaceModeleFlipper(final Context pContext, final Flipper ancienflipper, final Flipper nouveauFlipper, final Commentaire commentaire) {
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
+        mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, ancienflipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
@@ -325,7 +344,7 @@ public class ParseFlipperService {
                             @Override
                             public void done(ParseException e) {
                                 if (e == null) {
-
+                                    mProgressBarHandler.hide();
                                     // Ca s'est bien passé, on sauvegarde les flippers
                                     List<Flipper> listBaseToSave = new ArrayList<Flipper>();
                                     listBaseToSave.add(nouveauFlipper);
@@ -360,33 +379,32 @@ public class ParseFlipperService {
 
     public boolean ajouterFlipper(final Context pContext, Flipper flipper, Commentaire commentaire) {
 
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
+        mProgressBarHandler.show();
+
         ParseFactory parseFactory = new ParseFactory();
-        //creation d'une liste d'envoi
-        ArrayList<ParseObject> objectsToSend = new ArrayList<ParseObject>();
+        ArrayList<ParseObject> objectsToSend;
 
         // On créé l'objet du nouveau flipper et on l'ajoute à la liste d'envoi
         //TODO Cette methode juste pour les ajouts de flips dans des enseignes existantes, A ne pas utiliser pour creer de nouveaux flips
-        //objectsToSend.add(parseFactory.getPOWithPointersToExistingObjects(flipper));
-        //objectsToSend.add(parseFactory.getParseObject(flipper));
+
         objectsToSend = parseFactory.getPOWithPointersToExistingObjects(flipper, commentaire);
-
-        /*
-        if (commentaire.getTexte() != null) {
-            ParseObject commentairePO = parseFactory.getParseObject(commentaire);
-            commentairePO
-            objectsToSend.add(commentairePO));
-        }
-        */
-
-        //Begin to send
-        Toast toast = Toast.makeText(pContext, "Envoi en cours", Toast.LENGTH_SHORT);
-        toast.show();
 
         ParseObject.saveAllInBackground(objectsToSend, new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                Toast toast = Toast.makeText(pContext, "Envoi effectué, Merci pour votre contribution :)", Toast.LENGTH_LONG);
-                toast.show();
+                mProgressBarHandler.hide();
+                if (e == null) {
+                    Toast toast = Toast.makeText(pContext, "Envoi effectué, Merci pour votre contribution :)", Toast.LENGTH_LONG);
+                    toast.show();
+                    // Pour quitter l'activité:
+                    // if (mFragmentCallback != null) {
+                    //    mFragmentCallback.onTaskDone();
+                } else {
+
+                    Toast toast = Toast.makeText(pContext, "L'ajout d'un flipper a échoué.", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
 

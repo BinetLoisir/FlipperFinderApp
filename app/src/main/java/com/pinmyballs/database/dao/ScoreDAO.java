@@ -5,13 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import java.util.ArrayList;
-
 import com.pinmyballs.database.DAOBase;
 import com.pinmyballs.database.FlipperDatabaseHandler;
-import com.pinmyballs.metier.Commentaire;
-import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
+
+import java.util.ArrayList;
 
 public class ScoreDAO extends DAOBase{
 

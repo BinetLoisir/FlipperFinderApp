@@ -11,7 +11,7 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	Context mContext = null;
 	// V41 le 04/10/2015
 
-	public static final int DATABASE_VERSION = 51;
+    public static final int DATABASE_VERSION = 55;
 	public static final String DATABASE_DATE_MAJ = "2011/06/01";
 
 	public static final String FLIPPER_BASE_NAME = "flipper.db";
@@ -75,6 +75,7 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 	public static final String COMM_ID = "COMM_ID";
 	public static final String COMM_FLIPPER_ID = "COMM_FLIPPER_ID";
 	public static final String COMM_TEXTE = "COMM_TEXTE";
+    public static final String COMM_TYPE = "COMM_TYPE";
 	public static final String COMM_DATE = "COMM_DATE";
 	public static final String COMM_PSEUDO = "COMM_PSEUDO";
 	public static final String COMM_ACTIF = "COMM_ACTIF";
@@ -82,12 +83,15 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
 	public static final String COMMENTAIRE_TABLE_CREATE =
 		"CREATE TABLE " + COMMENTAIRE_TABLE_NAME + " (" +
-		COMM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-		COMM_FLIPPER_ID + " INTEGER NOT NULL, " +
-		COMM_TEXTE + " TEXT NOT NULL, " +
-		COMM_DATE + " TEXT NOT NULL, " +
-		COMM_PSEUDO + " TEXT NOT NULL, " +
-		COMM_ACTIF + " INTEGER NOT NULL);";
+                COMM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COMM_FLIPPER_ID + " INTEGER NOT NULL, " +
+                COMM_TEXTE + " TEXT NOT NULL, " +
+                COMM_TYPE + " TEXT, " +
+                COMM_DATE + " TEXT NOT NULL, " +
+                COMM_PSEUDO + " TEXT NOT NULL, " +
+                COMM_ACTIF + " INTEGER NOT NULL);";
+
+    //TODO integrer le "NOT NULL" au-dessus ? Attention à la comptabilité avec les versions précédentes.
 
 	public static final String SCORE_TABLE_CREATE =
 		"CREATE TABLE " + SCORE_TABLE_NAME + " (" +
@@ -183,9 +187,9 @@ public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
             // Relocated
 			// Reset the last update's date
-			//SharedPreferences.Editor editor = mContext.getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0).edit();
-			//editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, DATABASE_DATE_MAJ);
-            //editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
+        //SharedPreferences.Editor editor = mContext.getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0).edit();
+        //editor.putString(PreferencesActivity.KEY_PREFERENCES_DATE_LAST_UPDATE, DATABASE_DATE_MAJ);
+        //editor.putString(PreferencesActivity.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
 			//editor.commit();
 
 			onCreate(db);

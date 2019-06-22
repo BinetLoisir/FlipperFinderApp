@@ -5,18 +5,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.pinmyballs.PageCarteFlipper;
-import com.pinmyballs.PagePreferences;
-import com.pinmyballs.PopScore;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.DialogFragment;
+
+import com.pinmyballs.PageInfoFlipperPager;
+import com.pinmyballs.PreferencesActivity;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
@@ -51,8 +49,8 @@ public class FragmentDialogScore extends DialogFragment {
 
         PseudoTV = (TextView) view.findViewById(R.id.PseudoNewScore);
         //Get the Pseudo
-        settings = getActivity().getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
-        pseudo = settings.getString(PagePreferences.KEY_PSEUDO_FULL, "");
+        settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+        pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "");
         Log.d(TAG, "onViewCreated: pseudo " + pseudo);
         PseudoTV.setText(pseudo);
         ScoreTV = (TextView) view.findViewById(R.id.ScoreNewScore);
@@ -69,7 +67,7 @@ public class FragmentDialogScore extends DialogFragment {
                     return;
                 }
                 Intent intent = getActivity().getIntent();
-                Flipper flipper = (Flipper) intent.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
+                Flipper flipper = (Flipper) intent.getSerializableExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO);
 
                 //make score
                 Score newScore = new Score(1, "", 1, "", "", 1, flipper);
@@ -87,7 +85,7 @@ public class FragmentDialogScore extends DialogFragment {
                 //Sauvegarder
                 // On sauvegarde le pseudo
                 SharedPreferences.Editor editor = settings.edit();
-                editor.putString(PagePreferences.KEY_PSEUDO_FULL, newpseudo);
+                editor.putString(PreferencesActivity.KEY_PSEUDO_FULL, newpseudo);
                 editor.apply();
 
             }
@@ -108,7 +106,7 @@ public class FragmentDialogScore extends DialogFragment {
             public void onTaskDone() {
             }
         });
-        scoreService.ajouteScore(getContext(), score);
+        scoreService.ajouteScore(getActivity(), score);
 
     }
 /*

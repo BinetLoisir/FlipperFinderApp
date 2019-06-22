@@ -8,11 +8,6 @@ import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -23,6 +18,12 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.parse.ParseException;
@@ -36,8 +37,10 @@ import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.ParseFactory;
 import com.pinmyballs.service.parse.ParseModeleService;
+import com.pinmyballs.utils.AsyncTaskMajDatabaseBackground;
 import com.pinmyballs.utils.MyLocation.LocationResult;
 import com.pinmyballs.utils.NetworkUtil;
+import com.pinmyballs.utils.ProgressBarHandler;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -50,6 +53,7 @@ public class SignalementActivity extends AppCompatActivity {
 
     LatLng currentLocation = null;
     LatLng newLocation = null;
+    ProgressBarHandler mprogressBarHandler;
 
     @BindView(R.id.next_button)
     Button mNextButton;
@@ -118,9 +122,11 @@ public class SignalementActivity extends AppCompatActivity {
         currentLocation = new LatLng(48.862731, 2.367354);
 
         setContentView(R.layout.activity_signalement);
-        settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
+        settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
 
         ButterKnife.bind(this);
+
+        mprogressBarHandler = new ProgressBarHandler(this);
 
         mNextButton.setOnClickListener(NextClickListener);
 
@@ -183,7 +189,7 @@ public class SignalementActivity extends AppCompatActivity {
         pseudo = newPseudo;
         // On sauvegarde le pseudo
         Editor editor = settings.edit();
-        editor.putString(PagePreferences.KEY_PSEUDO_FULL, pseudo);
+        editor.putString(PreferencesActivity.KEY_PSEUDO_FULL, pseudo);
         editor.apply();
     }
 
@@ -205,9 +211,6 @@ public class SignalementActivity extends AppCompatActivity {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
-
-
-
         } else {
             mNextButton.setText(R.string.SignalementWizardNext);
             mNextButton.setBackgroundResource(R.drawable.selectable_item_background);
@@ -219,6 +222,7 @@ public class SignalementActivity extends AppCompatActivity {
     }
 
     public void envoyer() {
+        mprogressBarHandler.show();
         //update Enseigne localisation
         getEnseigne().setLatitude(String.valueOf(newLocation.latitude));
         getEnseigne().setLongitude(String.valueOf(newLocation.longitude));
@@ -254,10 +258,16 @@ public class SignalementActivity extends AppCompatActivity {
         ParseObject.saveAllInBackground(objectsToSend, new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Envoi effectué, Merci pour votre contribution.", Toast.LENGTH_LONG);
-                toast.show();
-                updateDBinBackground();
-                finish();
+                mprogressBarHandler.hide();
+                if (e == null) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Envoi effectué, Merci pour votre contribution.", Toast.LENGTH_LONG);
+                    toast.show();
+                    updateDBinBackground();
+                    finish();
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "L'envoi a échoué.", Toast.LENGTH_LONG);
+                    toast.show();
+                }
             }
         });
     }
@@ -315,6 +325,5 @@ public class SignalementActivity extends AppCompatActivity {
     public void setCommentaire(Commentaire commentaire) {
         this.commentaire = commentaire;
     }
-
 
 }

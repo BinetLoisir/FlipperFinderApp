@@ -8,10 +8,12 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.support.annotation.NonNull;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.maps.model.LatLng;
+import com.pinmyballs.metier.Flipper;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
@@ -23,8 +25,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-
-import com.pinmyballs.metier.Flipper;
 
 public class LocationUtil {
 	private static final String TAG = LocationUtil.class.getSimpleName();

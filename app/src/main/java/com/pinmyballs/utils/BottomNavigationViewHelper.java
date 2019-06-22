@@ -1,13 +1,15 @@
 package com.pinmyballs.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.util.Log;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.pinmyballs.CommentaireActivity;
 import com.pinmyballs.HomeActivity;
@@ -19,6 +21,7 @@ import com.pinmyballs.TournoiActivity;
 public class BottomNavigationViewHelper {
     private static final String TAG = "BottomNavigationViewHelper";
 
+    @SuppressLint("LongLogTag")
     public static void setupBottomNavigationView(BottomNavigationViewEx bottomNavigationViewEx) {
         Log.d(TAG, "setupBottomNavigationView: Setting up");
         bottomNavigationViewEx.enableAnimation(false);

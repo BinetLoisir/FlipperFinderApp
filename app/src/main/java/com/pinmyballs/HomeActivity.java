@@ -11,29 +11,25 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -44,20 +40,31 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+import com.google.android.material.tabs.TabLayout;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.fragment.FragmentTournoiNew;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.utils.AsyncTaskMajDatabase;
+import com.pinmyballs.utils.AsyncTaskMajDatabaseBackground;
 import com.pinmyballs.utils.BottomNavigationViewHelper;
 import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.NetworkUtil;
+import com.pinmyballs.utils.SectionsPagerAdapter;
 
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -75,7 +82,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     final Map<String, Flipper> markerObjMap = new HashMap<String, Flipper>();
     private final LatLng mDefaultLocation = new LatLng(48.858250, 2.294577); //Tour Eiffel
     SharedPreferences settings;
-    double latFromPref, longFromPref;
     private Context mContext = HomeActivity.this;
     //FOR THE MAP--------------------------------------------------------
     private GoogleMap mMap;
@@ -87,14 +93,15 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.Theme_AppCompat_Light_NoActionBar2);
+        setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
 
         setContentView(R.layout.activity_home);
         setupSharedPreferences();
         setupBottomNavigationView();
         setupToolBar();
+        //initPlaces();
         //setupViewPager(); not used here
-        //getLocationPermission();
+        getLocationPermission();
         setupLocation();
         setupMap();
         setupPlaceAutocomplete();
@@ -102,32 +109,48 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         checkIfMajNeeded();
     }
 
+    private void initPlaces() {
+        // Initialize Places.
+        Places.initialize(getApplicationContext(), getResources().getString(R.string.apiKey));
+        // Create a new Places client instance.
+        //placesClient = Places.createClient(this);
+    }
+
     /**
      * Responsible for retrieving SharedPreferences settings
      */
     private void setupSharedPreferences() {
-        settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
+        settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = settings.edit();
+
         //First we check if PREFERENCES file is set up with values for DATABASE VERSION and DATE_LAST_UPDATE
         // if not we give it the values from the SQLite database
-        if (settings.getString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, "0").equals("0")) {
+        if (settings.getString(PreferencesActivity.KEY_PREFERENCES_DATABASE_VERSION, "0").equals("0")) {
             Log.d(TAG, "setupSharedPreferences: Key Pref Database Version not set => InitDB");
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
-            editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
+            editor.putString(PreferencesActivity.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
+            editor.putString(PreferencesActivity.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
             editor.apply();
         }
         //If KEY_PREFERENCES_DATABASE_VERSION is already set-up, we check if a DATABASE VERSION update has been done by the developer (used the reset the SQLite DB)
         // in which case we reset the DATE_LAST_UPDATE to the default value 2011/01/01
         else {
-            if (Integer.parseInt(settings.getString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, "0"))
+            if (Integer.parseInt(settings.getString(PreferencesActivity.KEY_PREFERENCES_DATABASE_VERSION, "0"))
                     < FlipperDatabaseHandler.DATABASE_VERSION) {
                 Log.d(TAG, "setupSharedPreferences: New Database Version => Reset DATE_LAST_UPDATE");
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
-                editor.putString(PagePreferences.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
+                editor.putString(PreferencesActivity.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
+                editor.putString(PreferencesActivity.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
                 editor.apply();
             }
         }
+
+        if (settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE)) {
+            Log.d(TAG, "setupSharedPreferences: AdminMode : already set to true");
+        } else {
+            Log.d(TAG, "setupSharedPreferences: AdminMode : set to false");
+            editor.putBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, false);
+            editor.apply();
+        }
+        
     }
 
 
@@ -135,7 +158,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
      * Does the update of the database
      */
     private void checkIfMajNeeded() {
-        String dateDerniereMajString = settings.getString(PagePreferences.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
+        String dateDerniereMajString = settings.getString(PreferencesActivity.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
         int nbJours;
         try {
             Date dateDerniereMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH).parse(dateDerniereMajString);
@@ -166,8 +189,10 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                         dialog.dismiss();
                     }
                 }).show();
-            } else
-                Log.d(TAG, "checkIfMajNeeded: Update of database not required, last update <= 3 days");
+            } else if (nbJours > 1) {
+                new AsyncTaskMajDatabaseBackground(HomeActivity.this, settings).execute();
+                Log.d(TAG, "checkIfMajNeeded: Updated in background");
+            }
         } catch (ParseException ignored) {
         }
     }
@@ -214,7 +239,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void setupMap() {
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.maphome);
+                .findFragmentById(R.id.map_home);
         mapFragment.getMapAsync(this);
     }
 
@@ -268,7 +293,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                         return true;
                     case R.id.action_admin:
                         Log.d(TAG, "onMenuItemClick: Navigating to Admin Page");
-                        Intent intentAdmin = new Intent(mContext, PageAdmin.class);
+                        Intent intentAdmin = new Intent(mContext, AdminActivity.class);
                         startActivity(intentAdmin);
                         return true;
                     case R.id.action_dbupdate:
@@ -277,7 +302,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                         return true;
                     case R.id.action_pref:
                         Log.d(TAG, "onMenuItemClick: Navigating to Preference page");
-                        Intent intentPref = new Intent(mContext, PagePreferences.class);
+                        Intent intentPref = new Intent(mContext, PreferencesActivity.class);
                         startActivity(intentPref);
                         return true;
                     case R.id.action_email:
@@ -308,6 +333,13 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                             new AlertDialog.Builder(HomeActivity.this).setTitle("Envoi impossible!").setMessage("Vous n'avez pas de mail configuré sur votre téléphone.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
                         }
                         return true;
+
+                    case R.id.action_login:
+                        Log.d(TAG, "onMenuItemClick: Starting Login Activity");
+                        Intent intentLogin = new Intent(mContext, LoginActivity.class);
+                        startActivity(intentLogin);
+                        return true;
+
                     default:
                         return false;
                 }
@@ -321,35 +353,44 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         inflater.inflate(R.menu.home_menu, menu);
 
         MenuItem item = menu.findItem(R.id.action_admin);
-        item.setVisible(true);
+        Boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
+        item.setVisible(adminMode);
+
+        MenuItem item1 = menu.findItem(R.id.action_login);
+        item1.setVisible(adminMode);
+
         return true;
     }
 
     private void setupPlaceAutocomplete() {
+
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), getResources().getString(R.string.apiKey));
+            Log.d(TAG, "setupPlaceAutocomplete: " + "Places API initialized");
+        }
+
         //Autocomplete
-        PlaceAutocompleteFragment autocompleteFragment = (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_home);
+        AutocompleteSupportFragment autocompleteFragment = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
         //Limit results to Europe
-        autocompleteFragment.setBoundsBias(new LatLngBounds(
+        assert autocompleteFragment != null;
+        autocompleteFragment.setLocationBias(RectangularBounds.newInstance(
                 new LatLng(36.748837, -11.204687),
                 new LatLng(52.275758, 24.654688)));
 
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
         autocompleteFragment.setHint("Ville, lieu, adresse...");
-        ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setTextSize(18.0f);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
-            public void onPlaceSelected(Place place) {
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                        new LatLng(place.getLatLng().latitude,
-                                place.getLatLng().longitude), SEARCH_ZOOM));
-
-                Log.i(TAG, "Searching around : " + place.getName());
+            public void onPlaceSelected(@NonNull Place place) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), SEARCH_ZOOM));
+                Log.i(TAG, "Map centered around : " + place.getName());
             }
 
             @Override
             public void onError(Status status) {
-                // TODO: Handle the error.
                 Log.i(TAG, "An error occurred: " + status);
             }
         });
@@ -433,7 +474,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         Intent infoActivite = new Intent(mContext, PageInfoFlipperPager.class);
         // On va sur l'onglet des actions
         infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 1);
-        infoActivite.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO, flipper);
+        infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
         startActivity(infoActivite);
     }
 
@@ -486,7 +527,9 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 android.Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mLocationPermissionGranted = true;
+            Log.d(TAG, "getLocationPermission: Permission granted");
         } else {
+            Log.d(TAG, "getLocationPermission: Permission denied");
             ActivityCompat.requestPermissions(this,
                     new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
@@ -501,12 +544,14 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                                            @NonNull String permissions[],
                                            @NonNull int[] grantResults) {
         mLocationPermissionGranted = false;
+        Log.d(TAG, "onRequestPermissionsResult: Result received");
         switch (requestCode) {
             case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mLocationPermissionGranted = true;
+                    Log.d(TAG, "onRequestPermissionsResult: Result : permission granted");
                 }
             }
         }
@@ -536,7 +581,11 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public LatLng getLocFromMap() {
-        return mMap.getProjection().getVisibleRegion().latLngBounds.getCenter();
+        if (mMap == null) {
+            return mDefaultLocation;
+        } else {
+            return mMap.getProjection().getVisibleRegion().latLngBounds.getCenter();
+        }
     }
 
     /**
@@ -551,44 +600,44 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 return;
             }
             for (Flipper flipper : listFlippers) {
+                boolean morethanone = false;
+                StringBuilder s = new StringBuilder();
+                s.append(flipper.getModele().getNom());
+                BaseFlipperService baseFlipperService = new BaseFlipperService();
+                ArrayList<Flipper> otherFlippers = baseFlipperService.rechercheOtherFlipper(getApplicationContext(), flipper);
+
+                if (otherFlippers.size() > 0) {
+                    morethanone = true;
+                    for (Flipper extraflip : otherFlippers) {
+                        s.append("\n").append(extraflip.getModele().getNom());
+                    }
+                }
 
                 Marker marker = mMap.addMarker(new MarkerOptions()
                         .position(new LatLng(Double.parseDouble(flipper.getEnseigne().getLatitude()), Double.parseDouble(flipper.getEnseigne().getLongitude())))
-                        //.icon(BitmapDescriptorFactory.defaultMarker(MarkerColor(flipper)))
-                        .icon(BitmapDescriptorFactory.fromResource(MarkerChoice(flipper)))
-                        //.icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_flipmarker_blue))
+                        .icon(BitmapDescriptorFactory.fromResource(MarkerChoice(flipper, morethanone)))
                         .anchor((float) 0.5, (float) 1)
-                        .title(flipper.getModele().getNom())
+                        .title(s.toString())
                         .snippet(flipper.getEnseigne().getNom() + "\n" + flipper.getEnseigne().getAdresse() + "\n" + flipper.getEnseigne().getCodePostal() + " " + flipper.getEnseigne().getVille()));
                 markerObjMap.put(marker.getId(), flipper);
             }
         }
 
-        private float MarkerColor(Flipper flipper) {
-            int nbJours = LocationUtil.getDaysSinceMajFlip(flipper);
-            if (nbJours > 365) {
-                return BitmapDescriptorFactory.HUE_MAGENTA;
-            } else if (nbJours > 60) {
-                return (float) 45.0; // ORANGE
-            }
-            return (float) 100.0; // GREEN
-        }
-
-        private int MarkerChoice(Flipper flipper) {
+        private int MarkerChoice(Flipper flipper, Boolean morethanone) {
             int nbJours = LocationUtil.getDaysSinceMajFlip(flipper);
             if (nbJours < 8) {
-                return R.mipmap.ic_flipmarker_new;
+                return morethanone ? R.mipmap.ic_flipsmarker_new : R.mipmap.ic_flipmarker_new;
             }
             if (nbJours < 60) {
-                return R.mipmap.ic_flipmarker_blue;
+                return morethanone ? R.mipmap.ic_flipsmarker_blue : R.mipmap.ic_flipmarker_blue;
             }
             if (nbJours < 365) {
-                return R.mipmap.ic_flipmarker_lightblue;
+                return morethanone ? R.mipmap.ic_flipsmarker_lightblue : R.mipmap.ic_flipmarker_lightblue;
             }
             if (nbJours > 365) {
-                return R.mipmap.ic_flipmarker_grey;
+                return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
             }
-            return R.mipmap.ic_flipmarker_grey;
+            return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
         }
 
 
@@ -632,13 +681,13 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             BaseFlipperService baseFlipperService = new BaseFlipperService();
             String modeleFlipper = "";
             SharedPreferences settings;
-            settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
-            //DISTANCE_MAX = settings.getInt(PagePreferences.KEY_PREFERENCES_RAYON, PagePreferences.DEFAULT_VALUE_RAYON);
+            settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+            //DISTANCE_MAX = settings.getInt(PreferencesActivity.KEY_PREFERENCES_RAYON, PreferencesActivity.DEFAULT_VALUE_RAYON);
             int DISTANCE_MAX = getDiagonalKM(params[0]);
             int ENSEIGNE_LIST_MAX_SIZE = 100;
 
-            ENSEIGNE_LIST_MAX_SIZE = settings.getInt(PagePreferences.KEY_PREFERENCES_MAX_RESULT,
-                    PagePreferences.DEFAULT_VALUE_NB_MAX_LISTE);
+            ENSEIGNE_LIST_MAX_SIZE = settings.getInt(PreferencesActivity.KEY_PREFERENCES_MAX_RESULT,
+                    PreferencesActivity.DEFAULT_VALUE_NB_MAX_LISTE);
 
             try {
                 listFlippers = baseFlipperService.rechercheFlipper(getApplicationContext(), params[0].getCenter(),

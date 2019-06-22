@@ -5,14 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.pinmyballs.database.DAOBase;
+import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.metier.Tournoi;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-
-import com.pinmyballs.database.DAOBase;
-import com.pinmyballs.database.FlipperDatabaseHandler;
-import com.pinmyballs.metier.Tournoi;
 
 public class TournoiDAO extends DAOBase{
 

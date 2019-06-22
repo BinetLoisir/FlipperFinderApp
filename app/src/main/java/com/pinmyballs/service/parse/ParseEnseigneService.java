@@ -1,14 +1,13 @@
 package com.pinmyballs.service.parse;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.metier.Enseigne;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParseEnseigneService {
 

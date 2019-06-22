@@ -6,7 +6,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical">
@@ -95,8 +95,7 @@
             app:layout_constraintHorizontal_bias="0.5" />
 
 
-
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="fill_parent"

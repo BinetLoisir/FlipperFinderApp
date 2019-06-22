@@ -3,19 +3,22 @@ package com.pinmyballs;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBar.Tab;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBar.Tab;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLngBounds;
@@ -24,17 +27,22 @@ import com.pinmyballs.fragment.FragmentCarteFlipper;
 import com.pinmyballs.fragment.FragmentCommentaireFlipper;
 import com.pinmyballs.fragment.InfoFlipperPagerAdapter;
 import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.service.FlipperService;
 import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.utils.NetworkUtil;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 public class PageInfoFlipperPager extends AppCompatActivity {
 
 	public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
+    public final static String INTENT_FLIPPER_POUR_INFO = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO";
+
 	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
     private DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
 
@@ -61,7 +69,7 @@ public class PageInfoFlipperPager extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		// On récupère le flipper concerné
 		Intent i = getIntent();
-		flipper = (Flipper) i.getSerializableExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO);
+        flipper = (Flipper) i.getSerializableExtra(INTENT_FLIPPER_POUR_INFO);
 
         BaseFlipperService baseFlipperService = new BaseFlipperService();
         nbflippers = baseFlipperService.NombreFlipperActifs(getApplicationContext(), flipper.getEnseigne());
@@ -82,13 +90,13 @@ public class PageInfoFlipperPager extends AppCompatActivity {
 
 
 		Intent actionsIntent = new Intent(this, FragmentActionsFlipper.class);
-		actionsIntent.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO,flipper);
+        actionsIntent.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
 
 		Intent carteIntent = new Intent(this, FragmentCarteFlipper.class);
 		carteIntent.putExtra(FragmentCarteFlipper.INTENT_FLIPPER_INFO_TABMAP,flipper);
 
 		Intent commentaireIntent = new Intent(this, FragmentCommentaireFlipper.class);
-		commentaireIntent.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO, flipper);
+        commentaireIntent.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
 
 
 		/** Set tab navigation mode */
@@ -201,6 +209,11 @@ TextView nbflippercircle = (TextView) findViewById(R.id.nbflips);
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_page_info_flipper, menu);
+        MenuItem item = menu.findItem(R.id.action_delete);
+        SharedPreferences settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, MODE_PRIVATE);
+        boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
+        item.setVisible(adminMode);
+
         return true;
     }
 
@@ -218,8 +231,30 @@ TextView nbflippercircle = (TextView) findViewById(R.id.nbflips);
                 break;
 			case R.id.action_score:
 				Intent intentScore = new Intent(PageInfoFlipperPager.this, PopScore.class);
-				intentScore.putExtra(PageCarteFlipper.INTENT_FLIPPER_POUR_INFO, flipper);
+                intentScore.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
 				startActivity(intentScore);
+                break;
+            case R.id.action_delete:
+                //On vérifie qu'on a la connection
+                if (NetworkUtil.isConnected(getApplicationContext())) {
+                    FlipperService flipperService = new FlipperService(new FragmentActionsFlipper.FragmentActionCallback() {
+                        @Override
+                        public void onTaskDone() {
+                            //finish();  uncomment pour fermer la fenetre
+                        }
+                    });
+                    //On vérifie que l'état du flip a été changé
+                    //On modifie l'état du flip dans la base et online
+                    flipperService.modifieEtatFlip(PageInfoFlipperPager.this, flipper);
+
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastChangeModelePasPossibleReseau), LENGTH_SHORT);
+                    toast.show();
+                }
+                break;
+
+
+
 			default:
                 Log.i("Erreur action bar","default");
                 break;

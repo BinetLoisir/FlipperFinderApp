@@ -5,10 +5,6 @@ import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,12 +14,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocomplete;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.Autocomplete;
+import com.google.android.libraries.places.widget.AutocompleteActivity;
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode;
+import com.google.android.material.tabs.TabLayout;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.SaveCallback;
@@ -33,10 +34,12 @@ import com.pinmyballs.metier.Tournoi;
 import com.pinmyballs.service.ParseFactory;
 import com.pinmyballs.service.base.BaseTournoiService;
 import com.pinmyballs.utils.LocationUtil;
+import com.pinmyballs.utils.ProgressBarHandler;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -52,7 +55,7 @@ import static com.parse.Parse.getApplicationContext;
 
 public class FragmentTournoiNew extends Fragment{
     private static final String TAG = "FragmentTournoiNew";
-    int PLACE_AUTOCOMPLETE_REQUEST_CODE = 1;
+    private int AUTOCOMPLETE_REQUEST_CODE = 1;
     public final static String INTENT_LATITUDE = "com.pinmyballs.FragmentTournoiNew.INTENT_LATITUDE";
     public final static String INTENT_LONGITUDE = "com.pinmyballs.FragmentTournoiNew.INTENT_LONGITUDE";
     public final static String INTENT_ADDRESSTEXT = "com.pinmyballs.FragmentTournoiNew.INTENT_ADDRESSTEXT";
@@ -109,16 +112,15 @@ public class FragmentTournoiNew extends Fragment{
 
     @OnClick(R.id.NewTournoiButtonSearchAdress)
     public void usePlaceAutocomplete() {
-        try {
-            Intent intent =
-                    new PlaceAutocomplete.IntentBuilder(PlaceAutocomplete.MODE_OVERLAY)
-                            .build(getActivity());
-            startActivityForResult(intent, PLACE_AUTOCOMPLETE_REQUEST_CODE);
-        } catch (GooglePlayServicesRepairableException e) {
-            // TODO: Handle the error.
-        } catch (GooglePlayServicesNotAvailableException e) {
-            // TODO: Handle the error.
-        }
+        // Set the fields to specify which types of place data to
+        // return after the user has made a selection.
+        List<Place.Field> fields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
+
+// Start the autocomplete intent.
+        Intent intent = new Autocomplete.IntentBuilder(
+                AutocompleteActivityMode.FULLSCREEN, fields)
+                .build(getApplicationContext());
+        startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
     }
 
     @OnClick(R.id.NewTournoiButtonCheckAddress)
@@ -148,13 +150,6 @@ public class FragmentTournoiNew extends Fragment{
         intentWithLatLng.putExtra(INTENT_NOMTOURNOI,NewTournoiNom.getText().toString());
         startActivity(intentWithLatLng);
     }
-/*
-    @OnClick(R.id.NewTournoiAnnuler)
-    public void annuler() {
-        NavUtils.navigateUpFromSameTask(z_PageSignalementTournoi.this);
-        Log.d(TAG, NewTournoiNom.getText().toString());
-    }
-*/
 
     @OnClick(R.id.NewTournoiSuivant)
     public void suivant() {
@@ -230,8 +225,9 @@ public class FragmentTournoiNew extends Fragment{
 
 
     public void envoyer(final Tournoi tournoi){
-        Toast toast = Toast.makeText(getApplicationContext(), "Envoi en cours", Toast.LENGTH_SHORT);
-        toast.show();
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(getActivity());
+        mProgressBarHandler.show();
+
         ParseFactory parseFactory = new ParseFactory();
         //creation de l'objet à envoyer
         final ParseObject Tournoi = parseFactory.getParseObject(tournoi);
@@ -239,18 +235,23 @@ public class FragmentTournoiNew extends Fragment{
         Tournoi.saveInBackground( new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                // Ca s'est bien passé, on sauvegarde le tournoi dans la base
-                List<Tournoi> listeTournoiToSave = new ArrayList<Tournoi>();
-                listeTournoiToSave.add(tournoi);
-                BaseTournoiService baseTournoiService = new BaseTournoiService();
-                baseTournoiService.majListeTournoi(listeTournoiToSave, getActivity().getBaseContext());
+                mProgressBarHandler.hide();
+                if (e == null) {
+                    // Ca s'est bien passé, on sauvegarde le tournoi dans la base
+                    List<Tournoi> listeTournoiToSave = new ArrayList<Tournoi>();
+                    listeTournoiToSave.add(tournoi);
+                    BaseTournoiService baseTournoiService = new BaseTournoiService();
+                    baseTournoiService.majListeTournoi(listeTournoiToSave, getActivity().getBaseContext());
 
-                Toast toast = Toast.makeText(getApplicationContext(), "Tournoi enregistré, merci", Toast.LENGTH_LONG);
-                toast.show();
+                    Toast toast = Toast.makeText(getApplicationContext(), "Tournoi enregistré, merci", Toast.LENGTH_LONG);
+                    toast.show();
+                } else {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Erreur lors de l'envoi", Toast.LENGTH_LONG);
+                    toast.show();
+                }
 
                 TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tabs);
                 tabLayout.getTabAt(0).select();
-
             }
         });
     }
@@ -258,9 +259,9 @@ public class FragmentTournoiNew extends Fragment{
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PLACE_AUTOCOMPLETE_REQUEST_CODE) {
+        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-                Place place = PlaceAutocomplete.getPlace(getActivity(), data);
+                Place place = Autocomplete.getPlaceFromIntent(data);
                 NewTournoiEnseigne.setText(place.getName());
 
                 HashMap HM = LocationUtil.getDetailsfromLatLng(getContext(), place.getLatLng());
@@ -270,14 +271,14 @@ public class FragmentTournoiNew extends Fragment{
                 NewTournoiPays.setText(String.valueOf(HM.get("country")));
 
                 Log.d(TAG, "Place: " + place.getName());
-            } else if (resultCode == PlaceAutocomplete.RESULT_ERROR) {
-                Status status = PlaceAutocomplete.getStatus(getActivity(), data);
+            } else if (resultCode == AutocompleteActivity.RESULT_ERROR) {
                 // TODO: Handle the error.
+                Status status = Autocomplete.getStatusFromIntent(data);
                 Log.i(TAG, status.getStatusMessage());
-
             } else if (resultCode == RESULT_CANCELED) {
                 // The user canceled the operation.
             }
+
         }
     }
 

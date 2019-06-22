@@ -1,14 +1,13 @@
 package com.pinmyballs.fragment;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.pinmyballs.SignalementActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import com.pinmyballs.SignalementActivity;
 
 public abstract class SignalementWizardFragment extends Fragment{
 

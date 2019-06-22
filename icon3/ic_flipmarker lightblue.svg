@@ -16,8 +16,12 @@
    viewBox="0 0 500 500"
    id="svg2"
    version="1.1"
-   inkscape:version="0.91 r13725"
-   sodipodi:docname="ic_flipmarker lightblue.svg">
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="ic_flipmarker lightblue.svg"
+   style="zoom: 1;"
+   inkscape:export-filename="/Users/julien/Programming/PinMyBalls/icon3/ic_flipsmarker lightblue_mini.png"
+   inkscape:export-xdpi="9.6000004"
+   inkscape:export-ydpi="9.6000004">
   <metadata
      id="metadata25">
     <rdf:RDF>
@@ -26,7 +30,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -39,27 +43,77 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1349"
-     inkscape:window-height="898"
+     inkscape:window-width="1440"
+     inkscape:window-height="913"
      id="namedview23"
      showgrid="false"
-     inkscape:zoom="1.5208438"
-     inkscape:cx="104.41233"
-     inkscape:cy="248.88885"
+     inkscape:zoom="1"
+     inkscape:cx="33.10526"
+     inkscape:cy="250.5"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
   <defs
      id="defs4">
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       id="linearGradient6428"
+       x1="249.998"
+       x2="249.998"
+       y1="93.999"
+       y2="245.999">
+      <stop
+         offset="0"
+         stop-color="#FCFCFD"
+         id="stop6424"
+         style="stop-color:#dc4f3b;stop-opacity:1" />
+      <stop
+         offset="1"
+         stop-color="#fff"
+         id="stop6426"
+         style="stop-color:#fffeaa;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       id="id1"
+       x1="249.998"
+       x2="249.998"
+       y1="93.999"
+       y2="245.999">
+      <stop
+         offset="0"
+         stop-color="#FCFCFD"
+         id="stop6419" />
+      <stop
+         offset="1"
+         stop-color="#fff"
+         id="stop6421" />
+    </linearGradient>
+    <linearGradient
+       y2="245.999"
+       y1="93.999"
+       x2="249.998"
+       x1="249.998"
+       id="multi"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop4624"
+         stop-color="#FCFCFD"
+         offset="0" />
+      <stop
+         id="stop4626"
+         stop-color="#fff"
+         offset="1" />
+    </linearGradient>
     <style
        type="text/css"
-       id="style6"><![CDATA[
+       id="style6">
     .str1 {stroke:#434242;stroke-width:10}
     .str0 {stroke:#434242;stroke-width:20}
     .fil0 {fill:url(#id0)}
     .fil1 {fill:url(#id1)}
-   ]]></style>
+   </style>
     <linearGradient
        gradientUnits="userSpaceOnUse"
        id="id0"
@@ -79,11 +133,12 @@
     </linearGradient>
     <linearGradient
        gradientUnits="userSpaceOnUse"
-       id="id1"
+       id="id1-7"
        x1="249.998"
        x2="249.998"
-       y1="93.999"
-       y2="245.999">
+       y1="93.999001"
+       y2="245.99899"
+       xlink:href="#multi">
       <stop
          offset="0"
          stop-color="#FCFCFD"
@@ -144,33 +199,54 @@
     <linearGradient
        inkscape:collect="always"
        xlink:href="#linearGradient4148"
-       id="linearGradient4190"
+       id="linearGradient4166"
        x1="100"
        y1="250"
        x2="400"
        y2="250"
        gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#id1"
+       id="radialGradient6145"
+       cx="250"
+       cy="170"
+       fx="250"
+       fy="170"
+       r="105"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <g
      id="Layer_x0020_1"
-     inkscape:export-xdpi="300"
-     inkscape:export-ydpi="300">
+     inkscape:export-xdpi="24.9"
+     inkscape:export-ydpi="24.9"
+     visibility="visible"
+     style="visibility:visible">
     <path
-       class="fil0 str0"
-       d="M250 30c77 0 140 63 140 140 0 24-6 46-16 65l-111 227c-2 5-7 8-13 8s-11-3-13-8l-111-227c-10-19-16-41-16-65 0-77 63-140 140-140z"
+       d="m 250,30 c 77,0 140,63 140,140 0,24 -6,46 -16,65 L 263,462 c -2,5 -7,8 -13,8 -6,0 -11,-3 -13,-8 L 126,235 C 116,216 110,194 110,170 110,93 173,30 250,30 Z"
        id="path19"
-       style="fill-opacity:1.0;fill:url(#linearGradient4190)" />
+       style="visibility:visible;fill:url(#linearGradient4166);fill-opacity:1.0;stroke:#434242;stroke-width:20"
+       class="fil0 str0"
+       visibility="visible"
+       inkscape:connector-curvature="0"
+       inkscape:export-xdpi="320"
+       inkscape:export-ydpi="320" />
     <circle
        class="fil1 str1"
        cx="250"
        cy="170"
        r="100"
-       id="circle21" />
+       id="circle21"
+       visibility="visible"
+       style="visibility:visible;fill:url(#radialGradient6145);fill-opacity:1.0;fill-rule:evenodd;stroke:#434242;stroke-width:10"
+       inkscape:export-xdpi="24"
+       inkscape:export-ydpi="24" />
     <path
-       style="fill:#434242;fill-opacity:1;stroke:#434242;stroke-width:3.82976007;stroke-linejoin:round"
+       d="M 193.78326,163.85331 285.6975,147.57683 280.33584,96.066565 H 301.7825 V 241.59745 h -6.12762 v -45.95713 h -95.744 v 45.95713 h -6.12762 z"
        id="path4204"
-       d="m 193.78326,163.85331 91.91424,-16.27648 -5.36166,-51.510265 21.44666,0 0,145.530885 -6.12762,0 0,-45.95713 -95.744,0 0,45.95713 -6.12762,0 z"
-       class="fil0 str0"
-       inkscape:connector-curvature="0" />
+       style="visibility:visible;fill:#434242;fill-opacity:1;stroke:#434242;stroke-width:3.82976007;stroke-linejoin:round"
+       inkscape:connector-curvature="0"
+       class="fil2 str2"
+       visibility="visible" />
   </g>
 </svg>

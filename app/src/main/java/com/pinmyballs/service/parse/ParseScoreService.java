@@ -1,7 +1,6 @@
 package com.pinmyballs.service.parse;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -13,6 +12,7 @@ import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.fragment.FragmentScoreFlipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.base.BaseScoreService;
+import com.pinmyballs.utils.ProgressBarHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +81,8 @@ public class ParseScoreService {
     }
 
     public boolean ajouteScore(final Context pContext, final Score score){
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
+        mProgressBarHandler.show();
         final ParseObject parseScore = new ParseObject(FlipperDatabaseHandler.SCORE_TABLE_NAME);
         parseScore.put(FlipperDatabaseHandler.SCORE_ID, score.getId());
         parseScore.put(FlipperDatabaseHandler.SCORE_FLIPPER_ID, score.getFlipperId());
@@ -90,6 +92,7 @@ public class ParseScoreService {
         parseScore.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
+                mProgressBarHandler.hide();
                 if (e == null){
                     //TODO A checker
                     score.setObjectId(parseScore.getObjectId());

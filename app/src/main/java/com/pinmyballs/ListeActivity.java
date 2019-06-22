@@ -7,13 +7,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -25,23 +18,28 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.RectangularBounds;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
-import com.pinmyballs.fragment.FragmentTournoiNew;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
@@ -49,6 +47,7 @@ import com.pinmyballs.utils.BottomNavigationViewHelper;
 import com.pinmyballs.utils.ListeFlipperAdapter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -78,7 +77,7 @@ public class ListeActivity extends AppCompatActivity {
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private boolean mLocationPermissionGranted;
     private Location mLastKnownLocation;
-    private PlaceAutocompleteFragment autocompleteFragment;
+    private AutocompleteSupportFragment autocompleteFragment;
 
     SharedPreferences settings;
 
@@ -104,11 +103,11 @@ public class ListeActivity extends AppCompatActivity {
      * Responsible for retrieving SharedPreferences settings
      */
     private void setupSharedPreferences() {
-        settings = getSharedPreferences(PagePreferences.PREFERENCES_FILENAME, 0);
-        DISTANCE_MAX = settings.getInt(PagePreferences.KEY_PREFERENCES_RAYON, PagePreferences.DEFAULT_VALUE_RAYON);
+        settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+        DISTANCE_MAX = settings.getInt(PreferencesActivity.KEY_PREFERENCES_RAYON, PreferencesActivity.DEFAULT_VALUE_RAYON);
 
-        ENSEIGNE_LIST_MAX_SIZE = settings.getInt(PagePreferences.KEY_PREFERENCES_MAX_RESULT,
-                PagePreferences.DEFAULT_VALUE_NB_MAX_LISTE);
+        ENSEIGNE_LIST_MAX_SIZE = settings.getInt(PreferencesActivity.KEY_PREFERENCES_MAX_RESULT,
+                PreferencesActivity.DEFAULT_VALUE_NB_MAX_LISTE);
         Log.d(TAG, "setupSharedPreferences: DISTANCE :" + DISTANCE_MAX +" km");
         Log.d(TAG, "setupSharedPreferences: MAX RESULTS :" + ENSEIGNE_LIST_MAX_SIZE);
     }
@@ -151,6 +150,7 @@ public class ListeActivity extends AppCompatActivity {
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+
         menuItem.setChecked(true);
     }
 
@@ -167,7 +167,7 @@ public class ListeActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_pref:
                         Log.d(TAG, "onMenuItemClick: Navigating to Preference page");
-                        Intent intentPref = new Intent(mContext, PagePreferences.class);
+                        Intent intentPref = new Intent(mContext, PreferencesActivity.class);
                         startActivity(intentPref);
                         return true;
                     default:
@@ -189,24 +189,34 @@ public class ListeActivity extends AppCompatActivity {
      * Setting up the Place Autocomplete
      */
     private void setupPlaceAutocomplete() {
+
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), getResources().getString(R.string.apiKey));
+            Log.d(TAG, "setupPlaceAutocomplete: " + "Places API initialized");
+        }
+
         //Autocomplete
-        autocompleteFragment = (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment_list);
+        autocompleteFragment = (AutocompleteSupportFragment)
+                getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
+
         //Limit results to Europe
-        autocompleteFragment.setBoundsBias(new LatLngBounds(
+        assert autocompleteFragment != null;
+        autocompleteFragment.setLocationBias(RectangularBounds.newInstance(
                 new LatLng(36.748837, -11.204687),
                 new LatLng(52.275758, 24.654688)));
 
+        autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
         autocompleteFragment.setHint("Ville, lieu, adresse...");
-        ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setTextSize(18.0f);
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
-            public void onPlaceSelected(Place place) {
+            public void onPlaceSelected(@NonNull Place place) {
                 latLngListe = place.getLatLng();
                 //buttonMyLocation.setBackgroundResource(R.drawable.ic_my_location_blue_24dp);
-                searchFlip(latLngListe);
-                Log.i(TAG, "Searching around : " + place.getName());
+                if (latLngListe != null) {
+                    searchFlip(latLngListe);
+                }
+                Log.i(TAG, "Listing around : " + place.getName());
             }
 
             @Override
@@ -297,7 +307,7 @@ public class ListeActivity extends AppCompatActivity {
                                     mLastKnownLocation = location;
                                     latLngListe = new LatLng(location.getLatitude(), location.getLongitude());
                                     //buttonMyLocation.setBackgroundResource(R.drawable.ic_my_location_blue_24dp);
-                                    ((EditText) autocompleteFragment.getView().findViewById(R.id.place_autocomplete_search_input)).setText("");
+                                    autocompleteFragment.setText("");
                                     Log.d(TAG, "onSuccess: Updating mLastKnownLocation to: (" + latLngListe.latitude + ", "+ latLngListe.longitude+")");
                                     searchFlip(latLngListe);
 

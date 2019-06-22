@@ -1,23 +1,11 @@
 package com.pinmyballs;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.View;
-import android.widget.ListView;
 
-import com.pinmyballs.fragment.FragmentDialogScore;
-import com.pinmyballs.fragment.FragmentScoreFlipper;
-import com.pinmyballs.metier.Flipper;
-import com.pinmyballs.metier.Score;
-import com.pinmyballs.service.ScoreService;
-import com.pinmyballs.utils.ListeScoresAdapter;
-
-import java.util.ArrayList;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class PopLegend extends AppCompatActivity {
 

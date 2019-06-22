@@ -16,20 +16,19 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.utils.LocationUtil;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class FragmentSignalementMap extends SignalementWizardFragment implements OnMapReadyCallback {
 
@@ -73,27 +72,36 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
 
     @OnClick(R.id.geolocaliseSignalement)
     public void geolocaliseEnseigne() {
-        Enseigne enseigne = getParentActivity().getEnseigne();
-        if(enseigne == null){
-            return;
-        }
 
-        String adresseTexte = enseigne.getAdresseCompleteAvecPays();
-        LatLng currentUserLocation = getCurrentLocation();
-        LatLng localisationEnseigne = LocationUtil.getAddressFromText(getActivity(), adresseTexte, currentUserLocation.latitude, currentUserLocation.longitude);
-        if (localisationEnseigne == null) {
-            adresseTexte = enseigne.getCodePostal() + " " + enseigne.getVille() + " " + enseigne.getPays();
-            localisationEnseigne = LocationUtil.getAddressFromText(getActivity(), adresseTexte, currentUserLocation.latitude, currentUserLocation.longitude);
-        }
-        if (localisationEnseigne != null) {
-            updateMapPosition(localisationEnseigne);
-            Toast.makeText(getContext(), "Géolocalisation de l'enseigne réussie", Toast.LENGTH_SHORT).show();
-
-            chosenPosition = localisationEnseigne;
+        LatLng latLng = getParentActivity().getNewLocation();
+        if (latLng != null) {
+            updateMapPosition(latLng);
+            chosenPosition = latLng;
+            Toast.makeText(getContext(), "Positionnement sur carte réussie", Toast.LENGTH_SHORT).show();
         } else {
-            new AlertDialog.Builder(getActivity()).setTitle("Géolocalisation impossible!")
-                    .setMessage("Impossible de géolocaliser l'adresse, vous devez manuellement cliquer sur la carte pour indiquer la position.").setNeutralButton("Fermer", null)
-                    .setIcon(R.drawable.ic_delete).show();
+
+            Enseigne enseigne = getParentActivity().getEnseigne();
+            if (enseigne == null) {
+                return;
+            }
+
+            String adresseTexte = enseigne.getAdresseCompleteAvecPays();
+            LatLng currentUserLocation = getCurrentLocation();
+            LatLng localisationEnseigne = LocationUtil.getAddressFromText(getActivity(), adresseTexte, currentUserLocation.latitude, currentUserLocation.longitude);
+            if (localisationEnseigne == null) {
+                adresseTexte = enseigne.getCodePostal() + " " + enseigne.getVille() + " " + enseigne.getPays();
+                localisationEnseigne = LocationUtil.getAddressFromText(getActivity(), adresseTexte, currentUserLocation.latitude, currentUserLocation.longitude);
+            }
+            if (localisationEnseigne != null) {
+                updateMapPosition(localisationEnseigne);
+                Toast.makeText(getContext(), "Géolocalisation de l'enseigne réussie", Toast.LENGTH_SHORT).show();
+
+                chosenPosition = localisationEnseigne;
+            } else {
+                new AlertDialog.Builder(getActivity()).setTitle("Géolocalisation impossible!")
+                        .setMessage("Impossible de géolocaliser l'adresse, vous devez manuellement cliquer sur la carte pour indiquer la position.").setNeutralButton("Fermer", null)
+                        .setIcon(R.drawable.ic_delete).show();
+            }
         }
     }
 
@@ -125,11 +133,23 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
         }
 
         for(Flipper flipper : listFlippers){
+
+            StringBuilder s = new StringBuilder();
+            s.append(flipper.getModele().getNom());
+
+            ArrayList<Flipper> otherFlippers = baseFlipperService.rechercheOtherFlipper(getActivity(), flipper);
+            if (otherFlippers.size() > 0) {
+                for (Flipper extraflip : otherFlippers) {
+                    s.append(", " + extraflip.getModele().getNom());
+                }
+            }
+
             mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(Double.parseDouble(flipper.getEnseigne().getLatitude()), Double.parseDouble(flipper.getEnseigne().getLongitude())))
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN))
                     .title(flipper.getEnseigne().getNom())
-                    .snippet(flipper.getEnseigne().getAdresse() + ", " + flipper.getEnseigne().getCodePostal() + ", " + flipper.getEnseigne().getVille()));
+                    .snippet(s.toString())
+            );
         }
 
 

@@ -1,4 +1,4 @@
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout3"
@@ -9,17 +9,40 @@
     android:paddingTop="2dip"
     tools:layout_editor_absoluteY="81dp">
 
-    <TextView
-        android:id="@+id/textDate"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/linlay1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:textColor="@color/accent"
-        android:text="01/01/2013"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:text="01/01/2013"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/accent" />
+
+        <ImageButton
+            android:id="@+id/buttonEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@null"
+            android:tint="@android:color/darker_gray"
+            app:srcCompat="@drawable/ic_edit_black_24dp" />
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/textePseudo"
@@ -34,7 +57,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textDate" />
+        app:layout_constraintTop_toBottomOf="@+id/linlay1" />
 
     <TextView
         android:id="@+id/texteCommentaire"
@@ -53,4 +76,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textePseudo" />
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

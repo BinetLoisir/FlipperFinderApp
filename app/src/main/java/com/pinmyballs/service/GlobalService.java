@@ -5,15 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.metier.Enseigne;
@@ -34,6 +25,14 @@ import com.pinmyballs.service.parse.ParseModeleService;
 import com.pinmyballs.service.parse.ParseScoreService;
 import com.pinmyballs.service.parse.ParseTournoiService;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class GlobalService {
 
 	Context mContext = null;
@@ -51,19 +50,33 @@ public class GlobalService {
 	 * @param nbMaxCommentaire Number of comments to return
 	 * @return
 	 */
-	public ArrayList<Commentaire> getLastCommentaire(Context pContext, int nbMaxCommentaire){
-		ArrayList<Commentaire> listeRetour;
-		BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
-		BaseFlipperService baseFlipperService = new BaseFlipperService();
+    public ArrayList<Commentaire> getLastCommentaire(Context pContext, int nbMaxCommentaire) {
+        ArrayList<Commentaire> listeRetour;
+        BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
+        BaseFlipperService baseFlipperService = new BaseFlipperService();
 
-		listeRetour = baseCommentaireService.getLastCommentaire(pContext, nbMaxCommentaire);
+        listeRetour = baseCommentaireService.getLastCommentaire(pContext, nbMaxCommentaire);
 
-		for (Commentaire commentaire : listeRetour){
-			Flipper flipper = baseFlipperService.getFlipperById(pContext, commentaire.getFlipperId());
-			commentaire.setFlipper(flipper);
-		}
-		return listeRetour;
-	}
+        for (Commentaire commentaire : listeRetour) {
+            Flipper flipper = baseFlipperService.getFlipperById(pContext, commentaire.getFlipperId());
+            commentaire.setFlipper(flipper);
+        }
+        return listeRetour;
+    }
+
+    public ArrayList<Commentaire> getLastCommentaireType(Context pContext, int nbMaxCommentaire, String type, boolean includeNull) {
+        ArrayList<Commentaire> listeRetour;
+        BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
+        BaseFlipperService baseFlipperService = new BaseFlipperService();
+
+        listeRetour = baseCommentaireService.getLastCommentaireType(pContext, nbMaxCommentaire, type, includeNull);
+
+        for (Commentaire commentaire : listeRetour) {
+            Flipper flipper = baseFlipperService.getFlipperById(pContext, commentaire.getFlipperId());
+            commentaire.setFlipper(flipper);
+        }
+        return listeRetour;
+    }
 
 	/**
 	 * Returns the list of score for a given flipperId

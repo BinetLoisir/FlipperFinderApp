@@ -37,4 +37,11 @@
         android:icon="@drawable/ic_bug_report_black_24dp"
         android:title="@string/homeMenu_action_bug_text"
         app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_login"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/homeMenu_action_login"
+        app:showAsAction="ifRoom" />
+
 </menu>

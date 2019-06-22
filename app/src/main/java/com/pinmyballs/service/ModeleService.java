@@ -1,11 +1,12 @@
 package com.pinmyballs.service;
 
-import java.util.List;
-
 import android.content.Context;
+
 import com.pinmyballs.metier.ModeleFlipper;
 import com.pinmyballs.service.base.BaseModeleService;
 import com.pinmyballs.service.parse.ParseModeleService;
+
+import java.util.List;
 
 public class ModeleService {
 
@@ -17,5 +18,18 @@ public class ModeleService {
 		retour = baseModeleService.majListeModele(nvlleListe, pContext);
 		return retour;
 	}
+
+    public boolean ajouteModele(Context pContext, ModeleFlipper modeleFlipper) {
+        boolean retour = true;
+        ParseModeleService parseModeleService = new ParseModeleService();
+        parseModeleService.ajouterModele(pContext, modeleFlipper);
+        return retour;
+    }
+
+    public long getMaxIdModeleFlipper(Context pContext) {
+        BaseModeleService baseModeleService = new BaseModeleService();
+        return baseModeleService.getMaxIdModeleFlipper(pContext);
+    }
+
 
 }
