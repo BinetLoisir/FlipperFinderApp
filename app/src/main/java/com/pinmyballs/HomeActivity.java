@@ -111,7 +111,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void initPlaces() {
         // Initialize Places.
-        Places.initialize(getApplicationContext(), getResources().getString(R.string.apiKey));
+        Places.initialize(getApplicationContext(), getResources().getString(R.string.googleMapsApiKey));
         // Create a new Places client instance.
         //placesClient = Places.createClient(this);
     }
@@ -365,7 +365,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void setupPlaceAutocomplete() {
 
         if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), getResources().getString(R.string.apiKey));
+            Places.initialize(getApplicationContext(), getResources().getString(R.string.googleMapsApiKey));
             Log.d(TAG, "setupPlaceAutocomplete: " + "Places API initialized");
         }
 

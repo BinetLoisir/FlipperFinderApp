@@ -191,7 +191,7 @@ public class ListeActivity extends AppCompatActivity {
     private void setupPlaceAutocomplete() {
 
         if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), getResources().getString(R.string.apiKey));
+            Places.initialize(getApplicationContext(), getResources().getString(R.string.googleMapsApiKey));
             Log.d(TAG, "setupPlaceAutocomplete: " + "Places API initialized");
         }
 

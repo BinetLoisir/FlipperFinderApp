@@ -21,12 +21,4 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"/>
 
-    <!--<fragment
-        android:id="@+id/mapSignalementFragment"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_margin="20dp"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:apiKey="@string/googleMapsApiKey" />-->
-
 </LinearLayout>

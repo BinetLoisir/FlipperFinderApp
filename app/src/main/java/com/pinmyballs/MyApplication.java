@@ -25,7 +25,7 @@ public class MyApplication extends Application {
 
         //Places
         // Initialize Places.
-        Places.initialize(getApplicationContext(), getResources().getString(R.string.apiKey));
+        Places.initialize(getApplicationContext(), getResources().getString(R.string.googleMapsApiKey));
         Log.d(TAG, "onCreate: " + "Places initialized");
 
         // Create a new Places client instance.
