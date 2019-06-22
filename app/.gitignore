@@ -41,3 +41,6 @@ obj/
 gradlew
 gradlew.bat
 gradle/wrapper/gradle-wrapper.jar
+
+#Not sync
+**/*/res/values/secrets.xml

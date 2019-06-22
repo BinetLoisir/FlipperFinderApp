@@ -177,11 +177,6 @@
     <string name="toastChangeModelePasPossibleReseau">Impossible de modifier le modèle. Vous devez être connecté à Internet !</string>
     <string name="toastPasdeChangement">Pas de changement !</string>
 
-    <string name="parseApplicationId">wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE</string>
-    <string name="parseClientKey">8JRUbCxEjJjkSXG00B5csXzAl1E9BWHVIABKvFqy</string>
-    <string name="parseServerUrl">https://parseapi.back4app.com/</string>
-
-    <string name="googleMapsApiKey">AIzaSyDAnbAcnQN_Joy9-fzjmfYwNDqIZOdQLNQ</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
