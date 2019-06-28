@@ -1,0 +1,1660 @@
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.419+01:00"),
+	"_id" : "2He7zMeIcv",
+	"_updated_at" : ISODate("2017-09-15T09:05:33.565+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2013,
+	"MOFL_ID" : 126,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 11.0,
+	"MOFL_NOM" : "Star Trek Stern (2013)"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.424+01:00"),
+	"_id" : "0pazw69BRy",
+	"_updated_at" : ISODate("2017-11-01T18:39:03.995+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 119,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Star Wars (Data East)"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.435+01:00"),
+	"_id" : "5iuwZRnVSL",
+	"_updated_at" : ISODate("2017-11-01T18:31:08.329+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1976,
+	"MOFL_ID" : 87,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Space Mission"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.421+01:00"),
+	"_id" : "0N79ltizsu",
+	"_updated_at" : ISODate("2017-11-01T18:33:17.932+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 50,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "Johnny Mnemonic"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.438+01:00"),
+	"_id" : "2TTZaBf9co",
+	"_updated_at" : ISODate("2017-04-04T16:50:20.309+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2004,
+	"MOFL_ID" : 32,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 8.0,
+	"MOFL_NOM" : "Elvis"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.441+01:00"),
+	"_id" : "2ikEBXIAtk",
+	"_updated_at" : ISODate("2017-11-01T18:30:48.393+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 98,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "The Shadow"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.429+01:00"),
+	"_id" : "1MlC1xtFUT",
+	"_updated_at" : ISODate("2017-11-01T18:31:57.526+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2003,
+	"MOFL_ID" : 76,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 13.0,
+	"MOFL_NOM" : "Ripley's bel. it or not"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.457+01:00"),
+	"_id" : "6ObVog8pWA",
+	"_updated_at" : ISODate("2017-04-04T16:45:20.673+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1961,
+	"MOFL_ID" : 3,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Acapulco"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.452+01:00"),
+	"_id" : "5nPVfxsXR3",
+	"_updated_at" : ISODate("2017-10-16T18:31:51.797+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2013,
+	"MOFL_ID" : 137,
+	"MOFL_MARQUE" : "Jersey Jack Pinball",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Magicien d'OZ"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.454+01:00"),
+	"_id" : "5tlKpXLKUk",
+	"_updated_at" : ISODate("2017-11-01T18:29:47.808+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2009,
+	"MOFL_ID" : 61,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "NBA"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.445+01:00"),
+	"_id" : "46pjDH1Y3t",
+	"_updated_at" : ISODate("2017-11-01T18:30:31.489+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2003,
+	"MOFL_ID" : 57,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 35.0,
+	"MOFL_NOM" : "Lord of the rings"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.468+01:00"),
+	"_id" : "6vha24GwPw",
+	"_updated_at" : ISODate("2017-11-01T18:46:20.309+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 143,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Doctor Who"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.612+01:00"),
+	"_id" : "8x366O2uPY",
+	"_updated_at" : ISODate("2017-11-01T18:29:01.002+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 115,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 17.0,
+	"MOFL_NOM" : "World Cup Soccer"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.473+01:00"),
+	"_id" : "8SOXesCXty",
+	"_updated_at" : ISODate("2017-04-04T16:53:34.407+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 36,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Funhouse"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.470+01:00"),
+	"_id" : "84QQItAplL",
+	"_updated_at" : ISODate("2017-04-04T16:47:45.990+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2008,
+	"MOFL_ID" : 25,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 15.0,
+	"MOFL_NOM" : "CSI"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.462+01:00"),
+	"_id" : "2iRLATFo0w",
+	"_updated_at" : ISODate("2017-04-04T16:57:17.893+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1979,
+	"MOFL_ID" : 45,
+	"MOFL_MARQUE" : "Gotlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Hulk"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.614+01:00"),
+	"_id" : "9U6qFfLHs7",
+	"_updated_at" : ISODate("2017-11-01T18:28:53.546+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1976,
+	"MOFL_ID" : 79,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Royal Flush"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.608+01:00"),
+	"_id" : "5tSXpLlftW",
+	"_updated_at" : ISODate("2017-11-01T18:29:38.113+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 67,
+	"MOFL_MARQUE" : "Capcom",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Pinball Magic"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.616+01:00"),
+	"_id" : "AkqXjfFKbh",
+	"_updated_at" : ISODate("2017-11-01T18:46:22.705+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 7,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 42.0,
+	"MOFL_NOM" : "Attack from Mars"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.819+01:00"),
+	"_id" : "DnGfXUyXDD",
+	"_updated_at" : ISODate("2017-04-04T16:59:31.352+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2015,
+	"MOFL_ID" : 146,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 29.0,
+	"MOFL_NOM" : "Game of Thrones"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.815+01:00"),
+	"_id" : "D9sR6qVUlx",
+	"_updated_at" : ISODate("2017-11-01T18:46:23.784+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 29,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "Dr Dude"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.817+01:00"),
+	"_id" : "EgSJkZCQlb",
+	"_updated_at" : ISODate("2017-11-01T18:47:16.526+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 138,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "The Tales from The Crypt"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.811+01:00"),
+	"_id" : "EygvhsrDhG",
+	"_updated_at" : ISODate("2017-11-01T18:28:01.427+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 84,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Silver Slugger"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.841+01:00"),
+	"_id" : "KTVl0rbDQI",
+	"_updated_at" : ISODate("2017-04-04T16:41:59.334+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1989,
+	"MOFL_ID" : 10,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Bad Cats"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.829+01:00"),
+	"_id" : "Fp58Tl1jgL",
+	"_updated_at" : ISODate("2017-04-04T16:45:13.751+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2012,
+	"MOFL_ID" : 17,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 18.0,
+	"MOFL_NOM" : "The Avengers"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.832+01:00"),
+	"_id" : "G0FNz35Jo8",
+	"_updated_at" : ISODate("2017-09-15T09:06:13.862+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 89,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 8.0,
+	"MOFL_NOM" : "Star Trek"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.824+01:00"),
+	"_id" : "HRKZwcZbDa",
+	"_updated_at" : ISODate("2017-11-01T18:45:03.997+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 21,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Class of 1812"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.830+01:00"),
+	"_id" : "GOoWDX5ZoP",
+	"_updated_at" : ISODate("2017-11-01T18:45:01.638+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 128,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Vegas"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.432+01:00"),
+	"_id" : "0nVOGGXUYz",
+	"_updated_at" : ISODate("2017-11-01T18:31:41.698+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2006,
+	"MOFL_ID" : 68,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 31.0,
+	"MOFL_NOM" : "Pirates des Caraïbes"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.449+01:00"),
+	"_id" : "6eldJ9fm0z",
+	"_updated_at" : ISODate("2017-11-01T18:30:07.346+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1999,
+	"MOFL_ID" : 75,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 16.0,
+	"MOFL_NOM" : "Revenge from Mars"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.836+01:00"),
+	"_id" : "IofB89vmom",
+	"_updated_at" : ISODate("2017-11-01T18:44:59.441+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 130,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Operation Thunder"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.843+01:00"),
+	"_id" : "IbAzzq5NXX",
+	"_updated_at" : ISODate("2017-11-01T18:36:35.323+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 133,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Title Fight"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.854+01:00"),
+	"_id" : "Kznf1gtKke",
+	"_updated_at" : ISODate("2017-04-04T17:03:40.810+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1979,
+	"MOFL_ID" : 136,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "Kiss"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.844+01:00"),
+	"_id" : "L3e3HVl0cS",
+	"_updated_at" : ISODate("2017-11-01T18:26:56.578+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1987,
+	"MOFL_ID" : 121,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Spring break"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.857+01:00"),
+	"_id" : "99dQWWIf0k",
+	"_updated_at" : ISODate("2017-04-04T16:42:30.572+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2010,
+	"MOFL_ID" : 12,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 14.0,
+	"MOFL_NOM" : "Big Buck Hunter"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.866+01:00"),
+	"_id" : "R4Mv5qNqmd",
+	"_updated_at" : ISODate("2017-11-01T18:25:49.413+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1976,
+	"MOFL_ID" : 66,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Paragon"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.848+01:00"),
+	"_id" : "M0dWpYm9ve",
+	"_updated_at" : ISODate("2017-11-01T18:26:36.539+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2002,
+	"MOFL_ID" : 69,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 11.0,
+	"MOFL_NOM" : "Playboy"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.855+01:00"),
+	"_id" : "Lkk64bB3bN",
+	"_updated_at" : ISODate("2017-09-15T09:07:28.772+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1996,
+	"MOFL_ID" : 80,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 23.0,
+	"MOFL_NOM" : "Scared Stiff"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.863+01:00"),
+	"_id" : "Q07Z0u8QX8",
+	"_updated_at" : ISODate("2017-11-01T18:25:56.839+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 81,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Shaq Attaq"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.877+01:00"),
+	"_id" : "FemUyx7amN",
+	"_updated_at" : ISODate("2017-04-04T16:56:46.375+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2001,
+	"MOFL_ID" : 44,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "High Roller Casino"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.426+01:00"),
+	"_id" : "1xOLR5sEpj",
+	"_updated_at" : ISODate("2017-04-04T17:05:24.992+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2014,
+	"MOFL_ID" : 132,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 12.0,
+	"MOFL_NOM" : "Mustang"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.870+01:00"),
+	"_id" : "RLr48WuSMi",
+	"_updated_at" : ISODate("2017-11-01T18:25:28.329+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 71,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "The Party Zone"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.868+01:00"),
+	"_id" : "L0gv3WmW2H",
+	"_updated_at" : ISODate("2017-09-15T09:06:45.101+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2007,
+	"MOFL_ID" : 88,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 45.0,
+	"MOFL_NOM" : "Spiderman"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.443+01:00"),
+	"_id" : "4kM1mlAN6z",
+	"_updated_at" : ISODate("2017-11-01T18:34:20.836+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2013,
+	"MOFL_ID" : 120,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 29.0,
+	"MOFL_NOM" : "Metallica"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.465+01:00"),
+	"_id" : "8eyj6cAxR3",
+	"_updated_at" : ISODate("2017-04-04T16:39:06.260+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1983,
+	"MOFL_ID" : 4,
+	"MOFL_MARQUE" : "Gotlieb",
+	"MOFL_NB_ACTIFS" : 12.0,
+	"MOFL_NOM" : "Amazon Hunt"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.893+01:00"),
+	"_id" : "Vk6B7MReZi",
+	"_updated_at" : ISODate("2017-11-01T18:23:48.715+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2000,
+	"MOFL_ID" : 82,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "Sharkey's Shootout"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.611+01:00"),
+	"_id" : "B5A49R0G1n",
+	"_updated_at" : ISODate("2017-11-01T18:46:21.521+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 129,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "The Game Show"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.880+01:00"),
+	"_id" : "Cj7cwFgiS6",
+	"_updated_at" : ISODate("2017-11-01T18:25:06.056+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 110,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "Waterworld"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.873+01:00"),
+	"_id" : "Qm15v5rAlq",
+	"_updated_at" : ISODate("2017-04-04T16:46:06.667+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1997,
+	"MOFL_ID" : 20,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 14.0,
+	"MOFL_NOM" : "Cirqus Voltaire"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.895+01:00"),
+	"_id" : "Wovja29dm4",
+	"_updated_at" : ISODate("2017-11-01T18:44:57.034+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1987,
+	"MOFL_ID" : 5,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 5.0,
+	"MOFL_NOM" : "Amazon Hunt II"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.882+01:00"),
+	"_id" : "T4nqRVNfNA",
+	"_updated_at" : ISODate("2017-04-04T16:41:10.502+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2001,
+	"MOFL_ID" : 8,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "Austin Powers"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.888+01:00"),
+	"_id" : "RnJSJSnnbU",
+	"_updated_at" : ISODate("2017-04-04T16:42:15.823+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2008,
+	"MOFL_ID" : 11,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 21.0,
+	"MOFL_NOM" : "Batman"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.892+01:00"),
+	"_id" : "Opnm9TtXNc",
+	"_updated_at" : ISODate("2017-04-04T16:38:23.372+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2002,
+	"MOFL_ID" : 2,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 31.0,
+	"MOFL_NOM" : "AC/DC"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.092+01:00"),
+	"_id" : "QpmPTDzqaG",
+	"_updated_at" : ISODate("2017-11-01T18:44:54.810+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 147,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Street Fighter II"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.477+01:00"),
+	"_id" : "88RmHKgGxI",
+	"_updated_at" : ISODate("2017-04-04T16:47:02.977+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 22,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 7.0,
+	"MOFL_NOM" : "Congo"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.105+01:00"),
+	"_id" : "ZAtVSruyaN",
+	"_updated_at" : ISODate("2017-04-04T16:54:34.779+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1976,
+	"MOFL_ID" : 39,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 11.0,
+	"MOFL_NOM" : "Grand Prix"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.096+01:00"),
+	"_id" : "XDEJQt6M1v",
+	"_updated_at" : ISODate("2017-11-01T18:22:39.745+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 77,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Riverboat Gambler"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.094+01:00"),
+	"_id" : "WzhHkA95Kh",
+	"_updated_at" : ISODate("2017-04-04T17:04:29.346+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 134,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Diner"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.459+01:00"),
+	"_id" : "6Ire8Kptg1",
+	"_updated_at" : ISODate("2017-11-01T18:46:19.206+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 16,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 17.0,
+	"MOFL_NOM" : "The Addams Family"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.898+01:00"),
+	"_id" : "V2bheRFd1T",
+	"_updated_at" : ISODate("2017-11-01T18:23:15.586+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2011,
+	"MOFL_ID" : 108,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 12.0,
+	"MOFL_NOM" : "TRON: Legacy"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.813+01:00"),
+	"_id" : "BeNqIiZyrg",
+	"_updated_at" : ISODate("2017-04-04T16:56:18.145+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2002,
+	"MOFL_ID" : 43,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "Harley Davidson"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.826+01:00"),
+	"_id" : "FKOwMZ8NMb",
+	"_updated_at" : ISODate("2017-04-04T16:48:45.285+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 28,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 5.0,
+	"MOFL_NOM" : "Dirty Harry"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.617+01:00"),
+	"_id" : "9mSRBnIO3a",
+	"_updated_at" : ISODate("2017-11-01T18:28:07.585+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2006,
+	"MOFL_ID" : 116,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 8.0,
+	"MOFL_NOM" : "World Poker Tour"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.102+01:00"),
+	"_id" : "YUepJoaV0A",
+	"_updated_at" : ISODate("2017-04-04T16:41:22.775+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2010,
+	"MOFL_ID" : 9,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 38.0,
+	"MOFL_NOM" : "Avatar"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.107+01:00"),
+	"_id" : "bkv5PHu5tp",
+	"_updated_at" : ISODate("2017-09-15T09:04:50.127+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2017,
+	"MOFL_ID" : 90,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 20.0,
+	"MOFL_NOM" : "Star Wars"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.170+01:00"),
+	"_id" : "bTseTFpGEc",
+	"_updated_at" : ISODate("2017-11-01T18:19:41.419+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1981,
+	"MOFL_ID" : 125,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Viper"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.110+01:00"),
+	"_id" : "Xx0bTE11Ir",
+	"_updated_at" : ISODate("2017-11-01T18:22:00.458+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 109,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "Twilight Zone"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.166+01:00"),
+	"_id" : "c3K6vwyoOZ",
+	"_updated_at" : ISODate("2017-04-04T16:47:18.960+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 23,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 6.0,
+	"MOFL_NOM" : "Corvette"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.839+01:00"),
+	"_id" : "IybAOO9nD4",
+	"_updated_at" : ISODate("2017-11-01T18:27:11.822+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1996,
+	"MOFL_ID" : 53,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 27.0,
+	"MOFL_NOM" : "Junk Yard"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.180+01:00"),
+	"_id" : "RRlFlVkXqc",
+	"_updated_at" : ISODate("2017-11-01T18:18:35.958+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1988,
+	"MOFL_ID" : 51,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Jokerz!"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.168+01:00"),
+	"_id" : "c6doXwuBHK",
+	"_updated_at" : ISODate("2017-04-04T16:58:33.675+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2010,
+	"MOFL_ID" : 48,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 19.0,
+	"MOFL_NOM" : "Iron Man"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.113+01:00"),
+	"_id" : "NkTMONyqPQ",
+	"_updated_at" : ISODate("2017-04-04T16:53:28.568+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 35,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 10.0,
+	"MOFL_NOM" : "Fish Tales"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.822+01:00"),
+	"_id" : "7A7549XyGl",
+	"_updated_at" : ISODate("2017-11-01T18:27:33.525+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 123,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Pool Sharks"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.188+01:00"),
+	"_id" : "YUFvnr3qb9",
+	"_updated_at" : ISODate("2017-11-01T18:17:48.543+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2002,
+	"MOFL_ID" : 78,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 14.0,
+	"MOFL_NOM" : "RollerCoaster Tycoon"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.833+01:00"),
+	"_id" : "HiOwApyQ3L",
+	"_updated_at" : ISODate("2017-04-04T17:05:44.384+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1977,
+	"MOFL_ID" : 131,
+	"MOFL_MARQUE" : "Gotlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "The Big Hit"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.174+01:00"),
+	"_id" : "dRoekTi92Z",
+	"_updated_at" : ISODate("2017-11-01T18:19:22.011+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2007,
+	"MOFL_ID" : 111,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 11.0,
+	"MOFL_NOM" : "Wheel of Fortune"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.182+01:00"),
+	"_id" : "UneEszduSE",
+	"_updated_at" : ISODate("2017-11-01T18:44:52.630+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 19,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Cactus Jack's"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.846+01:00"),
+	"_id" : "IcRUNocs1T",
+	"_updated_at" : ISODate("2017-04-04T16:53:13.652+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1975,
+	"MOFL_ID" : 34,
+	"MOFL_MARQUE" : "Gotlieb",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Fast Draw"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.850+01:00"),
+	"_id" : "P1CAHKcrbK",
+	"_updated_at" : ISODate("2017-04-04T17:02:22.755+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1996,
+	"MOFL_ID" : 140,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Independance day"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.865+01:00"),
+	"_id" : "OgHnqfC2Lf",
+	"_updated_at" : ISODate("2017-11-01T18:46:25.965+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 47,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 10.0,
+	"MOFL_NOM" : "Indianapolis 500"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.194+01:00"),
+	"_id" : "VrVUw0gQNh",
+	"_updated_at" : ISODate("2017-11-01T18:17:01.406+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2003,
+	"MOFL_ID" : 103,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 17.0,
+	"MOFL_NOM" : "Terminator 3"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.191+01:00"),
+	"_id" : "UR0ZzZnJPT",
+	"_updated_at" : ISODate("2017-11-01T18:18:08.553+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 63,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 20.0,
+	"MOFL_NOM" : "No Fear"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.259+01:00"),
+	"_id" : "bKuBAHSKJu",
+	"_updated_at" : ISODate("2017-11-01T18:16:37.077+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 102,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "Terminator 2"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.860+01:00"),
+	"_id" : "PYcj16yOuj",
+	"_updated_at" : ISODate("2017-11-01T18:26:17.345+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1979,
+	"MOFL_ID" : 106,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Totem"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.875+01:00"),
+	"_id" : "RBJ7LCtlSU",
+	"_updated_at" : ISODate("2017-11-01T18:25:12.609+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2001,
+	"MOFL_ID" : 59,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 12.0,
+	"MOFL_NOM" : "Monopoly"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.900+01:00"),
+	"_id" : "I6DW64mDfC",
+	"_updated_at" : ISODate("2017-11-01T18:22:53.755+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1998,
+	"MOFL_ID" : 60,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 87.0,
+	"MOFL_NOM" : "Monster Bash"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.871+01:00"),
+	"_id" : "SHxM5yQrEi",
+	"_updated_at" : ISODate("2017-04-04T16:58:40.587+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 49,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 13.0,
+	"MOFL_NOM" : "Jack Bot"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.254+01:00"),
+	"_id" : "eLXIhZybEL",
+	"_updated_at" : ISODate("2017-04-04T16:49:19.261+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 30,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 6.0,
+	"MOFL_NOM" : "Dracula"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.890+01:00"),
+	"_id" : "UvSCsgt2RE",
+	"_updated_at" : ISODate("2017-11-01T18:24:04.811+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 113,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "WHO dunnit"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.887+01:00"),
+	"_id" : "ThMqVFZWLU",
+	"_updated_at" : ISODate("2017-11-01T18:24:49.750+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2011,
+	"MOFL_ID" : 107,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 21.0,
+	"MOFL_NOM" : "Transformers"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.273+01:00"),
+	"_id" : "cfrqYEsIvA",
+	"_updated_at" : ISODate("2017-04-04T17:02:16.410+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2015,
+	"MOFL_ID" : 141,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "WWE Wrestlemania"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.103+01:00"),
+	"_id" : "SBlhauaFgS",
+	"_updated_at" : ISODate("2017-11-01T18:22:20.302+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2008,
+	"MOFL_ID" : 83,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 24.0,
+	"MOFL_NOM" : "Shrek"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:53.896+01:00"),
+	"_id" : "UaVHuC3ekI",
+	"_updated_at" : ISODate("2017-11-01T18:23:37.411+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1996,
+	"MOFL_ID" : 86,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Space Jam"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.111+01:00"),
+	"_id" : "YgpCaVGNU1",
+	"_updated_at" : ISODate("2017-11-01T18:33:56.554+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1996,
+	"MOFL_ID" : 100,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 28.0,
+	"MOFL_NOM" : "Tales of the Arab. Ni."
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.100+01:00"),
+	"_id" : "WS1YNEWygb",
+	"_updated_at" : ISODate("2017-04-04T16:50:24.123+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2007,
+	"MOFL_ID" : 33,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 12.0,
+	"MOFL_NOM" : "Family Guy"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.176+01:00"),
+	"_id" : "Q8fZrWmAfo",
+	"_updated_at" : ISODate("2017-11-01T18:18:56.013+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 96,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Surf 'n Safari"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.115+01:00"),
+	"_id" : "KghITS4mGS",
+	"_updated_at" : ISODate("2017-11-01T18:19:57.781+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1997,
+	"MOFL_ID" : 64,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 9.0,
+	"MOFL_NOM" : "No Good Gofers"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.595+01:00"),
+	"_id" : "yHM1M6dhnW",
+	"_updated_at" : ISODate("2017-11-01T18:16:17.733+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 105,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "The Who's Tommy Pinball Wizard"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.606+01:00"),
+	"_id" : "tvh0kEManz",
+	"_updated_at" : ISODate("2017-11-01T18:13:49.456+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 70,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "The Machine: Bride of Pin·bot"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.599+01:00"),
+	"_id" : "vTehj579Os",
+	"_updated_at" : ISODate("2017-11-01T18:15:02.023+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 124,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "BayWatch"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.597+01:00"),
+	"_id" : "wASMzY3o7m",
+	"_updated_at" : ISODate("2017-11-01T18:15:26.969+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1999,
+	"MOFL_ID" : 91,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 10.0,
+	"MOFL_NOM" : "Star Wars Episode I"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.619+01:00"),
+	"_id" : "t11Sjrasoo",
+	"_updated_at" : ISODate("2017-11-01T18:11:48.226+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 54,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Jurassic Park"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.172+01:00"),
+	"_id" : "WeeIjSl923",
+	"_updated_at" : ISODate("2017-04-04T16:37:58.231+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2009,
+	"MOFL_ID" : 1,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 17.0,
+	"MOFL_NOM" : "24"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.610+01:00"),
+	"_id" : "uNHugcNEGw",
+	"_updated_at" : ISODate("2017-04-04T17:01:20.047+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 142,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Hook"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.603+01:00"),
+	"_id" : "wyRx7OL8ov",
+	"_updated_at" : ISODate("2017-09-01T21:04:59.208+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 95,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "Super Mario Bros"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.608+01:00"),
+	"_id" : "vJRbCehGhM",
+	"_updated_at" : ISODate("2017-11-01T18:12:34.002+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1997,
+	"MOFL_ID" : 92,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Star Wars Trilogy"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.196+01:00"),
+	"_id" : "bYNuKODTx1",
+	"_updated_at" : ISODate("2017-04-04T16:57:44.076+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 46,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 35.0,
+	"MOFL_NOM" : "Indiana Jones"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.629+01:00"),
+	"_id" : "pF27cFIOgf",
+	"_updated_at" : ISODate("2017-11-01T18:10:33.476+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 55,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 7.0,
+	"MOFL_NOM" : "Lethal Weapon 3"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.622+01:00"),
+	"_id" : "tHHrxGEARk",
+	"_updated_at" : ISODate("2017-11-01T18:44:50.036+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 26,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "Cue Ball Wizard"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.614+01:00"),
+	"_id" : "tWwi8h2SnU",
+	"_updated_at" : ISODate("2017-11-01T18:12:05.221+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1999,
+	"MOFL_ID" : 85,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 10.0,
+	"MOFL_NOM" : "South Park"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.620+01:00"),
+	"_id" : "sIEoWOUMg7",
+	"_updated_at" : ISODate("2017-04-04T16:42:57.928+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1989,
+	"MOFL_ID" : 13,
+	"MOFL_MARQUE" : "Gotlieb",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Big House"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.634+01:00"),
+	"_id" : "mYljnHcOrD",
+	"_updated_at" : ISODate("2017-11-01T18:09:48.940+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1989,
+	"MOFL_ID" : 56,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Lights...Camera...Action!"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.631+01:00"),
+	"_id" : "lERzNxoUn6",
+	"_updated_at" : ISODate("2017-11-01T18:10:15.890+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2011,
+	"MOFL_ID" : 97,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 15.0,
+	"MOFL_NOM" : "The Rolling Stones"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.645+01:00"),
+	"_id" : "hhzISfYpb8",
+	"_updated_at" : ISODate("2017-11-01T18:46:16.658+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1989,
+	"MOFL_ID" : 31,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Elvira"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.626+01:00"),
+	"_id" : "nERNwNKWdo",
+	"_updated_at" : ISODate("2017-11-01T18:11:28.998+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 122,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "Guns N' Roses"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.658+01:00"),
+	"_id" : "xn79C4WRDy",
+	"_updated_at" : ISODate("2017-11-01T18:06:52.592+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2012,
+	"MOFL_ID" : 118,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 10.0,
+	"MOFL_NOM" : "X-Men"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.257+01:00"),
+	"_id" : "XtFMOkxOgc",
+	"_updated_at" : ISODate("2017-11-01T18:17:22.220+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 112,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 9.0,
+	"MOFL_NOM" : "White Water"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.637+01:00"),
+	"_id" : "n5iWzS7Mtd",
+	"_updated_at" : ISODate("2017-11-01T18:08:57.474+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1983,
+	"MOFL_ID" : 73,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Rack 'Em Up!"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.651+01:00"),
+	"_id" : "hyw2iRBRxw",
+	"_updated_at" : ISODate("2017-11-01T18:07:54.878+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1999,
+	"MOFL_ID" : 72,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 12.0,
+	"MOFL_NOM" : "Les Sopranos"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.660+01:00"),
+	"_id" : "eMvA7vDvvD",
+	"_updated_at" : ISODate("2017-11-01T18:46:18.058+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 144,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Popeye"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.648+01:00"),
+	"_id" : "lOrwPhbpvd",
+	"_updated_at" : ISODate("2017-11-01T18:44:47.953+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 145,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Wipe Out"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.654+01:00"),
+	"_id" : "ePpZZ2EtoP",
+	"_updated_at" : ISODate("2017-04-04T16:53:53.694+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 37,
+	"MOFL_MARQUE" : "Gotlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Gladiators"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.665+01:00"),
+	"_id" : "yMtA25gfyV",
+	"_updated_at" : ISODate("2017-11-01T18:44:45.605+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 6,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Amazon Hunt III"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.669+01:00"),
+	"_id" : "v6NRGmHY97",
+	"_updated_at" : ISODate("2017-04-04T16:54:13.897+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1998,
+	"MOFL_ID" : 38,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Godzilla"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.678+01:00"),
+	"_id" : "tG8U5v3n13",
+	"_updated_at" : ISODate("2017-04-04T16:59:58.400+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 148,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Mary Shelley Frankenstein"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.676+01:00"),
+	"_id" : "toJg8PR5NX",
+	"_updated_at" : ISODate("2017-11-01T18:46:15.079+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1998,
+	"MOFL_ID" : 18,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 13.0,
+	"MOFL_NOM" : "Cactus Canyon"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.680+01:00"),
+	"_id" : "q9MBzxehEf",
+	"_updated_at" : ISODate("2017-11-01T18:06:29.675+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1997,
+	"MOFL_ID" : 62,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 10.0,
+	"MOFL_NOM" : "NBA Fastbreak"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.488+01:00"),
+	"_id" : "yUBf25umVI",
+	"_updated_at" : ISODate("2017-04-04T17:07:20.337+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2012,
+	"MOFL_ID" : 127,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "X-Men Magneto"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.604+01:00"),
+	"_id" : "vm8iXFpzOf",
+	"_updated_at" : ISODate("2017-11-01T18:14:17.825+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 101,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Tee'd off"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.685+01:00"),
+	"_id" : "p50cg0zdTV",
+	"_updated_at" : ISODate("2017-11-01T18:05:53.942+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 74,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 5.0,
+	"MOFL_NOM" : "Red & Ted's Road Show"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.616+01:00"),
+	"_id" : "toGsQFJjoE",
+	"_updated_at" : ISODate("2017-04-04T16:55:33.940+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 41,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 23.0,
+	"MOFL_NOM" : "The Flintstones"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.627+01:00"),
+	"_id" : "rTiwJJkfyV",
+	"_updated_at" : ISODate("2017-11-01T18:10:53.093+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 93,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "Stargate"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.690+01:00"),
+	"_id" : "lNDbcbP9gv",
+	"_updated_at" : ISODate("2017-02-22T18:59:43.150+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1997,
+	"MOFL_ID" : 58,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 71.0,
+	"MOFL_NOM" : "Medieval Madness"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.692+01:00"),
+	"_id" : "fweB4lZfvk",
+	"_updated_at" : ISODate("2017-04-04T16:43:28.891+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2007,
+	"MOFL_ID" : 15,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Black Spiderman"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.601+01:00"),
+	"_id" : "unX70CmEZQ",
+	"_updated_at" : ISODate("2017-11-01T18:14:43.456+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 117,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "WWF Royal Rumble"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.788+01:00"),
+	"_id" : "tTFhqTBFXW",
+	"_updated_at" : ISODate("2017-04-04T17:04:12.569+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1986,
+	"MOFL_ID" : 135,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Pin Bot"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.612+01:00"),
+	"_id" : "tDopEt7QQB",
+	"_updated_at" : ISODate("2017-11-01T18:12:13.064+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1993,
+	"MOFL_ID" : 52,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Judge Dredd"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.643+01:00"),
+	"_id" : "fiAOHtw6NW",
+	"_updated_at" : ISODate("2017-11-01T18:08:20.385+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 104,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 18.0,
+	"MOFL_NOM" : "Theatre of magic"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.636+01:00"),
+	"_id" : "oV9QZPmz4B",
+	"_updated_at" : ISODate("2017-04-04T16:43:06.037+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 14,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Black Rose"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.624+01:00"),
+	"_id" : "ptPqrhJIv6",
+	"_updated_at" : ISODate("2017-04-04T16:55:02.953+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1998,
+	"MOFL_ID" : 40,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 7.0,
+	"MOFL_NOM" : "The Champion Pub"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.890+01:00"),
+	"_id" : "hQr8KOWNZX",
+	"_updated_at" : ISODate("2017-11-01T17:47:44.611+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1980,
+	"MOFL_ID" : 65,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Panthera"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.653+01:00"),
+	"_id" : "ejRKq7vvvD",
+	"_updated_at" : ISODate("2017-11-01T18:07:36.658+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2000,
+	"MOFL_ID" : 94,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "Striker Xtreme"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.688+01:00"),
+	"_id" : "lPDht6QlaY",
+	"_updated_at" : ISODate("2017-04-04T17:02:38.508+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2014,
+	"MOFL_ID" : 139,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 26.0,
+	"MOFL_NOM" : "The Walking Dead"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.656+01:00"),
+	"_id" : "gejv0xso1w",
+	"_updated_at" : ISODate("2017-11-01T18:46:27.100+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 24,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 6.0,
+	"MOFL_NOM" : "Creature Black Lagoon"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.673+01:00"),
+	"_id" : "vSLa9JByBW",
+	"_updated_at" : ISODate("2017-04-04T17:00:02.606+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2015,
+	"MOFL_ID" : 149,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 14.0,
+	"MOFL_NOM" : "Kiss (Stern)"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.667+01:00"),
+	"_id" : "wK2dvHUKAF",
+	"_updated_at" : ISODate("2017-04-04T16:56:06.088+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1992,
+	"MOFL_ID" : 42,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "The Getaway: HS II"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.892+01:00"),
+	"_id" : "eOQJmYRENX",
+	"_updated_at" : ISODate("2017-11-01T18:36:23.519+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 114,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "World Challenge Soccer"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.684+01:00"),
+	"_id" : "nKi2l5IKfS",
+	"_updated_at" : ISODate("2017-04-04T16:48:28.428+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1994,
+	"MOFL_ID" : 27,
+	"MOFL_MARQUE" : "Williams",
+	"MOFL_NB_ACTIFS" : 3.0,
+	"MOFL_NOM" : "Demolition Man"
+},
+{
+	"_created_at" : ISODate("2017-02-17T01:54:54.888+01:00"),
+	"_id" : "s5fQnK1R23",
+	"_updated_at" : ISODate("2017-11-01T18:05:49.405+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1990,
+	"MOFL_ID" : 99,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 7.0,
+	"MOFL_NOM" : "The Simpsons"
+},
+{
+	"_created_at" : ISODate("2017-02-22T18:48:18.062+01:00"),
+	"_id" : "DGJeDo5quN",
+	"_updated_at" : ISODate("2017-02-22T18:50:10.820+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2016,
+	"MOFL_ID" : 150,
+	"MOFL_MARQUE" : "Jersey Jack Pinball",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "The Hobbit"
+},
+{
+	"_created_at" : ISODate("2017-03-07T19:29:14.184+01:00"),
+	"_id" : "u2UJlzyGLD",
+	"_updated_at" : ISODate("2017-03-13T21:49:26.468+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2016,
+	"MOFL_ID" : 151,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 24.0,
+	"MOFL_NOM" : "Ghostbusters PRO"
+},
+{
+	"_created_at" : ISODate("2017-03-13T21:49:44.364+01:00"),
+	"_id" : "iQLOKAZ6X7",
+	"_updated_at" : ISODate("2017-03-13T21:50:10.957+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2016,
+	"MOFL_ID" : 152,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Ghostbusters LE"
+},
+{
+	"_created_at" : ISODate("2017-03-13T21:50:24.531+01:00"),
+	"_id" : "SZB6LFMKuo",
+	"_updated_at" : ISODate("2017-03-13T21:50:43.956+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2016,
+	"MOFL_ID" : 153,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Ghostbusters PREMIUM"
+},
+{
+	"_created_at" : ISODate("2017-03-21T21:14:15.027+01:00"),
+	"_id" : "7nE2MxzJWQ",
+	"_updated_at" : ISODate("2017-03-21T21:14:37.512+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2016,
+	"MOFL_ID" : 154,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 4.0,
+	"MOFL_NOM" : "Batman (66)"
+},
+{
+	"_created_at" : ISODate("2017-03-21T21:30:16.744+01:00"),
+	"_id" : "OsCJFKrxMt",
+	"_updated_at" : ISODate("2017-03-21T21:31:30.911+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2003,
+	"MOFL_ID" : 155,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "The Simpsons Pinball Party"
+},
+{
+	"_created_at" : ISODate("2017-03-29T21:18:48.488+02:00"),
+	"_id" : "kgG1OkcNNL",
+	"_updated_at" : ISODate("2017-03-29T21:19:18.020+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2017,
+	"MOFL_ID" : 156,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 22.0,
+	"MOFL_NOM" : "Aerosmith"
+},
+{
+	"_created_at" : ISODate("2017-04-15T20:25:13.929+02:00"),
+	"_id" : "w1VwZlN3Yn",
+	"_updated_at" : ISODate("2017-11-01T18:46:13.277+01:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1996,
+	"MOFL_ID" : 157,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Safe Cracker"
+},
+{
+	"_created_at" : ISODate("2017-04-25T17:50:52.370+02:00"),
+	"_id" : "NyDuTFGYLb",
+	"_updated_at" : ISODate("2017-04-25T17:51:15.804+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1989,
+	"MOFL_ID" : 158,
+	"MOFL_MARQUE" : "Data East",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Monday Night Football"
+},
+{
+	"_created_at" : ISODate("2017-07-16T19:04:57.913+02:00"),
+	"_id" : "7ghHXvgovT",
+	"_updated_at" : ISODate("2017-07-16T19:05:18.538+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2015,
+	"MOFL_ID" : 159,
+	"MOFL_MARQUE" : "Heighway Pinball",
+	"MOFL_NB_ACTIFS" : 2.0,
+	"MOFL_NOM" : "Full Throttle"
+},
+{
+	"_created_at" : ISODate("2017-09-01T20:56:44.469+02:00"),
+	"_id" : "BYEzICgYFu",
+	"_updated_at" : ISODate("2017-09-01T20:57:04.080+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1991,
+	"MOFL_ID" : 160,
+	"MOFL_MARQUE" : "Bally",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Gilligan's Island"
+},
+{
+	"_created_at" : ISODate("2017-09-01T20:58:52.789+02:00"),
+	"_id" : "8yoaJQr03M",
+	"_updated_at" : ISODate("2017-09-01T21:09:01.532+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1968,
+	"MOFL_ID" : 161,
+	"MOFL_MARQUE" : "Gottlieb",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Big Jack"
+},
+{
+	"_created_at" : ISODate("2017-09-01T20:59:36.148+02:00"),
+	"_id" : "nbn9RVX2iD",
+	"_updated_at" : ISODate("2017-09-01T21:09:05.400+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2017,
+	"MOFL_ID" : 162,
+	"MOFL_MARQUE" : "Jersey Jack Pinball",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Dialed In"
+},
+{
+	"_created_at" : ISODate("2017-09-01T21:00:50.838+02:00"),
+	"_id" : "iwP6toIiLZ",
+	"_updated_at" : ISODate("2017-09-01T21:09:08.088+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2017,
+	"MOFL_ID" : 163,
+	"MOFL_MARQUE" : "Heighway Pinball",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Alien"
+},
+{
+	"_created_at" : ISODate("2017-09-02T21:54:12.980+02:00"),
+	"_id" : "mHImIxB8uO",
+	"_updated_at" : ISODate("2017-09-02T21:54:28.813+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 1995,
+	"MOFL_ID" : 164,
+	"MOFL_MARQUE" : "Sega",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Apollo 13"
+},
+{
+	"_created_at" : ISODate("2017-10-07T19:54:15.901+02:00"),
+	"_id" : "mfbGBiY0pa",
+	"_updated_at" : ISODate("2017-10-07T19:55:00.374+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2008,
+	"MOFL_ID" : 165,
+	"MOFL_MARQUE" : "Stern",
+	"MOFL_NB_ACTIFS" : 1.0,
+	"MOFL_NOM" : "Indiana Jones (Stern)"
+},
+{
+	"_created_at" : ISODate("2017-10-16T18:32:06.985+02:00"),
+	"_id" : "0kdpNuAKkY",
+	"_updated_at" : ISODate("2017-10-16T18:32:47.269+02:00"),
+	"MOFL_ANNEE_LANCEMENT" : 2017,
+	"MOFL_ID" : 166,
+	"MOFL_MARQUE" : "Jersey Jack Pinball",
+	"MOFL_NB_ACTIFS" : 0.0,
+	"MOFL_NOM" : "Pirates of the Caribbean (JJ)"
+},
