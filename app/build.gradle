@@ -5,8 +5,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.1'
-        classpath 'com.google.gms:google-services:4.2.0'
+        classpath 'com.android.tools.build:gradle:3.5.2'
+        classpath 'com.google.gms:google-services:4.3.2'
     }
 }
 apply plugin: 'com.android.application'
@@ -19,22 +19,24 @@ repositories {
 }
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
     defaultConfig {
         applicationId "com.pinmyballs"
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 16
-        targetSdkVersion 28
-        versionCode 56
-        versionName "3.04"
+        targetSdkVersion 29
+        versionCode 57
+        versionName "3.05"
+        buildConfigField('String', 'ApiKey', PinMyBalls_GoogleMapAPIKey)
+        resValue('string', 'maps_api_key', PinMyBalls_GoogleMapAPIKey)
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            //buildConfigField 'String', 'ApiKey', Maps_ApiKey
-            //resValue 'string', 'api_key', Maps_ApiKey
+            buildConfigField 'String', 'ApiKey', PinMyBalls_GoogleMapAPIKey
+            resValue 'string', 'api_key', PinMyBalls_GoogleMapAPIKey
         }
     }
     compileOptions {
@@ -44,21 +46,24 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.material:material:1.1.0-alpha07'
-    implementation 'com.google.android.libraries.places:places:1.1.0'
-    implementation 'com.android.support:design:28.0.0'
+    implementation 'com.google.android.material:material:1.2.0-alpha01'
+    implementation 'com.google.android.libraries.places:places:2.1.0'
+    //implementation 'com.android.support:design:28.0.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta3'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0-rc01'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
-    implementation 'com.google.maps.android:android-maps-utils:0.5'
-    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.maps.android:android-maps-utils:0.6.2'
+    implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.parse:parse-android:1.17.3'
-    implementation 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
-    implementation 'joda-time:joda-time:2.10.2'
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    implementation 'org.parceler:parceler-api:1.1.12'
+    annotationProcessor 'org.parceler:parceler:1.1.12'
+    implementation 'joda-time:joda-time:2.10.5'
     implementation 'com.github.ittianyu:BottomNavigationViewEx:2.0.4'
 }
