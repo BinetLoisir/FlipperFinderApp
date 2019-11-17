@@ -40,8 +40,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.libraries.places.api.Places;
+import com.google.android.libraries.places.api.model.AutocompleteSessionToken;
 import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.RectangularBounds;
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.tabs.TabLayout;
@@ -98,7 +101,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         setupSharedPreferences();
         setupBottomNavigationView();
         setupToolBar();
-        //initPlaces();
         //setupViewPager(); not used here
         getLocationPermission();
         setupLocation();
@@ -106,13 +108,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         setupPlaceAutocomplete();
         //updateDBinBackground();
         checkIfMajNeeded();
-    }
-
-    private void initPlaces() {
-        // Initialize Places.
-        Places.initialize(getApplicationContext(), getResources().getString(R.string.googleMapsApiKey));
-        // Create a new Places client instance.
-        //placesClient = Places.createClient(this);
     }
 
     /**
@@ -165,29 +160,15 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (nbJours > 365) {
                 new AlertDialog.Builder(this).setTitle(R.string.dialogMajDBNeededTitle)
                         .setMessage(getResources().getString(R.string.dialogMajDBNeeded2))
-                        .setPositiveButton(R.string.dialogMajDBNeededOK, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                updateDB();
-                            }
-                        }).setNegativeButton(R.string.dialogMajDBLater, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }).show();
+                        .setPositiveButton(R.string.dialogMajDBNeededOK, (dialog, which) -> updateDB())
+                        .setNegativeButton(R.string.dialogMajDBLater, (dialog, which) -> dialog.dismiss())
+                        .show();
             } else if (nbJours > 3) {
                 new AlertDialog.Builder(this).setTitle(R.string.dialogMajDBNeededTitle)
                         .setMessage(getResources().getString(R.string.dialogMajDBNeeded, nbJours))
-                        .setPositiveButton(R.string.dialogMajDBNeededOK, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                updateDB();
-                            }
-                        }).setNegativeButton(R.string.dialogMajDBLater, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                }).show();
+                        .setPositiveButton(R.string.dialogMajDBNeededOK, (dialog, which) -> updateDB())
+                        .setNegativeButton(R.string.dialogMajDBLater, (dialog, which) -> dialog.dismiss())
+                        .show();
             } else if (nbJours > 1) {
                 new AsyncTaskMajDatabaseBackground(HomeActivity.this, settings).execute();
                 Log.d(TAG, "checkIfMajNeeded: Updated in background");
@@ -239,6 +220,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map_home);
+        assert mapFragment != null;
         mapFragment.getMapAsync(this);
     }
 
@@ -339,6 +321,11 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                         startActivity(intentLogin);
                         return true;
 
+                    case R.id.action_liste_modele:
+                        Intent intent5 = new Intent(HomeActivity.this, ListeModelsActivity.class);
+                        startActivity(intent5);
+                        return true;
+
                     default:
                         return false;
                 }
@@ -364,8 +351,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private void setupPlaceAutocomplete() {
 
         if (!Places.isInitialized()) {
-            Places.initialize(getApplicationContext(), getResources().getString(R.string.googleMapsApiKey));
-            Log.d(TAG, "setupPlaceAutocomplete: " + "Places API initialized");
+            Places.initialize(getApplicationContext(), BuildConfig.ApiKey);
         }
 
         //Autocomplete
@@ -373,11 +359,12 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 getSupportFragmentManager().findFragmentById(R.id.autocomplete_fragment);
 
         //Limit results to Europe
-        assert autocompleteFragment != null;
-        autocompleteFragment.setLocationBias(RectangularBounds.newInstance(
+        RectangularBounds bounds = RectangularBounds.newInstance(
                 new LatLng(36.748837, -11.204687),
-                new LatLng(52.275758, 24.654688)));
+                new LatLng(52.275758, 24.654688));
 
+        assert autocompleteFragment != null;
+        autocompleteFragment.setLocationBias(bounds);
         autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
         autocompleteFragment.setHint("Ville, lieu, adresse...");
 
@@ -387,7 +374,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), SEARCH_ZOOM));
                 Log.i(TAG, "Map centered around : " + place.getName());
             }
-
             @Override
             public void onError(Status status) {
                 Log.i(TAG, "An error occurred: " + status);

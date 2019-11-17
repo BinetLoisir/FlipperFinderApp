@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PointF;
+import android.util.Log;
 
 import com.pinmyballs.database.DAOBase;
 import com.pinmyballs.database.FlipperDatabaseHandler;
@@ -64,6 +65,8 @@ public class FlipperDAO extends DAOBase {
         return listeRetour;
     }
 
+
+
     public String getNbFlipperActif() {
         String NbFlip;
 
@@ -96,6 +99,40 @@ public class FlipperDAO extends DAOBase {
         cursor.close();
 
         return NbFlip;
+    }
+
+    public ArrayList<Flipper> getAllFlipperActif() {
+        ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+
+        // On ne prend que les flippers actifs
+        String strActif = FlipperDatabaseHandler.FLIPPER_ACTIF + " = 1 ";
+
+
+        Cursor cursor = mDb.query(FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
+                        + FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
+                        + " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID,
+                new String[]{FlipperDatabaseHandler.FLIPPER_ID,
+                        FlipperDatabaseHandler.FLIPPER_MODELE,
+                        FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E,
+                        FlipperDatabaseHandler.FLIPPER_ENSEIGNE,
+                        FlipperDatabaseHandler.FLIPPER_DATMAJ,
+                        FlipperDatabaseHandler.FLIPPER_ACTIF,
+                        FlipperDatabaseHandler.MODELE_FLIPPER_ID,
+                        FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
+                        FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
+                        FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT,
+                        FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID},
+
+                FlipperDatabaseHandler.FLIPPER_ACTIF + "=?",
+                new String[]{"1"},
+                null, null, null);
+
+        while (cursor.moveToNext()) {
+            listeRetour.add(convertCursorToFlipper(cursor, null));
+        }
+        cursor.close();
+
+        return listeRetour;
     }
 
     /**
@@ -144,6 +181,11 @@ public class FlipperDAO extends DAOBase {
     }
 
 
+    /**
+     * Renvoie le flipper avec l'id passée en paramètre
+     * @param idFlipper
+     * @return
+     */
     public Flipper getFlipperById(long idFlipper) {
         Flipper flipperRetour = null;
         String strWhereFlipper = " Where " + FlipperDatabaseHandler.FLIPPER_ID + "=" + idFlipper;
@@ -167,6 +209,8 @@ public class FlipperDAO extends DAOBase {
                 + FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME + " ON " + FlipperDatabaseHandler.ENSEIGNE_ID + " = "
                 + FlipperDatabaseHandler.FLIPPER_ENSEIGNE + strWhereFlipper, null);
 
+
+
         if (cursor.moveToNext()) {
             flipperRetour = convertBigCursorToFlipper(cursor);
         }
@@ -174,6 +218,59 @@ public class FlipperDAO extends DAOBase {
 
         return flipperRetour;
     }
+
+    /**
+     * Renvoie la liste des flippers actifs pour un modele donné
+     * @param idModel
+     * @return
+     */
+    public ArrayList<Flipper> getFlipperByModel(long idModel) {
+        ArrayList<Flipper> listflipperRetour = new ArrayList<Flipper>();
+        String strWhereFlipper = " WHERE "+ FlipperDatabaseHandler.FLIPPER_MODELE + "=" + idModel +" AND " + FlipperDatabaseHandler.FLIPPER_ACTIF + " = 1 ";
+
+        Cursor cursor = mDb.rawQuery("SELECT "
+                + FlipperDatabaseHandler.FLIPPER_ID + " , "
+                + FlipperDatabaseHandler.FLIPPER_MODELE + " , "
+                + FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E + " , "
+                + FlipperDatabaseHandler.FLIPPER_ENSEIGNE + " , "
+                + FlipperDatabaseHandler.FLIPPER_DATMAJ + " , "
+                + FlipperDatabaseHandler.FLIPPER_ACTIF + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_NOM + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT + " , "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_ID + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_TYPE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_NOM + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_HORAIRE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_ADRESSE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_VILLE + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
+                + FlipperDatabaseHandler.ENSEIGNE_DATMAJ
+                + " FROM "
+                + FlipperDatabaseHandler.FLIPPER_TABLE_NAME
+                + " INNER JOIN "
+                + FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME
+                + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
+                + " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID
+                + " INNER JOIN "
+                + FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME
+                + " ON " + FlipperDatabaseHandler.ENSEIGNE_ID
+                + " = " + FlipperDatabaseHandler.FLIPPER_ENSEIGNE
+                + strWhereFlipper, null);
+
+        while (cursor.moveToNext()) {
+            listflipperRetour.add(convertBigCursorToFlipper(cursor));
+        }
+        cursor.close();
+
+        return listflipperRetour;
+    }
+
 
     /**
      * Requête de la mort qui ramène les enseignes les flippers et les modèles à
@@ -292,7 +389,9 @@ public class FlipperDAO extends DAOBase {
         Flipper flipper = new Flipper();
         flipper.setId(c.getLong(0));
         flipper.setModele(modele);
-        flipper.setEnseigne(enseigne);
+        if (enseigne != null) {
+            flipper.setEnseigne(enseigne);
+        }
         flipper.setNbCreditsDeuxEuros(c.getLong(2));
         flipper.setDateMaj(c.getString(4));
         //flipper.getDateMaj();

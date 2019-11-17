@@ -11,6 +11,7 @@ import com.pinmyballs.metier.Tournoi;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -59,7 +60,16 @@ public class TournoiDAO extends DAOBase{
 		//on ordonne par date
 		String strOrder =  FlipperDatabaseHandler.TOUR_DATE + " DESC ";
 
-		String datedujour = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(new Date());
+		//On recupère la date d'il y a 3 mois
+		Date referenceDate = new Date();
+		Calendar c = Calendar.getInstance();
+		c.setTime(referenceDate);
+		c.add(Calendar.MONTH, -1);
+		Date date = c.getTime();
+
+
+
+		String datedujour = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(date);
 		String selection = FlipperDatabaseHandler.TOUR_DATE +" >= " +"'"+ datedujour+"'";
 
 		Cursor cursor = mDb.query(FlipperDatabaseHandler.TOURNOI_TABLE_NAME,

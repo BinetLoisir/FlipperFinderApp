@@ -83,6 +83,19 @@ public class BaseFlipperService {
 
 	}
 
+	public ArrayList<Flipper> getAllActiveFlippers(Context pContext){
+		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+
+		FlipperDAO flipperDao = new FlipperDAO(pContext);
+		flipperDao.open();
+		ArrayList<Flipper> listeFlipper = flipperDao.getAllFlipperActif();
+		flipperDao.close();
+
+		return listeRetour = new ArrayList<Flipper>(listeFlipper);
+
+	}
+
+
 	public String NombreFlipperActifs(Context pContext){
 		String nb;
 
@@ -113,6 +126,18 @@ public class BaseFlipperService {
 
 		flipperDao.open();
 		flipperRetour = flipperDao.getFlipperById(idFlipper);
+		flipperDao.close();
+
+		return flipperRetour;
+	}
+
+	public ArrayList<Flipper> getFlipperByModel(Context pContext, long idModel){
+		ArrayList<Flipper> flipperRetour;
+
+		FlipperDAO flipperDao = new FlipperDAO(pContext);
+
+		flipperDao.open();
+		flipperRetour = flipperDao.getFlipperByModel(idModel);
 		flipperDao.close();
 
 		return flipperRetour;

@@ -1,6 +1,7 @@
 package com.pinmyballs.fragment;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,9 +10,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.PreferencesActivity;
@@ -19,22 +26,37 @@ import com.pinmyballs.R;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.ScoreService;
+import com.pinmyballs.utils.ListeScoresAdapter;
 
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
 public class FragmentDialogScore extends DialogFragment {
 
     private static final String TAG = "FragmentDialogScore";
+
+    //AJOUT INTERFACE TEST
+    public interface OnScoreSubmittedListener{
+        void updateList(Score score);
+    }
+    private OnScoreSubmittedListener onScoreSubmittedListener;
+
     SharedPreferences settings;
     TextView PseudoTV, ScoreTV;
     String pseudo;
+    Flipper flipper;
     //Score newScore;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+
+        pseudo = (String) getArguments().getString("pseudo");
+
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
@@ -48,12 +70,14 @@ public class FragmentDialogScore extends DialogFragment {
 
 
         PseudoTV = (TextView) view.findViewById(R.id.PseudoNewScore);
-        //Get the Pseudo
         settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
-        pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "");
+
         Log.d(TAG, "onViewCreated: pseudo " + pseudo);
         PseudoTV.setText(pseudo);
         ScoreTV = (TextView) view.findViewById(R.id.ScoreNewScore);
+        if (pseudo.length() != 0) {
+            ScoreTV.requestFocus();
+        }
 
 
         builder.setTitle(R.string.boutonSoumettreScore);
@@ -67,7 +91,7 @@ public class FragmentDialogScore extends DialogFragment {
                     return;
                 }
                 Intent intent = getActivity().getIntent();
-                Flipper flipper = (Flipper) intent.getSerializableExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO);
+                flipper = (Flipper) intent.getSerializableExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO);
 
                 //make score
                 Score newScore = new Score(1, "", 1, "", "", 1, flipper);
@@ -88,6 +112,8 @@ public class FragmentDialogScore extends DialogFragment {
                 editor.putString(PreferencesActivity.KEY_PSEUDO_FULL, newpseudo);
                 editor.apply();
 
+                onScoreSubmittedListener.updateList(newScore);
+
             }
         })
                 .setNegativeButton(R.string.boutonCancel, new DialogInterface.OnClickListener() {
@@ -101,25 +127,31 @@ public class FragmentDialogScore extends DialogFragment {
 
 
     public void envoyerScore(Score score) {
-        ScoreService scoreService = new ScoreService(new FragmentScoreFlipper.FragmentCallback() {
+        ScoreService scoreService = new ScoreService(new FragmentHiScoreFlipper.FragmentCallback() {
             @Override
             public void onTaskDone() {
+                Log.d(TAG, "onTaskDone: creation of scoreService in Dialog" );
             }
         });
         scoreService.ajouteScore(getActivity(), score);
-
     }
-/*
-
 
     @Override
-    public void onDismiss(DialogInterface dialog) {
-        Log.d(TAG, "onDismiss: ");
-        Intent intent = getActivity().getIntent();
-        getActivity().finish();
-        startActivity(intent);
-        super.onResume();
-        super.onDismiss(dialog);
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof OnScoreSubmittedListener)
+            onScoreSubmittedListener = (OnScoreSubmittedListener) context;
+        else  {
+            throw new RuntimeException(context.toString()+ "must implement OnScoreSubmittedListener");
+        }
     }
-    */
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        onScoreSubmittedListener = null;
+    }
+
+
+
 }
