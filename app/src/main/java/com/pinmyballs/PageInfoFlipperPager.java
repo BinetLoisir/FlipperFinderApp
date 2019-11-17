@@ -14,22 +14,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBar.Tab;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.material.tabs.TabLayout;
 import com.pinmyballs.fragment.FragmentActionsFlipper;
 import com.pinmyballs.fragment.FragmentCarteFlipper;
 import com.pinmyballs.fragment.FragmentCommentaireFlipper;
-import com.pinmyballs.fragment.InfoFlipperPagerAdapter;
+import com.pinmyballs.fragment.FragmentDialogScore;
+import com.pinmyballs.fragment.FragmentHiScoreFlipper;
 import com.pinmyballs.metier.Flipper;
+import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.FlipperService;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.utils.NetworkUtil;
+import com.pinmyballs.utils.SectionsPagerAdapter;
+
+import org.parceler.Parcels;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -38,201 +41,136 @@ import java.util.Locale;
 
 import static android.widget.Toast.LENGTH_SHORT;
 
-public class PageInfoFlipperPager extends AppCompatActivity {
+public class PageInfoFlipperPager extends AppCompatActivity implements FragmentDialogScore.OnScoreSubmittedListener {
 
-	public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
+    public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
     public final static String INTENT_FLIPPER_POUR_INFO = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO";
-
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+    ActionBar mActionbar;
+    Flipper flipper;
+    String nbflippers;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
     private DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+    private SharedPreferences settings;
 
 
-
-    private ViewPager mPager;
-	ActionBar mActionbar;
-	Flipper flipper;
-	String nbflippers;
-
-    private GoogleMap mMap;
-    LatLngBounds.Builder builder = null;
+    //AJOUT INTERFACE TEST
+    private FragmentHiScoreFlipper fragmentHiScoreFlipper;
 
 
-    //private Flipper flipperToDisplay = new Flipper();
-    //public void setFlipperToDisplay(Flipper flip) {
-    //    flipperToDisplay = flip;
-    //}
+    String pseudo;
 
 
     @Override
-	public void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		super.onCreate(savedInstanceState);
-		// On récupère le flipper concerné
-		Intent i = getIntent();
+    public void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_info_flipper);
+
+        setupPage();
+        setupUI();
+        setupViewPager();
+    }
+
+    private void setupPage() {
+        // On récupère le flipper concerné
+        Intent i = getIntent();
         flipper = (Flipper) i.getSerializableExtra(INTENT_FLIPPER_POUR_INFO);
 
+        // On récupère le nombre de flippers de l'enseigne
         BaseFlipperService baseFlipperService = new BaseFlipperService();
         nbflippers = baseFlipperService.NombreFlipperActifs(getApplicationContext(), flipper.getEnseigne());
 
+        // SharedPreferences & Pseudo
+        settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, MODE_PRIVATE);
+        pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "");
+    }
 
-		// On récupère l'onglet par défaut.
-		int ongletDefaut = i.getIntExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
+    private void setupUI() {
+        //Widgets
+        TextView nbflippercircle = findViewById(R.id.nbflips);
+        TextView adresseEnseigne = findViewById(R.id.adresseEnseigne);
+        TextView nomEnseigne = findViewById(R.id.nomEnseigne);
+        TextView dateMajFlip = findViewById(R.id.dateMajFlip);
+        nbflippercircle.setText(nbflippers);
+        nomEnseigne.setText(flipper.getEnseigne().getNom());
+        adresseEnseigne.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
 
-		setContentView(R.layout.activity_info_flipper);
-
-		/** Getting a reference to action bar of this activity */
-		mActionbar = getSupportActionBar();
-
-        // Build the map.
-        //SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-        //        .findFragmentById(R.id.infomap);
-        //mapFragment.getMapAsync(this);
-
-
-		Intent actionsIntent = new Intent(this, FragmentActionsFlipper.class);
-        actionsIntent.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
-
-		Intent carteIntent = new Intent(this, FragmentCarteFlipper.class);
-		carteIntent.putExtra(FragmentCarteFlipper.INTENT_FLIPPER_INFO_TABMAP,flipper);
-
-		Intent commentaireIntent = new Intent(this, FragmentCommentaireFlipper.class);
-        commentaireIntent.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
-
-
-		/** Set tab navigation mode */
-		mActionbar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-
-
-		mActionbar.setTitle(flipper.getModele().getNom());
-
-		/** Getting a reference to ViewPager from the layout */
-		mPager = (ViewPager) findViewById(R.id.pager);
-
-		/** Getting a reference to FragmentManager */
-		FragmentManager fm = getSupportFragmentManager();
-
-		/** Defining a listener for pageChange */
-		ViewPager.SimpleOnPageChangeListener pageChangeListener = new ViewPager.SimpleOnPageChangeListener(){
-			@Override
-			public void onPageSelected(int position) {
-				super.onPageSelected(position);
-				mActionbar.setSelectedNavigationItem(position);
-			}
-		};
-
-		/** Setting the pageChange listener to the viewPager */
-		mPager.setOnPageChangeListener(pageChangeListener);
-
-		/** Creating an instance of FragmentPagerAdapter */
-		InfoFlipperPagerAdapter fragmentPagerAdapter = new InfoFlipperPagerAdapter(fm, flipper);
-
-		/** Setting the FragmentPagerAdapter object to the viewPager object */
-		mPager.setAdapter(fragmentPagerAdapter);
-
-		mActionbar.setDisplayShowTitleEnabled(true);
-
-		/** Defining tab listener */
-		ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-
-			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-			}
-
-			@Override
-			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				mPager.setCurrentItem(tab.getPosition());
-			}
-
-			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-			}
-		};
-
-		/** Creating fragment1 Tab */
-		Tab tab = mActionbar.newTab()
-			.setText("Carte")
-			.setTabListener(tabListener);
-
-		mActionbar.addTab(tab);
-
-		/** Creating fragment2 Tab */
-		tab = mActionbar.newTab()
-			.setText("Actions")
-			.setTabListener(tabListener);
-
-		mActionbar.addTab(tab);
-
-		/** Creating fragment3 Tab */
-		tab = mActionbar.newTab()
-			.setText("Avis")
-			.setTabListener(tabListener);
-
-		mActionbar.addTab(tab);
-
-		/** Creating fragment3 Tab */
-		/*
-		   tab = mActionbar.newTab()
-		   .setText("Hi Scores")
-		   .setTabListener(tabListener);
-
-		   mActionbar.addTab(tab);
-		   */
-
-		// On écrit les trois infos Adresse / Nom de l'enseigne / Date de mise à jour.
-
-TextView nbflippercircle = (TextView) findViewById(R.id.nbflips);
-		TextView adresseEnseigne = (TextView) findViewById(R.id.adresseEnseigne);
-		TextView nomEnseigne = (TextView) findViewById(R.id.nomEnseigne);
-		TextView dateMajFlip = (TextView) findViewById(R.id.dateMajFlip);
-		nbflippercircle.setText(nbflippers);
-		nomEnseigne.setText(flipper.getEnseigne().getNom());
-		adresseEnseigne.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
-
-		// Si la date de mise à jour est nulle, on affiche la valeur par défaut.
-		if (flipper.getDateMaj() != null && flipper.getDateMaj().length() != 0) {
+        //Si la date de mise à jour est nulle, on affiche la valeur par défaut.
+        if (flipper.getDateMaj() != null && flipper.getDateMaj().length() != 0) {
             String strdate = null;
             try {
                 strdate = df.format(dateFormat.parse(flipper.getDateMaj()));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
-
             dateMajFlip.setText(getResources().getString(R.string.dateMaj) + " " + strdate);
-		} else {
-			dateMajFlip.setText(getResources().getString(R.string.dateMajDefault));
-		}
-	}
+        } else {
+            dateMajFlip.setText(getResources().getString(R.string.dateMajDefault));
+        }
+
+        //Title of the Activity
+        mActionbar = getSupportActionBar();
+        mActionbar.setTitle(flipper.getModele().getNom());
+        //mActionbar.setHomeButtonEnabled(true);
+        //mActionbar.setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    private void setupViewPager() {
+        SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("flip",flipper);
+        bundle.putString("pseudo", pseudo);
+        bundle.putParcelable("flipParceable", Parcels.wrap(flipper));
+
+
+        FragmentCarteFlipper fragmentCarteFlipper = new FragmentCarteFlipper();
+        fragmentCarteFlipper.setArguments(bundle);
+        FragmentActionsFlipper fragmentActionsFlipper = new FragmentActionsFlipper();
+        fragmentActionsFlipper.setArguments(bundle);
+        FragmentCommentaireFlipper fragmentCommentaireFlipper = new FragmentCommentaireFlipper();
+        fragmentCommentaireFlipper.setArguments(bundle);
+        fragmentHiScoreFlipper = new FragmentHiScoreFlipper();
+        fragmentHiScoreFlipper.setArguments(bundle);
+
+        adapter.addFragment(fragmentCarteFlipper);
+        adapter.addFragment(fragmentActionsFlipper);
+        adapter.addFragment(fragmentCommentaireFlipper);
+        adapter.addFragment(fragmentHiScoreFlipper);
+
+        ViewPager viewPager = findViewById(R.id.pager);
+        viewPager.setAdapter(adapter);
+
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+
+        tabLayout.getTabAt(0).setText("CARTE");
+        tabLayout.getTabAt(1).setText("ACTIONS");
+        tabLayout.getTabAt(2).setText("AVIS");
+        tabLayout.getTabAt(3).setText("HI-SCORES");
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_page_info_flipper, menu);
         MenuItem item = menu.findItem(R.id.action_delete);
-        SharedPreferences settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, MODE_PRIVATE);
         boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
         item.setVisible(adminMode);
-
         return true;
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.action_info:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Infos Flipper").setMessage(String.valueOf(flipper.getModele().getNomComplet())).show();
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText("FlipID",String.valueOf(flipper.getId()));
+                android.content.ClipData clip = android.content.ClipData.newPlainText("FlipID", String.valueOf(flipper.getId()));
                 clipboard.setPrimaryClip(clip);
-                break;
-			case R.id.action_score:
-				Intent intentScore = new Intent(PageInfoFlipperPager.this, PopScore.class);
-                intentScore.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
-				startActivity(intentScore);
                 break;
             case R.id.action_delete:
                 //On vérifie qu'on a la connection
@@ -253,29 +191,18 @@ TextView nbflippercircle = (TextView) findViewById(R.id.nbflips);
                 }
                 break;
 
-
-
-			default:
-                Log.i("Erreur action bar","default");
+            default:
+                Log.i("Erreur action bar", "default");
                 break;
         }
         return false;
     }
 
 
+    //AJOUT INTERFACE TEST
+    @Override
+    public void updateList(Score score) {
+        fragmentHiScoreFlipper.receivedScore(score);
 
-	@Override
-	public void onStart() {
-		super.onStart();
-		// Google Analytics
-		//EasyTracker.getInstance().activityStart(this);
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-		// Google Analytics
-		//EasyTracker.getInstance().activityStop(this);
-	}
-
+    }
 }
