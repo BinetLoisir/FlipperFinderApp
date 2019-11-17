@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pinmyballs="http://schemas.android.com/apk/res-auto">
+
+
+
+
+
+    <item
+        android:id="@+id/action_preferences"
+        android:icon="@drawable/ic_settings_black_24dp"
+        android:title="Préférences"
+        android:titleCondensed="Pref"
+        pinmyballs:showAsAction="always|withText" />
+
+</menu>
