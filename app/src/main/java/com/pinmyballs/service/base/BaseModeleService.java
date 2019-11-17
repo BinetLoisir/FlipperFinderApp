@@ -32,6 +32,11 @@ public class BaseModeleService {
 		return idRetour;
 	}
 
+	public int getSize(Context pContext){
+		return getAllModeleFlipper(pContext).size();
+	}
+
+
 	public ArrayList<String> getAllNomModeleFlipper(Context pContext){
 		ArrayList<String> listeRetour = new ArrayList<String>();
 		ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);

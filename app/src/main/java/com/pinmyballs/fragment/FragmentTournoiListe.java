@@ -3,12 +3,15 @@ package com.pinmyballs.fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Switch;
 
@@ -30,6 +33,10 @@ import java.util.Comparator;
 public class FragmentTournoiListe extends Fragment{
     private static final String TAG = "FragmentTournoiListe";
     private Switch mSwitchTournois;
+    private ImageView mSortButton;
+    private boolean ascending;
+    private  ArrayList tournois;
+    private TournoiAdapter adapter;
 
 
 
@@ -51,35 +58,87 @@ public class FragmentTournoiListe extends Fragment{
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 populateListTournois(listTournois);
                 if (isChecked) {
-
                     // The toggle is enabled
-
                 } else {
                     // The toggle is disabled
-
                 }
 
             }
         });
+
+
+
         populateListTournois(listTournois);
+
+
+        mSortButton = (ImageView) view.findViewById(R.id.sortbutton);
+        mSortButton.setOnClickListener(
+                v -> {
+                sortTournois(tournois);
+                    Log.d(TAG, "onViewCreated: Clicked on clickedlistener");
+                }
+        );
 
     }
 
+    private void sortTournois(ArrayList<Tournoi> tournois){
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+        if(!ascending){
+            Log.d(TAG, "compare: Sorted descending :" + ascending);
+            ascending = !ascending;
+            Collections.sort(tournois, new Comparator<Tournoi>() {
+                @Override
+                public int compare(Tournoi t2, Tournoi t1) {
+                    String t1date = t1.getDate();
+                    String t2date = t2.getDate();
+                    int result = 0;
+                    try {
+                        result = dateFormat.parse(t2date).compareTo(dateFormat.parse(t1date));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    return result;
+                }
+            });
+        } else {
+            Log.d(TAG, "compare: Sorted ascending :" + ascending);
+            ascending = !ascending;
+            Collections.sort(tournois, new Comparator<Tournoi>() {
+                @Override
+                public int compare(Tournoi t2, Tournoi t1) {
+                    String t1date = t1.getDate();
+                    String t2date = t2.getDate();
+                    int result = 0;
+                    try {
+                        result = dateFormat.parse(t1date).compareTo(dateFormat.parse(t2date));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    return result;
+                }
+            });
+        }
+
+    adapter.notifyDataSetChanged();
+
+    }
+
+
     public void populateListTournois(ListView listeView){
-        ArrayList<Tournoi> Tournois;
         final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
         // Récupère la liste des tournois
         BaseTournoiService baseTournoiService = new BaseTournoiService();
         if(!mSwitchTournois.isChecked()) {
-            Tournois = baseTournoiService.getAllFutureTournoi(getActivity().getBaseContext()); //IMPORTANT
+            tournois = baseTournoiService.getAllFutureTournoi(getActivity().getBaseContext()); //IMPORTANT
         }
         else{
-            Tournois = baseTournoiService.getAllTournoi(getActivity().getBaseContext()); //IMPORTANT
+            tournois = baseTournoiService.getAllTournoi(getActivity().getBaseContext()); //IMPORTANT
         }
 
-        // Tri les tournois du plus ancien au plus récent.
-        Collections.sort(Tournois, new Comparator<Tournoi>() {
+        // Tri les tournois du plus récent au plus ancien.
+        Collections.sort(tournois, new Comparator<Tournoi>() {
                     @Override
                     public int compare(Tournoi t2, Tournoi t1) {
                         String t1date = t1.getDate();
@@ -90,15 +149,16 @@ public class FragmentTournoiListe extends Fragment{
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
+                        ascending = true;
                         return result;
                     }
                 }
         );
 
-        TournoiAdapter adapter = new TournoiAdapter(getActivity(), R.layout.simple_liste_item_tournoi, Tournois);
+        adapter = new TournoiAdapter(getActivity(), R.layout.simple_liste_item_tournoi, tournois);
         listeView.setAdapter(adapter);
 
-        final ArrayList<Tournoi> finalTournois = Tournois;
+        final ArrayList<Tournoi> finalTournois = tournois;
         listeView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

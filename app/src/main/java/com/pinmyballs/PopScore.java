@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pinmyballs.fragment.FragmentDialogScore;
+import com.pinmyballs.fragment.FragmentHiScoreFlipper;
 import com.pinmyballs.fragment.FragmentScoreFlipper;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
@@ -63,7 +64,7 @@ public class PopScore extends AppCompatActivity {
         flipper = (Flipper) intent.getSerializableExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO);
 
         //GetScores
-        scoreService = new ScoreService(new FragmentScoreFlipper.FragmentCallback() {
+        scoreService = new ScoreService(new FragmentHiScoreFlipper.FragmentCallback() {
             @Override
             public void onTaskDone() {
                 refreshScore();

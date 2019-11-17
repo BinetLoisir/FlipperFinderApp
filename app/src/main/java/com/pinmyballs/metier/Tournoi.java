@@ -2,6 +2,8 @@ package com.pinmyballs.metier;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -9,44 +11,45 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+@Parcel
 public class Tournoi implements Serializable {
 
     private static final long serialVersionUID = 4803600387182980034L;
     @SerializedName("TOUR_ID")
-    private long id;
+     long id;
 
     @SerializedName("TOUR_NOM")
-    private String nom;
+     String nom;
 
     @SerializedName("TOUR_DATE")
-    private String date;
+     String date;
 
     @SerializedName("TOUR_COMMENTAIRE")
-    private String commentaire;
+     String commentaire;
 
     @SerializedName("TOUR_LATITUDE")
-    private String latitude;
+     String latitude;
 
     @SerializedName("TOUR_LONGITUDE")
-    private String longitude;
+     String longitude;
 
     @SerializedName("TOUR_ADRESSE")
-    private String adresse;
+     String adresse;
 
     @SerializedName("TOUR_CODE_POSTAL")
-    private String codePostal;
+     String codePostal;
 
     @SerializedName("TOUR_VILLE")
-    private String ville;
+     String ville;
 
     @SerializedName("TOUR_PAYS")
-    private String pays;
+     String pays;
 
     @SerializedName("TOUR_URL")
-    private String url;
+     String url;
 
     @SerializedName("TOUR_ENS")
-    private String ens;
+     String ens;
 
     public Tournoi() {
     }

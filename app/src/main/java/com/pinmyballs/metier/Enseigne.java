@@ -2,8 +2,11 @@ package com.pinmyballs.metier;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.io.Serializable;
 
+@Parcel
 public class Enseigne  implements Serializable{
 
 	private static final long serialVersionUID = 4803600387182980034L;
@@ -12,37 +15,37 @@ public class Enseigne  implements Serializable{
 	//private String objectId;
 
 	@SerializedName("ENS_ID")
-	private long id;
+	long id;
 
 	@SerializedName("ENS_TYPE")
-	private String type;
+	 String type;
 
 	@SerializedName("ENS_NOM")
-	private String nom;
+	 String nom;
 
 	@SerializedName("ENS_HORAIRE")
-	private String horaire;
+	 String horaire;
 
 	@SerializedName("ENS_LATITUDE")
-	private String latitude;
+	 String latitude;
 
 	@SerializedName("ENS_LONGITUDE")
-	private String longitude;
+	 String longitude;
 
 	@SerializedName("ENS_ADRESSE")
-	private String adresse;
+	 String adresse;
 
 	@SerializedName("ENS_CODE_POSTAL")
-	private String codePostal;
+	 String codePostal;
 
 	@SerializedName("ENS_VILLE")
-	private String ville;
+	 String ville;
 
 	@SerializedName("ENS_PAYS")
-	private String pays;
+	 String pays;
 
 	@SerializedName("ENS_DATMAJ")
-	private String dateMaj;
+	 String dateMaj;
 
 	public Enseigne(){
 	}

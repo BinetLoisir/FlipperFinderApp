@@ -1,5 +1,6 @@
 package com.pinmyballs.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -60,10 +61,11 @@ public class OtherFlipperAdapter extends ArrayAdapter<Flipper> {
         public void onClick(View v) {
             Flipper flipper = getItem((Integer) v.getTag());
             if (flipper != null){
-                Intent infoActivite = new Intent(getContext(), PageInfoFlipperPager.class);
-                infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
-                infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
-                getContext().startActivity(infoActivite);
+                Intent intent = new Intent(getContext(), PageInfoFlipperPager.class);
+                intent.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, flipper);
+                intent.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
+                getContext().startActivity(intent);
+                ((Activity) getContext()).finish();
             }
         }
     };

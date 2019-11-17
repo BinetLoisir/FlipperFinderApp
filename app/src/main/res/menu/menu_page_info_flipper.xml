@@ -10,13 +10,6 @@
         pinmyballs:showAsAction="always|withText" />
 
     <item
-        android:id="@+id/action_score"
-        android:icon="@drawable/ic_view_list_black_24dp"
-        android:title="Best Scores"
-        android:titleCondensed="Scores"
-        pinmyballs:showAsAction="always|withText" />
-
-    <item
         android:id="@+id/action_info"
         android:icon="@drawable/ic_info_outline_black_24dp"
         android:title="Infos"

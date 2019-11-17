@@ -2,27 +2,30 @@ package com.pinmyballs.metier;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.io.Serializable;
 
+@Parcel
 public class ModeleFlipper  implements Serializable{
 
 	private static final long serialVersionUID = -3899550250753290072L;
 
 
 	@SerializedName("MOFL_ID")
-	private long id;
+	 long id;
 
 	@SerializedName("MOFL_NOM")
-	private String nom;
+	 String nom;
 
 	@SerializedName("MOFL_MARQUE")
-	private String marque;
+	 String marque;
 
 	@SerializedName("MOFL_ANNEE_LANCEMENT")
-	private long anneeLancement;
+	 long anneeLancement;
 
     @SerializedName("MOFL_OBJ_ID")
-    private String objectId;
+     String objectId;
 
 
 	public ModeleFlipper(){

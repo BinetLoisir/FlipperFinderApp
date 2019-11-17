@@ -2,7 +2,6 @@ package com.pinmyballs.fragment;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.PreferencesActivity;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Commentaire;
@@ -42,30 +40,30 @@ public class FragmentCommentaireFlipper extends Fragment implements EditCommentD
 
     private static final String TAG = "FragmentCommentaireFlip";
 
-	Button boutonLaisserCommentaireFlipper;
-	EditText pseudo = null;
-	EditText commentaire = null;
-	String pseudoText = "";
-	TextView tvPasCommentaire = null;
+	private EditText pseudoTV ;
+	private EditText commentaire;
+	private TextView tvPasCommentaire = null;
 
-	SharedPreferences settings;
+	private SharedPreferences settings;
 
-	ListView listeCommentaireView = null;
+	private ListView listeCommentaireView = null;
 
-	ScrollView newCommentaireLayout = null;
+	private ScrollView newCommentaireLayout = null;
 
-	Button boutonAnnulerNouveauCommentaire = null;
-	Button boutonEnvoiCommentaire = null;
+	private Flipper flipper;
+	private ArrayList<Commentaire> listeCommentaires = null;
 
-	Flipper flipper;
-	ArrayList<Commentaire> listeCommentaires = null;
+	private CommentaireService commentaireService;
+	private ListeCommentaireAdapter listeCommentaireAdapter;
 
-	CommentaireService commentaireService;
-	private OnClickListener EnvoiCommentaireListener = new OnClickListener() {
+	public FragmentCommentaireFlipper(){
+	}
+
+	private final OnClickListener EnvoiCommentaireListener = new OnClickListener() {
 		public void onClick(View v) {
 			// On sauvegarde le pseudo
 			Editor editor = settings.edit();
-            editor.putString(PreferencesActivity.KEY_PSEUDO_FULL, pseudo.getText().toString());
+            editor.putString(PreferencesActivity.KEY_PSEUDO_FULL, pseudoTV.getText().toString());
 			editor.apply();
 
 			// Si un commentaire a été écrit, l'envoyer!
@@ -77,8 +75,8 @@ public class FragmentCommentaireFlipper extends Fragment implements EditCommentD
 				htmlString = htmlString.replaceAll("[\n]", "");
 				Date dateDuJour = new Date();
 				String pseudoCommentaire = getResources().getString(R.string.pseudoCommentaireAnonyme);
-				if (pseudo.getText().length() > 0){
-					pseudoCommentaire = pseudo.getText().toString();
+				if (pseudoTV.getText().length() > 0){
+					pseudoCommentaire = pseudoTV.getText().toString();
 				}
 				Commentaire commentaireToAdd = new Commentaire(	dateDuJour.getTime(),
 						flipper.getId(),
@@ -91,6 +89,15 @@ public class FragmentCommentaireFlipper extends Fragment implements EditCommentD
 				//((AppCompatActivity)getActivity()).setSupportProgressBarIndeterminateVisibility(true);
 				commentaireService.ajouteCommentaire(getActivity(), commentaireToAdd);
 				// Rafraichir la liste des commentaires
+				if (listeCommentaires != null && listeCommentaires.size() > 0) {
+					listeCommentaires.add(commentaireToAdd);
+					listeCommentaireAdapter.notifyDataSetChanged();
+
+				} else {
+					rafraichitListeCommentaire();
+				}
+
+				//Hide keyboard and input form
 				InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 				newCommentaireLayout.setVisibility(View.GONE);
@@ -104,8 +111,8 @@ public class FragmentCommentaireFlipper extends Fragment implements EditCommentD
         listeCommentaires = commentaireService.getCommentaireByFlipperId(getActivity().getApplicationContext(), flipper.getId());
         if (listeCommentaires != null && listeCommentaires.size() > 0) {
             tvPasCommentaire.setVisibility(View.INVISIBLE);
-            ListeCommentaireAdapter customAdapter = new ListeCommentaireAdapter(getActivity(), R.layout.simple_list_item_commentaire, listeCommentaires);
-            listeCommentaireView.setAdapter(customAdapter);
+            listeCommentaireAdapter = new ListeCommentaireAdapter(getActivity(), R.layout.simple_list_item_commentaire, listeCommentaires);
+            listeCommentaireView.setAdapter(listeCommentaireAdapter);
         } else {
             tvPasCommentaire.setVisibility(View.VISIBLE);
         }
@@ -116,24 +123,19 @@ public class FragmentCommentaireFlipper extends Fragment implements EditCommentD
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_commentaire_flipper, container, false);
 
-        Intent i = getActivity().getIntent();
-        flipper = (Flipper) i.getSerializableExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO);
+		flipper = (Flipper) getArguments().getSerializable("flip");
+		String pseudo = getArguments().getString("pseudo");
 
-        commentaireService = new CommentaireService(new FragmentCallback() {
-            @Override
-            public void onTaskDone() {
-                rafraichitListeCommentaire();
-            }
-        });
+        commentaireService = new CommentaireService(this::rafraichitListeCommentaire);
 
-        listeCommentaireView = (ListView) rootView.findViewById(R.id.listeCommentaires);
-        newCommentaireLayout = (ScrollView) rootView.findViewById(R.id.layoutNewComm);
-        pseudo = (EditText) rootView.findViewById(R.id.champPseudo);
-        commentaire = (EditText) rootView.findViewById(R.id.texteCommentaire);
-        boutonLaisserCommentaireFlipper = (Button) rootView.findViewById(R.id.boutonCommentaire);
-        tvPasCommentaire = (TextView) rootView.findViewById(R.id.textPasCommentaire);
-        boutonAnnulerNouveauCommentaire = (Button) rootView.findViewById(R.id.boutonCancelNewCommentaire);
-        boutonEnvoiCommentaire = (Button) rootView.findViewById(R.id.boutonNewCommentaire);
+        listeCommentaireView = rootView.findViewById(R.id.listeCommentaires);
+        newCommentaireLayout = rootView.findViewById(R.id.layoutNewComm);
+        pseudoTV = rootView.findViewById(R.id.champPseudo);
+        commentaire = rootView.findViewById(R.id.texteCommentaire);
+		Button boutonLaisserCommentaireFlipper = rootView.findViewById(R.id.boutonCommentaire);
+        tvPasCommentaire = rootView.findViewById(R.id.textPasCommentaire);
+		Button boutonAnnulerNouveauCommentaire = rootView.findViewById(R.id.boutonCancelNewCommentaire);
+		Button boutonEnvoiCommentaire = rootView.findViewById(R.id.boutonNewCommentaire);
 
         // On cache le layout qui va servir à renseigner un nouveau commentaire
         newCommentaireLayout.setVisibility(View.GONE);
@@ -141,36 +143,31 @@ public class FragmentCommentaireFlipper extends Fragment implements EditCommentD
         rafraichitListeCommentaire();
         //Récupère le pseudo et préremplit le champ si besoin
         settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
-        pseudoText = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "");
+		String pseudoText = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "");
 
-        pseudo.setText(pseudoText);
+        pseudoTV.setText(pseudoText);
 
         boutonLaisserCommentaireFlipper.setOnClickListener(LaisserCommentaireListener);
-
         boutonEnvoiCommentaire.setOnClickListener(EnvoiCommentaireListener);
         boutonAnnulerNouveauCommentaire.setOnClickListener(AnnuleNouveauCommentaireListener);
 
         return rootView;
     }
-	private OnClickListener LaisserCommentaireListener = new OnClickListener() {
-		public void onClick(View v) {
-			if (NetworkUtil.isConnected(getActivity().getApplicationContext())){
-				Animation slide = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_up);
-				newCommentaireLayout.setVisibility(View.VISIBLE);
-				newCommentaireLayout.startAnimation(slide);
-			}else{
-				Toast toast = Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.toastAjouteCommentairePasPossibleReseau), Toast.LENGTH_SHORT);
-				toast.show();
-			}
+	private final OnClickListener LaisserCommentaireListener = v -> {
+		if (NetworkUtil.isConnected(getActivity().getApplicationContext())){
+			Animation slide = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_up);
+			newCommentaireLayout.setVisibility(View.VISIBLE);
+			newCommentaireLayout.startAnimation(slide);
+		}else{
+			Toast toast = Toast.makeText(getActivity().getApplicationContext(), getResources().getString(R.string.toastAjouteCommentairePasPossibleReseau), Toast.LENGTH_SHORT);
+			toast.show();
 		}
 	};
 
-	private OnClickListener AnnuleNouveauCommentaireListener = new OnClickListener() {
-		public void onClick(View v) {
-			InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-			imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-			newCommentaireLayout.setVisibility(View.GONE);
-		}
+	private final OnClickListener AnnuleNouveauCommentaireListener = v -> {
+		InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+		newCommentaireLayout.setVisibility(View.GONE);
 	};
 
     @Override

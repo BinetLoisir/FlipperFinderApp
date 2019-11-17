@@ -8,7 +8,7 @@
         class="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:apiKey="@string/googleMapsApiKey" />
+        android:apiKey="@string/maps_api_key" />
 
     <ImageView
         android:layout_width="25dp"

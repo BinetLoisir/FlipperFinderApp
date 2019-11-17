@@ -65,7 +65,6 @@ public class AsyncTaskMajDatabaseBackground extends AsyncTask<Object, Void, Bool
         }
 
         Toast toast = Toast.makeText(mContext, "Mise à jour effectuée", Toast.LENGTH_SHORT);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
         toast.show();
     }
 }

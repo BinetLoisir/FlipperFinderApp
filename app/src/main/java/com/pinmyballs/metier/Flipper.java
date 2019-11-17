@@ -1,33 +1,39 @@
 package com.pinmyballs.metier;
 
+import android.os.Parcelable;
+
+
 import com.google.gson.annotations.SerializedName;
+
+import org.parceler.Parcel;
 
 import java.io.Serializable;
 
-public class Flipper implements Serializable {
+@Parcel
+public class Flipper implements Serializable  {
 
 	private static final long serialVersionUID = 2088862582774334050L;
 
 	@SerializedName("FLIP_ID")
-	private long id;
+	 long id;
 
 	@SerializedName("FLIP_MODELE")
-	private long idModele;
+	 long idModele;
 
 	@SerializedName("FLIP_NB_CREDITS_2E")
-	private long NbCreditsDeuxEuros;
+	 long NbCreditsDeuxEuros;
 
 	@SerializedName("FLIP_ENSEIGNE")
-	private long idEnseigne;
+	 long idEnseigne;
 
 	@SerializedName("FLIP_ACTIF")
-	private boolean actif;
+	 boolean actif;
 
 	@SerializedName("FLIP_DATMAJ")
-	private String dateMaj;
+	 String dateMaj;
 
-	private ModeleFlipper modele;
-	private Enseigne enseigne;
+	 ModeleFlipper modele;
+	 Enseigne enseigne;
 
 	public Flipper() {
 	}
@@ -131,5 +137,4 @@ public class Flipper implements Serializable {
 	public void setInactif(long actif) {
 		this.actif = actif == 0;
 	}
-
 }

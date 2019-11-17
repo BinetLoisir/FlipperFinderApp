@@ -1,6 +1,7 @@
 package com.pinmyballs.service.parse;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -9,6 +10,7 @@ import com.parse.ParseQuery;
 import com.parse.SaveCallback;
 import com.pinmyballs.R;
 import com.pinmyballs.database.FlipperDatabaseHandler;
+import com.pinmyballs.fragment.FragmentHiScoreFlipper;
 import com.pinmyballs.fragment.FragmentScoreFlipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.base.BaseScoreService;
@@ -19,9 +21,9 @@ import java.util.List;
 
 public class ParseScoreService {
     private static final String TAG = "ParseScoreService";
-    private FragmentScoreFlipper.FragmentCallback mFragmentCallback;
+    private FragmentHiScoreFlipper.FragmentCallback mFragmentCallback;
 
-    public ParseScoreService(FragmentScoreFlipper.FragmentCallback fragmentCallback) {
+    public ParseScoreService(FragmentHiScoreFlipper.FragmentCallback fragmentCallback) {
         mFragmentCallback = fragmentCallback;
     }
     /**
@@ -100,9 +102,9 @@ public class ParseScoreService {
                     baseScoreService.addScore(score, pContext);
                     Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.toastAjouteScoreCloudOK), Toast.LENGTH_LONG);
                     toast.show();
+                    Log.d(TAG, "Parse save in background done: ");
                     if (mFragmentCallback != null){
                         mFragmentCallback.onTaskDone();
-
                     }
                 }else{
                     Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.toastAjouteScoreCloudKO), Toast.LENGTH_SHORT);

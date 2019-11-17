@@ -9,6 +9,13 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_liste_modele"
+        android:icon="@drawable/ic_flip"
+        android:title="@string/liste_modeles"
+        android:titleCondensed="List"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_admin"
         android:icon="@drawable/ic_lock_outline_black_24dp"
         android:title="@string/homeMenu_action_admin_text"

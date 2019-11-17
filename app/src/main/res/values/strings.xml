@@ -2,6 +2,10 @@
 
     <string name="app_name">Pin my Balls</string>
 
+    <string name="parseApplicationId">wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE</string>
+    <string name="parseClientKey">8JRUbCxEjJjkSXG00B5csXzAl1E9BWHVIABKvFqy</string>
+    <string name="parseServerUrl">https://parseapi.back4app.com/</string>
+
     <string name="BoutonAccueilRechercher">Rechercher un flipper</string>
     <string name="BoutonAccueilSignaler">Signaler un flipper</string>
     <string name="HeaderTournois">Tournois &amp; Evènements</string>
@@ -126,7 +130,7 @@
     <string name="toastAjouteCommentaireCloudKO">L\'envoi de commentaire a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
     <string name="toastAjouteScorePasPossibleReseau">Impossible d\'envoyer un score. Vous devez être connecté à Internet !</string>
-    <string name="toastAjouteScoreCloudOK">Votre score a bien été reçu. Merci!</string>
+    <string name="toastAjouteScoreCloudOK">Votre score a bien été reçu. Merci! Il apparaitra au prochain chargement</string>
     <string name="toastAjouteScoreCloudKO">L\'envoi de score a échoué… Merci de réessayer ou de me contacter si ça persiste :)</string>
 
 
@@ -191,6 +195,8 @@
     <string name="tab_text_1">Info</string>
     <string name="tab_text_2">Actions</string>
     <string name="tab_text_3">Avis</string>
+    <string name="tab_text_4">Hi-score</string>
+
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
@@ -257,6 +263,9 @@
     <string name="account_create">Créer votre compte</string>
     <string name="account_forgot_password">Vous avez oublié votre mot de passe?</string>
     <string name="reset_instructions">Entrez votre email pour réinitialiser votre mot de passe</string>
+    <string name="search_field">Search</string>
+    <string name="filter_field">Filter</string>
+    <string name="liste_modeles">Liste modèles</string>
 
 
 </resources>

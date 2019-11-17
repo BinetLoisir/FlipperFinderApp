@@ -2,32 +2,35 @@ package com.pinmyballs.metier;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.io.Serializable;
 
+@Parcel
 public class Score  implements Serializable{
 
     private static final long serialVersionUID = 4904936104977593366L;
 
 
     @SerializedName("SCORE_ID")
-    private long id;
+     long id;
 
     @SerializedName("SCORE_OBJECTID")
-    private String objectId;
+     String objectId;
 
     @SerializedName("SCORE_SCORE")
-    private long score;
+     long score;
 
     @SerializedName("SCORE_DATE")
-    private String date;
+     String date;
 
     @SerializedName("SCORE_PSEUDO")
-    private String pseudo;
+     String pseudo;
 
     @SerializedName("SCORE_FLIPPER_ID")
-    private long flipperId;
+     long flipperId;
 
-    private Flipper flipper;
+     Flipper flipper;
 
 
     public Score(){

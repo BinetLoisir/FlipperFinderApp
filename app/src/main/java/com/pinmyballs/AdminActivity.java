@@ -64,8 +64,8 @@ public class AdminActivity extends AppCompatActivity {
     TextView R_flipModele;
     @BindView(R.id.MyAction)
     Button myAction;
-    @BindView(R.id.NewModel)
-    Button NewModel;
+    @BindView(R.id.MyAction2)
+    Button MyAction2;
 
     ActionBar mActionbar;
     SharedPreferences settings;
@@ -81,8 +81,6 @@ public class AdminActivity extends AppCompatActivity {
         // Affichage du header
         mActionbar = getSupportActionBar();
         mActionbar.setTitle(R.string.headerAdmin);
-        mActionbar.setHomeButtonEnabled(true);
-        mActionbar.setDisplayHomeAsUpEnabled(true);
 
         actifToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -112,7 +110,7 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_preferences, menu);
+        inflater.inflate(R.menu.menu_admintools, menu);
         return true;
     }
 
@@ -124,7 +122,11 @@ public class AdminActivity extends AppCompatActivity {
                 Intent intent4 = new Intent(AdminActivity.this, PreferencesActivity.class);
                 startActivity(intent4);
                 break;
-            default:
+
+
+
+
+                default:
                 Log.i("Erreur action bar", "default");
                 break;
         }
@@ -133,52 +135,69 @@ public class AdminActivity extends AppCompatActivity {
 
     @OnClick(R.id.pasteClipboardImagebutton)
     public void paste() {
-        final android.content.ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        final ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         ClipData clipData = clipboardManager.getPrimaryClip();
         // Get item count.
-        int itemCount = clipData.getItemCount();
-        if (itemCount > 0) {
-            // Get source text.
-            ClipData.Item item = clipData.getItemAt(0);
-            String text = item.getText().toString();
-            // Set the text to target textview.
-            searchBynumberInput.setText(text);
+        if (clipData != null) {
+            int itemCount = clipData.getItemCount();
+            if (itemCount > 0) {
+                // Get source text.
+                ClipData.Item item = clipData.getItemAt(0);
+                String text = item.getText().toString();
+                // Set the text to target textview.
+                searchBynumberInput.setText(text);
+                searchbynumber();
+            }
         }
     }
 
     @OnClick(R.id.searchbynumberImagebutton)
     public void searchbynumber() {
-        String flipnumberInput = searchBynumberInput.getText().toString();
+        String inputString = searchBynumberInput.getText().toString();
         if (searchBynumberInput.getText().length() == 0) {
             return;
         }
-        Flipper flip;
-        Enseigne flipEnseigne;
-        String flipModele;
-        GlobalService globalService = new GlobalService();
-        flip = globalService.getFlip(getApplicationContext(), Long.parseLong(flipnumberInput));
-        if (flip != null) {
-            flipEnseigne = flip.getEnseigne();
-            flipModele = flip.getModele().getNom();
-            Toast toast = Toast.makeText(getApplicationContext(), "Flip trouvé", Toast.LENGTH_SHORT);
-            toast.show();
+        try {
+            int flipnumberInput = Integer.parseInt(inputString);
+            Log.i("",inputString+" is a number");
+            Flipper flip;
+            Enseigne flipEnseigne;
+            String flipModele;
+            GlobalService globalService = new GlobalService();
+            flip = globalService.getFlip(getApplicationContext(), flipnumberInput);
+            if (flip != null) {
+                flipEnseigne = flip.getEnseigne();
+                flipModele = flip.getModele().getNom();
+                Toast toast = Toast.makeText(getApplicationContext(), "Flip trouvé", Toast.LENGTH_SHORT);
+                toast.show();
 
-            R_flipID.setText(Long.toString(flip.getId()));
-            R_flipEnseigneId.setText(Long.toString(flip.getIdEnseigne()));
-            R_flipEnseigne.setText(flipEnseigne.getNom());
-            R_flipEnseigneAdresse.setText(flipEnseigne.getAdresseCompleteAvecPays());
-            R_flipModeleId.setText(Long.toString(flip.getIdModele()));
-            R_flipModele.setText(flipModele);
-            actifToggle.setChecked(flip.isActif());
-            if (flip.isActif()) {
-                actifState.setText("Actif");
+                R_flipID.setText(Long.toString(flip.getId()));
+                R_flipEnseigneId.setText(Long.toString(flip.getIdEnseigne()));
+                R_flipEnseigne.setText(flipEnseigne.getNom());
+                R_flipEnseigneAdresse.setText(flipEnseigne.getAdresseCompleteAvecPays());
+                R_flipModeleId.setText(Long.toString(flip.getIdModele()));
+                R_flipModele.setText(flipModele);
+                actifToggle.setChecked(flip.isActif());
+                if (flip.isActif()) {
+                    actifState.setText("Actif");
+                } else {
+                    actifState.setText("Inactif");
+                }
             } else {
-                actifState.setText("Inactif");
+                Toast toast = Toast.makeText(getApplicationContext(), "Flip non trouvé", LENGTH_SHORT);
+                toast.show();
             }
-        } else {
-            Toast toast = Toast.makeText(getApplicationContext(), "Flip non trouvé", LENGTH_SHORT);
-            toast.show();
+
+
+
+
+
+        } catch (NumberFormatException e) {
+            Log.i("",inputString+" is not a number");
         }
+
+
+
     }
 
     @OnClick(R.id.saveButton)
@@ -220,17 +239,15 @@ public class AdminActivity extends AppCompatActivity {
         searchBynumberInput.setText("");
     }
 
-    @OnClick(R.id.NewModel)
+    @OnClick(R.id.MyAction2)
     protected void NewModel() {
-        Intent intentNewModel = new Intent(this, PopNewModel.class);
-        startActivity(intentNewModel);
-    }
 
+    }
 
     @OnClick(R.id.MyAction)
     protected void MyAction() {
-        Intent intentNewModel = new Intent(this, TestActivity.class);
-        startActivity(intentNewModel);
+        Intent intent = new Intent(this, TestActivity.class);
+        startActivity(intent);
 
 
         /*ParseObject parseObject;

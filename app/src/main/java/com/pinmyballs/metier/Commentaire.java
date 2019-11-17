@@ -2,8 +2,11 @@ package com.pinmyballs.metier;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.io.Serializable;
 
+@Parcel
 public class Commentaire  implements Serializable{
 
 	private static final long serialVersionUID = 4904936104977593366L;
@@ -19,27 +22,27 @@ public class Commentaire  implements Serializable{
 	//private String objectId;
 
 	@SerializedName("COMM_ID")
-	private long id;
+	 long id;
 
 	@SerializedName("COMM_FLIPPER_ID")
-	private long flipperId;
+	 long flipperId;
 
 	@SerializedName("COMM_TEXTE")
-	private String texte;
+	 String texte;
 
     @SerializedName("COMM_TYPE")
-    private String type;
+     String type;
 
 	@SerializedName("COMM_DATE")
-	private String date;
+	 String date;
 
 	@SerializedName("COMM_PSEUDO")
-	private String pseudo;
+	 String pseudo;
 
 	@SerializedName("COMM_ACTIF")
-	private boolean actif;
+	 boolean actif;
 
-	private Flipper flipper;
+	 Flipper flipper;
 
 	public Commentaire(){
 	}
