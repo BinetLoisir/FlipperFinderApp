@@ -250,7 +250,7 @@ public class FragmentTournoiNew extends Fragment{
                     toast.show();
                 }
 
-                TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tabs);
+                TabLayout tabLayout = getActivity().findViewById(R.id.tabs);
                 tabLayout.getTabAt(0).select();
             }
         });

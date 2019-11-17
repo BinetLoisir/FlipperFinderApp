@@ -53,7 +53,7 @@ public class FragmentTournoiMap extends Fragment implements OnMapReadyCallback, 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tournoi_map, container, false);
-        mSwitchTournois =  (Switch) view.findViewById(R.id.switchTournoi);
+        mSwitchTournois = view.findViewById(R.id.switchTournoi);
         mSwitchTournois.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -112,10 +112,10 @@ public class FragmentTournoiMap extends Fragment implements OnMapReadyCallback, 
                         null);
 
 
-                TextView title = ((TextView) infoWindow.findViewById(R.id.Tournoititle));
+                TextView title = infoWindow.findViewById(R.id.Tournoititle);
                 title.setText(marker.getTitle());
 
-                TextView snippet = ((TextView) infoWindow.findViewById(R.id.Tournoisnippet));
+                TextView snippet = infoWindow.findViewById(R.id.Tournoisnippet);
                 snippet.setText(marker.getSnippet());
 
                 return infoWindow;

@@ -38,10 +38,10 @@ public class TournoiActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentTournoiListe());
         adapter.addFragment(new FragmentTournoiMap());
         adapter.addFragment(new FragmentTournoiNew());
-        ViewPager viewPager = (ViewPager) findViewById(R.id.container2);
+        ViewPager viewPager = findViewById(R.id.container2);
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.ic_view_list_black_24dp);
@@ -55,7 +55,7 @@ public class TournoiActivity extends AppCompatActivity {
      */
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up");
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext,bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();

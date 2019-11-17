@@ -48,9 +48,9 @@ public class ListeScoresAdapter extends ArrayAdapter<Score>{
 
         DecimalFormat formatter = new DecimalFormat("###,###,###,###");
 
-        TextView Tpseudo = (TextView) convertView.findViewById(R.id.scorePseudo);
-        TextView Tscore = (TextView) convertView.findViewById(R.id.scoreScore);
-        TextView Tdate = (TextView) convertView.findViewById(R.id.scoreDate);
+        TextView Tpseudo = convertView.findViewById(R.id.scorePseudo);
+        TextView Tscore = convertView.findViewById(R.id.scoreScore);
+        TextView Tdate = convertView.findViewById(R.id.scoreDate);
 
         try {
             Tpseudo.setText(pseudo);

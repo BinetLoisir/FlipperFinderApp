@@ -104,10 +104,10 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
 
 		if (p != null) {
 
-			TextView pseudoTV = (TextView) v.findViewById(R.id.textePseudo);
-			TextView dateTV = (TextView) v.findViewById(R.id.textDate);
-			TextView commentaireTV = (TextView) v.findViewById(R.id.texteCommentaire);
-            ImageButton editBtn = (ImageButton) v.findViewById(R.id.buttonEdit);
+			TextView pseudoTV = v.findViewById(R.id.textePseudo);
+			TextView dateTV = v.findViewById(R.id.textDate);
+			TextView commentaireTV = v.findViewById(R.id.texteCommentaire);
+            ImageButton editBtn = v.findViewById(R.id.buttonEdit);
             editBtn.setOnClickListener(CommentaireEdit);
 
             SharedPreferences settings = context.getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, MODE_PRIVATE);

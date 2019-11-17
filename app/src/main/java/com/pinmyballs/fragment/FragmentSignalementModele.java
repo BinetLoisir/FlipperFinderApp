@@ -91,7 +91,6 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
             listeModelesComplet.add(NomComplet);
             hashMapModeles.put(NomComplet, modele.getId());
         }
-        ;
         // Create an ArrayAdapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listeModelesComplet);
 

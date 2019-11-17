@@ -58,10 +58,10 @@ public class CommentaireActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentCommentairesPost());
         adapter.addFragment(new FragmentCommentairesNew());
         adapter.addFragment(new FragmentCommentairesDeleted());
-        ViewPager viewPager = (ViewPager) findViewById(R.id.container2);
+        ViewPager viewPager = findViewById(R.id.container2);
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setText("COMMENTAIRES");
@@ -75,7 +75,7 @@ public class CommentaireActivity extends AppCompatActivity {
      */
     private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up");
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext,bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();

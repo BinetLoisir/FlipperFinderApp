@@ -50,9 +50,9 @@ public class FragmentTournoiListe extends Fragment{
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final ListView listTournois = (ListView) view.findViewById(R.id.tournoisliste);
+        final ListView listTournois = view.findViewById(R.id.tournoisliste);
 
-        mSwitchTournois =  (Switch) view.findViewById(R.id.switchTournoiListe);
+        mSwitchTournois = view.findViewById(R.id.switchTournoiListe);
         mSwitchTournois.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -71,7 +71,7 @@ public class FragmentTournoiListe extends Fragment{
         populateListTournois(listTournois);
 
 
-        mSortButton = (ImageView) view.findViewById(R.id.sortbutton);
+        mSortButton = view.findViewById(R.id.sortbutton);
         mSortButton.setOnClickListener(
                 v -> {
                 sortTournois(tournois);

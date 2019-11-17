@@ -55,7 +55,7 @@ public class FragmentDialogScore extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        pseudo = (String) getArguments().getString("pseudo");
+        pseudo = getArguments().getString("pseudo");
 
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -69,12 +69,12 @@ public class FragmentDialogScore extends DialogFragment {
         builder.setView(view);
 
 
-        PseudoTV = (TextView) view.findViewById(R.id.PseudoNewScore);
+        PseudoTV = view.findViewById(R.id.PseudoNewScore);
         settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
 
         Log.d(TAG, "onViewCreated: pseudo " + pseudo);
         PseudoTV.setText(pseudo);
-        ScoreTV = (TextView) view.findViewById(R.id.ScoreNewScore);
+        ScoreTV = view.findViewById(R.id.ScoreNewScore);
         if (pseudo.length() != 0) {
             ScoreTV.requestFocus();
         }

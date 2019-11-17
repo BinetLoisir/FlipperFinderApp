@@ -32,10 +32,10 @@ public class EnseigneDAO extends DAOBase{
 
 		double fudge = Math.pow(Math.cos(Math.toRadians(center.x)),2);
 		String strWhere =  " Where "
-			+ "CAST(" +FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " > " + String.valueOf(p3.x) + " And "
-			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " < " + String.valueOf(p1.x) + " And "
-			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " < " + String.valueOf(p2.y) + " And "
-			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " > " + String.valueOf(p4.y);
+			+ "CAST(" +FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " > " + p3.x + " And "
+			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " AS REAL)" + " < " + p1.x + " And "
+			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " < " + p2.y + " And "
+			+ "CAST(" + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " AS REAL)" + " > " + p4.y;
 
 		String strOrder =  " ORDER BY (("+center.x+" - ENS_LATITUDE) * ("+center.x+" - ENS_LATITUDE)" +
 			" + ("+center.y+" - ENS_LONGITUDE) * ("+center.y+" - ENS_LONGITUDE) * "+fudge+")";

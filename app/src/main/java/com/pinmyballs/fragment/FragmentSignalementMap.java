@@ -59,7 +59,7 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mapView = (MapView) mView.findViewById(R.id.mapViewSignalement);
+        mapView = mView.findViewById(R.id.mapViewSignalement);
         if (mapView != null) {
             mapView.onCreate(null);
             mapView.onResume();

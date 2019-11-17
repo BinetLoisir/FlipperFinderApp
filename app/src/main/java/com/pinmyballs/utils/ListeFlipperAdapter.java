@@ -82,13 +82,13 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
 
         if (p != null) {
 
-            ImageView markerIcone = (ImageView) v.findViewById(R.id.markericon);
-            TextView modeleTV = (TextView) v.findViewById(R.id.textModeleFlipper);
-            TextView adresseTV = (TextView) v.findViewById(R.id.textAdresseFlipper);
-            TextView distanceTV = (TextView) v.findViewById(R.id.distance);
-            TextView dateMajTV = (TextView) v.findViewById(R.id.dateMaj);
-            TextView nomBar = (TextView) v.findViewById(R.id.nomBar);
-            ImageView warningImage = (ImageView) v.findViewById(R.id.warningicon);
+            ImageView markerIcone = v.findViewById(R.id.markericon);
+            TextView modeleTV = v.findViewById(R.id.textModeleFlipper);
+            TextView adresseTV = v.findViewById(R.id.textAdresseFlipper);
+            TextView distanceTV = v.findViewById(R.id.distance);
+            TextView dateMajTV = v.findViewById(R.id.dateMaj);
+            TextView nomBar = v.findViewById(R.id.nomBar);
+            ImageView warningImage = v.findViewById(R.id.warningicon);
 
             if (modeleTV != null) {
                 modeleTV.setText(p.getModele().getNomComplet());
@@ -122,12 +122,12 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
             }else if (nbJours > 365){
                 // Mis à jour il y a plus de 365 jours, on met en Rouge
                 dateMajTV.setTextColor(Color.parseColor("#FE2E2E"));
-                dateMajTV.setText("Vu il y a " + String.valueOf(nbJours) + " jours.");
+                dateMajTV.setText("Vu il y a " + nbJours + " jours.");
                 warningImage.setVisibility(View.VISIBLE);
             } else if (nbJours > 60) {
                 // Mis à jour il y a plus de 60 jours, on met en Orange
                 dateMajTV.setTextColor(Color.parseColor("#E68A00"));
-                dateMajTV.setText("Vu il y a " + String.valueOf(nbJours) + " jours.");
+                dateMajTV.setText("Vu il y a " + nbJours + " jours.");
             } else if (nbJours == 0) {
                 // Mis à jour aujourd'hui
                 //dateMajTV.setTextColor(Color.parseColor("#04B404"));
@@ -139,7 +139,7 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
             } else {
                 // Mis à jour récemment, on met en vert
                 //dateMajTV.setTextColor(Color.parseColor("#04B404"));
-                dateMajTV.setText("Vu il y a " + String.valueOf(nbJours) + " jours.");
+                dateMajTV.setText("Vu il y a " + nbJours + " jours.");
             }
         }
 

@@ -29,6 +29,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -189,7 +190,7 @@ public class GlobalService {
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("ENSEIGNE.json"), "UTF-8"));
+			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("ENSEIGNE.json"), StandardCharsets.UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -203,7 +204,7 @@ public class GlobalService {
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("FLIPPER.json"), "UTF-8"));
+			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("FLIPPER.json"), StandardCharsets.UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -217,7 +218,7 @@ public class GlobalService {
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("COMMENTAIRE.json"), "UTF-8"));
+			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("COMMENTAIRE.json"), StandardCharsets.UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -231,7 +232,7 @@ public class GlobalService {
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("MODELE_FLIPPER.json"), "UTF-8"));
+			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("MODELE_FLIPPER.json"), StandardCharsets.UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -245,7 +246,7 @@ public class GlobalService {
 		Gson gson = new GsonBuilder().create();
 		Reader reader = null;
 		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("TOURNOI.json"), "UTF-8"));
+			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("TOURNOI.json"), StandardCharsets.UTF_8));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -135,7 +135,7 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder
 
             v.setOnClickListener(view -> {
 
-                Toast.makeText(v.getContext(),"black",Toast.LENGTH_SHORT).show();;
+                Toast.makeText(v.getContext(),"black",Toast.LENGTH_SHORT).show();
             });
         }
 

@@ -32,7 +32,7 @@ public class FragmentCommentairesNew extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final ListView listView = (ListView) view.findViewById(R.id.listCommNew);
+        final ListView listView = view.findViewById(R.id.listCommNew);
         populateList(listView, Commentaire.TYPE_NEW, false);
     }
 

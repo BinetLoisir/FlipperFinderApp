@@ -35,7 +35,7 @@ public class FragmentHiScoreFlipper extends Fragment {
 
 
     public FragmentHiScoreFlipper(){
-    };
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,14 +44,14 @@ public class FragmentHiScoreFlipper extends Fragment {
         super.onCreate(savedInstanceState);
 
         flipper = (Flipper) getArguments().getSerializable("flip");
-        pseudo = (String) getArguments().getString("pseudo");
+        pseudo = getArguments().getString("pseudo");
 
 
         //Widgets
         settings = requireActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
-        listeScoreView = (ListView) rootView.findViewById(R.id.listScoreViewFrag);
-        fab = (FloatingActionButton) rootView.findViewById(R.id.fabscorefrag);
-        TVnoscore = (TextView) rootView.findViewById(R.id.noscore);
+        listeScoreView = rootView.findViewById(R.id.listScoreViewFrag);
+        fab = rootView.findViewById(R.id.fabscorefrag);
+        TVnoscore = rootView.findViewById(R.id.noscore);
 
         fab.setOnClickListener(view -> {
             FragmentDialogScore fragmentDialogScore = new FragmentDialogScore();
@@ -89,7 +89,7 @@ public class FragmentHiScoreFlipper extends Fragment {
 
     //AJOUT INTERFACE TEST
     public void receivedScore(Score score){
-        Toast toast = Toast.makeText(getContext(), "Score reçu : " + String.valueOf(score.getScore()), Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getContext(), "Score reçu : " + score.getScore(), Toast.LENGTH_SHORT);
         toast.show();
     }
 

@@ -85,7 +85,7 @@ public class ListeModelsActivity extends AppCompatActivity {
             fab.show();
         } else {
             fab.hide();
-        } ;
+        }
     }
 
 

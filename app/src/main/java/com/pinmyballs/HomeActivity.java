@@ -232,10 +232,10 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         adapter.addFragment(new FragmentTournoiNew());
         adapter.addFragment(new FragmentTournoiNew());
         adapter.addFragment(new FragmentTournoiNew());
-        ViewPager viewPager = (ViewPager) findViewById(R.id.container2);
+        ViewPager viewPager = findViewById(R.id.container2);
         viewPager.setAdapter(adapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setText("Info");
@@ -248,7 +248,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     private void setupBottomNavigationView() {
         Log.d(TAG, "setupBottomNavigationView: setting up");
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
@@ -260,7 +260,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
      * ToolBar Setup
      */
     private void setupToolBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.homeToolBar);
+        Toolbar toolbar = findViewById(R.id.homeToolBar);
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -403,10 +403,10 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 // Inflate the layouts for the info window, title and snippet.
                 View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents, null);
 
-                TextView title = ((TextView) infoWindow.findViewById(R.id.title));
+                TextView title = infoWindow.findViewById(R.id.title);
                 title.setText(marker.getTitle());
 
-                TextView snippet = ((TextView) infoWindow.findViewById(R.id.snippet));
+                TextView snippet = infoWindow.findViewById(R.id.snippet);
                 snippet.setText(marker.getSnippet());
 
                 return infoWindow;
@@ -525,7 +525,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
+                                           @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         mLocationPermissionGranted = false;
         Log.d(TAG, "onRequestPermissionsResult: Result received");

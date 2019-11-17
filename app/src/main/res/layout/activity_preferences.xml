@@ -79,6 +79,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:text="AAA"
+        android:hint="Pseudo"
         android:textAppearance="@style/Base.TextAppearance.AppCompat"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/PrefPseudoText"

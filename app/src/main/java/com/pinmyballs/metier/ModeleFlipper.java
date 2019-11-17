@@ -72,10 +72,11 @@ public class ModeleFlipper  implements Serializable{
 	}
 	public String getObjectId(){
 		return objectId;
-	};
-	public void setObjectId(String objectId){ this.objectId = objectId;};
+	}
 
-	public String getNomComplet(){
+    public void setObjectId(String objectId){ this.objectId = objectId;}
+
+    public String getNomComplet(){
 		return this.getNom() +
 				" (" +
 				this.getMarque() +

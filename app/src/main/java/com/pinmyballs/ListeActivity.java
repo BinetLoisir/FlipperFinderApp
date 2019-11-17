@@ -145,7 +145,7 @@ public class ListeActivity extends AppCompatActivity {
      */
     private void setupBottomNavigationView() {
         Log.d(TAG, "setupBottomNavigationView: setting up");
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
@@ -158,7 +158,7 @@ public class ListeActivity extends AppCompatActivity {
      * ToolBar Setup
      */
     private void setupToolBar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.listToolBar);
+        Toolbar toolbar = findViewById(R.id.listToolBar);
         setSupportActionBar(toolbar);
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -276,13 +276,13 @@ public class ListeActivity extends AppCompatActivity {
             if (autocompleteModeleFlipper.getText() == null || autocompleteModeleFlipper.getText().length() == 0) {
                 new AlertDialog.Builder(this)
                         .setTitle("Aucun résultat!")
-                        .setMessage("Pas de flippers à " + String.valueOf(DISTANCE_MAX) + "km à la ronde!")
+                        .setMessage("Pas de flippers à " + DISTANCE_MAX + "km à la ronde!")
                         .setNeutralButton("Fermer", null)
                         .setIcon(R.drawable.ic_delete).show();
             } else {
                 new AlertDialog.Builder(this)
                         .setTitle("Aucun résultat!")
-                        .setMessage("Le flipper recherché n'a pas été trouvé à " + String.valueOf(DISTANCE_MAX) + "km à la ronde!")
+                        .setMessage("Le flipper recherché n'a pas été trouvé à " + DISTANCE_MAX + "km à la ronde!")
                         .setNeutralButton("Fermer", null)
                         .setIcon(R.drawable.ic_delete).show();
             }
@@ -352,7 +352,7 @@ public class ListeActivity extends AppCompatActivity {
      */
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[],
+                                           @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         mLocationPermissionGranted = false;
         switch (requestCode) {

@@ -48,11 +48,11 @@ public class PopNewModel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.pop_newmodel);
-        progressBar = (ProgressBar) findViewById(R.id.progressbarPop);
-        ET_Model = (TextInputEditText) findViewById(R.id.ET_model);
-        ET_Brand = (TextInputEditText) findViewById(R.id.ET_brand);
-        ET_Year = (TextInputEditText) findViewById(R.id.ET_year);
-        Submit = (Button) findViewById(R.id.btn_submit);
+        progressBar = findViewById(R.id.progressbarPop);
+        ET_Model = findViewById(R.id.ET_model);
+        ET_Brand = findViewById(R.id.ET_brand);
+        ET_Year = findViewById(R.id.ET_year);
+        Submit = findViewById(R.id.btn_submit);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +64,7 @@ public class PopNewModel extends AppCompatActivity {
                 }
             }
         });
-        Cancel = (Button) findViewById(R.id.btn_cancel);
+        Cancel = findViewById(R.id.btn_cancel);
         Cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

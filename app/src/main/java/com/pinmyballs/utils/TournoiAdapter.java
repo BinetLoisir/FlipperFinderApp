@@ -76,12 +76,12 @@ public class TournoiAdapter extends ArrayAdapter<Tournoi> {
         LayoutInflater inflater = LayoutInflater.from(mContext);
         convertView = inflater.inflate(mResource, parent, false);
 
-        TextView Tmonth = (TextView) convertView.findViewById(R.id.Tmonth);
-        TextView Tday = (TextView) convertView.findViewById(R.id.Tday);
-        TextView Tyear = (TextView) convertView.findViewById(R.id.Tyear);
-        TextView Tname = (TextView) convertView.findViewById(R.id.Tname);
-        TextView Tville = (TextView) convertView.findViewById(R.id.Tville);
-        TextView Tadresse = (TextView) convertView.findViewById(R.id.Tadresse);
+        TextView Tmonth = convertView.findViewById(R.id.Tmonth);
+        TextView Tday = convertView.findViewById(R.id.Tday);
+        TextView Tyear = convertView.findViewById(R.id.Tyear);
+        TextView Tname = convertView.findViewById(R.id.Tname);
+        TextView Tville = convertView.findViewById(R.id.Tville);
+        TextView Tadresse = convertView.findViewById(R.id.Tadresse);
 
         if (date1.before(new Date())) {
             Tmonth.setTextColor(Color.DKGRAY);

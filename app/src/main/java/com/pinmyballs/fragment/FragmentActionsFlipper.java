@@ -261,7 +261,7 @@ public class FragmentActionsFlipper extends Fragment {
         super.onCreate(savedInstanceState);
 
         flipper = (Flipper) getArguments().getSerializable("flip");
-        pseudo = (String) getArguments().getString("pseudo");
+        pseudo = getArguments().getString("pseudo");
 
         setupUI(rootView);
 
@@ -270,18 +270,18 @@ public class FragmentActionsFlipper extends Fragment {
     }
 
     private void setupUI(View rootView) {
-        Button boutonValidation = (Button) rootView.findViewById(R.id.boutonValidation);
-        Button boutonChangement = (Button) rootView.findViewById(R.id.boutonChangement);
-        Button boutonDisparition = (Button) rootView.findViewById(R.id.boutonDisparition);
-        Button boutonNavigation = (Button) rootView.findViewById(R.id.boutonNavigation);
-        Button boutonNouveauFlip = (Button) rootView.findViewById(R.id.boutonNouveauFlip);
+        Button boutonValidation = rootView.findViewById(R.id.boutonValidation);
+        Button boutonChangement = rootView.findViewById(R.id.boutonChangement);
+        Button boutonDisparition = rootView.findViewById(R.id.boutonDisparition);
+        Button boutonNavigation = rootView.findViewById(R.id.boutonNavigation);
+        Button boutonNouveauFlip = rootView.findViewById(R.id.boutonNouveauFlip);
 
-        champNouveauModeleFlipper = (AutoCompleteTextView) rootView.findViewById(R.id.autocompletionNouveauModeleFlipper);
-        pseudoET = (EditText) rootView.findViewById(R.id.champPseudo);
-        commentaire = (EditText) rootView.findViewById(R.id.texteCommentaire);
-        changeModeleLayout = (ScrollView) rootView.findViewById(R.id.layoutChangeModele);
-        boutonValideChangement = (Button) rootView.findViewById(R.id.boutonValideChangementModele);
-        boutonAnnuleChangement = (Button) rootView.findViewById(R.id.boutonCancelChangeModele);
+        champNouveauModeleFlipper = rootView.findViewById(R.id.autocompletionNouveauModeleFlipper);
+        pseudoET = rootView.findViewById(R.id.champPseudo);
+        commentaire = rootView.findViewById(R.id.texteCommentaire);
+        changeModeleLayout = rootView.findViewById(R.id.layoutChangeModele);
+        boutonValideChangement = rootView.findViewById(R.id.boutonValideChangementModele);
+        boutonAnnuleChangement = rootView.findViewById(R.id.boutonCancelChangeModele);
 
         boutonChangement.setOnClickListener(ChangerModeleListener);
         boutonDisparition.setOnClickListener(DisparitionListener);

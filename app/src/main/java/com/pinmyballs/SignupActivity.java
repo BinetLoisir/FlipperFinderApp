@@ -42,11 +42,11 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         // Set up the login form.
-        mInitialsView = (EditText) findViewById(R.id.signup_initials);
-        mNameView = (EditText) findViewById(R.id.signup_name);
-        mEmailView = (EditText) findViewById(R.id.signup_email);
-        mPasswordView = (EditText) findViewById(R.id.signup_password);
-        mPasswordConfirmView = (EditText) findViewById(R.id.signup_password_confirm);
+        mInitialsView = findViewById(R.id.signup_initials);
+        mNameView = findViewById(R.id.signup_name);
+        mEmailView = findViewById(R.id.signup_email);
+        mPasswordView = findViewById(R.id.signup_password);
+        mPasswordConfirmView = findViewById(R.id.signup_password_confirm);
 
         mPasswordConfirmView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -59,7 +59,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-        Button mEmailSignUpButton = (Button) findViewById(R.id.email_sign_up_button);
+        Button mEmailSignUpButton = findViewById(R.id.email_sign_up_button);
         mEmailSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

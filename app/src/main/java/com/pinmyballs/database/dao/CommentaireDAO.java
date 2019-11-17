@@ -175,7 +175,7 @@ public class CommentaireDAO extends DAOBase{
 	public ArrayList<Commentaire> getCommentairePourFlipperId(long flipperId){
 		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
 		String strWhere =  " Where "
-			+ FlipperDatabaseHandler.COMM_FLIPPER_ID + " = " + String.valueOf(flipperId)
+			+ FlipperDatabaseHandler.COMM_FLIPPER_ID + " = " + flipperId
 			+ " AND "+ FlipperDatabaseHandler.COMM_ACTIF+ " = 1 ";
 		String strOrder =  " ORDER BY " + FlipperDatabaseHandler.COMM_DATE + " DESC ";
 

@@ -41,7 +41,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     public void setDate(final Calendar calendar) {
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.FRANCE);
-        TextView textView = (TextView) getActivity().findViewById(R.id.NewTournoiDate);
+        TextView textView = getActivity().findViewById(R.id.NewTournoiDate);
         textView.setText(dateFormat.format(calendar.getTime()));
     }
 

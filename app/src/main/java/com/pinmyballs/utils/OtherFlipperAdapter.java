@@ -48,7 +48,7 @@ public class OtherFlipperAdapter extends ArrayAdapter<Flipper> {
 
         if (flipper != null) {
             String modele = flipper.getModele().getNom();
-            TextView modeleTv = (TextView) view.findViewById(R.id.itemModeleFlipper);
+            TextView modeleTv = view.findViewById(R.id.itemModeleFlipper);
             modeleTv.setText(modele);
         }
 

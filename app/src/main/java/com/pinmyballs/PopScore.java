@@ -37,9 +37,9 @@ public class PopScore extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate: ");
         setContentView(R.layout.pop_score);
-        listeScoreView = (ListView) findViewById(R.id.listScoreView);
+        listeScoreView = findViewById(R.id.listScoreView);
 
-        fab = (FloatingActionButton) findViewById(R.id.fabscore);
+        fab = findViewById(R.id.fabscore);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

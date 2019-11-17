@@ -32,7 +32,7 @@ public class FragmentCommentairesPost extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final ListView listView = (ListView) view.findViewById(R.id.listCommPost);
+        final ListView listView = view.findViewById(R.id.listCommPost);
         populateList(listView, Commentaire.TYPE_POST, true);
     }
 
