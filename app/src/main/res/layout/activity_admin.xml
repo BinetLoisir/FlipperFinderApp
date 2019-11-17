@@ -79,7 +79,8 @@
             android:text="FlipID"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/searchbynumberResultFlipID"
@@ -92,7 +93,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView"
             app:layout_constraintLeft_toRightOf="@+id/textView"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:gravity="start" />
 
         <TextView
             android:id="@+id/textView2"
@@ -100,11 +102,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:text="Model"
+            android:text="@string/model"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/searchbynumberResultFlipModeleID"
@@ -137,11 +140,12 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:text="Enseigne"
+            android:text="@string/enseigne"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/searchbynumberResultFlipEnseigneID"
@@ -174,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:text="Adresse"
+            android:text="@string/adresse"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -199,7 +203,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
-            android:text="Etat"
+            android:text="@string/etat"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -209,7 +213,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_weight="4"
-            android:text="etat"
+            android:text="@string/actifst"
             app:layout_constraintBaseline_toBaselineOf="@+id/actifToggle"
             app:layout_constraintLeft_toRightOf="@+id/actifToggle"
             android:layout_marginStart="8dp" />
@@ -244,16 +248,16 @@
             android:id="@+id/MyAction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/warning"
-            android:text="MyAction" />
+            android:background="@color/warning"
+            android:text="@string/myaction_button" />
 
         <Button
             android:id="@+id/MyAction2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/accent"
-            android:text="My Action 2" />
+            android:background="@color/accent"
+            android:text="@string/myaction_button2" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

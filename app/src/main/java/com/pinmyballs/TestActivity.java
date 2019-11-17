@@ -1,14 +1,11 @@
 package com.pinmyballs;
 
 import android.os.Bundle;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pinmyballs.fragment.Fragment1;
 import com.pinmyballs.fragment.Fragment2;
-import com.pinmyballs.utils.ProgressBarHandler;
 
 public class TestActivity extends AppCompatActivity implements Fragment1.Fragment1Listener, Fragment2.Fragment2Listener {
 

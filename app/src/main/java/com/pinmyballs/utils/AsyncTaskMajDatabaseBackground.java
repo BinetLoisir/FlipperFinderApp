@@ -3,7 +3,6 @@ package com.pinmyballs.utils;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
-import android.view.Gravity;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;

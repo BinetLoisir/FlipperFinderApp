@@ -84,7 +84,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:tabIndicatorColor="@color/accent"></com.google.android.material.tabs.TabLayout>
+            app:tabIndicatorColor="@color/accent" />
     </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -95,6 +95,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appbar"
-        app:layout_constraintBottom_toBottomOf="parent"></androidx.viewpager.widget.ViewPager>
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

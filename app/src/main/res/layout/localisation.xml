@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -14,7 +15,8 @@
         android:layout_height="wrap_content"
         android:elevation="6dp"
         android:contentDescription="@string/alt_image_localisation"
-        app:srcCompat="@drawable/ic_my_location_black_24dp" />
+        app:srcCompat="@drawable/ic_my_location_black_24dp"
+		tools:targetApi="lollipop" />
 
     <ImageButton
         android:id="@+id/boutonSearchByMap"

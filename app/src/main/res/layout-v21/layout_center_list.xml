@@ -43,8 +43,7 @@
                 android:layout_gravity="center_vertical"
                 android:contentDescription="@string/alt_image_localisation"
                 android:elevation="6dp"
-                app:srcCompat="@drawable/ic_my_location_black_24dp"
-                tools:targetApi="lollipop" />
+                app:srcCompat="@drawable/ic_my_location_black_24dp" />
 
 
         </LinearLayout>

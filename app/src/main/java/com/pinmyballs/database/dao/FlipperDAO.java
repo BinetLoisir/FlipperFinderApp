@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.PointF;
-import android.util.Log;
 
 import com.pinmyballs.database.DAOBase;
 import com.pinmyballs.database.FlipperDatabaseHandler;

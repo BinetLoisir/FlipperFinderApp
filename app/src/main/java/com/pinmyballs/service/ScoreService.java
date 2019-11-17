@@ -3,7 +3,6 @@ package com.pinmyballs.service;
 import android.content.Context;
 
 import com.pinmyballs.fragment.FragmentHiScoreFlipper;
-import com.pinmyballs.fragment.FragmentScoreFlipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.base.BaseScoreService;
 import com.pinmyballs.service.parse.ParseScoreService;

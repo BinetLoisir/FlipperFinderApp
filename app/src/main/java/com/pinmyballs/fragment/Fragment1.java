@@ -14,8 +14,6 @@ import androidx.fragment.app.Fragment;
 
 import com.pinmyballs.R;
 
-import java.nio.charset.Charset;
-
 public class Fragment1 extends Fragment {
 
     private EditText editText;

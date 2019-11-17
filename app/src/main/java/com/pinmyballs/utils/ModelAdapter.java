@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Parcelable;
 import android.util.Log;
-import android.util.SparseLongArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,21 +15,18 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.pinmyballs.PopMap;
 import com.pinmyballs.PopMapLarge;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.ModeleFlipper;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
-import com.pinmyballs.service.base.BaseScoreService;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder> implements Filterable {
     private static final String TAG = "ModelAdapter";

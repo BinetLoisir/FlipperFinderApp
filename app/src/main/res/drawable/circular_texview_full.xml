@@ -15,9 +15,7 @@
             android:width="2dp"
             android:color="@color/accent_material_light2" />
 
-        <solid
-            android:color="@color/accent_material_light2"
-            ></solid>
+        <solid android:color="@color/accent_material_light2" />
 
 
 </shape>

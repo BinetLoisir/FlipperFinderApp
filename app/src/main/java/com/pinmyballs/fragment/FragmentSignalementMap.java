@@ -140,7 +140,7 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
             ArrayList<Flipper> otherFlippers = baseFlipperService.rechercheOtherFlipper(getActivity(), flipper);
             if (otherFlippers.size() > 0) {
                 for (Flipper extraflip : otherFlippers) {
-                    s.append(", " + extraflip.getModele().getNom());
+                    s.append(", ").append(extraflip.getModele().getNom());
                 }
             }
 

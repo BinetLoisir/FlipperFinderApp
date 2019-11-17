@@ -30,7 +30,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.PreferencesActivity;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Flipper;

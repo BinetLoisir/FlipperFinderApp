@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.pinmyballs.fragment.FragmentDialogScore;
 import com.pinmyballs.fragment.FragmentHiScoreFlipper;
-import com.pinmyballs.fragment.FragmentScoreFlipper;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.ScoreService;

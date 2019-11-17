@@ -11,7 +11,6 @@ import com.parse.SaveCallback;
 import com.pinmyballs.R;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.fragment.FragmentHiScoreFlipper;
-import com.pinmyballs.fragment.FragmentScoreFlipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.base.BaseScoreService;
 import com.pinmyballs.utils.ProgressBarHandler;

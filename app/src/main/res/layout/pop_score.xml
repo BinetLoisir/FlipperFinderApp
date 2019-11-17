@@ -12,11 +12,14 @@
         android:layout_height="wrap_content"
         android:background="@color/accent"
         android:gravity="center_horizontal"
-        android:paddingBottom="8dp"
         android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         android:text="HI-SCORES"
         android:textAppearance="?android:attr/textAppearanceLargeInverse"
-        android:tint="@color/accent" />
+        android:tint="@color/accent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ListView
         android:id="@+id/listScoreView"

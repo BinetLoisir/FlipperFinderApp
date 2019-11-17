@@ -17,8 +17,6 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.material.tabs.TabLayout;
 import com.pinmyballs.fragment.FragmentActionsFlipper;
 import com.pinmyballs.fragment.FragmentCarteFlipper;

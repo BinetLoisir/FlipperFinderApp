@@ -266,6 +266,14 @@
     <string name="search_field">Search</string>
     <string name="filter_field">Filter</string>
     <string name="liste_modeles">Liste modèles</string>
+    <string name="myaction_button">MyAction Button</string>
+    <string name="myaction_button2">MyAction Button2</string>
+    <string name="model">Model</string>
+    <string name="enseigne">Enseigne</string>
+    <string name="adresse">Adresse</string>
+    <string name="etat">Etat</string>
+    <string name="actifst">actifst</string>
+    <string name="ajoute_new_model">Ajouter un nouveau modèle</string>
 
 
 </resources>

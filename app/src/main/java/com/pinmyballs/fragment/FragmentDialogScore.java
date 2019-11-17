@@ -10,15 +10,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.PreferencesActivity;
@@ -26,13 +21,9 @@ import com.pinmyballs.R;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.ScoreService;
-import com.pinmyballs.utils.ListeScoresAdapter;
 
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 
 
