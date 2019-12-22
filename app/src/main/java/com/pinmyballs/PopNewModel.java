@@ -85,7 +85,7 @@ public class PopNewModel extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         ModeleService modeleService = new ModeleService();
         ParseModeleService parseModeleService = new ParseModeleService();
-        Long maxId;
+        long maxId;
         maxId = modeleService.getMaxIdModeleFlipper(getApplicationContext());
         if (maxId == 0) {
             progressBar.setVisibility(View.INVISIBLE);

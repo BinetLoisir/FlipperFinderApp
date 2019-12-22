@@ -27,7 +27,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 57
-        versionName "3.05"
+        versionName "3.06"
         buildConfigField('String', 'ApiKey', PinMyBalls_GoogleMapAPIKey)
         resValue('string', 'maps_api_key', PinMyBalls_GoogleMapAPIKey)
     }
