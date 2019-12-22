@@ -22,6 +22,8 @@ import com.pinmyballs.service.base.BaseCommentaireService;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.utils.ProgressBarHandler;
 
+import org.w3c.dom.Comment;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -200,48 +202,61 @@ public class ParseFlipperService {
                 settings = pContext.getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
                 String pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "SYS");
 
-                final Commentaire commentaire = new Commentaire();
-                commentaire.setId(datedujour.getTime());
-                commentaire.setFlipperId(flipper.getId());
-                commentaire.setFlipper(flipper);
-                commentaire.setDate(dateMaj);
-                commentaire.setPseudo(pseudo);
-                commentaire.setActif(true);
+                final Commentaire commentaireUpdate = new Commentaire();
+                commentaireUpdate.setId(datedujour.getTime());
+                commentaireUpdate.setFlipperId(flipper.getId());
+                commentaireUpdate.setFlipper(flipper);
+                commentaireUpdate.setDate(dateMaj);
+                commentaireUpdate.setPseudo(pseudo);
+                commentaireUpdate.setActif(true);
+
+                List<Commentaire> associatedComments;
+                BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
+                associatedComments = baseCommentaireService.getCommentaireByFlipperId(pContext, flipper.getId());
 
                 if (objects != null && objects.size() > 0) {
+                    //List de ParseObjects à créer, mettre à jour
+                    List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
+
                     ParseObject flipPO = objects.get(0);
-                    // Si le flip est désactivé, on l'active
+                    // Si le flip est désactivé, on l'active, on rajoute un commentaire et on réactive les commentaires du flip
                     if (!flipPO.getBoolean(FlipperDatabaseHandler.FLIPPER_ACTIF)) {
                         // On passe le flipper actif et on update la date de màj
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
-                        commentaire.setTexte("Réinstallé");
-                        commentaire.setType(Commentaire.TYPE_REINSTALL);
-                        // Si le flip est actif, on le désactive
+                        commentaireUpdate.setTexte("Réinstallé");
+                        commentaireUpdate.setType(Commentaire.TYPE_REINSTALL);
+                        //On reactive les commentaires associés
+                        if (associatedComments.size() >0){
+                            for(Commentaire comment : associatedComments){
+                                ParseObject commentPO = new ParseFactory().getParseObject(comment);
+                                commentPO.put(FlipperDatabaseHandler.COMM_ACTIF, true);
+                                listParseToSave.add(commentPO);
+                            }
+                        }
+
                     } else {
                         // On passe le flipper inactif et on update la date de màj
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_ACTIF, false);
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
-                        commentaire.setTexte("Supprimé");
-                        commentaire.setType(Commentaire.TYPE_DELETE);
-
-
+                        commentaireUpdate.setTexte("Supprimé");
+                        commentaireUpdate.setType(Commentaire.TYPE_DELETE);
+                        //On desactive les commentaires associés
+                        if (associatedComments.size() >0){
+                            for(Commentaire comment : associatedComments){
+                                ParseObject commentPO = new ParseFactory().getParseObject(comment);
+                                commentPO.put(FlipperDatabaseHandler.COMM_ACTIF, false);
+                                listParseToSave.add(commentPO);
+                            }
+                        }
                     }
-                    // On met le tout dans une liste
-                    List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
+                    // On ajoute le flipper mis à jour à la liste
                     listParseToSave.add(flipPO);
-
-                    ParseObject commentairePO = new ParseFactory().getParseObject(commentaire);
+                    //On ajoute le commentaire de mise à jour
+                    ParseObject commentairePO = new ParseFactory().getParseObject(commentaireUpdate);
                     //Pointer sur le flip
                     commentairePO.put(FlipperDatabaseHandler.COMM_FLIP_POINTER, objects.get(0));
                     listParseToSave.add(commentairePO);
-
-                    //TODO Mettre inactif tous les commentaires liés à ce flip.
-                    List<Commentaire> associatedComments = new ArrayList<Commentaire>();
-                    BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
-                    associatedComments = baseCommentaireService.getCommentaireByFlipperId(pContext, flipper.getId());
-                    
-
 
                     // Et on balance in da cloud!
                     ParseObject.saveAllInBackground(listParseToSave, new SaveCallback() {
@@ -254,12 +269,13 @@ public class ParseFlipperService {
                                 List<Flipper> listBaseToSave = new ArrayList<Flipper>();
                                 List<Commentaire> listBaseToSaveComment = new ArrayList<Commentaire>();
                                 listBaseToSave.add(flipper);
-                                listBaseToSaveComment.add(commentaire);
+                                listBaseToSaveComment.add(commentaireUpdate);
 
                                 BaseFlipperService baseFlipperService = new BaseFlipperService();
                                 BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
                                 baseFlipperService.majListeFlipper(listBaseToSave, pContext);
                                 baseCommentaireService.majListeCommentaire(listBaseToSaveComment, pContext);
+                                //TODO METTRE A JOUR LES COMMENTAIRES ASSOCIES.
 
 
                                 Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.popupChangementFlipOK), Toast.LENGTH_SHORT);
