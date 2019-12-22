@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -67,6 +68,8 @@ public class AdminActivity extends AppCompatActivity {
     @BindView(R.id.MyAction2)
     Button MyAction2;
 
+    Flipper flipper;
+
     ActionBar mActionbar;
     SharedPreferences settings;
 
@@ -93,6 +96,20 @@ public class AdminActivity extends AppCompatActivity {
             }
 
         });
+
+        R_flipID.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Flipper p = flipper;
+                if(p!= null) {
+                    Intent infoActivite = new Intent(getApplicationContext(), PageInfoFlipperPager.class);
+                    infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, p);
+                    infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
+                    getApplicationContext().startActivity(infoActivite);
+                }
+            }
+        });
+
 
         //Rating exemple
         /*myRatingBar.setRating(1);
@@ -124,9 +141,7 @@ public class AdminActivity extends AppCompatActivity {
                 break;
 
 
-
-
-                default:
+            default:
                 Log.i("Erreur action bar", "default");
                 break;
         }
@@ -151,21 +166,29 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     @OnClick(R.id.searchbynumberImagebutton)
     public void searchbynumber() {
+
         String inputString = searchBynumberInput.getText().toString();
+
         if (searchBynumberInput.getText().length() == 0) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Entrer un numéro", Toast.LENGTH_SHORT);
+            toast.show();
             return;
         }
+
         try {
-            int flipnumberInput = Integer.parseInt(inputString);
-            Log.i("",inputString+" is a number");
+            long flipnumberInput = Long.parseLong(inputString.trim());
             Flipper flip;
             Enseigne flipEnseigne;
             String flipModele;
             GlobalService globalService = new GlobalService();
             flip = globalService.getFlip(getApplicationContext(), flipnumberInput);
             if (flip != null) {
+                flipper = flip;
                 flipEnseigne = flip.getEnseigne();
                 flipModele = flip.getModele().getNom();
                 Toast toast = Toast.makeText(getApplicationContext(), "Flip trouvé", Toast.LENGTH_SHORT);
@@ -186,16 +209,14 @@ public class AdminActivity extends AppCompatActivity {
             } else {
                 Toast toast = Toast.makeText(getApplicationContext(), "Flip non trouvé", LENGTH_SHORT);
                 toast.show();
+                Log.d(TAG, "searchbynumber: Flip non trouvé");
+
             }
 
-
-
-
-
         } catch (NumberFormatException e) {
-            Log.i("",inputString+" is not a number");
-        }
+            Log.i("", inputString + " is not a number " + e);
 
+        }
 
 
     }
