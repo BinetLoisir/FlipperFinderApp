@@ -26,8 +26,8 @@ android {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 16
         targetSdkVersion 29
-        versionCode 57
-        versionName "3.06"
+        versionCode 58
+        versionName "3.11"
         buildConfigField('String', 'ApiKey', PinMyBalls_GoogleMapAPIKey)
         resValue('string', 'maps_api_key', PinMyBalls_GoogleMapAPIKey)
     }
