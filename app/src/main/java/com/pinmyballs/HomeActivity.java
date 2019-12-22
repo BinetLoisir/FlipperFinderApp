@@ -318,6 +318,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                         return true;
 
                     case R.id.action_liste_modele:
+                        Log.d(TAG, "onMenuItemClick: Starting Modele List Activity");
                         Intent intent5 = new Intent(HomeActivity.this, ListeModelsActivity.class);
                         startActivity(intent5);
                         return true;
