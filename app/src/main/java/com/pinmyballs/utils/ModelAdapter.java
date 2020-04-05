@@ -147,10 +147,6 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder
             }
         }
 
-        void setOnClick(ModeleFlipper modeleFlipper) {
-
-        }
-
         void populateHashMap(Context context) {
             ArrayList<Long> listModelIDs = new BaseModeleService().getAllIdModeleFlipper(context);
             ArrayList<Flipper> listFlippersActifs = new BaseFlipperService().getAllActiveFlippers(context);

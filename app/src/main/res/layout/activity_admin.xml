@@ -235,8 +235,8 @@
         android:id="@+id/divider3"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
         android:background="?android:attr/listDivider" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -248,6 +248,9 @@
             android:id="@+id/MyAction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
             android:background="@color/warning"
             android:text="@string/myaction_button" />
 
@@ -256,10 +259,28 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+
             android:background="@color/accent"
             android:text="@string/myaction_button2" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <EditText
+        android:id="@+id/et_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter query"/>
+
+    <TextView
+        android:id="@+id/query_results"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:textSize="16sp"/>
+
 
 </LinearLayout>
 

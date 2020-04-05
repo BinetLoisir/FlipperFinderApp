@@ -7,20 +7,72 @@
     android:padding="12dp"
     tools:context=".TestActivity"
     android:orientation="vertical"
+    android:background="@color/accent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <FrameLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/frame1"
-        android:background="@color/accent"
-        android:layout_marginBottom="24dp"/>
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/enterNumber"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter pin number"/>
+
+        <Button
+            android:id="@+id/searchbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Search"/>
+
+    </LinearLayout>
 
 
-    <FrameLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/frame2"
-        android:background="@color/review_green"/>
+        android:id="@+id/pinNumber"
+        />
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/pinImage"
+        app:riv_corner_radius="10dip"
+        app:riv_border_width="0dip"
+        app:riv_border_color="#333333"
+        app:riv_mutate_background="true"
+        app:riv_tile_mode="clamp"
+        app:riv_oval="false" />
+
 
 </LinearLayout>
+
+
+
+<!-- FROM FRAGMENT COMMUNICAITON AND INTEFFACE TESTS
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp"
+    tools:context=".TestActivity"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<FrameLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/frame1"
+android:background="@color/accent"
+android:layout_marginBottom="24dp"/>
+
+
+<FrameLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:id="@+id/frame2"
+android:background="@color/review_green"/>-->
