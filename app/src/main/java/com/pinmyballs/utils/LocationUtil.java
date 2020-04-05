@@ -26,6 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import static android.content.Context.LOCATION_SERVICE;
+
 public class LocationUtil {
 	private static final String TAG = LocationUtil.class.getSimpleName();
 
@@ -223,7 +225,7 @@ public class LocationUtil {
 	 * @return
 	 */
 	public static Location getLastKnownLocation(Context context) {
-		LocationManager lm = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+		LocationManager lm = (LocationManager) context.getSystemService(LOCATION_SERVICE);
 		List<String> providers = lm.getProviders(true);
 
 		/* Loop over the array backwards, and if you get an accurate location, then break out the loop*/

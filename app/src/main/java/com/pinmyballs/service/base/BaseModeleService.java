@@ -102,12 +102,11 @@ public class BaseModeleService {
 		return majListeModele(listeModeles, pContext, false);
 	}
 
-	public boolean initListModele(List<ModeleFlipper> listeModeles, SQLiteDatabase db){
+	public void initListModele(List<ModeleFlipper> listeModeles, SQLiteDatabase db){
 		ModeleDAO modeleDao = new ModeleDAO(db);
 		for (ModeleFlipper modele : listeModeles){
 			modeleDao.save(modele);
 		}
-		return true;
 	}
 
 	public boolean majListeModele(List<ModeleFlipper> listeModeles, Context pContext, boolean truncate){
@@ -130,10 +129,9 @@ public class BaseModeleService {
 	}
 
 	public ModeleFlipper getModeleById(Context pContext, Long modeleId){
-		ModeleFlipper modeleFlipper = new ModeleFlipper();
 		ModeleDAO modeleDao = new ModeleDAO(pContext);
 		modeleDao.open();
-		modeleFlipper = modeleDao.getModeleById(modeleId);
+		ModeleFlipper modeleFlipper = modeleDao.getModeleById(modeleId);
 		modeleDao.close();
 		return modeleFlipper;
 	}

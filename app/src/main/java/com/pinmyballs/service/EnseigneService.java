@@ -11,7 +11,7 @@ import java.util.List;
 public class EnseigneService {
 
 	public boolean remplaceToutEnseigne(Context pContext){
-		boolean retour = true;
+		boolean retour;
 		BaseEnseigneService baseEnseigneService = new BaseEnseigneService();
 		ParseEnseigneService parseEnseigneService = new ParseEnseigneService();
 		List<Enseigne> nvlleListe = parseEnseigneService.getAllEnseigne();

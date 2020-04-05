@@ -59,7 +59,7 @@ public class ParseCommentaireService {
 		return listeCommentaire;
 	}
 
-    public boolean ajouteCommentaire(final Context pContext, final Commentaire commentaire) {
+    public void ajouteCommentaire(final Context pContext, final Commentaire commentaire) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
 
@@ -106,10 +106,9 @@ public class ParseCommentaireService {
 				}
 			}
 		});
-		return true;
 	}
 
-    public boolean updateCommentaire(final Context pContext, final Commentaire oldCommentaire, final Commentaire newCommentaire) {
+    public void updateCommentaire(final Context pContext, final Commentaire oldCommentaire, final Commentaire newCommentaire) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
 
@@ -148,6 +147,5 @@ public class ParseCommentaireService {
                 }
             }
         });
-        return true;
-    }
+	}
 }

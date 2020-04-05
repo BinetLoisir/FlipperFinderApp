@@ -29,8 +29,6 @@ public class ListeModelsActivity extends AppCompatActivity {
 
     private static final String TAG = "ListeModelsActivity";
     ActionBar mActionbar;
-    private RecyclerView recyclerView;
-    private RecyclerView.LayoutManager layoutManager;
     private ModelAdapter modelAdapter;
     private ArrayList<ModeleFlipper> listModels;
     private boolean sortedAZ;
@@ -53,12 +51,12 @@ public class ListeModelsActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        recyclerView = findViewById(R.id.my_recycler_view);
+        RecyclerView recyclerView = findViewById(R.id.my_recycler_view);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         //recyclerView.setHasFixedSize(true);
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         listModels = new ArrayList<>();
@@ -80,7 +78,7 @@ public class ListeModelsActivity extends AppCompatActivity {
         });
         //Hide or show FAB
         SharedPreferences settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
-        Boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
+        boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
         if (adminMode) {
             fab.show();
         } else {

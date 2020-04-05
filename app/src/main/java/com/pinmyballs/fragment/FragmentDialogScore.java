@@ -89,7 +89,7 @@ public class FragmentDialogScore extends DialogFragment {
                 newScore.setId(new Date().getTime());
                 String newpseudo = PseudoTV.getText().toString();
                 newScore.setPseudo(newpseudo);
-                Long score = Long.parseLong(ScoreTV.getText().toString().replaceAll(",", ""));
+                long score = Long.parseLong(ScoreTV.getText().toString().replaceAll(",", ""));
                 newScore.setScore(score);
                 newScore.setDate(new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(new Date()));
 

@@ -12,7 +12,7 @@ import java.util.List;
 public class BaseScoreService {
 
     public ArrayList<Score> getScoresByFlipperId(Context pContext, long idFlipper){
-        ArrayList<Score> listeRetour = new ArrayList<Score>();
+        ArrayList<Score> listeRetour;
         ScoreDAO scoreDAO = new ScoreDAO(pContext);
         scoreDAO.open();
         listeRetour = scoreDAO.getScorePourFlipperId(idFlipper);
@@ -21,7 +21,7 @@ public class BaseScoreService {
     }
 
     public ArrayList<Score> getLastScore(Context pContext, int nbMaxScore){
-        ArrayList<Score> listeRetour = new ArrayList<Score>();
+        ArrayList<Score> listeRetour;
         ScoreDAO scoreDAO = new ScoreDAO(pContext);
         scoreDAO.open();
         listeRetour = scoreDAO.getLastScore(nbMaxScore);
@@ -29,16 +29,15 @@ public class BaseScoreService {
         return listeRetour;
     }
 
-    public boolean addScore(Score score, Context pContext){
+    public void addScore(Score score, Context pContext){
         ScoreDAO scoreDAO = new ScoreDAO(pContext);
         scoreDAO.open();
         scoreDAO.save(score);
         scoreDAO.close();
-        return true;
     }
 
-    public boolean majListeScore(List<Score> listScore, Context pContext){
-        return majListeScore(listScore, pContext,false);
+    public void majListeScore(List<Score> listScore, Context pContext){
+        majListeScore(listScore, pContext, false);
     }
 
     public boolean initListeScore(List<Score> listeScore, SQLiteDatabase db){
@@ -49,7 +48,7 @@ public class BaseScoreService {
         return true;
     }
 
-    public boolean majListeScore(List<Score> listScore, Context pContext, boolean truncate){
+    public void majListeScore(List<Score> listScore, Context pContext, boolean truncate){
         ScoreDAO scoreDAO = new ScoreDAO(pContext);
         SQLiteDatabase db = scoreDAO.open();
         db.beginTransaction();
@@ -62,7 +61,6 @@ public class BaseScoreService {
         db.setTransactionSuccessful();
         db.endTransaction();
         scoreDAO.close();
-        return true;
     }
 
 }

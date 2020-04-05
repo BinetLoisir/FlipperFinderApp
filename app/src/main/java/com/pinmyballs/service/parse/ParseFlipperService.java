@@ -22,8 +22,6 @@ import com.pinmyballs.service.base.BaseCommentaireService;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.utils.ProgressBarHandler;
 
-import org.w3c.dom.Comment;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,7 +94,7 @@ public class ParseFlipperService {
         return listeFlipper;
     }
 
-    public boolean updateDateFlipper(final Context pContext, final Flipper flipper, final String dateToSave) {
+    public void updateDateFlipper(final Context pContext, final Flipper flipper, final String dateToSave) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
@@ -128,7 +126,6 @@ public class ParseFlipperService {
                 }
             }
         });
-        return true;
     }
 
     public boolean supprimeFlipper(final Context pContext, final Flipper ancienflipper) {
@@ -187,7 +184,7 @@ public class ParseFlipperService {
         return true;
     }
 
-    public boolean modifieEtatFlipper(final Context pContext, final Flipper flipper) {
+    public void modifieEtatFlipper(final Context pContext, final Flipper flipper) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
@@ -294,11 +291,10 @@ public class ParseFlipperService {
                 }
             }
         });
-        return true;
     }
 
 
-    public boolean remplaceModeleFlipper(final Context pContext, final Flipper ancienflipper, final Flipper nouveauFlipper, final Commentaire commentaire) {
+    public void remplaceModeleFlipper(final Context pContext, final Flipper ancienflipper, final Flipper nouveauFlipper, final Commentaire commentaire) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
@@ -316,19 +312,8 @@ public class ParseFlipperService {
                         objects.get(0).put(FlipperDatabaseHandler.FLIPPER_DATMAJ, ancienflipper.getDateMaj());
                         objects.get(0).put(FlipperDatabaseHandler.FLIPPER_ACTIF, false);
 
-                        // On créé l'objet du nouveau flipper
-                        ParseObject flipPO = new ParseObject(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
-                        /*flipPO.put(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
-                        flipPO.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, nouveauFlipper.getDateMaj());
-                        flipPO.put(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, nouveauFlipper.getIdEnseigne());
-                        flipPO.put(FlipperDatabaseHandler.FLIPPER_ID, nouveauFlipper.getId());
-                        flipPO.put(FlipperDatabaseHandler.FLIPPER_MODELE, nouveauFlipper.getIdModele());
-                        flipPO.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, "");*/
-
-                        //VarianteTEST
-                        //TODO si ca marche enlever le code ci dessous et ci dessous
                         ParseFactory parseFactory = new ParseFactory();
-                        flipPO = parseFactory.getPOWithPointersToExistingObjects(nouveauFlipper);
+                        ParseObject flipPO = parseFactory.getPOWithPointersToExistingObjects(nouveauFlipper);
 
                         // On met le tout dans une liste
                         List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
@@ -390,10 +375,9 @@ public class ParseFlipperService {
             }
         });
 
-        return true;
     }
 
-    public boolean ajouterFlipper(final Context pContext, Flipper flipper, Commentaire commentaire) {
+    public void ajouterFlipper(final Context pContext, Flipper flipper, Commentaire commentaire) {
 
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
@@ -424,6 +408,5 @@ public class ParseFlipperService {
             }
         });
 
-        return true;
     }
 }

@@ -14,15 +14,14 @@ public class BaseEnseigneService {
 		return majListeEnseigne(listeEnseignes, pContext, false);
 	}
 
-	public boolean initListeEnseigne(List<Enseigne> listeObjets, SQLiteDatabase db){
+	public void initListeEnseigne(List<Enseigne> listeObjets, SQLiteDatabase db){
 		EnseigneDAO enseigneDao = new EnseigneDAO(db);
 		for (Enseigne enseigne: listeObjets){
 			enseigneDao.save(enseigne);
 		}
-		return true;
-	}
+    }
 
-	public boolean majListeEnseigne(List<Enseigne> listeEnseignes, Context pContext, boolean truncate){
+	private boolean majListeEnseigne(List<Enseigne> listeEnseignes, Context pContext, boolean truncate){
 		EnseigneDAO enseigneDao = new EnseigneDAO(pContext);
 		SQLiteDatabase db = enseigneDao.open();
 		db.beginTransaction();

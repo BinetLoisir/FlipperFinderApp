@@ -23,7 +23,7 @@ public class FlipperService {
     }
 
     public boolean remplaceToutFlipper(Context pContext) {
-        boolean retour = true;
+        boolean retour;
         BaseFlipperService baseFlipperService = new BaseFlipperService();
         ParseFlipperService parseFlipperService = new ParseFlipperService(null);
         List<Flipper> nvlleListe = parseFlipperService.getAllFlipper();
@@ -32,16 +32,15 @@ public class FlipperService {
     }
 
 
-    public boolean valideFlipper(Context pContext, Flipper flipper) {
+    public void valideFlipper(Context pContext, Flipper flipper) {
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
         final String dateToSave = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(new Date());
         parseFlipperService.updateDateFlipper(pContext, flipper, dateToSave);
-        return true;
     }
 
 
     //remplace supprimeflip
-    public boolean modifieEtatFlip(Context pContext, Flipper flipper) {
+    public void modifieEtatFlip(Context pContext, Flipper flipper) {
 
         Date dateDuJour = new Date();
         String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
@@ -50,11 +49,10 @@ public class FlipperService {
         // Update of MongoDb
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
         parseFlipperService.modifieEtatFlipper(pContext, flipper);
-        return true;
     }
 
 
-    public boolean remplaceFlipper(Context pContext, Flipper flipper, long idNouveauModele, String commentaire, String pseudo) {
+    public void remplaceFlipper(Context pContext, Flipper flipper, long idNouveauModele, String commentaire, String pseudo) {
         //Get current date
         Date dateDuJour = new Date();
         String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
@@ -77,10 +75,9 @@ public class FlipperService {
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
         parseFlipperService.remplaceModeleFlipper(pContext, flipper, nouveauFlipper, commentaireToAdd);
 
-        return true;
     }
 
-    public boolean rajouterFlipperSurFlipper(Context pContext, Flipper flipper, long idNouveauModele, String commentaireString, String pseudo) {
+    public void rajouterFlipperSurFlipper(Context pContext, Flipper flipper, long idNouveauModele, String commentaireString, String pseudo) {
         //Get current date
         Date dateDuJour = new Date();
         String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
@@ -103,7 +100,6 @@ public class FlipperService {
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
         parseFlipperService.ajouterFlipper(pContext, nouveauFlipper, commentaire);
 
-        return true;
     }
 
 }

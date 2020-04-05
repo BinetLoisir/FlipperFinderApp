@@ -63,7 +63,7 @@ public class BaseFlipperService {
 			listeRetour.add(listeFlipper.get(i));
 		}*/
 
-		return listeRetour = new ArrayList<Flipper>(listeFlipper);
+		return new ArrayList<Flipper>(listeFlipper);
 
 	}
 
@@ -79,7 +79,7 @@ public class BaseFlipperService {
 			listeRetour.add(listeFlipper.get(i));
 		}*/
 
-		return listeRetour = new ArrayList<Flipper>(listeFlipper);
+		return new ArrayList<Flipper>(listeFlipper);
 
 	}
 
@@ -91,7 +91,7 @@ public class BaseFlipperService {
 		ArrayList<Flipper> listeFlipper = flipperDao.getAllFlipperActif();
 		flipperDao.close();
 
-		return listeRetour = new ArrayList<Flipper>(listeFlipper);
+		return new ArrayList<Flipper>(listeFlipper);
 
 	}
 
@@ -145,12 +145,11 @@ public class BaseFlipperService {
 
 
 
-	public boolean initListeFlipper(List<Flipper> listeObjets, SQLiteDatabase db){
+	public void initListeFlipper(List<Flipper> listeObjets, SQLiteDatabase db){
 		FlipperDAO flipperDao = new FlipperDAO(db);
 		for (Flipper flipper: listeObjets){
 			flipperDao.save(flipper);
 		}
-		return true;
 	}
 
 	public boolean majListeFlipper(List<Flipper> listeFlipper, Context pContext){
@@ -180,12 +179,11 @@ public class BaseFlipperService {
 		return true;
 	}
 
-	public boolean majFlipper(Flipper flipper, Context pContext){
+	public void majFlipper(Flipper flipper, Context pContext){
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 		flipperDao.open();
 		flipperDao.save(flipper);
 		flipperDao.close();
-		return true;
 	}
 
 }

@@ -10,10 +10,8 @@ import android.widget.RelativeLayout;
 
 public class ProgressBarHandler {
     private ProgressBar mProgressBar;
-    private Context mContext;
 
     public ProgressBarHandler(Context context) {
-        mContext = context;
 
         ViewGroup layout = (ViewGroup) ((Activity) context).findViewById(android.R.id.content).getRootView();
 

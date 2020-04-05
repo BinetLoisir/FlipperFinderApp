@@ -2,6 +2,7 @@ package com.pinmyballs.service;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -29,6 +30,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -120,7 +122,7 @@ public class GlobalService {
 		BaseScoreService baseScoreService = new BaseScoreService();
 		ParseScoreService parseScoreService = new ParseScoreService(null);
 
-		Long idMaxModele = baseModeleService.getIdMaxModele(pContext);
+		long idMaxModele = baseModeleService.getIdMaxModele(pContext);
 
 		// On récupère les données du cloud
 		List<ModeleFlipper> nvlleListeModele = parseModeleService.getMajModeleById(idMaxModele);
@@ -184,16 +186,27 @@ public class GlobalService {
 	Deprecated
 	 */
 
+	private Reader getReaderFromJson(String json){
+		try {
+			Reader reader;
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+				reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open(json), StandardCharsets.UTF_8));
+			} else {
+				reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open(json), Charset.forName("UTF-8")));
+			}
+			return reader;
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	private void populateEnseigne(SQLiteDatabase db) {
 		BaseEnseigneService baseEnseigneService = new BaseEnseigneService();
 		List<Enseigne> returnList;
 		Gson gson = new GsonBuilder().create();
-		Reader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("ENSEIGNE.json"), StandardCharsets.UTF_8));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Reader reader = getReaderFromJson("ENSEIGNE.json");
 		returnList = Arrays.asList(gson.fromJson(reader, Enseigne[].class));
 		baseEnseigneService.initListeEnseigne(returnList, db);
 	}
@@ -202,12 +215,7 @@ public class GlobalService {
 		BaseFlipperService baseFlipperService= new BaseFlipperService();
 		List<Flipper> returnList;
 		Gson gson = new GsonBuilder().create();
-		Reader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("FLIPPER.json"), StandardCharsets.UTF_8));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Reader reader = getReaderFromJson("FLIPPER.json");
 		returnList = Arrays.asList(gson.fromJson(reader, Flipper[].class));
 		baseFlipperService.initListeFlipper(returnList, db);
 	}
@@ -216,12 +224,7 @@ public class GlobalService {
 		BaseCommentaireService baseCommentaireService= new BaseCommentaireService();
 		List<Commentaire> returnList;
 		Gson gson = new GsonBuilder().create();
-		Reader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("COMMENTAIRE.json"), StandardCharsets.UTF_8));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Reader reader = getReaderFromJson("COMMENTAIRE.json");
 		returnList = Arrays.asList(gson.fromJson(reader, Commentaire[].class));
 		baseCommentaireService.initListeCommentaire(returnList, db);
 	}
@@ -230,12 +233,7 @@ public class GlobalService {
 		BaseModeleService baseModeleService= new BaseModeleService();
 		List<ModeleFlipper> returnList;
 		Gson gson = new GsonBuilder().create();
-		Reader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("MODELE_FLIPPER.json"), StandardCharsets.UTF_8));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Reader reader = getReaderFromJson("MODELE_FLIPPER.json");
 		returnList = Arrays.asList(gson.fromJson(reader, ModeleFlipper[].class));
 		baseModeleService.initListModele(returnList, db);
 	}
@@ -244,12 +242,7 @@ public class GlobalService {
 		BaseTournoiService baseTournoiService = new BaseTournoiService();
 		List<Tournoi> returnList;
 		Gson gson = new GsonBuilder().create();
-		Reader reader = null;
-		try {
-			reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open("TOURNOI.json"), StandardCharsets.UTF_8));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		Reader reader = getReaderFromJson("TOURNOI.json");
 		returnList = Arrays.asList(gson.fromJson(reader, Tournoi[].class));
 		baseTournoiService.initListeTournoi(returnList, db);
 	}

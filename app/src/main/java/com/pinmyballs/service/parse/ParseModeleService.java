@@ -74,7 +74,7 @@ public class ParseModeleService {
 	}
 
 	public String getModeleObjectId(long id){
-		String modeleObjectId ="";
+		String modeleObjectId;
 		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
 		query.whereEqualTo(FlipperDatabaseHandler.MODELE_FLIPPER_ID, id);
 		try {
@@ -88,7 +88,7 @@ public class ParseModeleService {
 		}
 	}
 
-    public boolean ajouterModele(final Context pContext, final ModeleFlipper modeleFlipper) {
+    public void ajouterModele(final Context pContext, final ModeleFlipper modeleFlipper) {
 
 		ParseFactory parseFactory = new ParseFactory();
 		//creation d'une liste d'envoi
@@ -101,11 +101,10 @@ public class ParseModeleService {
 		ParseObject.saveAllInBackground(objectsToSend, new SaveCallback() {
 			@Override
 			public void done(ParseException e) {
-                Toast toast = Toast.makeText(pContext, modeleFlipper.getNomComplet() + "ajouté.", Toast.LENGTH_LONG);
+                Toast toast = Toast.makeText(pContext, modeleFlipper.getNomComplet() + " ajouté. Refresh database.", Toast.LENGTH_LONG);
 				toast.show();
 			}
 		});
 
-		return true;
 	}
 }

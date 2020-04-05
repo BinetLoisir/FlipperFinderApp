@@ -336,7 +336,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         inflater.inflate(R.menu.home_menu, menu);
 
         MenuItem item = menu.findItem(R.id.action_admin);
-        Boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
+        boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
         item.setVisible(adminMode);
 
         MenuItem item1 = menu.findItem(R.id.action_login);
@@ -665,9 +665,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
             //DISTANCE_MAX = settings.getInt(PreferencesActivity.KEY_PREFERENCES_RAYON, PreferencesActivity.DEFAULT_VALUE_RAYON);
             int DISTANCE_MAX = getDiagonalKM(params[0]);
-            int ENSEIGNE_LIST_MAX_SIZE = 100;
-
-            ENSEIGNE_LIST_MAX_SIZE = settings.getInt(PreferencesActivity.KEY_PREFERENCES_MAX_RESULT,
+            int ENSEIGNE_LIST_MAX_SIZE = settings.getInt(PreferencesActivity.KEY_PREFERENCES_MAX_RESULT,
                     PreferencesActivity.DEFAULT_VALUE_NB_MAX_LISTE);
 
             try {

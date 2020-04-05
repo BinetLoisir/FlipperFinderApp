@@ -16,19 +16,18 @@ public class CommentaireService {
 		mFragmentCallback = fragmentCallback;
 	}
 
-	public boolean ajouteCommentaire(Context pContext, Commentaire commentaire){
+	public void ajouteCommentaire(Context pContext, Commentaire commentaire){
 		ParseCommentaireService parseCommentaireService = new ParseCommentaireService(mFragmentCallback);
 		parseCommentaireService.ajouteCommentaire(pContext, commentaire);
 
-		return true;
-	}
+    }
 	public ArrayList<Commentaire> getCommentaireByFlipperId(Context pContext, long idFlipper){
 		BaseCommentaireService baseCommentaireService = new BaseCommentaireService();
 		return baseCommentaireService.getCommentaireByFlipperId(pContext, idFlipper);
 	}
 
-    public boolean updateCommentaire(Context pContext, Commentaire oldCommentaire, Commentaire newCommentaire) {
+    public void updateCommentaire(Context pContext, Commentaire oldCommentaire, Commentaire newCommentaire) {
         ParseCommentaireService parseCommentaireService = new ParseCommentaireService(mFragmentCallback);
-        return parseCommentaireService.updateCommentaire(pContext, oldCommentaire, newCommentaire);
+        parseCommentaireService.updateCommentaire(pContext, oldCommentaire, newCommentaire);
     }
 }

@@ -236,7 +236,7 @@ public class SignalementActivity extends AppCompatActivity {
         ParseObject enseignePO = parseFactory.getParseObject(enseigne);
         //objectsToSend.add(parseFactory.getParseObject(getEnseigne()));
 
-        Integer i = 0;
+        int i = 0;
         for (Flipper flipperToAdd : listeFlipper) {
             ParseObject flipPO = parseFactory.getParseObject(flipperToAdd);
             flipPO.put(FlipperDatabaseHandler.FLIPPER_ENS_POINTER,enseignePO);

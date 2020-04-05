@@ -68,7 +68,11 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
        // geolocaliseEnseigne();
     }
 
-
+    @Override
+    public void onResume() {
+        Log.d(TAG, "OnResume: activated ");
+        super.onResume();
+    }
 
     @OnClick(R.id.geolocaliseSignalement)
     public void geolocaliseEnseigne() {

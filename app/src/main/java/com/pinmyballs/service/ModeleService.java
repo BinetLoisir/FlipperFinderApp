@@ -11,7 +11,7 @@ import java.util.List;
 public class ModeleService {
 
 	public boolean remplaceToutModele(Context pContext){
-		boolean retour = true;
+		boolean retour;
 		BaseModeleService baseModeleService = new BaseModeleService();
 		ParseModeleService parseModeleService = new ParseModeleService();
 		List<ModeleFlipper> nvlleListe = parseModeleService.getAllModeleFlipper();
@@ -19,11 +19,10 @@ public class ModeleService {
 		return retour;
 	}
 
-    public boolean ajouteModele(Context pContext, ModeleFlipper modeleFlipper) {
+    public void ajouteModele(Context pContext, ModeleFlipper modeleFlipper) {
         boolean retour = true;
         ParseModeleService parseModeleService = new ParseModeleService();
         parseModeleService.ajouterModele(pContext, modeleFlipper);
-        return retour;
     }
 
     public long getMaxIdModeleFlipper(Context pContext) {

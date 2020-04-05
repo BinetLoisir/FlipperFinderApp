@@ -12,7 +12,7 @@ import java.util.List;
 public class BaseCommentaireService {
 
 	public ArrayList<Commentaire> getCommentaireByFlipperId(Context pContext, long idFlipper){
-		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+		ArrayList<Commentaire> listeRetour;
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
 		commentaireDao.open();
 		listeRetour = commentaireDao.getCommentairePourFlipperId(idFlipper);
@@ -21,7 +21,7 @@ public class BaseCommentaireService {
 	}
 
 	public ArrayList<Commentaire> getLastCommentaire(Context pContext, int nbMaxCommentaire){
-		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+		ArrayList<Commentaire> listeRetour;
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
 		commentaireDao.open();
 		listeRetour = commentaireDao.getLastCommentaire(nbMaxCommentaire);
@@ -30,7 +30,7 @@ public class BaseCommentaireService {
 	}
 
     public ArrayList<Commentaire> getLastCommentaireType(Context pContext, int nbMaxCommentaire, String type, boolean includeNull) {
-        ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+        ArrayList<Commentaire> listeRetour;
         CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
         commentaireDao.open();
         listeRetour = commentaireDao.getLastCommentaireType(nbMaxCommentaire, type, includeNull);
@@ -48,27 +48,25 @@ public class BaseCommentaireService {
 		return listeRetour;
 	}*/
 
-	public boolean addCommentaire(Commentaire commentaire, Context pContext){
+	public void addCommentaire(Commentaire commentaire, Context pContext){
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
 		commentaireDao.open();
 		commentaireDao.save(commentaire);
 		commentaireDao.close();
-		return true;
 	}
 
-	public boolean majListeCommentaire(List<Commentaire> listeCommentaire, Context pContext){
-		return majListeCommentaire(listeCommentaire, pContext, false);
+	public void majListeCommentaire(List<Commentaire> listeCommentaire, Context pContext){
+		majListeCommentaire(listeCommentaire, pContext, false);
 	}
 
-	public boolean initListeCommentaire(List<Commentaire> listeCommentaire, SQLiteDatabase db){
+	public void initListeCommentaire(List<Commentaire> listeCommentaire, SQLiteDatabase db){
 		CommentaireDAO commentaireDao = new CommentaireDAO(db);
 		for (Commentaire commentaire: listeCommentaire){
 			commentaireDao.save(commentaire);
 		}
-		return true;
 	}
 
-	public boolean majListeCommentaire(List<Commentaire> listeCommentaire, Context pContext, boolean truncate){
+	private void majListeCommentaire(List<Commentaire> listeCommentaire, Context pContext, boolean truncate){
 		CommentaireDAO commentaireDao = new CommentaireDAO(pContext);
 		SQLiteDatabase db = commentaireDao.open();
 		db.beginTransaction();
@@ -81,7 +79,6 @@ public class BaseCommentaireService {
 		db.setTransactionSuccessful();
 		db.endTransaction();
 		commentaireDao.close();
-		return true;
 	}
 
 }

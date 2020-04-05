@@ -16,7 +16,7 @@ public class ScoreService {
         mFragmentCallback = fragmentCallback;
     }
 
-    public boolean ajouteScore(Context pContext, Score score){
+    public void ajouteScore(Context pContext, Score score){
         ParseScoreService parseScoreService = new ParseScoreService(mFragmentCallback);
         parseScoreService.ajouteScore(pContext, score);
 
@@ -28,7 +28,6 @@ public class ScoreService {
 
         }
 
-        return true;
     }
     public ArrayList<Score> getScoresByFlipperId(Context pContext, long idFlipper){
         BaseScoreService baseScoreService = new BaseScoreService();

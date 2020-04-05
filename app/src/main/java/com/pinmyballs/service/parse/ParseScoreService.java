@@ -81,7 +81,7 @@ public class ParseScoreService {
         return listScore;
     }
 
-    public boolean ajouteScore(final Context pContext, final Score score){
+    public void ajouteScore(final Context pContext, final Score score){
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
         final ParseObject parseScore = new ParseObject(FlipperDatabaseHandler.SCORE_TABLE_NAME);
@@ -111,7 +111,6 @@ public class ParseScoreService {
                 }
             }
         });
-        return true;
     }
 
 }
