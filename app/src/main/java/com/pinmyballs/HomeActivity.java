@@ -140,7 +140,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             editor.putBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, false);
             editor.apply();
         }
-        
+
     }
 
 
@@ -284,12 +284,13 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                         return true;
                     case R.id.action_email:
                         Log.d(TAG, "onMenuItemClick: Launching email for comment");
-                        Resources resources = getResources();
+                        Resources resources = getApplicationContext().getResources();
                         String emailsTo = resources.getString(R.string.mailContact);
+                        String emailsSubject = resources.getString(R.string.mail_subject_new_comment);
                         Intent intent2 = new Intent(Intent.ACTION_SEND);
                         intent2.setType("message/html");
                         intent2.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsTo});
-                        intent2.putExtra(Intent.EXTRA_SUBJECT, "Commentaire sur PinMyBalls");
+                        intent2.putExtra(Intent.EXTRA_SUBJECT, emailsSubject);
                         try {
                             startActivity(Intent.createChooser(intent2, "Envoi du mail"));
                         } catch (android.content.ActivityNotFoundException ex) {
@@ -300,10 +301,11 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                         Log.d(TAG, "onMenuItemClick: Launching email for bug report");
                         Resources resources1 = getResources();
                         String emailsTo1 = resources1.getString(R.string.mailContact);
+                        String emailsSubject2 = resources1.getString(R.string.mail_subject_new_bug);
                         Intent intent3 = new Intent(Intent.ACTION_SEND);
                         intent3.setType("message/html");
                         intent3.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsTo1});
-                        intent3.putExtra(Intent.EXTRA_SUBJECT, "Bug signalé dans PinMyBalls");
+                        intent3.putExtra(Intent.EXTRA_SUBJECT, emailsSubject2);
                         try {
                             startActivity(Intent.createChooser(intent3, "Envoi du mail"));
                         } catch (android.content.ActivityNotFoundException ex) {
@@ -371,6 +373,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), SEARCH_ZOOM));
                 Log.i(TAG, "Map centered around : " + place.getName());
             }
+
             @Override
             public void onError(@NonNull Status status) {
                 Log.i(TAG, "An error occurred: " + status);

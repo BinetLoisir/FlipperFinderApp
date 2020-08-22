@@ -94,11 +94,13 @@ public class SignalementActivity extends AppCompatActivity {
             // C'est bon, on envoie le mail
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("message/html");
-            Resources resources = getResources();
+            Resources resources = getApplicationContext().getResources();
             String emailsTo = resources.getString(R.string.mailContact);
+            String emailsSubject = resources.getString(R.string.mail_subject_new_pinball);
+
 
             i.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsTo});
-            i.putExtra(Intent.EXTRA_SUBJECT, "Nouveau Flipper");
+            i.putExtra(Intent.EXTRA_SUBJECT, emailsSubject);
             /*
              * i.putExtra(Intent.EXTRA_TEXT,
              * "Adresse : "+adresseUtilisateurTV.getText

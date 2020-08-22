@@ -324,8 +324,9 @@ public class FragmentActionsFlipper extends Fragment {
     }
 
     private void envoiMail(String subject, String message) {
-        Resources resources = getResources();
+        Resources resources = getContext().getResources();
         String emailsTo = resources.getString(R.string.mailContact);
+
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/html");
 

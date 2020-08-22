@@ -293,6 +293,12 @@
     <string name="tab_hiscore">HI-SCORES</string>
     <string name="pas_encore_de_scores">Pas encore de scores enregistrés</string>
 
+    <string name="mail_subject_new_model">"Nouveau modèle à rajouter sur PinMyBalls</string>
+    <string name="mail_subject_new_pinball">"Nouveau modèle à rajouter sur PinMyBalls</string>
+    <string name="mail_subject_new_comment">"Commentaire sur PinMyBalls</string>
+    <string name="mail_subject_new_bug">"Bug signalé sur PinMyBalls</string>
+    <string name="mail_subject_replaced">"Flipper remplacé</string>
+
 
     <string-array name="langugages_array">
             <item>Français</item>

@@ -215,6 +215,11 @@
     <string name="tab_avis">COMMENT</string>
     <string name="tab_hiscore">SCORES</string>
     <string name="pas_encore_de_scores">No scores submitted yet</string>
+    <string name="mail_subject_new_model">New machine to be added</string>
+    <string name="mail_subject_new_bug">Bug report on PinMyBalls</string>
+    <string name="mail_subject_new_comment">Comment on PinMyBalls</string>
+    <string name="mail_subject_new_pinball">New machine on PinMyBalls</string>
+    <string name="mail_subject_replaced">Pinball replaced</string>
 
 
 </resources>

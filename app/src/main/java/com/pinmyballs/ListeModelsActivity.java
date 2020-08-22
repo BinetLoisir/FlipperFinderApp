@@ -1,7 +1,9 @@
 package com.pinmyballs;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -41,6 +43,7 @@ public class ListeModelsActivity extends AppCompatActivity {
         initActionBar();
         initView();
         initFAB();
+        initFAB2();
     }
 
     private void initActionBar() {
@@ -83,6 +86,33 @@ public class ListeModelsActivity extends AppCompatActivity {
             fab.show();
         } else {
             fab.hide();
+        }
+    }
+
+    private void initFAB2() {
+        FloatingActionButton fab = findViewById(R.id.fabmodel2);
+        fab.setOnClickListener(view -> {
+            Log.d(TAG, "onMenuItemClick: Launching email for new machine");
+            Resources resources = getApplicationContext().getResources();
+            String emailsTo = resources.getString(R.string.mailContact);
+            String emailSubject = resources.getString(R.string.mail_subject_new_model);
+            Intent intent2 = new Intent(Intent.ACTION_SEND);
+            intent2.setType("message/html");
+            intent2.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsTo});
+            intent2.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
+            try {
+                startActivity(Intent.createChooser(intent2, "Envoi du mail"));
+            } catch (android.content.ActivityNotFoundException ex) {
+                new AlertDialog.Builder(ListeModelsActivity.this).setTitle("Envoi impossible!").setMessage("Vous n'avez pas de mail configuré sur votre téléphone.").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_tristesse).show();
+            }
+        });
+        //Hide or show FAB
+        SharedPreferences settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+        boolean adminMode = settings.getBoolean(PreferencesActivity.KEY_PREFERENCES_ADMIN_MODE, PreferencesActivity.DEFAULT_VALUE_ADMIN_MODE);
+        if (adminMode) {
+            fab.hide();
+        } else {
+            fab.show();
         }
     }
 
