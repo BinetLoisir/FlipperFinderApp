@@ -23,9 +23,9 @@ public class ParseModeleService {
 	 * @return int
 	 */
 	public List<ModeleFlipper> getAllModeleFlipper() {
-		List<ModeleFlipper> listeModele = new ArrayList<ModeleFlipper>();
-		List<ParseObject> listePo = new ArrayList<ParseObject>();
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+		List<ModeleFlipper> listeModele = new ArrayList<>();
+		List<ParseObject> listePo = new ArrayList<>();
+		ParseQuery<ParseObject> query = new ParseQuery<>(
 				FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
 		try {
 			listePo = query.find();
@@ -50,10 +50,10 @@ public class ParseModeleService {
 	 * @return
 	 */
 	public List<ModeleFlipper> getMajModeleById(long id){
-		List<ModeleFlipper> listeModele = new ArrayList<ModeleFlipper>();
+		List<ModeleFlipper> listeModele = new ArrayList<>();
 
 		List<ParseObject> listePo;
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
+		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
 		try {
 			query.setLimit(400);
 			query.whereGreaterThan(FlipperDatabaseHandler.MODELE_FLIPPER_ID, id);
@@ -75,7 +75,7 @@ public class ParseModeleService {
 
 	public String getModeleObjectId(long id){
 		String modeleObjectId;
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
+		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
 		query.whereEqualTo(FlipperDatabaseHandler.MODELE_FLIPPER_ID, id);
 		try {
 			query.whereEqualTo(FlipperDatabaseHandler.MODELE_FLIPPER_ID, id);
@@ -92,7 +92,7 @@ public class ParseModeleService {
 
 		ParseFactory parseFactory = new ParseFactory();
 		//creation d'une liste d'envoi
-		ArrayList<ParseObject> objectsToSend = new ArrayList<ParseObject>();
+		ArrayList<ParseObject> objectsToSend = new ArrayList<>();
 
 		// On créé l'objet du nouveau flipper et on l'ajoute à la liste d'envoi
 		objectsToSend.add(parseFactory.getParseObject(modeleFlipper));

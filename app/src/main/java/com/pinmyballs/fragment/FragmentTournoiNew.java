@@ -187,7 +187,7 @@ public class FragmentTournoiNew extends Fragment{
         newTournoi.setCommentaire("");
 
         Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-        List<Address> addresses = null;
+        List<Address> addresses;
 
         try {
             addresses = geocoder.getFromLocationName(newTournoi.getAdresseComplete(), 1);
@@ -238,7 +238,7 @@ public class FragmentTournoiNew extends Fragment{
                 mProgressBarHandler.hide();
                 if (e == null) {
                     // Ca s'est bien passé, on sauvegarde le tournoi dans la base
-                    List<Tournoi> listeTournoiToSave = new ArrayList<Tournoi>();
+                    List<Tournoi> listeTournoiToSave = new ArrayList<>();
                     listeTournoiToSave.add(tournoi);
                     BaseTournoiService baseTournoiService = new BaseTournoiService();
                     baseTournoiService.majListeTournoi(listeTournoiToSave, getActivity().getBaseContext());

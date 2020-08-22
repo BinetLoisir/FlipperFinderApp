@@ -20,9 +20,9 @@ public class ParseTournoiService {
 	 * Retourne tous les tournois à partir du cloud
 	 */
 	public List<Tournoi> getAllTournoi() {
-		List<Tournoi> listeTournoi = new ArrayList<Tournoi>();
-		List<ParseObject> listePo = new ArrayList<ParseObject>();
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+		List<Tournoi> listeTournoi = new ArrayList<>();
+		List<ParseObject> listePo = new ArrayList<>();
+		ParseQuery<ParseObject> query = new ParseQuery<>(
 				FlipperDatabaseHandler.TOURNOI_TABLE_NAME);
 		try {
 			listePo = query.find();
@@ -52,7 +52,7 @@ public class ParseTournoiService {
 
         ParseFactory parseFactory = new ParseFactory();
         //creation d'une liste d'envoi
-        ArrayList<ParseObject> objectsToSend = new ArrayList<ParseObject>();
+        ArrayList<ParseObject> objectsToSend = new ArrayList<>();
 
         // On créé l'objet du nouveau tournoi et on l'ajoute à la liste d'envoi
         objectsToSend.add(parseFactory.getParseObject(tournoi));

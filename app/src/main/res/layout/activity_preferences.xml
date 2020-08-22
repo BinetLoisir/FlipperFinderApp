@@ -10,55 +10,8 @@
 
 
 
-    <TextView
-        android:id="@+id/PrefRayonText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/SectionPrefRayonRecherche"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PrefPseudoText" />
 
 
-    <SeekBar
-        android:id="@+id/seekBarRayon"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:max="150"
-        app:layout_constraintEnd_toEndOf="@+id/PrefRayonText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PrefRayonText" />
-
-    <TextView
-        android:id="@+id/TVRayon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:text="50 km"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat"
-        android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/PrefRayonText"
-        app:layout_constraintStart_toEndOf="@+id/PrefRayonText" />
-
-
-    <TextView
-        android:id="@+id/PrefNbFlipText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/SectionPrefNbResultatVisible"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seekBarRayon" />
 
     <TextView
         android:id="@+id/PrefPseudoText"
@@ -85,6 +38,69 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/PrefPseudoText"
         app:layout_constraintStart_toEndOf="@+id/PrefPseudoText" />
 
+    <TextView
+        android:id="@+id/PrefRayonText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/SectionPrefRayonRecherche"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PrefPseudoText" />
+
+
+    <TextView
+        android:id="@+id/TVRayon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="50 km"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/PrefRayonText"
+        app:layout_constraintStart_toEndOf="@+id/PrefRayonText" />
+
+
+    <SeekBar
+        android:id="@+id/seekBarRayon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:max="150"
+        app:layout_constraintEnd_toEndOf="@+id/PrefRayonText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PrefRayonText" />
+
+
+
+    <TextView
+        android:id="@+id/PrefNbFlipText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/SectionPrefNbResultatVisible"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarRayon" />
+
+    <TextView
+        android:id="@+id/TVMaxResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:text="50"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/PrefNbFlipText"
+        app:layout_constraintStart_toEndOf="@+id/PrefNbFlipText" />
 
     <SeekBar
         android:id="@+id/seekBarNbMax"
@@ -99,15 +115,23 @@
         app:layout_constraintTop_toBottomOf="@+id/PrefNbFlipText" />
 
     <TextView
-        android:id="@+id/TVMaxResult"
+        android:id="@+id/languageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
-        android:text="50"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:layout_marginTop="24dp"
+        android:text="@string/langue"
         android:textSize="18sp"
-        app:layout_constraintBaseline_toBaselineOf="@+id/PrefNbFlipText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarNbMax" />
+
+    <Spinner
+        android:id="@+id/languageSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/LanguageText"
         app:layout_constraintStart_toEndOf="@+id/PrefNbFlipText" />
 
 <!--

@@ -102,7 +102,7 @@ public class SignupActivity extends AppCompatActivity {
         View focusView = null;
 
         // Check for a valid confirmed password.
-        if (TextUtils.equals(password, passwordConfirm)) {
+        if (!TextUtils.equals(password, passwordConfirm)) {
             mPasswordConfirmView.setError(getString(R.string.error_incorrect_password_confirm));
             focusView = mPasswordConfirmView;
             cancel = true;

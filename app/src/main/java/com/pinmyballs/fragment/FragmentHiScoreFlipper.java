@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class FragmentHiScoreFlipper extends Fragment {
     private static final String TAG = "FragmentHiScoreFlipper";
     ScoreService scoreService;
-    ArrayList<Score> listeScores = new ArrayList<Score>();
+    ArrayList<Score> listeScores = new ArrayList<>();
     ListView listeScoreView = null;
     FloatingActionButton fab;
     TextView TVnoscore;

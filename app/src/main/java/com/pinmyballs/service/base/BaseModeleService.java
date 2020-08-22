@@ -38,7 +38,7 @@ public class BaseModeleService {
 
 
 	public ArrayList<String> getAllNomModeleFlipper(Context pContext){
-		ArrayList<String> listeRetour = new ArrayList<String>();
+		ArrayList<String> listeRetour = new ArrayList<>();
 		ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);
 		for (ModeleFlipper modeleFlipper : listeModeleFlipper){
 			listeRetour.add(modeleFlipper.getNom());
@@ -47,7 +47,7 @@ public class BaseModeleService {
 	}
 
     public ArrayList<Long> getAllIdModeleFlipper(Context pContext) {
-        ArrayList<Long> listeRetour = new ArrayList<Long>();
+        ArrayList<Long> listeRetour = new ArrayList<>();
         ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);
         for (ModeleFlipper modeleFlipper : listeModeleFlipper) {
             listeRetour.add(modeleFlipper.getId());
@@ -56,7 +56,7 @@ public class BaseModeleService {
     }
 
     public Long getMaxIdModeleFlipper(Context pContext) {
-        ArrayList<Long> liste = new ArrayList<Long>();
+        ArrayList<Long> liste = new ArrayList<>();
         ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);
         for (ModeleFlipper modeleFlipper : listeModeleFlipper) {
             liste.add(modeleFlipper.getId());
@@ -67,7 +67,7 @@ public class BaseModeleService {
     }
 
 	public ArrayList<String> getAllNomModeleFlipperAvecMarque(Context pContext){
-		ArrayList<String> listeRetour = new ArrayList<String>();
+		ArrayList<String> listeRetour = new ArrayList<>();
 		ArrayList<ModeleFlipper> listeModeleFlipper = getAllModeleFlipper(pContext);
 		for (ModeleFlipper modeleFlipper : listeModeleFlipper){
 			/*String modeleAvecMarque = String.format("%s (%s, %s)",

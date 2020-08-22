@@ -26,7 +26,7 @@ public class TournoiDAO extends DAOBase{
 	}
 
 	public ArrayList<Tournoi> getAllTournoi(){
-		ArrayList<Tournoi> listeRetour = new ArrayList<Tournoi>();
+		ArrayList<Tournoi> listeRetour = new ArrayList<>();
 
 		//on ordonne par date
 		String strOrder =  FlipperDatabaseHandler.TOUR_DATE + " DESC ";
@@ -55,7 +55,7 @@ public class TournoiDAO extends DAOBase{
 	}
 
 	public ArrayList<Tournoi> getAllFutureTournoi(){
-		ArrayList<Tournoi> listeRetour = new ArrayList<Tournoi>();
+		ArrayList<Tournoi> listeRetour = new ArrayList<>();
 
 		//on ordonne par date
 		String strOrder =  FlipperDatabaseHandler.TOUR_DATE + " DESC ";

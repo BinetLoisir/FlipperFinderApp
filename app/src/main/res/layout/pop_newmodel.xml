@@ -32,7 +32,7 @@
             android:id="@+id/ET_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Modèle" />
+            android:hint="@string/model" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -46,7 +46,7 @@
             android:id="@+id/ET_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Marque" />
+            android:hint="@string/marque" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -60,7 +60,7 @@
             android:id="@+id/ET_year"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Année"
+            android:hint="@string/annee"
             android:inputType="number"
             android:maxLength="4" />
     </com.google.android.material.textfield.TextInputLayout>

@@ -1,14 +1,14 @@
 <resources>
 
-    <string name="app_name">Pin my Balls</string>
+    <string name="app_name" translatable="false">Pin my Balls</string>
 
-    <string name="parseApplicationId">wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE</string>
-    <string name="parseClientKey">8JRUbCxEjJjkSXG00B5csXzAl1E9BWHVIABKvFqy</string>
-    <string name="parseServerUrl">https://parseapi.back4app.com/</string>
+    <string name="parseApplicationId" translatable="false">wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE</string>
+    <string name="parseClientKey" translatable="false">8JRUbCxEjJjkSXG00B5csXzAl1E9BWHVIABKvFqy</string>
+    <string name="parseServerUrl" translatable="false">https://parseapi.back4app.com/</string>
 
     <string name="BoutonAccueilRechercher">Rechercher un flipper</string>
     <string name="BoutonAccueilSignaler">Signaler un flipper</string>
-    <string name="HeaderTournois">Tournois &amp; Evènements</string>
+    <string name="HeaderTournois">Tournois et Evènements</string>
     <string name="BoutonAccueilCommentaire">Voir les derniers commentaires</string>
     <string name="editText">Edit</string>
     <string name="menu_settings">Settings</string>
@@ -99,7 +99,7 @@
     <string name="headerPageCarteSearch">Recherche par carte</string>
     <string name="headerAdmin">Admin tools</string>
 
-    <string name="mailContact">flipper.finder2@gmail.com</string>
+    <string name="mailContact" translatable="false">flipper.finder2@gmail.com</string>
 
     <string name="pseudoCommentaireAnonyme">Anonyme</string>
     <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %1$s à %2$s]]> </Data></string>
@@ -113,7 +113,7 @@
     <string name="toastMajModele">%1$d modèle(s) de flipper mis à jour.</string>
     <string name="toastMajFlipper">%1$d flipper(s) mis à jour.</string>
     <string name="toastMajCommentaire">%1$d commentaire(s) mis à jour.</string>
-    <string name="toastMajScore">%1$d scores(s) ajouté(s).</string>
+    <string name="toastMajScore">%1$d score(s) ajouté(s).</string>
 
     <string name="toastMajPasNecessaire">Votre base de flipper est déjà à jour !</string>
     <string name="toastMajPasPossible">Mise à jour impossible : Vous n\'êtes pas connecté à Internet !</string>
@@ -159,13 +159,13 @@
     <string name="searchByNumberTitle">Pinball ID</string>
     <string name="searchByNumberButtonTitle">Go</string>
     <string name="searchByNumberResultTitle">Résultats</string>
-    <string name="searchByNumberResultFlipID">FlipID</string>
-    <string name="searchByNumberResultFlipEnseigneID">FlipEnseigneID</string>
-    <string name="searchByNumberResultFlipEnseigne">FlipEnseigne</string>
+    <string name="searchByNumberResultFlipID" translatable="false">FlipID</string>
+    <string name="searchByNumberResultFlipEnseigneID" translatable="false">FlipEnseigneID</string>
+    <string name="searchByNumberResultFlipEnseigne" translatable="false">FlipEnseigne</string>
     <string name="searchByNumberResultFlipEnseigneAdresse">FlipAdresse</string>
-    <string name="searchByNumberResultFlipEnseigneVille">FlipVille</string>
-    <string name="searchByNumberResultFlipModelID">FlipModeleID</string>
-    <string name="searchByNumberResultFlipModel">FlipModele</string>
+    <string name="searchByNumberResultFlipEnseigneVille" translatable="false">FlipVille</string>
+    <string name="searchByNumberResultFlipModelID" translatable="false">FlipModeleID</string>
+    <string name="searchByNumberResultFlipModel" translatable="false">FlipModele</string>
     <string name="saveButton">Update</string>
 
     <string name="currentlatng_text">Coordonnées</string>
@@ -182,7 +182,7 @@
 
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
 
     <string name="title_activity_maps">Current Place Details</string>
@@ -198,10 +198,10 @@
     <string name="tab_text_4">Hi-score</string>
 
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="section_format" translatable="false">Hello World from section: %1$d</string>
 
     <string name="selected_place">Last Selected Place:</string>
-    <string name="place_details">
+    <string name="place_details" translatable="false">
     <![CDATA[
         <b>%1$s</b>
         <br/>
@@ -214,7 +214,7 @@
         Website: %5$s
     ]]>
     </string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main2" translatable="false">Main2Activity</string>
 
     <string name="changement_default_comment">Le %1$s a été remplacé</string>
     <string name="ajout_default_comment">Flip supplémentaire</string>
@@ -235,7 +235,7 @@
     <string name="legend_orange">Actualisé il y a moins d\'1 mois</string>
     <string name="legend_red">Actualisé il y moins d\'un an</string>
     <string name="legend_grey">Non actualisé depuis plus d\'1 an</string>
-    <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_test" translatable="false">TestActivity</string>
 
     <string name="title_activity_login">Se connecter</string>
     <string name="title_activity_signup">Créer un compte</string>
@@ -266,14 +266,38 @@
     <string name="search_field">Search</string>
     <string name="filter_field">Filter</string>
     <string name="liste_modeles">Liste modèles</string>
-    <string name="myaction_button">MyAction Button</string>
+    <string name="myaction_button" translatable="false">MyAction Button</string>
     <string name="myaction_button2">Search OPDB</string>
-    <string name="model">Model</string>
+    <string name="model">Modèle</string>
     <string name="enseigne">Enseigne</string>
     <string name="adresse">Adresse</string>
     <string name="etat">Etat</string>
-    <string name="actifst">actifst</string>
+    <string name="actifst">actifs</string>
     <string name="ajoute_new_model">Ajouter un nouveau modèle</string>
+    <string name="langue">Langue</string>
+    <string name="searchHint">Ville, lieu, adresse...</string>
+    <string name="title_tournoi">Tournois</string>
+    <string name="title_actus">Actus</string>
+    <string name="title_carte">Carte</string>
+    <string name="title_liste">Liste</string>
+    <string name="title_nouveau">Nouveau</string>
+    <string name="tab_commentaires">COMMENTAIRES</string>
+    <string name="tab_ajouts">AJOUTS</string>
+    <string name="tab_retraits">RETRAITS</string>
+    <string name="defaultcommment_nouveau">Nouveau</string>
+    <string name="marque">Marque</string>
+    <string name="annee">Année</string>
+    <string name="tab_carte">CARTE</string>
+    <string name="tab_actions">ACTIONS</string>
+    <string name="tab_avis">AVIS</string>
+    <string name="tab_hiscore">HI-SCORES</string>
+    <string name="pas_encore_de_scores">Pas encore de scores enregistrés</string>
+
+
+    <string-array name="langugages_array">
+            <item>Français</item>
+            <item>English</item>
+        </string-array>
 
 
 </resources>

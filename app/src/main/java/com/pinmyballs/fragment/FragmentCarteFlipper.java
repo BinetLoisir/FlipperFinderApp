@@ -74,8 +74,8 @@ public class FragmentCarteFlipper extends Fragment implements OnMapReadyCallback
         map.getUiSettings().setZoomControlsEnabled(true);
 
         if (flipper != null && flipper.getEnseigne() != null) {
-            LatLng latlng = new LatLng(Double.valueOf(flipper.getEnseigne().getLatitude()),
-                    Double.valueOf(flipper.getEnseigne().getLongitude()));
+            LatLng latlng = new LatLng(Double.parseDouble(flipper.getEnseigne().getLatitude()),
+                    Double.parseDouble(flipper.getEnseigne().getLongitude()));
 
             MarkerOptions markerOpt = new MarkerOptions()
                     .position(latlng)

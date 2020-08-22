@@ -10,7 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 public class SignalementPagerAdapter extends FragmentPagerAdapter{
 
     public static final int PAGE_COUNT = 3;
-    SparseArray<SignalementWizardFragment> registeredFragments = new SparseArray<SignalementWizardFragment>();
+    SparseArray<SignalementWizardFragment> registeredFragments = new SparseArray<>();
 
     public SignalementPagerAdapter(FragmentManager fm) {
         super(fm);

@@ -60,7 +60,7 @@ public class ParseFlipperService {
 		   listeFlipper.add(flipper);
 		   }
 		   */
-        return new ArrayList<Flipper>();
+        return new ArrayList<>();
     }
 
     /**
@@ -70,10 +70,10 @@ public class ParseFlipperService {
      * @return
      */
     public List<Flipper> getMajFlipperByDate(String dateDerniereMaj) {
-        List<Flipper> listeFlipper = new ArrayList<Flipper>();
+        List<Flipper> listeFlipper = new ArrayList<>();
 
         List<ParseObject> listePo;
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         try {
             query.setLimit(5000);
             query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.FLIPPER_DATMAJ, dateDerniereMaj);
@@ -97,7 +97,7 @@ public class ParseFlipperService {
     public void updateDateFlipper(final Context pContext, final Flipper flipper, final String dateToSave) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -131,7 +131,7 @@ public class ParseFlipperService {
     public boolean supprimeFlipper(final Context pContext, final Flipper ancienflipper) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, ancienflipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -148,7 +148,7 @@ public class ParseFlipperService {
 
 
                         // On met le tout dans une liste
-                        List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
+                        List<ParseObject> listParseToSave = new ArrayList<>();
                         listParseToSave.add(objects.get(0));
 
                         // Et on balance in da cloud!
@@ -158,7 +158,7 @@ public class ParseFlipperService {
                                 //mProgressBarHandler.hide();
                                 if (e == null) {
                                     // Ca s'est bien passé, on sauvegarde les flippers
-                                    List<Flipper> listBaseToSave = new ArrayList<Flipper>();
+                                    List<Flipper> listBaseToSave = new ArrayList<>();
                                     listBaseToSave.add(ancienflipper);
 
                                     BaseFlipperService baseFlipperService = new BaseFlipperService();
@@ -187,7 +187,7 @@ public class ParseFlipperService {
     public void modifieEtatFlipper(final Context pContext, final Flipper flipper) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -213,7 +213,7 @@ public class ParseFlipperService {
 
                 if (objects != null && objects.size() > 0) {
                     //List de ParseObjects à créer, mettre à jour
-                    List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
+                    List<ParseObject> listParseToSave = new ArrayList<>();
 
                     ParseObject flipPO = objects.get(0);
                     // Si le flip est désactivé, on l'active, on rajoute un commentaire et on réactive les commentaires du flip
@@ -263,8 +263,8 @@ public class ParseFlipperService {
                             if (e == null) {
                                 Log.d(TAG, "SaveInBackground successful");
                                 // Ca s'est bien passé, on sauvegarde les flippers
-                                List<Flipper> listBaseToSave = new ArrayList<Flipper>();
-                                List<Commentaire> listBaseToSaveComment = new ArrayList<Commentaire>();
+                                List<Flipper> listBaseToSave = new ArrayList<>();
+                                List<Commentaire> listBaseToSaveComment = new ArrayList<>();
                                 listBaseToSave.add(flipper);
                                 listBaseToSaveComment.add(commentaireUpdate);
 
@@ -297,7 +297,7 @@ public class ParseFlipperService {
     public void remplaceModeleFlipper(final Context pContext, final Flipper ancienflipper, final Flipper nouveauFlipper, final Commentaire commentaire) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, ancienflipper.getId());
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -316,7 +316,7 @@ public class ParseFlipperService {
                         ParseObject flipPO = parseFactory.getPOWithPointersToExistingObjects(nouveauFlipper);
 
                         // On met le tout dans une liste
-                        List<ParseObject> listParseToSave = new ArrayList<ParseObject>();
+                        List<ParseObject> listParseToSave = new ArrayList<>();
                         listParseToSave.add(flipPO);
                         listParseToSave.add(objects.get(0));
 
@@ -347,7 +347,7 @@ public class ParseFlipperService {
                                 if (e == null) {
                                     mProgressBarHandler.hide();
                                     // Ca s'est bien passé, on sauvegarde les flippers
-                                    List<Flipper> listBaseToSave = new ArrayList<Flipper>();
+                                    List<Flipper> listBaseToSave = new ArrayList<>();
                                     listBaseToSave.add(nouveauFlipper);
                                     listBaseToSave.add(ancienflipper);
 

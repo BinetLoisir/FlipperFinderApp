@@ -16,7 +16,7 @@ public class BaseFlipperService {
 
 
 	public ArrayList<Flipper> rechercheFlipper(Context pContext, double latitude, double longitude, int rayon, int maxListeSize, String modele){
-		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+		ArrayList<Flipper> listeRetour = new ArrayList<>();
 
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 
@@ -34,7 +34,7 @@ public class BaseFlipperService {
 	}
 
 	public ArrayList<Flipper> rechercheFlipper(Context pContext, LatLng latLng, int rayon, int maxListeSize, String modele){
-		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+		ArrayList<Flipper> listeRetour = new ArrayList<>();
 
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 
@@ -52,7 +52,7 @@ public class BaseFlipperService {
 	}
 
 	public ArrayList<Flipper> rechercheFlipper(Context pContext, Enseigne enseigne){
-		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+		ArrayList<Flipper> listeRetour = new ArrayList<>();
 
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 		flipperDao.open();
@@ -63,12 +63,12 @@ public class BaseFlipperService {
 			listeRetour.add(listeFlipper.get(i));
 		}*/
 
-		return new ArrayList<Flipper>(listeFlipper);
+		return new ArrayList<>(listeFlipper);
 
 	}
 
 	public ArrayList<Flipper> rechercheOtherFlipper(Context pContext, Flipper flipper){
-		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+		ArrayList<Flipper> listeRetour = new ArrayList<>();
 
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 		flipperDao.open();
@@ -79,19 +79,19 @@ public class BaseFlipperService {
 			listeRetour.add(listeFlipper.get(i));
 		}*/
 
-		return new ArrayList<Flipper>(listeFlipper);
+		return new ArrayList<>(listeFlipper);
 
 	}
 
 	public ArrayList<Flipper> getAllActiveFlippers(Context pContext){
-		ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+		ArrayList<Flipper> listeRetour = new ArrayList<>();
 
 		FlipperDAO flipperDao = new FlipperDAO(pContext);
 		flipperDao.open();
 		ArrayList<Flipper> listeFlipper = flipperDao.getAllFlipperActif();
 		flipperDao.close();
 
-		return new ArrayList<Flipper>(listeFlipper);
+		return new ArrayList<>(listeFlipper);
 
 	}
 

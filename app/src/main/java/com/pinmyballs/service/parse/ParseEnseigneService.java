@@ -40,7 +40,7 @@ public class ParseEnseigneService {
 		   listeEnseigne.add(enseigne);
 		   }
 		   */
-		return new ArrayList<Enseigne>();
+		return new ArrayList<>();
 	}
 
 	/**
@@ -49,10 +49,10 @@ public class ParseEnseigneService {
 	 * @return
 	 */
 	public List<Enseigne> getMajEnseigneByDate(String dateDerniereMaj){
-		List<Enseigne> listeEnseigne = new ArrayList<Enseigne>();
+		List<Enseigne> listeEnseigne = new ArrayList<>();
 
 		List<ParseObject> listePo;
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("ENSEIGNE");
+		ParseQuery<ParseObject> query = new ParseQuery<>("ENSEIGNE");
 		try {
 			query.setLimit(2000);
 			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.ENSEIGNE_DATMAJ, dateDerniereMaj);
@@ -90,7 +90,7 @@ public class ParseEnseigneService {
 	public String getEnseigneObjectID(Long enseigneID){
 
 		ParseObject enseignePO;
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
+		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
 		try {
 			query.whereEqualTo(FlipperDatabaseHandler.ENSEIGNE_ID, enseigneID);
 			enseignePO = query.getFirst();

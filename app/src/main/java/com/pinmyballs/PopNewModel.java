@@ -98,7 +98,6 @@ public class PopNewModel extends AppCompatActivity {
             progressBar.setVisibility(View.INVISIBLE);
             Submit.setEnabled(true);
             new AlertDialog.Builder(this).setTitle("Erreur!").setMessage("Id " + maxId + " déjà prise, refresh local database").setNeutralButton("Fermer", null).setIcon(R.drawable.ic_delete).show();
-            return;
         } else {
             ModeleFlipper modeleFlipper = new ModeleFlipper(maxId + 1, Model, Brand, Year);
             modeleService.ajouteModele(getApplicationContext(), modeleFlipper);

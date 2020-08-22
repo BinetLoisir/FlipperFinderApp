@@ -74,7 +74,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
         modeleFlipperService = new BaseModeleService();
 
         //iniatilisation des listes
-        listeModelesComplet = new ArrayList<String>();
+        listeModelesComplet = new ArrayList<>();
         hashMapModeles = new HashMap();
 
         // Initialisation du champ Pseudo
@@ -92,7 +92,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
             hashMapModeles.put(NomComplet, modele.getId());
         }
         // Create an ArrayAdapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, listeModelesComplet);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, listeModelesComplet);
 
         //ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, modeleFlipperService.getAllNomModeleFlipper(getActivity().getApplicationContext()));
         initChampModele(champModeleFlipper, adapter);
@@ -127,7 +127,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
     }
 
     public ArrayList<ModeleFlipper> getModelesToAdd() {
-        ArrayList<ModeleFlipper> listeRetour = new ArrayList<ModeleFlipper>();
+        ArrayList<ModeleFlipper> listeRetour = new ArrayList<>();
         Context context = getActivity().getApplicationContext();
 
         if (!champModeleFlipper.getText().toString().equals("")) {
@@ -181,7 +181,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
 
     @Override
     public void completeStep() {
-        ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+        ArrayList<Flipper> listeRetour = new ArrayList<>();
         int i = 0;
         for (ModeleFlipper modele : getModelesToAdd()) {
             Flipper flipper = new Flipper();

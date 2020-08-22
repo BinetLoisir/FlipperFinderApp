@@ -35,12 +35,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         }
 
         Button mResetPasswordButton = findViewById(R.id.password_reset_button);
-        mResetPasswordButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                resetPassword(view);
-            }
-        });
+        mResetPasswordButton.setOnClickListener(this::resetPassword);
 
 
     }

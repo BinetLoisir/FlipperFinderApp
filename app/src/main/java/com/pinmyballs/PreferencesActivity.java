@@ -9,11 +9,15 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,15 +26,18 @@ import com.google.android.material.snackbar.Snackbar;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.service.GlobalService;
 
+import java.util.HashMap;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnLongClick;
 
-public class PreferencesActivity extends AppCompatActivity {
+public class PreferencesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public static final String PREFERENCES_FILENAME = "FlipperLocPrefs.txt";
     public static final String KEY_PREFERENCES_ADMIN_MODE = "AdminMode";
 	public static final String KEY_PSEUDO_FULL = "fullPseudo";
+	public static final String KEY_LANGUAGE_SHORT = "en";
 	public static final String KEY_PREFERENCES_RAYON = "rayonRecherche";
 	public static final String KEY_PREFERENCES_MAX_RESULT = "listeMaxResult";
 	public static final String KEY_PREFERENCES_DATE_LAST_UPDATE = "dateLastUpdate";
@@ -54,6 +61,9 @@ public class PreferencesActivity extends AppCompatActivity {
     public static final boolean DEFAULT_VALUE_REMEMBER = false;
     //CONSTANTS
     private static final String TAG = "PreferencesActivity";
+    public static final HashMap<String,String> lang_map = new HashMap<>();
+
+
     //BINDS
 	@BindView(R.id.TVPseudoPref)
     EditText tvPseudo;
@@ -65,6 +75,8 @@ public class PreferencesActivity extends AppCompatActivity {
 	TextView tvNbMaxListe;
 	@BindView(R.id.seekBarNbMax)
 	SeekBar seekBarNbMaxListe;
+	@BindView(R.id.languageSpinner)
+	Spinner langageSpinner;
 
 	@BindView(R.id.currentlatlng)
 	TextView currentLatLng;
@@ -86,6 +98,25 @@ public class PreferencesActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_preferences);
 		ButterKnife.bind(this);
+
+		//spinnersetup
+		langageSpinner = findViewById(R.id.languageSpinner);
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.langugages_array,android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		langageSpinner.setAdapter(adapter);
+		langageSpinner.setOnItemSelectedListener(this);
+
+		langageSpinner.setVisibility(View.INVISIBLE);
+		TextView text = findViewById(R.id.languageText);
+		text.setVisibility(View.INVISIBLE);
+
+
+		lang_map.put("Français","fr");
+		lang_map.put("French","fr");
+		lang_map.put("Anglais","en");
+		lang_map.put("English","en");
+
+
 
 		// Affichage du header
 		mActionbar = getSupportActionBar();
@@ -226,4 +257,18 @@ public class PreferencesActivity extends AppCompatActivity {
                 .show();
     }
 
+	@Override
+	public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+		String lang_long = adapterView.getItemAtPosition(i).toString();
+		SharedPreferences.Editor editor = settings.edit();
+		editor.putString(PreferencesActivity.KEY_LANGUAGE_SHORT, lang_map.get(lang_long));
+		editor.apply();
+		Toast.makeText(adapterView.getContext(),settings.getString(KEY_LANGUAGE_SHORT,"default"),Toast.LENGTH_SHORT).show();
+
+	}
+
+	@Override
+	public void onNothingSelected(AdapterView<?> adapterView) {
+
+	}
 }

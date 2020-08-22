@@ -39,13 +39,11 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 		mDialog = new ProgressDialog(mContext);
 		mDialog.setMessage(mContext.getResources().getString(R.string.dialogMajDBMEssage));
 		mDialog.setTitle(mContext.getResources().getString(R.string.dialogMajDBTitle));
+		String boutonCancel = mContext.getResources().getString(R.string.boutonCancel);
 		mDialog.setCancelable(false);
-		mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Annuler", new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				cancel(true);
-				dialog.dismiss();
-			}
+		mDialog.setButton(DialogInterface.BUTTON_NEGATIVE, boutonCancel, (dialog, which) -> {
+			cancel(true);
+			dialog.dismiss();
 		});
 		mDialog.setIndeterminate(true);
 		mDialog.show();

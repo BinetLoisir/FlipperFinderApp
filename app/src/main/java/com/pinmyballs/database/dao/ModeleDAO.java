@@ -24,7 +24,7 @@ public class ModeleDAO extends DAOBase {
     }
 
     public ArrayList<ModeleFlipper> getAllModeleFlipper() {
-        ArrayList<ModeleFlipper> listeRetour = new ArrayList<ModeleFlipper>();
+        ArrayList<ModeleFlipper> listeRetour = new ArrayList<>();
 
         Cursor cursor = mDb.query(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME,
                 new String[]{FlipperDatabaseHandler.MODELE_FLIPPER_ID,

@@ -23,7 +23,7 @@ public class EnseigneDAO extends DAOBase{
 	}
 
 	public ArrayList<Enseigne> getListEnseignePourDistance(PointF center, long distance){
-		ArrayList<Enseigne> listeRetour = new ArrayList<Enseigne>();
+		ArrayList<Enseigne> listeRetour = new ArrayList<>();
 		final double mult = 1; // mult = 1.1; is more reliable
 		PointF p1 = LocationUtil.calculateDerivedPosition(center, mult * distance, 0);
 		PointF p2 = LocationUtil.calculateDerivedPosition(center, mult * distance, 90);

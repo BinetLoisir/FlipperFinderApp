@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class FlipperDatabaseHandler extends SQLiteOpenHelper{
 
-	Context mContext = null;
+	Context mContext;
 	// V41 le 04/10/2015
 
     public static final int DATABASE_VERSION = 58;

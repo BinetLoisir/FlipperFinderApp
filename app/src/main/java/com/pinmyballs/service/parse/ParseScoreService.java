@@ -31,10 +31,10 @@ public class ParseScoreService {
      * @return
      */
     public List<Score> getMajScoreByDate(String dateDerniereMaj){
-        List<Score> listScore = new ArrayList<Score>();
+        List<Score> listScore = new ArrayList<>();
 
         List<ParseObject> listePo;
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.SCORE_TABLE_NAME);
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.SCORE_TABLE_NAME);
         try {
             query.setLimit(2000);
             query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.SCORE_DATE, dateDerniereMaj);
@@ -57,10 +57,10 @@ public class ParseScoreService {
     }
 
     public List<Score> getAllScores(){
-        List<Score> listScore = new ArrayList<Score>();
+        List<Score> listScore = new ArrayList<>();
 
         List<ParseObject> listePo;
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.SCORE_TABLE_NAME);
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.SCORE_TABLE_NAME);
         try {
             query.setLimit(2000);
             listePo = query.find();

@@ -98,8 +98,8 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
             }
             if (distanceTV != null) {
                 float[] resultDistance = new float[5];
-                Location.distanceBetween(latitude, longitude, Double.valueOf(p.getEnseigne().getLatitude()),
-                        Double.valueOf(p.getEnseigne().getLongitude()), resultDistance);
+                Location.distanceBetween(latitude, longitude, Double.parseDouble(p.getEnseigne().getLatitude()),
+                        Double.parseDouble(p.getEnseigne().getLongitude()), resultDistance);
                 float distanceFloat = resultDistance[0];
                 distanceTV.setText(LocationUtil.formatDist(distanceFloat));
             }

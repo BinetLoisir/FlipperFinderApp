@@ -25,7 +25,7 @@ public class CommentaireDAO extends DAOBase{
 	}
 
     public ArrayList<Commentaire> getLastCommentaire(int nbMaxCommentaire) {
-        ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+        ArrayList<Commentaire> listeRetour = new ArrayList<>();
         String strWhere = " Where " + FlipperDatabaseHandler.COMM_ACTIF + " = 1 ";
         String strOrder = " ORDER BY " + FlipperDatabaseHandler.COMM_DATE + " DESC, " + FlipperDatabaseHandler.COMM_ID + " DESC ";
 
@@ -49,7 +49,7 @@ public class CommentaireDAO extends DAOBase{
     }
 
     public ArrayList<Commentaire> getLastCommentaireType(int nbMaxCommentaire, String type, boolean includeNull) {
-        ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+        ArrayList<Commentaire> listeRetour = new ArrayList<>();
         String strWhere;
         if (!includeNull) {
             strWhere = " WHERE " + FlipperDatabaseHandler.COMM_ACTIF + " = 1 " +
@@ -173,7 +173,7 @@ public class CommentaireDAO extends DAOBase{
 	}*/
 
 	public ArrayList<Commentaire> getCommentairePourFlipperId(long flipperId){
-		ArrayList<Commentaire> listeRetour = new ArrayList<Commentaire>();
+		ArrayList<Commentaire> listeRetour = new ArrayList<>();
 		String strWhere =  " Where "
 			+ FlipperDatabaseHandler.COMM_FLIPPER_ID + " = " + flipperId
 			+ " AND "+ FlipperDatabaseHandler.COMM_ACTIF+ " = 1 ";

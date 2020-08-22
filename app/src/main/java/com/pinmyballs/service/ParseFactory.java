@@ -72,7 +72,7 @@ public class ParseFactory {
     }
 
     public ArrayList<ParseObject> getPOWithPointersToExistingObjects(Flipper flipper, Commentaire commentaire){
-        ArrayList<ParseObject> parseObjectArrayList = new ArrayList<ParseObject>();
+        ArrayList<ParseObject> parseObjectArrayList = new ArrayList<>();
         //On s'occupe du Flipper et de ses pointeurs
         ParseObject parseFlipper = getParseObject(flipper);
         parseFlipper.put(FlipperDatabaseHandler.FLIPPER_MODELE_POINTER, ParseObject.createWithoutData(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME,flipper.getModele().getObjectId()));

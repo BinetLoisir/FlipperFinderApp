@@ -127,12 +127,9 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder
             TVModelName = v.findViewById(R.id.modelName);
             TVModelBrand = v.findViewById(R.id.modelBrand);
             TVModelQty = v.findViewById(R.id.modelQty);
-            ModelCountHM = new HashMap<Long, Integer>();
+            ModelCountHM = new HashMap<>();
 
-            v.setOnClickListener(view -> {
-
-                Toast.makeText(v.getContext(),"black",Toast.LENGTH_SHORT).show();
-            });
+            v.setOnClickListener(view -> Toast.makeText(v.getContext(),"black",Toast.LENGTH_SHORT).show());
         }
 
         void setDetails(ModeleFlipper modeleFlipper) {

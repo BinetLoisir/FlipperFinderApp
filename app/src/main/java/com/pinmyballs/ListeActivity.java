@@ -62,7 +62,7 @@ public class ListeActivity extends AppCompatActivity {
 
     LatLng latLngListe = mDefaultLocation;
     int DISTANCE_MAX, ENSEIGNE_LIST_MAX_SIZE;
-    ArrayList<Flipper> listeFlipper = new ArrayList<Flipper>();
+    ArrayList<Flipper> listeFlipper = new ArrayList<>();
 
     @BindView(R.id.buttonMyLocation)
     ImageButton buttonMyLocation;
@@ -208,7 +208,7 @@ public class ListeActivity extends AppCompatActivity {
                 new LatLng(52.275758, 24.654688)));
 
         autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
-        autocompleteFragment.setHint("Ville, lieu, adresse...");
+        autocompleteFragment.setHint(getString(R.string.searchHint));
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
@@ -234,7 +234,7 @@ public class ListeActivity extends AppCompatActivity {
      */
     private void setupAutocompleteChampFlipper() {
         BaseModeleService modeleFlipperService = new BaseModeleService();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
                 modeleFlipperService.getAllNomModeleFlipper(getApplicationContext()));
         autocompleteModeleFlipper.setAdapter(adapter);
         autocompleteModeleFlipper.setImeOptions(EditorInfo.IME_ACTION_DONE);

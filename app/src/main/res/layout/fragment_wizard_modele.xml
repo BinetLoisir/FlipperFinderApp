@@ -56,7 +56,7 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:hint="@string/hintCommentaireNew"
-                android:text="Nouveau"
+                android:text="@string/defaultcommment_nouveau"
                 android:imeOptions="actionDone|normal"
                 android:inputType="textCapSentences|textMultiLine"
                 android:lines="1" />

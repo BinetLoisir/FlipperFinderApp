@@ -164,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void done(ParseUser parseUser, ParseException e) {
                         showProgress(false);
                         if (parseUser != null) {
-                            alertDisplayer("Sucessful Login", "Welcome back " + username + "!");
+                            alertDisplayer("Successful Login", "Welcome back " + username + "!");
                         } else {
                             ParseUser.logOut();
                             Toast.makeText(LoginActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();

@@ -22,7 +22,7 @@ public class ScoreDAO extends DAOBase{
     }
 
     public ArrayList<Score> getLastScore(int nbMaxScore){
-        ArrayList<Score> listeRetour = new ArrayList<Score>();
+        ArrayList<Score> listeRetour = new ArrayList<>();
         String strOrder =  " ORDER BY " + FlipperDatabaseHandler.SCORE_DATE + " DESC, " + FlipperDatabaseHandler.SCORE_ID+ " DESC ";
 
         Cursor cursor = mDb.rawQuery("select " + FlipperDatabaseHandler.SCORE_ID +
@@ -44,7 +44,7 @@ public class ScoreDAO extends DAOBase{
     }
 
     public ArrayList<Score> getScorePourFlipperId(long flipperId){
-        ArrayList<Score> listeRetour = new ArrayList<Score>();
+        ArrayList<Score> listeRetour = new ArrayList<>();
         String strWhere =  " Where "
                 + FlipperDatabaseHandler.SCORE_FLIPPER_ID + " = " + flipperId;
         String strOrder =  " ORDER BY " + FlipperDatabaseHandler.SCORE_SCORE + " DESC ";

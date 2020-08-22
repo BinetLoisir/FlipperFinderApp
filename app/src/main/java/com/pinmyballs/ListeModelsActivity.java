@@ -45,7 +45,7 @@ public class ListeModelsActivity extends AppCompatActivity {
 
     private void initActionBar() {
         mActionbar = getSupportActionBar();
-        mActionbar.setTitle("Liste Modèles");
+        mActionbar.setTitle(getString(R.string.liste_modeles));
         mActionbar.setHomeButtonEnabled(true);
         mActionbar.setDisplayHomeAsUpEnabled(true);
     }

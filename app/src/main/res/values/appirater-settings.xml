@@ -4,8 +4,8 @@
     	Google Play = market://details?id=%s
     	Amazon App Store = http://www.amazon.com/gp/mas/dl/android?p=%s
      -->
-    <string name="appirator_app_title">Pin my Balls</string>
-    <string name="appirator_market_url">market://details?id=com.pinmyballs</string>
+    <string name="appirator_app_title" translatable="false">Pin my Balls</string>
+    <string name="appirator_market_url" translatable="false">market://details?id=com.pinmyballs</string>
     <!--
     <string name="appirator_market_url">http://www.amazon.fr/gp/mas/dl/android?p=com.pinmyballs</string>
     -->

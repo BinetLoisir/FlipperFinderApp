@@ -31,7 +31,7 @@
         android:id="@+id/noscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pas encore de scores enregistrés"
+        android:text="@string/pas_encore_de_scores"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"

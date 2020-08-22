@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final int SEARCH_ZOOM = 13;
 
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-    final Map<String, Flipper> markerObjMap = new HashMap<String, Flipper>();
+    final Map<String, Flipper> markerObjMap = new HashMap<>();
     private final LatLng mDefaultLocation = new LatLng(48.858250, 2.294577); //Tour Eiffel
     SharedPreferences settings;
     private Context mContext = HomeActivity.this;
@@ -363,7 +363,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         assert autocompleteFragment != null;
         autocompleteFragment.setLocationBias(bounds);
         autocompleteFragment.setPlaceFields(Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG));
-        autocompleteFragment.setHint("Ville, lieu, adresse...");
+        autocompleteFragment.setHint(getString(R.string.searchHint));
 
         autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
             @Override
@@ -372,7 +372,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Log.i(TAG, "Map centered around : " + place.getName());
             }
             @Override
-            public void onError(Status status) {
+            public void onError(@NonNull Status status) {
                 Log.i(TAG, "An error occurred: " + status);
             }
         });

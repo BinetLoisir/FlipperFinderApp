@@ -34,10 +34,10 @@ public class ParseCommentaireService {
 	 * @return
 	 */
 	public List<Commentaire> getMajCommentaireByDate(String dateDerniereMaj){
-		List<Commentaire> listeCommentaire = new ArrayList<Commentaire>();
+		List<Commentaire> listeCommentaire = new ArrayList<>();
 
 		List<ParseObject> listePo;
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
+		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
 		try {
 			query.setLimit(5000);
 			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.COMM_DATE, dateDerniereMaj);
@@ -74,7 +74,7 @@ public class ParseCommentaireService {
 
 		//get the FlipperObjectID by direct query to the Cloud
 		String FlipperObjectID = "";
-		ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
 		query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID,commentaire.getFlipperId());
 		try {
 			FlipperObjectID = query.getFirst().getObjectId();

@@ -80,7 +80,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/searchbynumberResultFlipID"
@@ -182,7 +183,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/common_google_signin_btn_text_dark_focused"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/searchbynumberResultFlipEnseigneAdresse"
@@ -205,7 +207,8 @@
             android:layout_weight="1"
             android:text="@string/etat"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/actifState"

@@ -30,7 +30,7 @@ public class ParseCloudService {
      * @throws Exception
      */
     public List<Enseigne> FetchEnseigneByLocation(double latitude, double longitude, double maxDistance) throws Exception {
-        ArrayList<Enseigne> listEnseignes = new ArrayList<Enseigne>();
+        ArrayList<Enseigne> listEnseignes = new ArrayList<>();
         ParseGeoPoint myLocation = new ParseGeoPoint(latitude, longitude);
         ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
         query.whereGreaterThanOrEqualTo("ENS_NBFLIPS",1);
@@ -64,7 +64,7 @@ public class ParseCloudService {
      * @throws Exception
      */
     public List<Flipper> FetchNearbyFlippers(double latitude, double longitude, double maxDistance) throws Exception {
-        ArrayList<Flipper> listFlipper = new ArrayList<Flipper>();
+        ArrayList<Flipper> listFlipper = new ArrayList<>();
 
         ParseGeoPoint myLocation = new ParseGeoPoint(latitude, longitude);
         ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
@@ -99,7 +99,7 @@ public class ParseCloudService {
      * @throws Exception
      */
     public List<Flipper> FetchNearbyFlippersBounds(LatLngBounds latLngBounds) throws Exception {
-        ArrayList<Flipper> listFlipper = new ArrayList<Flipper>();
+        ArrayList<Flipper> listFlipper = new ArrayList<>();
 
         ParseGeoPoint SW = new ParseGeoPoint(latLngBounds.southwest.latitude, latLngBounds.southwest.longitude);
         ParseGeoPoint NE = new ParseGeoPoint(latLngBounds.northeast.latitude, latLngBounds.northeast.longitude);
@@ -134,7 +134,7 @@ public class ParseCloudService {
      * @throws Exception
      */
     public List<Flipper> FetchFlippersByEnseigne(Enseigne enseigne) throws Exception {
-        ArrayList<Flipper> listFlipper = new ArrayList<Flipper>();
+        ArrayList<Flipper> listFlipper = new ArrayList<>();
         ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, enseigne.getId());
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
@@ -157,7 +157,7 @@ public class ParseCloudService {
     }
 
     public List<Flipper> FetchOtherFlippers(Flipper flipper) throws Exception {
-        ArrayList<Flipper> listFlipper = new ArrayList<Flipper>();
+        ArrayList<Flipper> listFlipper = new ArrayList<>();
         ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, flipper.getEnseigne().getId());
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
@@ -190,7 +190,7 @@ public class ParseCloudService {
      */
     public List<ModeleFlipper> FetchModelesByEnseigne(Enseigne enseigne) throws Exception {
 
-        ArrayList<ModeleFlipper> listModele = new ArrayList<ModeleFlipper>();
+        ArrayList<ModeleFlipper> listModele = new ArrayList<>();
         ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, enseigne.getId());
         query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ACTIF, true);
@@ -216,7 +216,7 @@ public class ParseCloudService {
      * @throws Exception
      */
     public List<ModeleFlipper> GetFlipModeles(List<Flipper> listFlipper) throws Exception {
-        ArrayList<ModeleFlipper> listModele = new ArrayList<ModeleFlipper>();
+        ArrayList<ModeleFlipper> listModele = new ArrayList<>();
 
         for(Flipper flip : listFlipper){
             ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);

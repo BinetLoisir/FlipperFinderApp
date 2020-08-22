@@ -27,7 +27,7 @@ public class CommentaireActivity extends AppCompatActivity {
 	private static final int ACTIVITY_NUM = 1;
 	private Context mContext = CommentaireActivity.this;
 
-	ArrayList<Commentaire> listeCommentaires = new ArrayList<Commentaire>();
+	ArrayList<Commentaire> listeCommentaires = new ArrayList<>();
 
 	ListView listeCommentaireView = null;
     private int NB_MAX_COMMENTAIRE = 50;
@@ -64,9 +64,9 @@ public class CommentaireActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setText("COMMENTAIRES");
-        tabLayout.getTabAt(1).setText("AJOUTS");
-        tabLayout.getTabAt(2).setText("RETRAITS");
+        tabLayout.getTabAt(0).setText(R.string.tab_commentaires);
+        tabLayout.getTabAt(1).setText(R.string.tab_ajouts);
+        tabLayout.getTabAt(2).setText(R.string.tab_retraits);
     }
 
 

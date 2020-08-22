@@ -26,7 +26,7 @@ public class PopScore extends AppCompatActivity {
     
     Flipper flipper;
     ScoreService scoreService;
-    ArrayList<Score> listeScores = new ArrayList<Score>();
+    ArrayList<Score> listeScores = new ArrayList<>();
     ListView listeScoreView = null;
     FloatingActionButton fab;
 

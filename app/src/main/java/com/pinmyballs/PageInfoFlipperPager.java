@@ -143,10 +143,10 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        tabLayout.getTabAt(0).setText("CARTE");
-        tabLayout.getTabAt(1).setText("ACTIONS");
-        tabLayout.getTabAt(2).setText("AVIS");
-        tabLayout.getTabAt(3).setText("HI-SCORES");
+        tabLayout.getTabAt(0).setText(R.string.tab_carte);
+        tabLayout.getTabAt(1).setText(R.string.tab_actions);
+        tabLayout.getTabAt(2).setText(R.string.tab_avis);
+        tabLayout.getTabAt(3).setText(R.string.tab_hiscore);
     }
 
 

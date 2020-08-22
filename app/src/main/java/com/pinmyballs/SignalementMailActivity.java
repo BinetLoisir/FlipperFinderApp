@@ -87,7 +87,7 @@ public class SignalementMailActivity extends AppCompatActivity {
         adresseUtilisateurTV.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
         BaseModeleService modeleFlipperService = new BaseModeleService();
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, modeleFlipperService.getAllNomModeleFlipper(getApplicationContext()));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, modeleFlipperService.getAllNomModeleFlipper(getApplicationContext()));
         champModeleFlipper.setAdapter(adapter);
         champModeleFlipper.setImeOptions(EditorInfo.IME_ACTION_DONE);
         champModeleFlipper.setDropDownAnchor(R.id.autocompletionModeleFlipper);

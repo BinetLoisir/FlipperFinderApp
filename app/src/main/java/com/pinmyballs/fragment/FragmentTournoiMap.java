@@ -46,7 +46,7 @@ public class FragmentTournoiMap extends Fragment implements OnMapReadyCallback, 
     ArrayList<Marker> markersListComplete;
 
 
-    final Map<String, Tournoi> markerTournoiObjMap = new HashMap<String, Tournoi>();
+    final Map<String, Tournoi> markerTournoiObjMap = new HashMap<>();
 
 
     @Nullable
@@ -129,8 +129,8 @@ public class FragmentTournoiMap extends Fragment implements OnMapReadyCallback, 
 
     public void populateMapTournois(GoogleMap googleMap) {
         ArrayList<Tournoi> Tournois;
-        markersListPassed = new ArrayList<Marker>();
-        markersListComplete = new ArrayList<Marker>();
+        markersListPassed = new ArrayList<>();
+        markersListComplete = new ArrayList<>();
 
         // Récupère la liste des tournois
         BaseTournoiService baseTournoiService = new BaseTournoiService();

@@ -318,7 +318,7 @@ public class FragmentActionsFlipper extends Fragment {
         }
 
         // Prépare la liste d'autocomplétion pour les modèle de flipper
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(requireActivity(), android.R.layout.simple_list_item_1, listeModelesComplet);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, listeModelesComplet);
         champNouveauModeleFlipper.setAdapter(adapter);
         champNouveauModeleFlipper.setImeOptions(EditorInfo.IME_ACTION_DONE);
     }

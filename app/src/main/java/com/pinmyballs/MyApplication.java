@@ -33,6 +33,5 @@ public class MyApplication extends Application {
         // Create a new Places client instance.
         PlacesClient placesClient = Places.createClient(this);
         Log.d(TAG, "onCreate: " + "PlacesClient instanciated");
-
     }
 }

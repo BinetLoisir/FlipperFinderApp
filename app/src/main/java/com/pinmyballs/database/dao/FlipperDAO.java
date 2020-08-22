@@ -32,7 +32,7 @@ public class FlipperDAO extends DAOBase {
      * @return
      */
     public ArrayList<Flipper> getFlipperByEnseigne(Enseigne enseigne) {
-        ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+        ArrayList<Flipper> listeRetour = new ArrayList<>();
 
         // On ne prend que les flippers actifs
         String strActif = " AND " + FlipperDatabaseHandler.FLIPPER_ACTIF + " = 1 ";
@@ -101,7 +101,7 @@ public class FlipperDAO extends DAOBase {
     }
 
     public ArrayList<Flipper> getAllFlipperActif() {
-        ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+        ArrayList<Flipper> listeRetour = new ArrayList<>();
 
         // On ne prend que les flippers actifs
         String strActif = FlipperDatabaseHandler.FLIPPER_ACTIF + " = 1 ";
@@ -141,7 +141,7 @@ public class FlipperDAO extends DAOBase {
      * @return
      */
     public ArrayList<Flipper> getOtherFlippers(Flipper flipper) {
-        ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+        ArrayList<Flipper> listeRetour = new ArrayList<>();
 
         // On ne prend que les flippers actifs
         String strActif = " AND " + FlipperDatabaseHandler.FLIPPER_ACTIF + " = 1 ";
@@ -224,7 +224,7 @@ public class FlipperDAO extends DAOBase {
      * @return
      */
     public ArrayList<Flipper> getFlipperByModel(long idModel) {
-        ArrayList<Flipper> listflipperRetour = new ArrayList<Flipper>();
+        ArrayList<Flipper> listflipperRetour = new ArrayList<>();
         String strWhereFlipper = " WHERE "+ FlipperDatabaseHandler.FLIPPER_MODELE + "=" + idModel +" AND " + FlipperDatabaseHandler.FLIPPER_ACTIF + " = 1 ";
 
         Cursor cursor = mDb.rawQuery("SELECT "
@@ -281,7 +281,7 @@ public class FlipperDAO extends DAOBase {
      * @return
      */
     public ArrayList<Flipper> getFlipperByDistance(PointF center, long distance, String modele) {
-        ArrayList<Flipper> listeRetour = new ArrayList<Flipper>();
+        ArrayList<Flipper> listeRetour = new ArrayList<>();
 
         // On commence par la clause WHERE en fonction de la distance
         final double mult = 1; // mult = 1.1; is more reliable

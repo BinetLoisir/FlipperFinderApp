@@ -35,11 +35,11 @@ public class TestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        textInput =(EditText) findViewById(R.id.enterNumber);
-        searchButton = (Button) findViewById(R.id.searchbutton);
+        textInput = findViewById(R.id.enterNumber);
+        searchButton = findViewById(R.id.searchbutton);
         searchButton.setOnClickListener(view -> pressButton());
-        textView = (TextView) findViewById(R.id.pinNumber);
-        imageView = (ImageView) findViewById(R.id.pinImage);
+        textView = findViewById(R.id.pinNumber);
+        imageView = findViewById(R.id.pinImage);
 
 
     }
@@ -51,7 +51,7 @@ public class TestActivity extends AppCompatActivity {
 
         modelIDString = textInput.getText().toString();
 
-        int modelID = Integer.valueOf(modelIDString);
+        int modelID = Integer.parseInt(modelIDString);
 
         loadImage(modelID);
 
