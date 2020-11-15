@@ -83,12 +83,15 @@ public class ParseFlipperService {
             return null;
         }
         for (ParseObject po : listePo) {
-            Flipper flipper = new Flipper(po.getLong(FlipperDatabaseHandler.FLIPPER_ID),
+            Flipper flipper = new Flipper(
+                    po.getLong(FlipperDatabaseHandler.FLIPPER_ID),
                     po.getLong(FlipperDatabaseHandler.FLIPPER_MODELE),
-                    po.getLong(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E),
+                    po.getString(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E),
                     po.getLong(FlipperDatabaseHandler.FLIPPER_ENSEIGNE),
                     po.getBoolean(FlipperDatabaseHandler.FLIPPER_ACTIF),
-                    po.getString(FlipperDatabaseHandler.FLIPPER_DATMAJ));
+                    po.getString(FlipperDatabaseHandler.FLIPPER_DATMAJ),
+                    po.getString(FlipperDatabaseHandler.FLIPPER_EXPL),
+                    (int) po.getLong(FlipperDatabaseHandler.FLIPPER_NOTE));
             listeFlipper.add(flipper);
         }
         return listeFlipper;
@@ -127,6 +130,63 @@ public class ParseFlipperService {
             }
         });
     }
+
+    //Update the info fields only: nbcredits, photo, exploitant, note.
+    public void updateInfoFlipper(final Context pContext, final Flipper flipper) {
+        Date dateDuJour = new Date();
+        String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
+
+        final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
+        mProgressBarHandler.show();
+
+        ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
+        query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
+        query.findInBackground(new FindCallback<ParseObject>() {
+            @Override
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (objects != null && objects.size() > 0) {
+                    ParseObject retrievedFlipper = objects.get(0);
+                    if(flipper.getExploitant() != null) {
+                        retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_EXPL, flipper.getExploitant());
+                    }
+                    if(flipper.getNote() != 0) {
+                        retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_NOTE, flipper.getNote());
+                    }
+                    if(flipper.getNbCreditsDeuxEuros() != null) {
+                        retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, flipper.getNbCreditsDeuxEuros().toString());
+                    }
+                    if(flipper.getPhoto() != null) {
+                        retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_PHOTO, flipper.getPhoto());
+                    }
+                    retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, dateMaj);
+
+                    retrievedFlipper.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e == null) {
+                                mProgressBarHandler.hide();
+                                BaseFlipperService baseFlipperService = new BaseFlipperService();
+                                flipper.setDateMaj(dateMaj);
+                                flipper.setNbCreditsDeuxEuros(flipper.getNbCreditsDeuxEuros());
+                                flipper.setExploitant(flipper.getExploitant());
+                                flipper.setPhoto(flipper.getPhoto());
+                                baseFlipperService.majFlipper(flipper, pContext);
+                                Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.toastValidationCloudOK), Toast.LENGTH_SHORT);
+                                toast.show();
+                                if (mFragmentCallback != null) {
+                                    mFragmentCallback.onTaskDone();
+                                }
+                            } else {
+                                Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.toastValidationCloudKO), Toast.LENGTH_SHORT);
+                                toast.show();
+                            }
+                        }
+                    });
+                }
+            }
+        });
+    }
+
 
     public boolean supprimeFlipper(final Context pContext, final Flipper ancienflipper) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);

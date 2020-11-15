@@ -28,7 +28,10 @@ public class ParseFactory {
         parseObject.put(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, flipper.getIdEnseigne());
         parseObject.put(FlipperDatabaseHandler.FLIPPER_ID, flipper.getId());
         parseObject.put(FlipperDatabaseHandler.FLIPPER_MODELE, flipper.getIdModele());
-        parseObject.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, "");
+        parseObject.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, flipper.getNbCreditsDeuxEuros());
+        if(flipper.getExploitant() != null) parseObject.put(FlipperDatabaseHandler.FLIPPER_EXPL, flipper.getExploitant());
+        //parseObject.put(FlipperDatabaseHandler.FLIPPER_NOTE, flipper.getNote());
+        //parseObject.put(FlipperDatabaseHandler.FLIPPER_PHOTO,flipper.getPhoto());
         return parseObject;
     }
 
@@ -158,7 +161,10 @@ public class ParseFactory {
         flipper.setIdEnseigne(PO.getLong(FlipperDatabaseHandler.FLIPPER_ENSEIGNE));
         flipper.setId(PO.getLong(FlipperDatabaseHandler.FLIPPER_ID));
         flipper.setIdModele(PO.getLong(FlipperDatabaseHandler.FLIPPER_MODELE));
-        flipper.setNbCreditsDeuxEuros(Long.getLong(PO.getString(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E)));
+        flipper.setNbCreditsDeuxEuros(PO.getString(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E));
+        flipper.setExploitant(PO.getString(FlipperDatabaseHandler.FLIPPER_EXPL));
+        flipper.setNote((int)PO.getLong(FlipperDatabaseHandler.FLIPPER_NOTE));
+        flipper.setPhoto(PO.getString(FlipperDatabaseHandler.FLIPPER_PHOTO));
         return flipper;
     }
 

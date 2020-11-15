@@ -130,7 +130,6 @@ public class AdminActivity extends AppCompatActivity {
             }
         });
 
-
         //Rating exemple
         /*myRatingBar.setRating(1);
         myRatingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -160,6 +159,12 @@ public class AdminActivity extends AppCompatActivity {
                 ////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
                 Intent intent4 = new Intent(AdminActivity.this, PreferencesActivity.class);
                 startActivity(intent4);
+                break;
+
+            case R.id.action_list_trash:
+                ////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
+                Intent intent5 = new Intent(AdminActivity.this, TrashActivity.class);
+                startActivity(intent5);
                 break;
 
 

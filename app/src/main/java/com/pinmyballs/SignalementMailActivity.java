@@ -57,6 +57,10 @@ public class SignalementMailActivity extends AppCompatActivity {
     ImageButton boutonLocalisation;
     @BindView(R.id.autocompletionModeleFlipper)
     AutoCompleteTextView champModeleFlipper;
+    @BindView(R.id.champExploitant2)
+    EditText champExploitant;
+    @BindView(R.id.champNbCredits2)
+    EditText champNbCredits;
 
     ActionBar mActionbar;
 
@@ -132,12 +136,22 @@ public class SignalementMailActivity extends AppCompatActivity {
             Resources resources = getApplicationContext().getResources();
             String emailsTo = resources.getString(R.string.mailContact);
             String emailSubject = resources.getString(R.string.mail_subject_new_model);
+            String exploitant = "";
+            String nbcredit = "";
+
+            if(champExploitant.getText().length() > 0){
+                 exploitant = "\nNom de l'exploitant : " + champExploitant.getText().toString();
+            }
+            if(champNbCredits.getText().length() > 0){
+                 nbcredit = "\nNombre de crédits pour 2euros : " + champNbCredits.getText().toString();
+            }
 
 
             i.putExtra(Intent.EXTRA_EMAIL, new String[]{emailsTo});
             i.putExtra(Intent.EXTRA_SUBJECT, emailSubject);
             i.putExtra(Intent.EXTRA_TEXT, "Adresse : " + adresseUtilisateurTV.getText() + "\nModèle : " + champModeleFlipper.getText() +
-                    "\nNom de l'enseigne : " + champNomEnseigne.getText());
+                    "\nNom de l'enseigne : " + champNomEnseigne.getText()+ exploitant + nbcredit
+                    );
             try {
                 startActivity(Intent.createChooser(i, "Envoi du mail"));
             } catch (android.content.ActivityNotFoundException ex) {

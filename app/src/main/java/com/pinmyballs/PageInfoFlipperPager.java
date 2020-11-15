@@ -2,14 +2,20 @@ package com.pinmyballs;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +33,7 @@ import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.Score;
 import com.pinmyballs.service.FlipperService;
 import com.pinmyballs.service.base.BaseFlipperService;
+import com.pinmyballs.service.parse.ParseFlipperService;
 import com.pinmyballs.utils.NetworkUtil;
 import com.pinmyballs.utils.SectionsPagerAdapter;
 
@@ -46,17 +53,12 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
     ActionBar mActionbar;
     Flipper flipper;
     String nbflippers;
+    String pseudo;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
     private DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
     private SharedPreferences settings;
-
-
     //AJOUT INTERFACE TEST
     private FragmentHiScoreFlipper fragmentHiScoreFlipper;
-
-
-    String pseudo;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,13 +87,19 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
 
     private void setupUI() {
         //Widgets
+        LinearLayout linLayoutExpl = findViewById(R.id.linLayoutExp);
         TextView nbflippercircle = findViewById(R.id.nbflips);
+        TextView nbCredit2E = findViewById(R.id.nbcredits2E);
         TextView adresseEnseigne = findViewById(R.id.adresseEnseigne);
         TextView nomEnseigne = findViewById(R.id.nomEnseigne);
         TextView dateMajFlip = findViewById(R.id.dateMajFlip);
+        TextView exploitant = findViewById(R.id.tv_exploitant);
         nbflippercircle.setText(nbflippers);
+
         nomEnseigne.setText(flipper.getEnseigne().getNom());
         adresseEnseigne.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
+        exploitant.setText(flipper.getExploitant());
+        nbCredit2E.setOnClickListener(creditlistener);
 
         //Si la date de mise à jour est nulle, on affiche la valeur par défaut.
         if (flipper.getDateMaj() != null && flipper.getDateMaj().length() != 0) {
@@ -106,11 +114,23 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
             dateMajFlip.setText(getResources().getString(R.string.dateMajDefault));
         }
 
+        //Si le nombre de crédits est nul, on affiche ?.
+        StringBuilder credits = new StringBuilder("2€ ➤ ");
+        if (flipper.getNbCreditsDeuxEuros() != null && flipper.getNbCreditsDeuxEuros().length() != 0) {
+            credits.append(flipper.getNbCreditsDeuxEuros());
+        } else credits.append("?");
+        nbCredit2E.setText(credits);
+
+        //Si l'exploitant est nul, on cache la ligne
+        if (flipper.getExploitant() != null && flipper.getExploitant().length() != 0) {
+            exploitant.setText(flipper.getExploitant());
+            linLayoutExpl.setVisibility(View.VISIBLE);
+        } else linLayoutExpl.setVisibility(View.GONE);
+        if (flipper.getExploitant() != null && flipper.getExploitant().equals("0")) linLayoutExpl.setVisibility(View.GONE);
+
         //Title of the Activity
         mActionbar = getSupportActionBar();
         mActionbar.setTitle(flipper.getModele().getNom());
-        //mActionbar.setHomeButtonEnabled(true);
-        //mActionbar.setDisplayHomeAsUpEnabled(true);
     }
 
 
@@ -118,7 +138,7 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         Bundle bundle = new Bundle();
-        bundle.putSerializable("flip",flipper);
+        bundle.putSerializable("flip", flipper);
         bundle.putString("pseudo", pseudo);
         bundle.putParcelable("flipParceable", Parcels.wrap(flipper));
 
@@ -148,6 +168,7 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         tabLayout.getTabAt(2).setText(R.string.tab_avis);
         tabLayout.getTabAt(3).setText(R.string.tab_hiscore);
     }
+
 
 
     @Override
@@ -196,6 +217,56 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         return false;
     }
 
+    private View.OnClickListener creditlistener    =   new View.OnClickListener() {
+        String m_Text;
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(PageInfoFlipperPager.this);
+            builder.setTitle(R.string.dial_title_prix);
+
+            // Set up the input
+            final EditText input = new EditText(PageInfoFlipperPager.this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            //Bring up the keyboard when opening
+            input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    input.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            InputMethodManager inputMethodManager= (InputMethodManager) PageInfoFlipperPager.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            inputMethodManager.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+                        }
+                    });
+                }
+            });
+            input.requestFocus();
+
+            builder.setView(input);
+
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    m_Text = input.getText().toString();
+                    flipper.setNbCreditsDeuxEuros(m_Text);
+                    ParseFlipperService parseFlipperService = new ParseFlipperService(null);
+                    parseFlipperService.updateInfoFlipper(null,flipper);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+
+
+        }
+    };
 
     //AJOUT INTERFACE TEST
     @Override

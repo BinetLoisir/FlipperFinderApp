@@ -298,6 +298,16 @@
     <string name="mail_subject_new_comment">"Commentaire sur PinMyBalls</string>
     <string name="mail_subject_new_bug">"Bug signalé sur PinMyBalls</string>
     <string name="mail_subject_replaced">"Flipper remplacé</string>
+    <string name="texte_exploitant">Exploitant (optionnel)</string>
+    <string name="nbcredits">Nombre de crédits pour 2 euros (optionnel)</string>
+    <string name="exploitant">Exploitant:</string>
+    <string name="renseigner_prix">Renseigner Prix</string>
+    <string name="dial_title_prix">Nombre de crédits pour 2euros</string>
+    <string name="renseigner_exploitant">Renseigner Exploitant</string>
+    <string name="dial_title_exploitant">Exploitant</string>
+    <string name="comment_typ_exploitant">"Exploité par "</string>
+    <string name="comment_typ_price">"Nombre de credits pour 2 euros : "</string>
+    <string name="title_activity_trash">Trash</string>
 
 
     <string-array name="langugages_array">

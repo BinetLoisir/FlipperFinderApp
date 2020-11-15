@@ -2,6 +2,7 @@ package com.pinmyballs.service;
 
 import android.content.Context;
 
+import com.pinmyballs.R;
 import com.pinmyballs.fragment.FragmentActionsFlipper.FragmentActionCallback;
 import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.metier.Flipper;
@@ -63,7 +64,7 @@ public class FlipperService {
 
         //Making new Flipper & Commentaire
         long flipID = dateDuJour.getTime();
-        Flipper nouveauFlipper = new Flipper(flipID, idNouveauModele, 0, flipper.getIdEnseigne(), true, dateMaj);
+        Flipper nouveauFlipper = new Flipper(flipID, idNouveauModele, "?", flipper.getIdEnseigne(), true, dateMaj);
         nouveauFlipper.setModele(new BaseModeleService().getModeleById(pContext,idNouveauModele));
         nouveauFlipper.setEnseigne(flipper.getEnseigne());
         Commentaire commentaireToAdd = null;
@@ -84,7 +85,7 @@ public class FlipperService {
 
         //Making new Flipper & Commentaire
         long flipID = dateDuJour.getTime();
-        Flipper nouveauFlipper = new Flipper(flipID, idNouveauModele, 0, flipper.getIdEnseigne(), true, dateMaj);
+        Flipper nouveauFlipper = new Flipper(flipID, idNouveauModele, "?", flipper.getIdEnseigne(), true, dateMaj);
         //modele
         nouveauFlipper.setModele(new BaseModeleService().getModeleById(pContext, idNouveauModele));
         //enseigne
@@ -100,6 +101,45 @@ public class FlipperService {
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
         parseFlipperService.ajouterFlipper(pContext, nouveauFlipper, commentaire);
 
+    }
+
+    public void modifieExploitant(Context pContext, Flipper flipper, String exploitant, String pseudo){
+
+        flipper.setExploitant(exploitant);
+        Date dateDuJour = new Date();
+        String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
+        flipper.setDateMaj(dateMaj);
+
+        //commentaire
+        String comment = pContext.getString(R.string.comment_typ_exploitant)+ exploitant;
+        Commentaire commentaire = new Commentaire(dateDuJour.getTime(), flipper.getId(), comment, Commentaire.TYPE_POST, dateMaj, pseudo, true);
+        commentaire.setFlipper(flipper);
+
+        // Update of MongoDb
+        ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
+        //ParseCommentaireService parseCommentaireService = new ParseCommentaireService(mFragmentCallback);
+        //TODO AJOUTER UN COMMENTAIRE A CHAQUE RENSEIGNEMENT d EXPLOITANT
+        parseFlipperService.modifieEtatFlipper(pContext, flipper);
+        //parseCommentaireService.ajouteCommentaire(pContext, commentaire);
+
+        //Update of Sqlite database
+        //TODO Update de la db locale directement
+
+    }
+
+
+
+    public void modifieNbCredits(Context pContext, Flipper flipper, String nbcredits, String pseudo){
+
+        flipper.setNbCreditsDeuxEuros((nbcredits));
+        //TODO check if above formula is correct and error proof
+        Date dateDuJour = new Date();
+        String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
+        flipper.setDateMaj(dateMaj);
+
+        // Update of MongoDb
+        ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
+        parseFlipperService.modifieEtatFlipper(pContext, flipper);
     }
 
 }

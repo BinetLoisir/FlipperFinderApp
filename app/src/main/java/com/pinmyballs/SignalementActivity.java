@@ -233,7 +233,7 @@ public class SignalementActivity extends AppCompatActivity {
 
         ParseFactory parseFactory = new ParseFactory();
         //creation d'une liste d'envoi
-        ArrayList<ParseObject> objectsToSend = new ArrayList<>();
+        ArrayList<ParseObject> objectsToSend = new ArrayList<ParseObject>();
 
         ParseObject enseignePO = parseFactory.getParseObject(enseigne);
         //objectsToSend.add(parseFactory.getParseObject(getEnseigne()));

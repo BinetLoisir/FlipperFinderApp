@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout2"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:id="@+id/relativeLayout2">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/nomEnseigne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="Nom Enseigne"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,10 +25,10 @@
         android:id="@+id/adresseEnseigne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="Adresse"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textSize="14sp"
@@ -40,10 +40,10 @@
         android:id="@+id/dateMajFlip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:text="@string/dateMaj"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,19 +66,62 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/nbcredits2E"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/semicircular_texview"
+        android:gravity="center"
+        android:text="2€ ➤ 3"
+        android:textColor="@color/accent"
+        app:layout_constraintBottom_toBottomOf="@+id/dateMajFlip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <LinearLayout
+        android:id="@+id/linLayoutExp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/dateMajFlip">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/exploitant" />
+
+        <TextView
+            android:id="@+id/tv_exploitant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/accent_material_light2"
+            android:layout_marginLeft="8dp"
+            android:text="Equip'jeux" />
+    </LinearLayout>
+
     <View
         android:id="@+id/divider"
         style="@style/itemDivider"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dateMajFlip" />
+        app:layout_constraintTop_toBottomOf="@id/linLayoutExp" />
+
+
+
+
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/divider"
-        app:layout_constraintBottom_toTopOf="@id/pager">
+        app:layout_constraintBottom_toTopOf="@id/pager"
+        app:layout_constraintTop_toBottomOf="@id/divider">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -92,9 +135,9 @@
         android:id="@+id/pager"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/appbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

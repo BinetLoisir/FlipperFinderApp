@@ -41,7 +41,8 @@ public class FlipperDAO extends DAOBase {
         Cursor cursor = mDb.query(FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
                         + FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
                         + " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID,
-                new String[]{FlipperDatabaseHandler.FLIPPER_ID,
+                new String[]{
+                        FlipperDatabaseHandler.FLIPPER_ID,
                         FlipperDatabaseHandler.FLIPPER_MODELE,
                         FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E,
                         FlipperDatabaseHandler.FLIPPER_ENSEIGNE,
@@ -51,7 +52,11 @@ public class FlipperDAO extends DAOBase {
                         FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
                         FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
                         FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT,
-                        FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID},
+                        FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID,
+                        FlipperDatabaseHandler.FLIPPER_EXPL,
+                        FlipperDatabaseHandler.FLIPPER_NOTE,
+                        FlipperDatabaseHandler.FLIPPER_PHOTO
+                },
                 FlipperDatabaseHandler.FLIPPER_ENSEIGNE + "=?" + strActif,
                 new String[]{String.valueOf(enseigne.getId())},
                 null, null, null);
@@ -120,7 +125,10 @@ public class FlipperDAO extends DAOBase {
                         FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
                         FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
                         FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT,
-                        FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID},
+                        FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID,
+                        FlipperDatabaseHandler.FLIPPER_EXPL,
+                        FlipperDatabaseHandler.FLIPPER_NOTE,
+                        FlipperDatabaseHandler.FLIPPER_PHOTO},
 
                 FlipperDatabaseHandler.FLIPPER_ACTIF + "=?",
                 new String[]{"1"},
@@ -166,7 +174,11 @@ public class FlipperDAO extends DAOBase {
                         FlipperDatabaseHandler.MODELE_FLIPPER_MARQUE,
                         FlipperDatabaseHandler.MODELE_FLIPPER_NOM,
                         FlipperDatabaseHandler.MODELE_FLIPPER_ANNEE_LANCEMENT,
-                        FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID},
+                        FlipperDatabaseHandler.MODELE_FLIPPER_OBJ_ID,
+                        FlipperDatabaseHandler.FLIPPER_EXPL,
+                        FlipperDatabaseHandler.FLIPPER_NOTE,
+                        FlipperDatabaseHandler.FLIPPER_PHOTO},
+
                 FlipperDatabaseHandler.FLIPPER_ENSEIGNE + "=?" + strActif + strAutre,
                 new String[]{String.valueOf(enseigne.getId())},
                 null, null, null);
@@ -201,7 +213,11 @@ public class FlipperDAO extends DAOBase {
                 + FlipperDatabaseHandler.ENSEIGNE_LATITUDE + " , " + FlipperDatabaseHandler.ENSEIGNE_LONGITUDE + " , "
                 + FlipperDatabaseHandler.ENSEIGNE_ADRESSE + " , " + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
                 + FlipperDatabaseHandler.ENSEIGNE_VILLE + " , " + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_DATMAJ + " FROM "
+                + FlipperDatabaseHandler.ENSEIGNE_DATMAJ   + " , "
+                + FlipperDatabaseHandler.FLIPPER_EXPL  + " , "
+                + FlipperDatabaseHandler.FLIPPER_NOTE  + " , "
+                + FlipperDatabaseHandler.FLIPPER_PHOTO
+                + " FROM "
                 + FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
                 + FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
                 + " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " INNER JOIN "
@@ -249,7 +265,10 @@ public class FlipperDAO extends DAOBase {
                 + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
                 + FlipperDatabaseHandler.ENSEIGNE_VILLE + " , "
                 + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_DATMAJ
+                + FlipperDatabaseHandler.ENSEIGNE_DATMAJ  + " , "
+                + FlipperDatabaseHandler.FLIPPER_EXPL  + " , "
+                + FlipperDatabaseHandler.FLIPPER_NOTE  + " , "
+                + FlipperDatabaseHandler.FLIPPER_PHOTO
                 + " FROM "
                 + FlipperDatabaseHandler.FLIPPER_TABLE_NAME
                 + " INNER JOIN "
@@ -333,7 +352,11 @@ public class FlipperDAO extends DAOBase {
                 + FlipperDatabaseHandler.ENSEIGNE_CODE_POSTAL + " , "
                 + FlipperDatabaseHandler.ENSEIGNE_VILLE + " , "
                 + FlipperDatabaseHandler.ENSEIGNE_PAYS + " , "
-                + FlipperDatabaseHandler.ENSEIGNE_DATMAJ + " FROM "
+                + FlipperDatabaseHandler.ENSEIGNE_DATMAJ  + " , "
+                + FlipperDatabaseHandler.FLIPPER_EXPL  + " , "
+                + FlipperDatabaseHandler.FLIPPER_NOTE  + " , "
+                + FlipperDatabaseHandler.FLIPPER_PHOTO
+                + " FROM "
                 + FlipperDatabaseHandler.FLIPPER_TABLE_NAME + " INNER JOIN "
                 + FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME + " ON " + FlipperDatabaseHandler.FLIPPER_MODELE
                 + " = " + FlipperDatabaseHandler.MODELE_FLIPPER_ID + " INNER JOIN "
@@ -356,6 +379,9 @@ public class FlipperDAO extends DAOBase {
         contentValues.put(FlipperDatabaseHandler.FLIPPER_ENSEIGNE, flipper.getIdEnseigne());
         contentValues.put(FlipperDatabaseHandler.FLIPPER_ACTIF, flipper.isActif());
         contentValues.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
+        contentValues.put(FlipperDatabaseHandler.FLIPPER_NOTE, flipper.getNote());
+        contentValues.put(FlipperDatabaseHandler.FLIPPER_EXPL, flipper.getExploitant());
+        contentValues.put(FlipperDatabaseHandler.FLIPPER_PHOTO, flipper.getPhoto());
 
         mDb.delete(FlipperDatabaseHandler.FLIPPER_TABLE_NAME, FlipperDatabaseHandler.FLIPPER_ID + "=?", new String[]{String.valueOf(flipper.getId())});
         mDb.insert(FlipperDatabaseHandler.FLIPPER_TABLE_NAME, null, contentValues);
@@ -375,10 +401,15 @@ public class FlipperDAO extends DAOBase {
         flipper.setId(c.getLong(0));
         flipper.setModele(modele);
         flipper.setEnseigne(enseigne);
-        flipper.setNbCreditsDeuxEuros(c.getLong(2));
+        flipper.setNbCreditsDeuxEuros(c.getString(2));
         flipper.setDateMaj(c.getString(4));
         //flipper.getDateMaj();
         flipper.setActif(c.getLong(5));
+
+        flipper.setExploitant(c.getString(22));
+        flipper.setNote((int) c.getLong(23));
+        flipper.setPhoto(c.getString(24));
+
         return flipper;
     }
 
@@ -391,10 +422,16 @@ public class FlipperDAO extends DAOBase {
         if (enseigne != null) {
             flipper.setEnseigne(enseigne);
         }
-        flipper.setNbCreditsDeuxEuros(c.getLong(2));
+        flipper.setNbCreditsDeuxEuros(c.getString(2));
         flipper.setDateMaj(c.getString(4));
         //flipper.getDateMaj();
         flipper.setActif(c.getLong(5));
+        flipper.setExploitant(c.getString(12));
+        flipper.setNote((int) c.getLong(13));
+        //flipper.setPhoto(c.getString(14));
+
+
+
         return flipper;
     }
 

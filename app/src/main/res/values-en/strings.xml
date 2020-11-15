@@ -220,6 +220,16 @@
     <string name="mail_subject_new_comment">Comment on PinMyBalls</string>
     <string name="mail_subject_new_pinball">New machine on PinMyBalls</string>
     <string name="mail_subject_replaced">Pinball replaced</string>
+    <string name="texte_exploitant">Operator (optional)</string>
+    <string name="nbcredits">Nombre de crédits 2 euros</string>
+    <string name="exploitant">Operator:</string>
+    <string name="renseigner_prix">Indicate price</string>
+    <string name="dial_title_prix">Credits for 2euros</string>
+    <string name="renseigner_exploitant">Indicate Operator</string>
+    <string name="dial_title_exploitant">Operator</string>
+    <string name="comment_typ_exploitant">"Operated by "</string>
+    <string name="comment_typ_price">"Number of credits for 2 euros : "</string>
+
 
 
 </resources>

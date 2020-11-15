@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/WizardPageContainer" >
+    style="@style/WizardPageContainer"
+    android:baselineAligned="false">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,15 +19,13 @@
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+
                 android:orientation="horizontal">
 
                 <AutoCompleteTextView
                     android:id="@+id/autocompletionModeleFlipper"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dip"
-                    android:layout_marginRight="5dip"
-                    android:layout_marginTop="3dip"
                     android:layout_weight="20"
                     android:hint="@string/SectionFlipper"
                     android:imeOptions="actionDone"
@@ -37,8 +36,6 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="1dip"
                     android:layout_weight="70"
                     android:hint="@string/hintPseudo"
                     android:imeOptions="actionDone"
@@ -50,9 +47,7 @@
                 android:id="@+id/texteCommentaire"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginTop="3dip"
+                android:layout_marginLeft="15dp"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:hint="@string/hintCommentaireNew"
@@ -61,13 +56,34 @@
                 android:inputType="textCapSentences|textMultiLine"
                 android:lines="1" />
 
+            <EditText
+                android:id="@+id/champExploitant"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/texte_exploitant"
+                android:imeOptions="actionDone|normal"
+                android:inputType="textCapSentences|textMultiLine"
+                android:lines="1" />
+
+            <EditText
+                android:id="@+id/champNbCredits"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/nbcredits"
+                android:imeOptions="actionDone|normal"
+                android:inputType="numberSigned"
+                android:lines="1" />
+
             <AutoCompleteTextView
                 android:id="@+id/autocompletionModeleFlipper2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dip"
-                android:layout_marginRight="5dip"
-                android:layout_marginTop="5dip"
                 android:hint="@string/SignalementDeuxiemeModele"
                 android:imeOptions="actionDone"
                 android:inputType="textFilter|textNoSuggestions"
@@ -77,9 +93,6 @@
                 android:id="@+id/autocompletionModeleFlipper3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dip"
-                android:layout_marginRight="5dip"
-                android:layout_marginTop="5dip"
                 android:hint="@string/SignalementTroisiemeModele"
                 android:imeOptions="actionDone"
                 android:inputType="textFilter|textNoSuggestions"
@@ -89,9 +102,6 @@
                 android:id="@+id/autocompletionModeleFlipper4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dip"
-                android:layout_marginRight="5dip"
-                android:layout_marginTop="5dip"
                 android:hint="@string/SignalementQuatriemeModele"
                 android:imeOptions="actionDone"
                 android:inputType="textFilter|textNoSuggestions"
@@ -101,14 +111,10 @@
                 android:id="@+id/autocompletionModeleFlipper5"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dip"
-                android:layout_marginRight="5dip"
-                android:layout_marginTop="5dip"
                 android:hint="@string/SignalementCinquiemeModele"
                 android:imeOptions="actionDone"
                 android:inputType="textFilter|textNoSuggestions"
                 android:singleLine="true" />
-
 
         </LinearLayout>
     </ScrollView>

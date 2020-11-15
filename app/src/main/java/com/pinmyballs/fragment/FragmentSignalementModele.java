@@ -48,6 +48,10 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
     AutoCompleteTextView champModeleQuatriemeFlipper;
     @BindView(R.id.autocompletionModeleFlipper5)
     AutoCompleteTextView champModeleCinquiemeFlipper;
+    @BindView(R.id.champExploitant)
+    EditText champExploitant;
+    @BindView(R.id.champNbCredits)
+    EditText champNbCredits;
 
     ModeleFlipper modeleFlipper, modeleFlipper2, modeleFlipper3, modeleFlipper4, modeleFlipper5;
 
@@ -56,6 +60,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
 
     SharedPreferences settings;
     BaseModeleService modeleFlipperService;
+
     private OnItemClickListener itemSelectionneListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
@@ -100,6 +105,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
         initChampModele(champModeleTroisiemeFlipper, adapter);
         initChampModele(champModeleQuatriemeFlipper, adapter);
         initChampModele(champModeleCinquiemeFlipper, adapter);
+
 
 
         return rootView;
@@ -190,6 +196,8 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
             flipper.setIdEnseigne(getNewEnseigneId());
             flipper.setId(getNewEnseigneId() + i++);
             flipper.setIdModele(modele.getId());
+            flipper.setExploitant(champExploitant.getText().toString());
+            flipper.setNbCreditsDeuxEuros(champNbCredits.getText().toString());
             listeRetour.add(flipper);
         }
         getParentActivity().completeModele(listeRetour, getCommentaireToAdd(), champPseudo.getText().toString());

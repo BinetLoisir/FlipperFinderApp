@@ -10,6 +10,8 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,23 +32,29 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.parse.ParseObject;
+import com.pinmyballs.AdminActivity;
+import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.PreferencesActivity;
 import com.pinmyballs.R;
+import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.ModeleFlipper;
 import com.pinmyballs.service.FlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
+import com.pinmyballs.service.parse.ParseFlipperService;
 import com.pinmyballs.utils.AsyncTaskMajDatabaseBackground;
 import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.NetworkUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentActionsFlipper extends Fragment {
-
+    private static final String TAG = AdminActivity.class.getSimpleName();
     private Boolean ajoutNouveauFlip = false;
 
     private Button boutonValideChangement;
@@ -204,13 +212,13 @@ public class FragmentActionsFlipper extends Fragment {
 
     private OnClickListener DisparitionListener = new OnClickListener() {
         public void onClick(View v) {
-            String message2 = "Le " + flipper.getModele().getNom()
+            //Envoi mail
+            String message = "Le " + flipper.getModele().getNom()
                     + "\nID : " + flipper.getId()
                     + "\nAu : " + flipper.getEnseigne().getNom()
                     + "\nsitué : " + flipper.getEnseigne().getAdresseCompleteSansPays()
                     + "\n n'existe plus."
-                    + "\n"
-
+                    + "\n Dernière maj :" + flipper.getDateMaj()
                     + "\n----------Commentaire éventuel----------"
                     + "\n"
                     + "\n"
@@ -218,13 +226,17 @@ public class FragmentActionsFlipper extends Fragment {
 
                     + "------------------------------------------";
 
-            String message = "ID : " + flipper.getId()
-                    + "\nModèle : " + flipper.getModele().getNom()
-                    + "\nDu : " + flipper.getEnseigne().getNom()
-                    + "\nA : " + flipper.getEnseigne().getAdresseCompleteSansPays()
-                    + "\nEnseigne : " + flipper.getEnseigne().getId()
-                    + "\nCe flipper n'existe plus!";
-            envoiMail("Retrait d'un flipper à " + flipper.getEnseigne().getVille(), message2);
+            envoiMail("Retrait d'un flipper à " + flipper.getEnseigne().getVille(), message);
+
+            //Ajout TrashList
+            SharedPreferences settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+            String pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "___");
+
+            ParseObject flipperPO = new ParseObject(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
+            flipperPO.put(FlipperDatabaseHandler.FLIPTRASH_FLIP_ID,flipper.getId());
+            flipperPO.put(FlipperDatabaseHandler.FLIPTRASH_PSEUDO,pseudo);
+            flipperPO.put(FlipperDatabaseHandler.FLIPTRASH_PROCESSED,false);
+            flipperPO.saveInBackground();
         }
     };
 
@@ -246,6 +258,108 @@ public class FragmentActionsFlipper extends Fragment {
             } else {
                 Toast.makeText(getActivity().getApplicationContext(), "Merci d'installer Google Navigation ou Waze", Toast.LENGTH_SHORT).show();
             }
+
+        }
+    };
+    private OnClickListener ExploitantListener = new OnClickListener() {
+        String m_Text;
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(R.string.dial_title_exploitant);
+
+            // Set up the input
+            final EditText input = new EditText(getActivity());
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_TEXT);
+            //Bring up the keyboard when opening
+            input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    input.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            InputMethodManager inputMethodManager= (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            inputMethodManager.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+                        }
+                    });
+                }
+            });
+            input.requestFocus();
+
+            builder.setView(input);
+
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    m_Text = input.getText().toString();
+                    Log.d(TAG, "onClick: nouvel Exploitant" + m_Text );
+                    flipper.setExploitant(m_Text);
+                    ParseFlipperService parseFlipperService = new ParseFlipperService(null);
+                    parseFlipperService.updateInfoFlipper(getActivity(),flipper);
+
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+
+
+        }
+    };
+    private OnClickListener CreditsListener = new OnClickListener() {
+        String m_Text;
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle(R.string.dial_title_prix);
+
+            // Set up the input
+            final EditText input = new EditText(getActivity());
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            //Bring up the keyboard when opening
+            input.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    input.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            InputMethodManager inputMethodManager= (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            inputMethodManager.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT);
+                        }
+                    });
+                }
+            });
+            input.requestFocus();
+            builder.setView(input);
+
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    m_Text = input.getText().toString();
+                    Log.d(TAG, "onClick: nouveau prix" + m_Text);
+                    flipper.setNbCreditsDeuxEuros(m_Text);
+                    ParseFlipperService parseFlipperService = new ParseFlipperService(null);
+                    parseFlipperService.updateInfoFlipper(getActivity(),flipper);
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
+
 
         }
     };
@@ -274,6 +388,8 @@ public class FragmentActionsFlipper extends Fragment {
         Button boutonDisparition = rootView.findViewById(R.id.boutonDisparition);
         Button boutonNavigation = rootView.findViewById(R.id.boutonNavigation);
         Button boutonNouveauFlip = rootView.findViewById(R.id.boutonNouveauFlip);
+        Button boutonExploitant = rootView.findViewById(R.id.boutonExploitant);
+        Button boutonCredits = rootView.findViewById(R.id.boutonCredits);
 
         champNouveauModeleFlipper = rootView.findViewById(R.id.autocompletionNouveauModeleFlipper);
         pseudoET = rootView.findViewById(R.id.champPseudo);
@@ -287,6 +403,9 @@ public class FragmentActionsFlipper extends Fragment {
         boutonValidation.setOnClickListener(ValidationListener);
         boutonNavigation.setOnClickListener(NavigationListener);
         boutonNouveauFlip.setOnClickListener(NouveauFlipListener);
+        boutonExploitant.setOnClickListener(ExploitantListener);
+        boutonCredits.setOnClickListener(CreditsListener);
+
 
         boutonAnnuleChangement.setOnClickListener(AnnuleChangementModeleListener);
         boutonValideChangement.setOnClickListener(ValideChangementListener);
