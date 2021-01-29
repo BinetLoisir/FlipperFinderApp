@@ -6,9 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SwitchCompat;
@@ -23,18 +21,13 @@ import com.parse.SaveCallback;
 import com.pinmyballs.R;
 import com.pinmyballs.TrashItem;
 import com.pinmyballs.database.FlipperDatabaseHandler;
-import com.pinmyballs.fragment.FragmentActionsFlipper;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.FlipperService;
 import com.pinmyballs.service.base.BaseFlipperService;
-import com.pinmyballs.service.parse.ParseFlipperService;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import butterknife.OnClick;
-
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class TrashAdapter extends RecyclerView.Adapter<TrashAdapter.MyViewHolder> {
     Context context;
     private ArrayList<TrashItem> mDataset;
 
@@ -66,15 +59,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<TrashItem> myDataset) {
+    public TrashAdapter(ArrayList<TrashItem> myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @NonNull
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
+    public TrashAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                        int viewType) {
         // create a new view
         View listItem = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.simple_list_item_trash, parent, false);

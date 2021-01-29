@@ -212,7 +212,7 @@ public class FragmentActionsFlipper extends Fragment {
 
     private OnClickListener DisparitionListener = new OnClickListener() {
         public void onClick(View v) {
-            //Envoi mail
+            //1-Envoi mail
             String message = "Le " + flipper.getModele().getNom()
                     + "\nID : " + flipper.getId()
                     + "\nAu : " + flipper.getEnseigne().getNom()
@@ -228,7 +228,7 @@ public class FragmentActionsFlipper extends Fragment {
 
             envoiMail("Retrait d'un flipper à " + flipper.getEnseigne().getVille(), message);
 
-            //Ajout TrashList
+            //2-Ajout TrashList
             SharedPreferences settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
             String pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "___");
 

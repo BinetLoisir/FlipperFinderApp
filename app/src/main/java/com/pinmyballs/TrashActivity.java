@@ -11,17 +11,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.parse.FindCallback;
-import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.databinding.ActivityTrashBinding;
-import com.pinmyballs.utils.MyAdapter;
+import com.pinmyballs.utils.TrashAdapter;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class TrashActivity extends AppCompatActivity {
@@ -59,7 +56,7 @@ public class TrashActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter
-        mAdapter = new MyAdapter(trashItemList);
+        mAdapter = new TrashAdapter(trashItemList);
         recyclerView.setAdapter(mAdapter);
 
         refreshList();
