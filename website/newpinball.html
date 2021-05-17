@@ -55,8 +55,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/index.html"><i class="fa fa-fw fa-map"></i>&nbsp; Carte <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/newpinball.html"><i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau </a></li>
+                    <li><a href="/index.html"><i class="fa fa-fw fa-map"></i>&nbsp; Carte <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="/newpinball.html"><i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau </a></li>
                     <li><a href="#2"><i class="fa fa-fw fa-list-ul"></i>&nbsp; Liste</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Autres <span class="caret"></span></a>
@@ -162,13 +162,24 @@
                 <button type="button" class="btn btn-danger btn-circle btn" onClick="removeModel(); return false;"><i class="glyphicon glyphicon-minus"></i></button>
 
             </div>
-
-            <div>
-                <button type="submit" class="btn btn-primary btn-block">Soumettre (TODO) </button>
-            </div>
+            
+            <!--    Submit button non fonctionnel car lié à l'objet form et ici pas d'action= "" défini      -->
+            <!--<div>
+                <button type="submit" class="btn btn-primary btn-block" onclick="submit()">Soumettre par mail (workinprogress1) </button>
+            </div>-->
+                
         </form>
+        <button class="btn btn-primary btn-block" onclick="sendbutton()">Soumettre</button>
+
 
     </div>
+    
+    
+    <script>
+
+</script>
+    
+    
     <!-- Script of NewPinball page -->
     <script src="js/newpinball.js"></script>
     <!-- GooglePlaces Autocomplete -->

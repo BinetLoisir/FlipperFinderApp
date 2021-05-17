@@ -1,6 +1,7 @@
 package com.pinmyballs;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -20,12 +21,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.ModeleFlipper;
+import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
 import com.pinmyballs.utils.ModelAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 public class ListeModelsActivity extends AppCompatActivity {
 
@@ -35,12 +39,16 @@ public class ListeModelsActivity extends AppCompatActivity {
     private ArrayList<ModeleFlipper> listModels;
     private boolean sortedAZ;
     private boolean sortedChrono;
+    private boolean sortedCount;
+
+    private HashMap<Long, Integer> countModelsMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_models);
         initActionBar();
+        //populateHashMap();
         initView();
         initFAB();
         initFAB2();
@@ -52,6 +60,23 @@ public class ListeModelsActivity extends AppCompatActivity {
         mActionbar.setHomeButtonEnabled(true);
         mActionbar.setDisplayHomeAsUpEnabled(true);
     }
+
+    /*
+    private void populateHashMap() {
+        ArrayList<Long> listModelIDs = new BaseModeleService().getAllIdModeleFlipper(context);
+        ArrayList<Flipper> listFlippersActifs = new BaseFlipperService().getAllActiveFlippers(context);
+
+        for (Long modelID : listModelIDs) {
+            int modelcount = 0;
+            for (Flipper flip : listFlippersActifs) {
+                if (flip.getIdModele() == modelID) {
+                    modelcount++;
+                }
+            }
+            countModelsMap.put(modelID, modelcount);
+        }
+    }
+    */
 
     private void initView() {
         RecyclerView recyclerView = findViewById(R.id.my_recycler_view);
@@ -165,6 +190,18 @@ public class ListeModelsActivity extends AppCompatActivity {
                 }
                 modelAdapter.notifyDataSetChanged();
                 break;
+
+            case R.id.action_sortCount:
+                if (sortedCount) {
+                   // Collections.sort(listModels, (m1, m2) -> String.valueOf(m2.get).compareTo(String.valueOf(m1.getAnneeLancement())));
+                    sortedCount = false;
+                } else {
+                   // Collections.sort(listModels, (m1, m2) -> String.valueOf(m1.getAnneeLancement()).compareTo(String.valueOf(m2.getAnneeLancement())));
+                    sortedCount = true;
+                }
+                modelAdapter.notifyDataSetChanged();
+                break;
+
             default:
                 Log.i("Erreur action bar", "default");
                 break;

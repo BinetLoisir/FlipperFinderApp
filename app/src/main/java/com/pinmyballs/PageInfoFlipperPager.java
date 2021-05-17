@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.pinmyballs.fragment.FragmentActionsFlipper;
 import com.pinmyballs.fragment.FragmentCarteFlipper;
 import com.pinmyballs.fragment.FragmentCommentaireFlipper;
@@ -50,6 +51,10 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
 
     public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
     public final static String INTENT_FLIPPER_POUR_INFO = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO";
+    private static final String TAG = "PageInfoFlipperPager";
+    private Context mContext = PageInfoFlipperPager.this;
+
+
     ActionBar mActionbar;
     Flipper flipper;
     String nbflippers;
@@ -59,16 +64,30 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
     private SharedPreferences settings;
     //AJOUT INTERFACE TEST
     private FragmentHiScoreFlipper fragmentHiScoreFlipper;
+    private FirebaseAnalytics firebaseAnalytics;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_flipper);
+        firebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+
+
 
         setupPage();
         setupUI();
         setupViewPager();
+
+        Bundle bundle = new Bundle();
+        String screenName = "Page Flipper";
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, TAG);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, flipper.getEnseigne().getNom());
+        bundle.putString(FirebaseAnalytics.Param.ITEM_CATEGORY, flipper.getEnseigne().getVille());
+
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.VIEW_ITEM,bundle);
     }
 
     private void setupPage() {
@@ -83,6 +102,11 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         // SharedPreferences & Pseudo
         settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, MODE_PRIVATE);
         pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "");
+
+
+
+
+
     }
 
     private void setupUI() {
@@ -167,6 +191,48 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         tabLayout.getTabAt(1).setText(R.string.tab_actions);
         tabLayout.getTabAt(2).setText(R.string.tab_avis);
         tabLayout.getTabAt(3).setText(R.string.tab_hiscore);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                String tabName = "init";
+                switch (position) {
+                    case 0:
+                        tabName = getString(R.string.tab_carte);
+                        break;
+                    case 1:
+                        tabName = getString(R.string.tab_actions);
+                        break;
+                    case 2:
+                        tabName = getString(R.string.tab_avis);
+                        break;
+                    case 3:
+                        tabName = getString(R.string.tab_hiscore);
+                        break;
+                }
+
+                //firebaseAnalytics = FirebaseAnalytics.getInstance(mContext);
+                Bundle bundle = new Bundle();
+                String screenName = "Page Flipper";
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
+                bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, TAG);
+                bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "TAB "+ tabName + " selected");
+                firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_ITEM,bundle);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+
+
     }
 
 
@@ -202,7 +268,7 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
                     });
                     //On vérifie que l'état du flip a été changé
                     //On modifie l'état du flip dans la base et online
-                    flipperService.modifieEtatFlip(PageInfoFlipperPager.this, flipper);
+                    flipperService.modifieEtatFlip(PageInfoFlipperPager.this, flipper,"");
 
                 } else {
                     Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastChangeModelePasPossibleReseau), LENGTH_SHORT);

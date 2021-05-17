@@ -97,24 +97,26 @@ public class TrashAdapter extends RecyclerView.Adapter<TrashAdapter.MyViewHolder
             @Override
             public void onClick(View view) {
                 FlipperService flipperService = new FlipperService(null);
-                flipperService.modifieEtatFlip(view.getContext(), flipper);
+                if( flipper.isActif() )
+                flipperService.modifieEtatFlip(view.getContext(), flipper,trashItem.getPseudo());
 
+                //Mise à jour de la Trash List dans Back4App avec Processed = True
                 ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
-                query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_FLIP_ID, flipper.getId());
+                //query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_FLIP_ID, flipper.getId());
+                query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_PROCESSED, false);
+
                 query.getFirstInBackground(new GetCallback<ParseObject>() {
                     @Override
                     public void done(ParseObject object, ParseException e) {
                         if (e == null) {
-                            Log.d("trashitems", "TrashFlipper found ");
+                            Log.d("trashitems", "TrashFlipper found :  "+ object.getObjectId());
                             object.put(FlipperDatabaseHandler.FLIPTRASH_PROCESSED,true);
-                            object.saveInBackground(new SaveCallback() {
-                                @Override
-                                public void done(ParseException e) {
-                                    if (e == null){
-                                        mDataset.remove(position);
-                                        notifyDataSetChanged();
-                                        //Toast.makeText(view.getContext(),trashItem.getFlipIdAsString() + " deactivated", Toast.LENGTH_SHORT).show();
-                                    }
+                            object.saveInBackground(e1 -> {
+                                if (e1 == null){
+                                    Log.d("trashitems", "Processed = true");
+                                    mDataset.remove(position);
+                                    notifyDataSetChanged();
+                                    //Toast.makeText(view.getContext(),trashItem.getFlipIdAsString() + " deactivated", Toast.LENGTH_SHORT).show();
                                 }
                             });
                         } else {

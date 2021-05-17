@@ -25,6 +25,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -43,8 +45,9 @@ import com.google.android.libraries.places.api.model.Place;
 import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.pinmyballs.database.FlipperDatabaseHandler;
 import com.pinmyballs.fragment.FragmentTournoiNew;
 import com.pinmyballs.metier.Flipper;
@@ -88,10 +91,23 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Location mLastKnownLocation;
     //FOR THE MAP--------------------------------------------------------
 
+    private FirebaseAnalytics firebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_AppCompat_Light_NoActionBar);
+
+        // Obtain the FirebaseAnalytics instance.
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        Bundle bundle = new Bundle();
+        String screenName = "Home";
+        // [START set_current_screen]
+        //bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
+        //bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, TAG);
+        bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "test");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT,bundle);
+        // [END set_current_screen]
 
         setContentView(R.layout.activity_home);
         setupSharedPreferences();
@@ -242,7 +258,8 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     /**
      * Bottom Navigation View Setup
      */
-    private void setupBottomNavigationView() {
+
+/*    private void setupBottomNavigationView() {
         Log.d(TAG, "setupBottomNavigationView: setting up");
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
@@ -250,7 +267,19 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         Menu menu = bottomNavigationViewEx.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
+    }*/
+
+    private void setupBottomNavigationView() {
+        Log.d(TAG, "setBottomNavigationView: setting up");
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
     }
+
+
 
     /**
      * ToolBar Setup

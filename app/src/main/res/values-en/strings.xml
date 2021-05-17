@@ -229,7 +229,10 @@
     <string name="dial_title_exploitant">Operator</string>
     <string name="comment_typ_exploitant">"Operated by "</string>
     <string name="comment_typ_price">"Number of credits for 2 euros : "</string>
-
+    <string name="noTrashText">Aucun flip à supprimer</string>
+    <string name="sortChrono_field">Sort by Year</string>
+    <string name="sortCount">Sort by Count</string>
+    <string name="sortAZ_field">Sort AZ</string>
 
 
 </resources>

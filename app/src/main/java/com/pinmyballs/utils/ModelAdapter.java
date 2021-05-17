@@ -31,10 +31,10 @@ import java.util.List;
 public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder> implements Filterable {
     private static final String TAG = "ModelAdapter";
 
-
     private Context context;
     private ArrayList<ModeleFlipper> listModels;
     private ArrayList<ModeleFlipper> listModelsFull;
+    //private HashMap<Long, Integer> countModelMap;
 
     private Filter exampleFilter = new Filter() {
         @Override
@@ -67,7 +67,7 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder
         }
     };
 
-    public ModelAdapter(Context context, ArrayList<ModeleFlipper> listModels) {
+    public ModelAdapter(Context context, ArrayList<ModeleFlipper> listModels ) {
         this.context = context;
         this.listModels = listModels;
         listModelsFull = new ArrayList<>(listModels);
@@ -148,11 +148,9 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder
             ArrayList<Long> listModelIDs = new BaseModeleService().getAllIdModeleFlipper(context);
             ArrayList<Flipper> listFlippersActifs = new BaseFlipperService().getAllActiveFlippers(context);
 
-            for (Long modelID : listModelIDs
-            ) {
+            for (Long modelID : listModelIDs) {
                 int modelcount = 0;
-                for (Flipper flip : listFlippersActifs
-                ) {
+                for (Flipper flip : listFlippersActifs) {
                     if (flip.getIdModele() == modelID) {
                         modelcount++;
                     }

@@ -26,7 +26,7 @@ var flipperFields = {
 var enseigneFields = {
     id: "ENS_ID",
     name: "ENS_NOM",
-    datemaj: "ENS_DATEMAJ",
+    datemaj: "ENS_DATMAJ",
     address: "ENS_ADRESSE",
     postcode: "ENS_CODE_POSTAL",
     city: "ENS_VILLE",
@@ -93,6 +93,19 @@ function saveModel(name, year, brand) {
     saveParseObject(newModele);
 };
 
+function getModelId(objectID) {
+    var Modele = Parse.Object.extend("MODELE_FLIPPER");
+    var query = new Parse.Query(Modele);
+    query.get(objectID)
+        .then((result) => {
+            // The object was retrieved successfully.
+            return result.get(modeleFields.id);
+        }, (error) => {
+            // error is a Parse.Error with an error code and message.
+            alert('Failed to retrieve MODELE_ ID new object, with error code: ' + error.message) // The object was not retrieved successfully.
+        });
+}
+
 
 function saveFlipperEnseigne(name, address, postcode, city, country, datemaj, lat, lng, modeleId, modelObjectId, actif) {
     var Enseigne = Parse.Object.extend("ENSEIGNE");
@@ -129,8 +142,8 @@ function saveFlipperEnseigne(name, address, postcode, city, country, datemaj, la
     newCommentaire.set(commentFields.datemaj, datemaj);
     newCommentaire.set(commentFields.flipperid, newFlipper.get(flipperFields.id));
     newCommentaire.set(commentFields.flipperid_p, newFlipper);
-    
-    saveAllParseObjects([newCommentaire,newEnseigne,newFlipper]);
+
+    saveAllParseObjects([newCommentaire, newEnseigne, newFlipper]);
 
 };
 
@@ -185,18 +198,12 @@ function launch() {
         lat: 2.3,
         lng: 43.4
     };
-    
+
     var modelid = 1;
     var modelObjectID = "zKmSki1NZe";
-    
+
     //saveFlipperEnseigne(ens.name,ens.address, ens.postcode,ens.city,ens.country,ens.datemaj,ens.lat,ens.lng, modelid, modelObjectID, true);
 
     //saveModel("Stiff",1984,"Bally");
 
 }
-
-
-
-//--------------CLASSES DEFINITIONS-------
-
-

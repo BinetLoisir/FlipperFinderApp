@@ -29,10 +29,14 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import androidx.annotation.LongDef;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.pinmyballs.AdminActivity;
 import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.PreferencesActivity;
@@ -49,6 +53,7 @@ import com.pinmyballs.utils.NetworkUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -229,18 +234,39 @@ public class FragmentActionsFlipper extends Fragment {
             envoiMail("Retrait d'un flipper à " + flipper.getEnseigne().getVille(), message);
 
             //2-Ajout TrashList
-            SharedPreferences settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
-            String pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "___");
 
-            ParseObject flipperPO = new ParseObject(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
-            flipperPO.put(FlipperDatabaseHandler.FLIPTRASH_FLIP_ID,flipper.getId());
-            flipperPO.put(FlipperDatabaseHandler.FLIPTRASH_PSEUDO,pseudo);
-            flipperPO.put(FlipperDatabaseHandler.FLIPTRASH_PROCESSED,false);
-            flipperPO.saveInBackground();
+            //Check that flip is not in list already
+            ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
+            query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_PROCESSED, false);
+            query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID,flipper.getId());
+            query.findInBackground(new FindCallback<ParseObject>() {
+                public void done(List<ParseObject> trashListPO, ParseException e) {
+                    if (e == null) {
+                        if(trashListPO.size() > 0){
+                            Log.d(TAG, "flip deja present dans list : no need to add ");
+                        }
+                        else{
+                            Log.d(TAG, "not present, OK for adding flip " + flipper.getId());
+                            //Add to trash list
+                            SharedPreferences settings = getActivity().getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
+                            String pseudo = settings.getString(PreferencesActivity.KEY_PSEUDO_FULL, "___");
+                            ParseObject flipTrashPO = new ParseObject(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
+                            flipTrashPO.put(FlipperDatabaseHandler.FLIPTRASH_FLIP_ID,flipper.getId());
+                            flipTrashPO.put(FlipperDatabaseHandler.FLIPTRASH_PSEUDO,pseudo);
+                            flipTrashPO.put(FlipperDatabaseHandler.FLIPTRASH_PROCESSED,false);
+                            flipTrashPO.saveInBackground();
+                            Log.d(TAG, "onClick: flip ajouté à la trahslist");
+                        }
+                    } else {
+                        Log.d("trashitems", "Error: " + e.getMessage());
+                    }
+                }
+            });
         }
     };
 
     //TODO Include this as a button on the FragmentCarteFlipper
+
     private OnClickListener NavigationListener = new OnClickListener() {
         public void onClick(View v) {
             Intent navIntentGoogleNav = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="

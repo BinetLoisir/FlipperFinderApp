@@ -264,7 +264,9 @@
     <string name="account_forgot_password">Vous avez oublié votre mot de passe?</string>
     <string name="reset_instructions">Entrez votre email pour réinitialiser votre mot de passe</string>
     <string name="search_field">Search</string>
-    <string name="filter_field">Filter</string>
+    <string name="sortAZ_field">Tri AZ</string>
+    <string name="sortCount">Tri quantité</string>
+
     <string name="liste_modeles">Liste modèles</string>
     <string name="myaction_button" translatable="false">MyAction Button</string>
     <string name="myaction_button2">Search OPDB</string>
@@ -308,12 +310,14 @@
     <string name="comment_typ_exploitant">"Exploité par "</string>
     <string name="comment_typ_price">"Nombre de credits pour 2 euros : "</string>
     <string name="title_activity_trash">Trash</string>
+    <string name="noTrashText">Aucun flip à supprimer</string>
 
 
     <string-array name="langugages_array">
             <item>Français</item>
             <item>English</item>
         </string-array>
+    <string name="sortChrono_field">Tri chrono</string>
 
 
 </resources>

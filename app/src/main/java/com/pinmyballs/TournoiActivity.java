@@ -9,8 +9,8 @@ import android.view.MenuItem;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.pinmyballs.fragment.FragmentTournoiListe;
 import com.pinmyballs.fragment.FragmentTournoiMap;
 import com.pinmyballs.fragment.FragmentTournoiNew;
@@ -53,12 +53,22 @@ public class TournoiActivity extends AppCompatActivity {
     /**
      * Bottom Navigation View Setup
      */
-    private void setupBottomNavigationView(){
+    /*private void setupBottomNavigationView(){
         Log.d(TAG, "setupBottomNavigationView: setting up");
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext,bottomNavigationViewEx);
         Menu menu = bottomNavigationViewEx.getMenu();
+        MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
+        menuItem.setChecked(true);
+    }*/
+
+    private void setupBottomNavigationView() {
+        Log.d(TAG, "setBottomNavigationView: setting up");
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationView);
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(ACTIVITY_NUM);
         menuItem.setChecked(true);
     }

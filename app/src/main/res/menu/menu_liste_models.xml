@@ -11,13 +11,19 @@
     <item
         android:id="@+id/action_sortAZ"
         android:icon="@drawable/ic_sort_by_alpha_black_24dp"
-        android:title="@string/filter_field"
+        android:title="@string/sortAZ_field"
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/action_sortChrono"
-        android:icon="@drawable/ic_sort_black_24dp"
-        android:title="@string/filter_field"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/sortChrono_field"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/action_sortCount"
+        android:icon="@drawable/ic_baseline_format_list_numbered_rtl_24"
+        android:title="@string/sortCount"
         app:showAsAction="ifRoom|collapseActionView" />
 
 </menu>

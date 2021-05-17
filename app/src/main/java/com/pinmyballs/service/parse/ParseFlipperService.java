@@ -244,7 +244,7 @@ public class ParseFlipperService {
         return true;
     }
 
-    public void modifieEtatFlipper(final Context pContext, final Flipper flipper) {
+    public void modifieEtatFlipper(final Context pContext, final Flipper flipper, String tipper) {
         final ProgressBarHandler mProgressBarHandler = new ProgressBarHandler(pContext);
         mProgressBarHandler.show();
         ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
@@ -291,12 +291,16 @@ public class ParseFlipperService {
                                 listParseToSave.add(commentPO);
                             }
                         }
-
                     } else {
                         // On passe le flipper inactif et on update la date de màj
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_ACTIF, false);
                         flipPO.put(FlipperDatabaseHandler.FLIPPER_DATMAJ, flipper.getDateMaj());
-                        commentaireUpdate.setTexte("Supprimé");
+
+                        if(!tipper.equals("")){
+                            commentaireUpdate.setTexte("Supprimé. Info par "+tipper);
+                        } else {
+                            commentaireUpdate.setTexte("Supprimé");
+                        }
                         commentaireUpdate.setType(Commentaire.TYPE_DELETE);
                         //On desactive les commentaires associés
                         if (associatedComments.size() >0){

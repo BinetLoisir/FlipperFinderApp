@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "24296366689",
+    "project_id": "flippers-159607",
+    "storage_bucket": "flippers-159607.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24296366689:android:13e97e30ab7d8b67af4020",
+        "android_client_info": {
+          "package_name": "com.pinmyballs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24296366689-ikookkvl6ncfbt8n87nhm12kird3okhb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0tS6sW4fKkrPwpLrCHJc6JddJ3mq40xc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24296366689-ikookkvl6ncfbt8n87nhm12kird3okhb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

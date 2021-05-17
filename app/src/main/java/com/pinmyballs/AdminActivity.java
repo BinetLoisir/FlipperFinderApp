@@ -268,7 +268,7 @@ public class AdminActivity extends AppCompatActivity {
             //On vérifie que l'état du flip a été changé
             if (!actifToggle.isChecked() == flipactifinDB) {
                 //On modifie l'état du flip dans la base et online
-                flipperService.modifieEtatFlip(this, flip);
+                flipperService.modifieEtatFlip(this, flip,"");
 
             } else {
                 Toast toast = Toast.makeText(getApplicationContext(), getResources().getString(R.string.toastPasdeChangement), LENGTH_SHORT);

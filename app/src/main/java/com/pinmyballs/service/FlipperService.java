@@ -41,7 +41,7 @@ public class FlipperService {
 
 
     //remplace supprimeflip
-    public void modifieEtatFlip(Context pContext, Flipper flipper) {
+    public void modifieEtatFlip(Context pContext, Flipper flipper, String tipper) {
 
         Date dateDuJour = new Date();
         String dateMaj = new SimpleDateFormat("yyyy/MM/dd", Locale.FRANCE).format(dateDuJour);
@@ -49,7 +49,7 @@ public class FlipperService {
         flipper.setActif(flipper.isActif() ? 0 : 1);
         // Update of MongoDb
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
-        parseFlipperService.modifieEtatFlipper(pContext, flipper);
+        parseFlipperService.modifieEtatFlipper(pContext, flipper, tipper );
     }
 
 
@@ -119,7 +119,7 @@ public class FlipperService {
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
         //ParseCommentaireService parseCommentaireService = new ParseCommentaireService(mFragmentCallback);
         //TODO AJOUTER UN COMMENTAIRE A CHAQUE RENSEIGNEMENT d EXPLOITANT
-        parseFlipperService.modifieEtatFlipper(pContext, flipper);
+        parseFlipperService.modifieEtatFlipper(pContext, flipper,"" );
         //parseCommentaireService.ajouteCommentaire(pContext, commentaire);
 
         //Update of Sqlite database
@@ -139,7 +139,7 @@ public class FlipperService {
 
         // Update of MongoDb
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
-        parseFlipperService.modifieEtatFlipper(pContext, flipper);
+        parseFlipperService.modifieEtatFlipper(pContext, flipper,"" );
     }
 
 }

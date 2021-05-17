@@ -4,6 +4,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,10 @@ import java.util.List;
 public class SectionsPagerAdapter extends FragmentPagerAdapter{
     private static final String TAG = "SectionsPagerAdapter";
     private final List<Fragment> mFragmentList = new ArrayList<>();
+    private FirebaseAnalytics firebaseAnalytics;
 
-     public SectionsPagerAdapter(FragmentManager fm) {
+
+    public SectionsPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -31,4 +35,5 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter{
     public void addFragment(Fragment fragment){
          mFragmentList.add(fragment);
     }
+
 }

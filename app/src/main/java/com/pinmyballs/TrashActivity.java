@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class TrashActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<TrashItem> trashItemList = new ArrayList<>();
     private Button refreshButton;
+    private TextView noFlipToDelete;
 
 
     @Override
@@ -46,6 +48,9 @@ public class TrashActivity extends AppCompatActivity {
             }
         });
 
+        //bind textview
+        noFlipToDelete = binding.noTrash;
+
         //trashItemList.add(new TrashItem(Long.valueOf("1793747638486"), "JUL", new Date(2020-1900,3,23),false));
         //trashItemList.add(new TrashItem(Long.valueOf("1604779130254"), "MAX", new Date(2020-1900,5,7),false));
         //trashItemList.add(new TrashItem(Long.valueOf("2"), "BOB", new Date(2020-1900,8,2),false));
@@ -63,18 +68,30 @@ public class TrashActivity extends AppCompatActivity {
 
     }
 
-    private void refreshList(){
+    private void refreshList() {
         trashItemList.clear();
+        noFlipToDelete.setVisibility(View.VISIBLE);
         ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
         query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_PROCESSED, false);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> trashListPO, ParseException e) {
                 if (e == null) {
                     Log.d("trashitems", "Retrieved " + trashListPO.size() + " trashitems");
-                    for(ParseObject item : trashListPO){
+                    for (ParseObject item : trashListPO) {
                         trashItemList.add(convert(item));
                     }
                     mAdapter.notifyDataSetChanged();
+
+                    //Show empty message
+                    if (trashItemList.isEmpty()) {
+                        recyclerView.setVisibility(View.GONE);
+                        noFlipToDelete.setVisibility(View.VISIBLE);
+                    } else {
+                        recyclerView.setVisibility(View.VISIBLE);
+                        noFlipToDelete.setVisibility(View.GONE);
+                    }
+
+
                 } else {
                     Log.d("trashitems", "Error: " + e.getMessage());
                 }
@@ -82,13 +99,14 @@ public class TrashActivity extends AppCompatActivity {
         });
 
     }
-    private TrashItem convert(ParseObject PO){
+
+    private TrashItem convert(ParseObject PO) {
         TrashItem trashItem = new TrashItem();
         trashItem.flipId = PO.getLong(FlipperDatabaseHandler.FLIPTRASH_FLIP_ID);
         trashItem.pseudo = PO.getString(FlipperDatabaseHandler.FLIPTRASH_PSEUDO);
         trashItem.date = PO.getCreatedAt();
         trashItem.processed = PO.getBoolean(FlipperDatabaseHandler.FLIPTRASH_PROCESSED);
-     return trashItem;
+        return trashItem;
     }
 
 
