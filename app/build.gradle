@@ -24,8 +24,8 @@ android {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 62
-        versionName "3.21"
+        versionCode 63
+        versionName "3.22"
         buildConfigField('String', 'ApiKey', PinMyBalls_GoogleMapAPIKey)
         resValue('string', 'maps_api_key', PinMyBalls_GoogleMapAPIKey)
         multiDexEnabled = true
