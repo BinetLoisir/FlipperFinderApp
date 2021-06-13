@@ -135,36 +135,42 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
     public ArrayList<ModeleFlipper> getModelesToAdd() {
         ArrayList<ModeleFlipper> listeRetour = new ArrayList<>();
         Context context = getActivity().getApplicationContext();
+        String modelFlip1AsString = champModeleFlipper.getText().toString();
+        String modelFlip2AsString = champModeleDeuxiemeFlipper.getText().toString();
+        String modelFlip3AsString = champModeleTroisiemeFlipper.getText().toString();
+        String modelFlip4AsString = champModeleQuatriemeFlipper.getText().toString();
+        String modelFlip5AsString = champModeleCinquiemeFlipper.getText().toString();
 
-        if (!champModeleFlipper.getText().toString().equals("")) {
-            modeleFlipper = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(champModeleFlipper.getText().toString()))));
-            if (modeleFlipper != null) {
+
+        if (!modelFlip1AsString.equals("")&& hashMapModeles.get(modelFlip1AsString) != null) {
+            modeleFlipper = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(modelFlip1AsString))));
+                if (modeleFlipper != null) {
                 listeRetour.add(modeleFlipper);
             }
         }
-        if (!champModeleDeuxiemeFlipper.getText().toString().equals("")) {
-            modeleFlipper2 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(champModeleDeuxiemeFlipper.getText().toString()))));
+        if (!modelFlip2AsString.equals("") && hashMapModeles.get(modelFlip2AsString) != null) {
+            modeleFlipper2 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(modelFlip2AsString))));
             if (modeleFlipper2 != null) {
                 listeRetour.add(modeleFlipper2);
             }
         }
 
-        if (!champModeleTroisiemeFlipper.getText().toString().equals("")) {
-            modeleFlipper3 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(champModeleTroisiemeFlipper.getText().toString()))));
+        if (!modelFlip3AsString.equals("") && hashMapModeles.get(modelFlip3AsString) != null) {
+            modeleFlipper3 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(modelFlip3AsString))));
             if (modeleFlipper3 != null) {
                 listeRetour.add(modeleFlipper3);
             }
         }
 
-        if (!champModeleQuatriemeFlipper.getText().toString().equals("")) {
-            modeleFlipper4 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(champModeleQuatriemeFlipper.getText().toString()))));
+        if (!modelFlip4AsString.equals("") && hashMapModeles.get(modelFlip4AsString) != null) {
+            modeleFlipper4 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(modelFlip4AsString))));
             if (modeleFlipper4 != null) {
                 listeRetour.add(modeleFlipper4);
             }
         }
 
-        if (!champModeleCinquiemeFlipper.getText().toString().equals("")) {
-            modeleFlipper5 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(champModeleCinquiemeFlipper.getText().toString()))));
+        if (!modelFlip5AsString.equals("") && hashMapModeles.get(modelFlip5AsString) != null) {
+            modeleFlipper5 = modeleFlipperService.getModeleById(context, Long.parseLong(String.valueOf(hashMapModeles.get(modelFlip1AsString))));
             if (modeleFlipper5 != null) {
                 listeRetour.add(modeleFlipper5);
             }
@@ -181,6 +187,13 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
                     .setMessage("Vous devez renseigner au moins un modèle du flipper.").setNeutralButton("Fermer", null)
                     .setIcon(R.drawable.ic_delete).show();
             isError = true;
+        } else {
+            if (getModelesToAdd().size() == 0) {
+                new AlertDialog.Builder(getActivity()).setTitle("Envoi impossible!")
+                        .setMessage("Vous devez renseigner au moins un modèle de flipper parmi la liste proposée. Si le modèle de flipper n'est pas dans la liste, utilisez la soumission par email à l'aide de l'icône en haut à droite").setNeutralButton("Fermer", null)
+                        .setIcon(R.drawable.ic_delete).show();
+                isError = true;
+            }
         }
         return !isError;
     }

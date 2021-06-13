@@ -8,6 +8,8 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 
@@ -22,9 +24,29 @@ import com.pinmyballs.service.parse.ParseModeleService;
 public class PopNewModel extends AppCompatActivity {
 
     private static final String TAG = "PopNewModel";
+
+    private static final String[] MARQUES = new String[] {
+            "Stern",
+            "Bally",
+            "Williams",
+            "Gottlieb",
+            "Jersey Jack",
+            "Spooky Pinball",
+            "Heighway Pinball",
+            "Sega",
+            "Team Pinball",
+            "Suncoast Pinball",
+            "Chicago Gaming",
+            "Data East",
+            "Capcom",
+            "American Pinball"
+    };
+
+
+
     ProgressBar progressBar;
     TextInputEditText ET_Model;
-    TextInputEditText ET_Brand;
+    AutoCompleteTextView ET_Brand;
     TextInputEditText ET_Year;
     Button Submit;
     Button Cancel;
@@ -51,6 +73,10 @@ public class PopNewModel extends AppCompatActivity {
         progressBar = findViewById(R.id.progressbarPop);
         ET_Model = findViewById(R.id.ET_model);
         ET_Brand = findViewById(R.id.ET_brand);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, MARQUES);
+        ET_Brand.setAdapter(adapter);
+
         ET_Year = findViewById(R.id.ET_year);
         Submit = findViewById(R.id.btn_submit);
         Submit.setOnClickListener(new View.OnClickListener() {

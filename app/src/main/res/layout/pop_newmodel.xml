@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/til1">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <AutoCompleteTextView
             android:id="@+id/ET_brand"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

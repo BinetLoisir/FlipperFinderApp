@@ -186,4 +186,12 @@ public class BaseFlipperService {
 		flipperDao.close();
 	}
 
+	public ArrayList<Flipper> getLastUpdated(Context pContext, int maxnumber){
+		FlipperDAO flipperDao = new FlipperDAO(pContext);
+		flipperDao.open();
+		ArrayList<Flipper> listeFlipper = flipperDao.getLastUpdatedFlipper(String.valueOf(maxnumber));
+		flipperDao.close();
+		return listeFlipper;
+	}
+
 }

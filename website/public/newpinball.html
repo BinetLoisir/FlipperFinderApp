@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>PinMyBalls 1.0</title>
+    <title>New Pinball</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,12 +11,10 @@
 
     <!-- Latest compiled and minified Bootsrap CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous"> -->
-
-
+    <!-- Latest compiled and minified Bootstrap-Select CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <!-- FontAwesome library -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
     <!-- Google font -->
     <!--    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
 
@@ -30,6 +28,9 @@
     <!--    <script src='https://cdnjs.cloudflare.com/ajax/libs/yui/3.18.0/yui/yui-min.js'></script>-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/parse/1.10.0/parse.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
 </head>
 
@@ -54,13 +55,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#map"><i class="fa fa-fw fa-map"></i>&nbsp; Carte <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/newpinball.html"><i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau </a></li>
-
-                    <li><a href="#list"><i class="fa fa-fw fa-list-ul"></i>&nbsp; Liste</a></li>
+                    <li><a href="/index.html"><i class="fa fa-fw fa-map"></i>&nbsp; Carte <span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="/newpinball.html"><i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau </a></li>
+                    <li><a href="#2"><i class="fa fa-fw fa-list-ul"></i>&nbsp; Liste</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Autres <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+
                             <li><a href="#">Another action</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
@@ -105,21 +106,84 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map"></div>
+    <div id="formulaire">
 
-    <div id="snackbar"></div>
+        <div class="page-header" id="newflipper">
+            <h3> Ajouter un nouveau flipper</h3>
+        </div>
+
+        <div class=form-group id="locationField">
+            <label>Recherche</label>
+            <input id="autocomplete" class="form-control" placeholder="Entrer l'addresse" onFocus="geolocate()" type="text">
+            <small id="emailHelp" class="form-text text-muted">Utilise la recherche Google pour remplir l'addresse</small>
+        </div>
+
+        <form>
+            <div class="well">
+                <div class="form-group">
+                    <label>Nom</label>
+                    <input class="form-control" id="place_name" disabled="false" placeholder="Nom de l'établissement">
+                </div>
+                <div class="form-group">
+                    <label>Adresse</label>
+                    <input class="form-control" id="street_number" disabled="false" placeholder="Numéro de rue">
+                    <input class="form-control" id="route" disabled="false" placeholder="Nom de la rue">
+                    <input class="form-control" id="postal_code" disabled="false" placeholder="Code postal">
+                    <input class="form-control" id="locality" disabled="false" placeholder="Ville">
+                    <input class="form-control" id="country" disabled="false" placeholder="Pays">
+                </div>
+            </div>
+            <div class="well">
+                <div class="form-group" id='modele1'>
+                    <label for="select"> Modèle </label>
+                    <select class="selectpicker" data-live-search="true" id="modeleflipper1" data-width="100%"></select>
+                </div>
+
+                <div class="form-group" id='modele2' style="display: none;">
+                    <label for="select"> Modèle 2</label>
+                    <select class="selectpicker" data-live-search="true" id="modeleflipper2" data-width="100%"></select>
+                </div>
+
+                <div class="form-group" id='modele3' style="display: none;">
+                    <label for="select"> Modèle 3</label>
+                    <select class="selectpicker" data-live-search="true" id="modeleflipper3" data-width="100%"></select>
+                </div>
+
+                <div class="form-group" id='modele4' style="display: none;">
+                    <label for="select"> Modèle 4</label>
+                    <select class="selectpicker" data-live-search="true" id="modeleflipper4" data-width="100%"></select>
+                </div>
+
+                <div class="form-group" id='modele5' style="display: none;">
+                    <label for="select"> Modèle 5</label>
+                    <select class="selectpicker" data-live-search="true" id="modeleflipper5" data-width="100%"></select>
+                </div>
+                <button type="button" class="btn btn-success btn-circle btn" onClick="addModel(); return false;"><i class="glyphicon glyphicon-plus"></i></button>
+                <button type="button" class="btn btn-danger btn-circle btn" onClick="removeModel(); return false;"><i class="glyphicon glyphicon-minus"></i></button>
+
+            </div>
+            
+            <!--    Submit button non fonctionnel car lié à l'objet form et ici pas d'action= "" défini      -->
+            <!--<div>
+                <button type="submit" class="btn btn-primary btn-block" onclick="submit()">Soumettre par mail (workinprogress1) </button>
+            </div>-->
+                
+        </form>
+        <button class="btn btn-primary btn-block" onclick="sendbutton()">Soumettre</button>
 
 
-    <!-- Script of the index page -->
-    <script src="js/script.js" defer></script>
+    </div>
+    
+    
+    <script>
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="undefined" crossorigin="anonymous"></script> -->
-
+</script>
+    
+    
+    <!-- Script of NewPinball page -->
+    <script src="js/newpinball.js"></script>
+    <!-- GooglePlaces Autocomplete -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWzLO7XJTK0qp3hWkX599YdiUWGc_yFYc&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>
 

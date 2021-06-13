@@ -72,6 +72,10 @@
             android:parentActivityName=".HomeActivity"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".LastUpdatesActivity"
+            android:parentActivityName=".AdminActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ListeModelsActivity"
             android:parentActivityName=".AdminActivity" />
 

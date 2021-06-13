@@ -448,7 +448,7 @@ public class FragmentActionsFlipper extends Fragment {
     }
 
     private void setupAutocomplete() {
-        //iniatilisation des listes
+        //initialisation des listes
         ArrayList<String> listeModelesComplet = new ArrayList<>();
         hashMapModeles = new HashMap();
 

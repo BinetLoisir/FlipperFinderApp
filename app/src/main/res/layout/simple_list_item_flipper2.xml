@@ -1,0 +1,77 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteY="81dp">
+
+    <TextView
+        android:id="@+id/textModeleFlipper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dateMaj"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@sample/modeles" />
+
+    <!-- TextView
+        android:id="@+id/dateMaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="2dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#04B404"/ -->
+
+    <TextView
+        android:id="@+id/textAdresseFlipper"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="@+id/textModeleFlipper"
+        app:layout_constraintTop_toBottomOf="@+id/textModeleFlipper"
+        tools:text="@sample/enseignes.json/data/ENS_ADRESSE" />
+
+    <TextView
+        android:id="@+id/nomBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/accent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textAdresseFlipper"
+        app:layout_constraintTop_toBottomOf="@+id/textModeleFlipper"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textAdresseFlipper"
+        tools:text="@sample/enseignes.json/data/ENS_NOM" />
+
+    <TextView
+        android:id="@+id/dateMaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+
+        android:text="23j"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium.Inverse"
+        android:background="@color/accent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

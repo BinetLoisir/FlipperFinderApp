@@ -11,6 +11,7 @@ import com.pinmyballs.service.base.BaseModeleService;
 import com.pinmyballs.service.parse.ParseFlipperService;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -141,5 +142,7 @@ public class FlipperService {
         ParseFlipperService parseFlipperService = new ParseFlipperService(mFragmentCallback);
         parseFlipperService.modifieEtatFlipper(pContext, flipper,"" );
     }
+
+
 
 }

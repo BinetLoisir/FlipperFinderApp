@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -155,9 +156,8 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_preferences:
-                ////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
-                Intent intent4 = new Intent(AdminActivity.this, PreferencesActivity.class);
+            case R.id.action_lastupdates:
+                Intent intent4 = new Intent(AdminActivity.this, LastUpdatesActivity.class);
                 startActivity(intent4);
                 break;
 
@@ -376,8 +376,16 @@ public class AdminActivity extends AppCompatActivity {
                                         JSONObject pin = response.getJSONObject(i);
                                         String opdb_id = pin.getString("opdb_id");
                                         String name = pin.getString("name");
+                                        String manufacturer = pin.getJSONObject("manufacturer").getString("name");
+                                        String year = pin.getString("manufacture_date").substring(0,4);
 
-                                        mTextResult.append(opdb_id + ": " + name + "\n");
+
+                                        mTextResult.append(opdb_id + "\n" + name + ", " + manufacturer + " (" + year + ")"+"\n");
+
+                                        InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                                        inputMethodManager.hideSoftInputFromWindow(myAction.getApplicationWindowToken(),0);
+
+
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }

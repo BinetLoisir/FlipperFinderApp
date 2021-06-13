@@ -3,9 +3,12 @@ package com.pinmyballs.service.base;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.pinmyballs.database.dao.CommentaireDAO;
 import com.pinmyballs.database.dao.EnseigneDAO;
+import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.metier.Enseigne;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BaseEnseigneService {
@@ -36,4 +39,7 @@ public class BaseEnseigneService {
 		enseigneDao.close();
 		return true;
 	}
+
+
+
 }

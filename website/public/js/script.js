@@ -89,7 +89,7 @@ function initMap() {
             map.setZoom(17); // Why 17? Because it looks good.
         }
 
-        marker.setIcon( /** @type {google.maps.Icon} */({
+        marker.setIcon( /** @type {google.maps.Icon} */ ({
             url: place.icon,
             size: new google.maps.Size(71, 71),
             origin: new google.maps.Point(0, 0),
@@ -190,7 +190,7 @@ function plotMarkersNew(m) {
     //map.fitBounds(bounds);
 };
 
-// OLD Method, taking all parameters separately
+
 function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, modele, annee, marque, datemaj) {
     flip_objectId = "'" + flip_objectId + "'";
     var args = flip_id;
@@ -215,7 +215,7 @@ function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, mod
 };
 
 function makeStringActualiser(flip_objectId) {
-    return actualiserString = '&nbsp<a href="#" data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(\'' + flip_objectId + '\')"><i class="fa fa-fw fa-refresh"></i></a>';
+    return actualiserString = '&nbsp<a href="#" data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(\''+ flip_objectId +'\')"><i class="fa fa-fw fa-refresh"></i></a>';
 }
 
 function makeStringSupprimer(flip_id) {
@@ -223,19 +223,19 @@ function makeStringSupprimer(flip_id) {
 }
 
 function makeStringButtonActualiser(flip_objectId) {
-    return actualiserString = '&nbsp<button id=act' + flip_objectId + 'data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(' + flip_objectId + ')"><i class="fa fa-fw fa-refresh"></i></button>';
+    return actualiserString = '&nbsp<button id=act'+ flip_objectId +'data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(' + flip_objectId + ')"><i class="fa fa-fw fa-refresh"></i></button>';
 }
 
 function makeStringButtonSupprimer(flip_id) {
-    return supprimerString = '&nbsp<button id=act' + flip_id + 'data-toggle="tooltip" title="Supprimer!" onclick="sendMail(' + flip_id + ')"><i class="fa fa-fw fa-trash"></i></button>';
+    return supprimerString = '&nbsp<button id=act'+flip_id +'data-toggle="tooltip" title="Supprimer!" onclick="sendMail(' + flip_id + ')"><i class="fa fa-fw fa-trash"></i></button>';
 }
 
 
-//Content Info Trial, taking 
+//Content Info Trial
 function contentInfoWTrial(ensId, flipArray, date) {
     var fliplistString = '<ul>';
     for (flip of flipArray) {
-        fliplistString = fliplistString + '<li>' + flip.modele_nom + ' (' + flip.modele_marque + ', ' + flip.modele_annee + ') ' + daysSinceUpdate(flip.flip_datemaj) + ' ' + makeStringActualiser(flip.flip_objectId) + ' ' +
+        fliplistString = fliplistString + '<li>' + flip.modele_nom + ' (' + flip.modele_marque + ', ' + flip.modele_annee + ') '+ daysSinceUpdate(flip.flip_datemaj) + ' ' + makeStringActualiser(flip.flip_objectId) + ' ' +
             makeStringSupprimer(flip.flip_id) + '</li>';
     }
     fliplistString = fliplistString + '</ul>'
@@ -274,18 +274,18 @@ function removeDays(startDate, numberOfDays) {
     return returnDate;
 }
 //function to calculate the number of days between 2 Dates.
-function diffDays(date1, date2) {
+function diffDays(date1 , date2) {
     var oneDay = 24 * 60 * 60 * 1000;
     return Math.round(Math.abs((date1.getTime() - date2.getTime()) / (oneDay)));
 }
 
 //function to calculate days since last update date and return as String
-function daysSinceUpdate(datemaj) {
+function daysSinceUpdate(datemaj){
     var today = new Date();
     try {
         var delta = diffDays(today, makeDate(datemaj));
-        return "(" + delta + "j)";
-
+    return "("+ delta + "j)";
+        
     } catch (error) {
         console.log(error.message);
         return "(_j)";
@@ -483,77 +483,6 @@ function snack(htmlContent) {
 }
 
 //-----BACK4APP INTERFACE-------
-
-//REFACTORING
-//geoQuery(map).then(plotMarkers(results))
-
-
-//Return a Promise with the results of the query
-function geoQuery(map) {
-    //Definition of the innerquery
-    var geoboxquery = new Parse.Query(Enseigne);
-    var SW = new Parse.GeoPoint({
-        latitude: map.getBounds().getSouthWest().lat(),
-        longitude: map.getBounds().getSouthWest().lng()
-    });
-    var NE = new Parse.GeoPoint({
-        latitude: map.getBounds().getNorthEast().lat(),
-        longitude: map.getBounds().getNorthEast().lng()
-    });
-    geoboxquery.withinGeoBox("ENS_GEO", SW, NE);
-
-    //Definition of the FlipperQuery
-    var query = new Parse.Query(Flipper);
-    query.equalTo("FLIP_ACTIF", true);
-    query.matchesQuery("FLIP_ENSEIGNE_P", geoboxquery);
-    query.include("FLIP_ENSEIGNE_P");
-    query.include("FLIP_MODELE_P");
-    query.limit(QUERYLIMIT);
-    return query.find();
-}
-
-//Return a Map (key: EnseigneID, value : Flipper[])
-function mapQueryResults(results){
-    let enseigneMap = new Map();
-    var flipperArray = [];
-    if (results.length > 0) {
-        for (var i = 0; i < results.length; i++) {
-            var flip = {
-                modele_nom: results[i].get("FLIP_MODELE_P").get("MOFL_NOM"),
-                modele_annee: results[i].get("FLIP_MODELE_P").get("MOFL_ANNEE_LANCEMENT"),
-                modele_marque: results[i].get("FLIP_MODELE_P").get("MOFL_MARQUE"),
-                ens_objectId: results[i].get("FLIP_ENSEIGNE_P").id,
-                ens_nom: results[i].get("FLIP_ENSEIGNE_P").get("ENS_NOM"),
-                ens_adresse: results[i].get("FLIP_ENSEIGNE_P").get("ENS_ADRESSE"),
-                ens_cp: results[i].get("FLIP_ENSEIGNE_P").get("ENS_CODE_POSTAL"),
-                ens_ville: results[i].get("FLIP_ENSEIGNE_P").get("ENS_VILLE"),
-                lat: results[i].get("FLIP_ENSEIGNE_P").get("ENS_LATITUDE"),
-                lng: results[i].get("FLIP_ENSEIGNE_P").get("ENS_LONGITUDE"),
-                flip_datemaj: results[i].get("FLIP_DATMAJ"),
-                flip_id: results[i].get("FLIP_ID"),
-                flip_objectId: results[i].id
-            };
-            flipperArray.push(flip);
-
-            var ensId = flip.ens_objectId;
-            var tempFlipArray = [flip];
-
-            //if key is in map already
-            if (enseigneMap.get(ensId) != undefined) {
-                //add flip to fliparray in that key
-                tempFlipArray = tempFlipArray.concat(enseigneMap.get(ensId));
-            }
-            enseigneMap.set(ensId, tempFlipArray);
-        }
-    }
-    return enseigneMap;
-
-}
-
-//
-
-
-
 function geoqueryandplotmarkers() {
     //Definition of the innerquery
     var geoboxquery = new Parse.Query(Enseigne);
@@ -583,7 +512,6 @@ function geoqueryandplotmarkers() {
             if (results.length > 0) {
                 //var modele_nom, modele_annee, modele_marque, ens_nom, ens_adresse, ens_cp, ens_ville, lat, lng, flip_datemaj, flip_id, flip_objectId;
                 var flipperArray = [];
-                //ensMap is a Map<ensId, flip[]>
                 let ensMap = new Map();
                 for (var i = 0; i < results.length; i++) {
                     var flip = {
@@ -631,17 +559,17 @@ function updateFlip(objectId) {
     const Flipper = Parse.Object.extend("FLIPPER");
     const query = new Parse.Query(Flipper);
     query.get(objectId)
-        .then((flipper) => {
-            // The object was retrieved successfully.
-            console.log("Object " + objectId + " was retrieved successfully");
-            flipper.set("FLIP_DATMAJ", formatDate(new Date()));
-            return flipper.save();
+    .then((flipper) => {
+      // The object was retrieved successfully.
+      console.log("Object " + objectId + " was retrieved successfully");
+      flipper.set("FLIP_DATMAJ", formatDate(new Date()));
+      return flipper.save();
 
-        }, (error) => {
-            // The object was not retrieved successfully.
-            // error is a Parse.Error with an error code and message.
-            console.log("Error retrieving object " + objectId + " : " + error.code + " : " + error.message);
-        });
+    }, (error) => {
+      // The object was not retrieved successfully.
+      // error is a Parse.Error with an error code and message.
+      console.log("Error retrieving object " + objectId + " : " + error.code+ " : " +error.message);
+    });
 };
 
 function sendMail(flip_id) {

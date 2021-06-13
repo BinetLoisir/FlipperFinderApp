@@ -41,14 +41,14 @@ public class ListeModelsActivity extends AppCompatActivity {
     private boolean sortedChrono;
     private boolean sortedCount;
 
-    private HashMap<Long, Integer> countModelsMap;
+    HashMap<Long, Integer> countModelsMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_models);
         initActionBar();
-        //populateHashMap();
+        populateHashMap();
         initView();
         initFAB();
         initFAB2();
@@ -61,10 +61,11 @@ public class ListeModelsActivity extends AppCompatActivity {
         mActionbar.setDisplayHomeAsUpEnabled(true);
     }
 
-    /*
     private void populateHashMap() {
-        ArrayList<Long> listModelIDs = new BaseModeleService().getAllIdModeleFlipper(context);
-        ArrayList<Flipper> listFlippersActifs = new BaseFlipperService().getAllActiveFlippers(context);
+        countModelsMap = new HashMap<Long, Integer>();
+
+        ArrayList<Long> listModelIDs = new BaseModeleService().getAllIdModeleFlipper(getApplicationContext());
+        ArrayList<Flipper> listFlippersActifs = new BaseFlipperService().getAllActiveFlippers(getApplicationContext());
 
         for (Long modelID : listModelIDs) {
             int modelcount = 0;
@@ -76,7 +77,6 @@ public class ListeModelsActivity extends AppCompatActivity {
             countModelsMap.put(modelID, modelcount);
         }
     }
-    */
 
     private void initView() {
         RecyclerView recyclerView = findViewById(R.id.my_recycler_view);
@@ -193,10 +193,10 @@ public class ListeModelsActivity extends AppCompatActivity {
 
             case R.id.action_sortCount:
                 if (sortedCount) {
-                   // Collections.sort(listModels, (m1, m2) -> String.valueOf(m2.get).compareTo(String.valueOf(m1.getAnneeLancement())));
+                   Collections.sort(listModels, (m1, m2) -> countModelsMap.get(m1.getId()) - countModelsMap.get(m2.getId()));
                     sortedCount = false;
                 } else {
-                   // Collections.sort(listModels, (m1, m2) -> String.valueOf(m1.getAnneeLancement()).compareTo(String.valueOf(m2.getAnneeLancement())));
+                   Collections.sort(listModels, (m1, m2) -> countModelsMap.get(m2.getId()) - countModelsMap.get(m1.getId()));
                     sortedCount = true;
                 }
                 modelAdapter.notifyDataSetChanged();
