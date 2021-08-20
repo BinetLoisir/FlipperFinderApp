@@ -30,6 +30,22 @@
 
         </androidx.cardview.widget.CardView>
 
+        <ImageButton
+            android:id="@+id/mapinfobutton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@id/cardViewAutocomplete"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_info_outline_black_24dp"
+            android:background="@color/white"
+
+            />
+
+
     </RelativeLayout>
 
 </merge>

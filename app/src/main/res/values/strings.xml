@@ -303,6 +303,7 @@
     <string name="texte_exploitant">Exploitant (optionnel)</string>
     <string name="nbcredits">Nombre de crédits pour 2 euros (optionnel)</string>
     <string name="exploitant">Exploitant:</string>
+    <string name="supprimé">Supprimé</string>
     <string name="renseigner_prix">Renseigner Prix</string>
     <string name="dial_title_prix">Nombre de crédits pour 2euros</string>
     <string name="renseigner_exploitant">Renseigner Exploitant</string>

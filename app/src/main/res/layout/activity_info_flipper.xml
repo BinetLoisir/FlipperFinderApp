@@ -102,17 +102,26 @@
             android:textColor="@color/accent_material_light2"
             android:layout_marginLeft="8dp"
             android:text="Equip'jeux" />
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_deleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/supprimé"
+        android:textColor="@color/warning"
+        android:textSize="16dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nbflips" />
 
     <View
         android:id="@+id/divider"
         style="@style/itemDivider"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linLayoutExp" />
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/linLayoutExp"/>
 
 
 

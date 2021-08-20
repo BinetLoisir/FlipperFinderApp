@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_legend"
-        android:icon="@drawable/ic_info_outline_black_24dp"
-        android:title="@string/homeMenu_action_legend_text"
-        app:showAsAction="always" />
-
-    <item
         android:id="@+id/action_liste_modele"
         android:icon="@drawable/ic_flip"
         android:title="@string/liste_modeles"

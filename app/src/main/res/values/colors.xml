@@ -8,6 +8,7 @@
 	<color name="accent">#2979ff</color>
 	<color name="warning">#ff3300</color>
 	<color name="grey">#bfbfbf</color>
+	<color name="darkgrey">#5E5B5B</color>
 	<color name="white">#ffffff</color>
 	<color name="black">#000</color>
 </resources>

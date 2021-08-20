@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -112,6 +113,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_home);
         setupSharedPreferences();
         setupBottomNavigationView();
+        setupUI();
         setupToolBar();
         //setupViewPager(); not used here
         getLocationPermission();
@@ -237,6 +239,23 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     /**
+     * Responsible for adding the UI elements
+     */
+    private void setupUI() {
+        ImageButton mapInfoButton = findViewById(R.id.mapinfobutton);
+        mapInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onButtonClick: Popping Legend");
+                Intent intentPopLegend = new Intent(mContext, PopLegend.class);
+                startActivity(intentPopLegend);
+            }
+        });
+
+
+    }
+
+    /**
      * Responsible for adding the tabs
      */
     private void setupViewPager() {
@@ -292,11 +311,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             public boolean onMenuItemClick(MenuItem item) {
                 Log.d(TAG, "onMenuItemClick: " + item);
                 switch (item.getItemId()) {
-                    case R.id.action_legend:
-                        Log.d(TAG, "onMenuItemClick: Popping Legend");
-                        Intent intentPopLegend = new Intent(mContext, PopLegend.class);
-                        startActivity(intentPopLegend);
-                        return true;
                     case R.id.action_admin:
                         Log.d(TAG, "onMenuItemClick: Navigating to Admin Page");
                         Intent intentAdmin = new Intent(mContext, AdminActivity.class);
@@ -556,6 +570,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         mLocationPermissionGranted = false;
         Log.d(TAG, "onRequestPermissionsResult: Result received");
         switch (requestCode) {
@@ -646,9 +661,6 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             if (nbJours < 365) {
                 return morethanone ? R.mipmap.ic_flipsmarker_lightblue : R.mipmap.ic_flipmarker_lightblue;
-            }
-            if (nbJours > 365) {
-                return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
             }
             return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
         }

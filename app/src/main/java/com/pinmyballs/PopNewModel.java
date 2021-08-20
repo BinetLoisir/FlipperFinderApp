@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,9 +40,9 @@ public class PopNewModel extends AppCompatActivity {
             "Chicago Gaming",
             "Data East",
             "Capcom",
-            "American Pinball"
+            "American Pinball",
+            "Alvin G."
     };
-
 
 
     ProgressBar progressBar;
@@ -50,7 +51,6 @@ public class PopNewModel extends AppCompatActivity {
     TextInputEditText ET_Year;
     Button Submit;
     Button Cancel;
-
     String Model, Brand;
     Long Year;
 
@@ -78,6 +78,9 @@ public class PopNewModel extends AppCompatActivity {
         ET_Brand.setAdapter(adapter);
 
         ET_Year = findViewById(R.id.ET_year);
+
+
+
         Submit = findViewById(R.id.btn_submit);
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override

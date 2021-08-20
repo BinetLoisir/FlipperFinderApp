@@ -28,22 +28,25 @@ var defaultLocation = new Parse.GeoPoint({
 });
 var QUERYLIMIT = 50;
 
-var input = /** @type {!HTMLInputElement} */ (
+var inputSearchBox = /** @type {!HTMLInputElement} */ (
     document.getElementById('pac-input'));
 
 
 function initMap() {
 
     var location = new google.maps.LatLng(48.883461, 2.340561);
-    //DOESNT WORK
+    //WORKS but comes after map is loaded
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             MyLocation = location;
-            //snack("tutut")
+            myMarker.setPosition(MyLocation);
+            map.setCenter(MyLocation);
+
         });
     };
 
+    // Map create
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
         zoom: 13,
@@ -63,9 +66,9 @@ function initMap() {
 
     //Add Autocomplete Bar
     // Create the search box and link it to the UI element.
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(inputSearchBox);
 
-    var autocomplete = new google.maps.places.Autocomplete(input);
+    var autocomplete = new google.maps.places.Autocomplete(inputSearchBox);
     //autocomplete.setTypes(['address']);
     var marker = new google.maps.Marker({
         map: map,
@@ -102,18 +105,19 @@ function initMap() {
     });
 
     //Clear the autocomplete when click
-    google.maps.event.addDomListener(input, 'click', function () {
+    google.maps.event.addDomListener(inputSearchBox, 'click', function () {
         this.value = '';
     });
 
     //Load markers after map is loaded
     map.addListener('idle', function () {
+        console/console.log('Map : idle event fired');
         geoqueryandplotmarkers();
     });
 
 }
 
-function plotMarkers(m) {
+/* function plotMarkersOld(m) {
     //markers = [];
     bounds = new google.maps.LatLngBounds();
     //console.log("Plotting : " + m.length + " markers.")
@@ -152,37 +156,34 @@ function plotMarkers(m) {
     });
 
     //map.fitBounds(bounds);
-};
+}; */
 
-//PLotMarkersTrial
 
-function plotMarkersNew(m) {
+function plotMarkers(m) {
     //markers = [];
     //bounds = new google.maps.LatLngBounds();
     //console.log("Plotting : " + m.length + " markers.")
-    m.forEach(function (v, k) {
-        var position = new google.maps.LatLng(v[0].lat, v[0].lng);
+    m.forEach(function (value) {
+        var position = new google.maps.LatLng(value[0].lat, value[0].lng);
         var infowindow = new google.maps.InfoWindow({
-            content: contentInfoWTrial(
-                k,
-                v,
-                makeDate(v[0].flip_datemaj).toLocaleDateString())
+            content: contentInfoWindow(value)
+                //k,
+                //v,
+                //makeDate(v[0].flip_datemaj).toLocaleDateString())
         });
 
         var mapMarker = new google.maps.Marker({
             position: position,
             map: map,
-            title: v[0].ens_nom,
-            icon: iconSelect(makeDate(v[0].flip_datemaj))
+            title: value[0].ens_nom,
+            icon: iconSelect(makeDate(value[0].flip_datemaj))
         });
 
         markers.push(mapMarker);
 
         mapMarker.addListener('click', function () {
             infowindow.open(map, mapMarker);
-            //console.log(marker.flip_objectId + " : " + marker.modele_nom + ' @ ' + marker.ens_nom);
         });
-
 
         //bounds.extend(position);
     });
@@ -191,7 +192,7 @@ function plotMarkersNew(m) {
 };
 
 // OLD Method, taking all parameters separately
-function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, modele, annee, marque, datemaj) {
+/* function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, modele, annee, marque, datemaj) {
     flip_objectId = "'" + flip_objectId + "'";
     var args = flip_id;
     //var mailto = "'" + emailMaker(flip_id, modele, enseigne, ville) + "'";
@@ -212,9 +213,9 @@ function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, mod
         '</button>' +
         '</div>' +
         '</div>';
-};
+}; */
 
-function makeStringActualiser(flip_objectId) {
+/* function makeStringActualiser(flip_objectId) {
     return actualiserString = '&nbsp<a href="#" data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(\'' + flip_objectId + '\')"><i class="fa fa-fw fa-refresh"></i></a>';
 }
 
@@ -228,11 +229,11 @@ function makeStringButtonActualiser(flip_objectId) {
 
 function makeStringButtonSupprimer(flip_id) {
     return supprimerString = '&nbsp<button id=act' + flip_id + 'data-toggle="tooltip" title="Supprimer!" onclick="sendMail(' + flip_id + ')"><i class="fa fa-fw fa-trash"></i></button>';
-}
+} */
 
 
 //Content Info Trial, taking 
-function contentInfoWTrial(ensId, flipArray, date) {
+/* function contentInfoWTrial(ensId, flipArray, date) {
     var fliplistString = '<ul>';
     for (flip of flipArray) {
         fliplistString = fliplistString + '<li>' + flip.modele_nom + ' (' + flip.modele_marque + ', ' + flip.modele_annee + ') ' + daysSinceUpdate(flip.flip_datemaj) + ' ' + makeStringActualiser(flip.flip_objectId) + ' ' +
@@ -243,7 +244,36 @@ function contentInfoWTrial(ensId, flipArray, date) {
         '<div class = iw-title>' + flipArray[0].ens_nom + '</div>' +
         '<div class="iw-content">' + fliplistString + '</div>' +
         '</div>';
+}; */
+
+//Content Info Window - June2021
+function contentInfoWindow(flipArray) {
+    var fliplistString = '<ul>';
+    for (flip of flipArray) {
+        fliplistString += '<li>' +  makeFlipString(flip) + ' </li>';
+    }
+    fliplistString += '</ul>'
+    return contentString = '<div id="iw-container">' +
+        '<div class = iw-title>' + flipArray[0].ens_nom + '</div>' +
+        '<div class="iw-content">' + fliplistString + '</div>' +
+        '</div>';
 };
+
+//function for to make Flip item with buttons
+function makeFlipString(flip){
+    var returnString = '';
+    //Modèle, marque, année
+    returnString += flip.modele_nom + ' (' + flip.modele_marque + ', ' + flip.modele_annee + ') ';
+    //DaysSinceLastMaj
+    returnString += daysSinceUpdate(flip.flip_datemaj) + ' ' ;
+    //Bouton actualiser
+    returnString += ' <button class="minibtn" title="Actualiser" onclick="updateFlip(\'' + flip.flip_objectId + '\')"><i class="fa fa-refresh"></i></button> ' ;
+    //Bouton Supprimer
+    returnString += ' <button class="minibtn" title="Supprimer" onclick="sendMail(' + flip.flip_id + ')"><i class="fa fa-trash"></i></button>'
+    return returnString;
+
+
+}
 
 //function to make Date object from FLIP_DATMAJ. 
 function makeDate(dateString) {
@@ -549,10 +579,7 @@ function mapQueryResults(results){
     return enseigneMap;
 
 }
-
 //
-
-
 
 function geoqueryandplotmarkers() {
     //Definition of the innerquery
@@ -616,7 +643,7 @@ function geoqueryandplotmarkers() {
                 //snack(snackText);
                 //---old method (1 FLIP per Enseigne)
                 //plotMarkers(flipperArray);
-                plotMarkersNew(ensMap);
+                plotMarkers(ensMap);
             } else {
                 snack("Pas de flippers aux environs");
             }
@@ -635,6 +662,8 @@ function updateFlip(objectId) {
             // The object was retrieved successfully.
             console.log("Object " + objectId + " was retrieved successfully");
             flipper.set("FLIP_DATMAJ", formatDate(new Date()));
+            var snackText = "Flipper confirmé. Merci ";
+            snack(snackText);
             return flipper.save();
 
         }, (error) => {
@@ -646,7 +675,7 @@ function updateFlip(objectId) {
 
 function sendMail(flip_id) {
     var link = "mailto:flipper.finder2@gmail.com" +
-        "?subject=" + escape("Retrait du flipper no " + flip_id) +
+        "?subject=" + escape("Retrait du flipper no " + flip_id + "(Web)") +
         "&body=" + escape("ID : " + flip_id + "\nCe flipper n'existe plus");
     window.location.href = link;
 }

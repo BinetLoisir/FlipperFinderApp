@@ -35,7 +35,7 @@ img.brand {
 }
 
 #iw-container .iw-title {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     padding: 5px;
     background-color: #00a3cc;
@@ -98,10 +98,26 @@ img.brand {
     width: 345px;
 }
 
+        
 
-
-
-
+/* mini icon button */
+.minibtn {
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    color: blue;
+    padding: 2px 2px;
+    font-size: 16px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  
+  /* Elevate on mouse-over */
+  .minibtn:hover {
+    background-color: #e0e2f7;
+    transform: translateY(-1px);
+  }
 /* The snackbar - position it at the bottom and in the middle of the screen */
 
 #snackbar {
@@ -187,3 +203,9 @@ However, delay the fade out process for 2.5 seconds */
         opacity: 0;
     }
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }

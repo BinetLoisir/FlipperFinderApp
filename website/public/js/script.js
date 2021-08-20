@@ -28,22 +28,25 @@ var defaultLocation = new Parse.GeoPoint({
 });
 var QUERYLIMIT = 50;
 
-var input = /** @type {!HTMLInputElement} */ (
+var inputSearchBox = /** @type {!HTMLInputElement} */ (
     document.getElementById('pac-input'));
 
 
 function initMap() {
 
     var location = new google.maps.LatLng(48.883461, 2.340561);
-    //DOESNT WORK
+    //WORKS but comes after map is loaded
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
             location = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
             MyLocation = location;
-            //snack("tutut")
+            myMarker.setPosition(MyLocation);
+            map.setCenter(MyLocation);
+
         });
     };
 
+    // Map create
     map = new google.maps.Map(document.getElementById('map'), {
         center: location,
         zoom: 13,
@@ -63,9 +66,9 @@ function initMap() {
 
     //Add Autocomplete Bar
     // Create the search box and link it to the UI element.
-    map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
+    map.controls[google.maps.ControlPosition.TOP_CENTER].push(inputSearchBox);
 
-    var autocomplete = new google.maps.places.Autocomplete(input);
+    var autocomplete = new google.maps.places.Autocomplete(inputSearchBox);
     //autocomplete.setTypes(['address']);
     var marker = new google.maps.Marker({
         map: map,
@@ -89,7 +92,7 @@ function initMap() {
             map.setZoom(17); // Why 17? Because it looks good.
         }
 
-        marker.setIcon( /** @type {google.maps.Icon} */ ({
+        marker.setIcon( /** @type {google.maps.Icon} */({
             url: place.icon,
             size: new google.maps.Size(71, 71),
             origin: new google.maps.Point(0, 0),
@@ -102,18 +105,19 @@ function initMap() {
     });
 
     //Clear the autocomplete when click
-    google.maps.event.addDomListener(input, 'click', function () {
+    google.maps.event.addDomListener(inputSearchBox, 'click', function () {
         this.value = '';
     });
 
     //Load markers after map is loaded
     map.addListener('idle', function () {
+        console/console.log('Map : idle event fired');
         geoqueryandplotmarkers();
     });
 
 }
 
-function plotMarkers(m) {
+/* function plotMarkersOld(m) {
     //markers = [];
     bounds = new google.maps.LatLngBounds();
     //console.log("Plotting : " + m.length + " markers.")
@@ -152,37 +156,34 @@ function plotMarkers(m) {
     });
 
     //map.fitBounds(bounds);
-};
+}; */
 
-//PLotMarkersTrial
 
-function plotMarkersNew(m) {
+function plotMarkers(m) {
     //markers = [];
     //bounds = new google.maps.LatLngBounds();
     //console.log("Plotting : " + m.length + " markers.")
-    m.forEach(function (v, k) {
-        var position = new google.maps.LatLng(v[0].lat, v[0].lng);
+    m.forEach(function (value) {
+        var position = new google.maps.LatLng(value[0].lat, value[0].lng);
         var infowindow = new google.maps.InfoWindow({
-            content: contentInfoWTrial(
-                k,
-                v,
-                makeDate(v[0].flip_datemaj).toLocaleDateString())
+            content: contentInfoWindow(value)
+                //k,
+                //v,
+                //makeDate(v[0].flip_datemaj).toLocaleDateString())
         });
 
         var mapMarker = new google.maps.Marker({
             position: position,
             map: map,
-            title: v[0].ens_nom,
-            icon: iconSelect(makeDate(v[0].flip_datemaj))
+            title: value[0].ens_nom,
+            icon: iconSelect(makeDate(value[0].flip_datemaj))
         });
 
         markers.push(mapMarker);
 
         mapMarker.addListener('click', function () {
             infowindow.open(map, mapMarker);
-            //console.log(marker.flip_objectId + " : " + marker.modele_nom + ' @ ' + marker.ens_nom);
         });
-
 
         //bounds.extend(position);
     });
@@ -190,8 +191,8 @@ function plotMarkersNew(m) {
     //map.fitBounds(bounds);
 };
 
-
-function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, modele, annee, marque, datemaj) {
+// OLD Method, taking all parameters separately
+/* function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, modele, annee, marque, datemaj) {
     flip_objectId = "'" + flip_objectId + "'";
     var args = flip_id;
     //var mailto = "'" + emailMaker(flip_id, modele, enseigne, ville) + "'";
@@ -212,10 +213,10 @@ function contentInfoW(flip_objectId, flip_id, enseigne, addresse, cp, ville, mod
         '</button>' +
         '</div>' +
         '</div>';
-};
+}; */
 
-function makeStringActualiser(flip_objectId) {
-    return actualiserString = '&nbsp<a href="#" data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(\''+ flip_objectId +'\')"><i class="fa fa-fw fa-refresh"></i></a>';
+/* function makeStringActualiser(flip_objectId) {
+    return actualiserString = '&nbsp<a href="#" data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(\'' + flip_objectId + '\')"><i class="fa fa-fw fa-refresh"></i></a>';
 }
 
 function makeStringSupprimer(flip_id) {
@@ -223,19 +224,19 @@ function makeStringSupprimer(flip_id) {
 }
 
 function makeStringButtonActualiser(flip_objectId) {
-    return actualiserString = '&nbsp<button id=act'+ flip_objectId +'data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(' + flip_objectId + ')"><i class="fa fa-fw fa-refresh"></i></button>';
+    return actualiserString = '&nbsp<button id=act' + flip_objectId + 'data-toggle="tooltip" title="Actualiser!" onclick="updateFlip(' + flip_objectId + ')"><i class="fa fa-fw fa-refresh"></i></button>';
 }
 
 function makeStringButtonSupprimer(flip_id) {
-    return supprimerString = '&nbsp<button id=act'+flip_id +'data-toggle="tooltip" title="Supprimer!" onclick="sendMail(' + flip_id + ')"><i class="fa fa-fw fa-trash"></i></button>';
-}
+    return supprimerString = '&nbsp<button id=act' + flip_id + 'data-toggle="tooltip" title="Supprimer!" onclick="sendMail(' + flip_id + ')"><i class="fa fa-fw fa-trash"></i></button>';
+} */
 
 
-//Content Info Trial
-function contentInfoWTrial(ensId, flipArray, date) {
+//Content Info Trial, taking 
+/* function contentInfoWTrial(ensId, flipArray, date) {
     var fliplistString = '<ul>';
     for (flip of flipArray) {
-        fliplistString = fliplistString + '<li>' + flip.modele_nom + ' (' + flip.modele_marque + ', ' + flip.modele_annee + ') '+ daysSinceUpdate(flip.flip_datemaj) + ' ' + makeStringActualiser(flip.flip_objectId) + ' ' +
+        fliplistString = fliplistString + '<li>' + flip.modele_nom + ' (' + flip.modele_marque + ', ' + flip.modele_annee + ') ' + daysSinceUpdate(flip.flip_datemaj) + ' ' + makeStringActualiser(flip.flip_objectId) + ' ' +
             makeStringSupprimer(flip.flip_id) + '</li>';
     }
     fliplistString = fliplistString + '</ul>'
@@ -243,7 +244,36 @@ function contentInfoWTrial(ensId, flipArray, date) {
         '<div class = iw-title>' + flipArray[0].ens_nom + '</div>' +
         '<div class="iw-content">' + fliplistString + '</div>' +
         '</div>';
+}; */
+
+//Content Info Window - June2021
+function contentInfoWindow(flipArray) {
+    var fliplistString = '<ul>';
+    for (flip of flipArray) {
+        fliplistString += '<li>' +  makeFlipString(flip) + ' </li>';
+    }
+    fliplistString += '</ul>'
+    return contentString = '<div id="iw-container">' +
+        '<div class = iw-title>' + flipArray[0].ens_nom + '</div>' +
+        '<div class="iw-content">' + fliplistString + '</div>' +
+        '</div>';
 };
+
+//function for to make Flip item with buttons
+function makeFlipString(flip){
+    var returnString = '';
+    //Modèle, marque, année
+    returnString += flip.modele_nom + ' (' + flip.modele_marque + ', ' + flip.modele_annee + ') ';
+    //DaysSinceLastMaj
+    returnString += daysSinceUpdate(flip.flip_datemaj) + ' ' ;
+    //Bouton actualiser
+    returnString += ' <button class="minibtn" title="Actualiser" onclick="updateFlip(\'' + flip.flip_objectId + '\')"><i class="fa fa-refresh"></i></button> ' ;
+    //Bouton Supprimer
+    returnString += ' <button class="minibtn" title="Supprimer" onclick="sendMail(' + flip.flip_id + ')"><i class="fa fa-trash"></i></button>'
+    return returnString;
+
+
+}
 
 //function to make Date object from FLIP_DATMAJ. 
 function makeDate(dateString) {
@@ -274,18 +304,18 @@ function removeDays(startDate, numberOfDays) {
     return returnDate;
 }
 //function to calculate the number of days between 2 Dates.
-function diffDays(date1 , date2) {
+function diffDays(date1, date2) {
     var oneDay = 24 * 60 * 60 * 1000;
     return Math.round(Math.abs((date1.getTime() - date2.getTime()) / (oneDay)));
 }
 
 //function to calculate days since last update date and return as String
-function daysSinceUpdate(datemaj){
+function daysSinceUpdate(datemaj) {
     var today = new Date();
     try {
         var delta = diffDays(today, makeDate(datemaj));
-    return "("+ delta + "j)";
-        
+        return "(" + delta + "j)";
+
     } catch (error) {
         console.log(error.message);
         return "(_j)";
@@ -483,6 +513,74 @@ function snack(htmlContent) {
 }
 
 //-----BACK4APP INTERFACE-------
+
+//REFACTORING
+//geoQuery(map).then(plotMarkers(results))
+
+
+//Return a Promise with the results of the query
+function geoQuery(map) {
+    //Definition of the innerquery
+    var geoboxquery = new Parse.Query(Enseigne);
+    var SW = new Parse.GeoPoint({
+        latitude: map.getBounds().getSouthWest().lat(),
+        longitude: map.getBounds().getSouthWest().lng()
+    });
+    var NE = new Parse.GeoPoint({
+        latitude: map.getBounds().getNorthEast().lat(),
+        longitude: map.getBounds().getNorthEast().lng()
+    });
+    geoboxquery.withinGeoBox("ENS_GEO", SW, NE);
+
+    //Definition of the FlipperQuery
+    var query = new Parse.Query(Flipper);
+    query.equalTo("FLIP_ACTIF", true);
+    query.matchesQuery("FLIP_ENSEIGNE_P", geoboxquery);
+    query.include("FLIP_ENSEIGNE_P");
+    query.include("FLIP_MODELE_P");
+    query.limit(QUERYLIMIT);
+    return query.find();
+}
+
+//Return a Map (key: EnseigneID, value : Flipper[])
+function mapQueryResults(results){
+    let enseigneMap = new Map();
+    var flipperArray = [];
+    if (results.length > 0) {
+        for (var i = 0; i < results.length; i++) {
+            var flip = {
+                modele_nom: results[i].get("FLIP_MODELE_P").get("MOFL_NOM"),
+                modele_annee: results[i].get("FLIP_MODELE_P").get("MOFL_ANNEE_LANCEMENT"),
+                modele_marque: results[i].get("FLIP_MODELE_P").get("MOFL_MARQUE"),
+                ens_objectId: results[i].get("FLIP_ENSEIGNE_P").id,
+                ens_nom: results[i].get("FLIP_ENSEIGNE_P").get("ENS_NOM"),
+                ens_adresse: results[i].get("FLIP_ENSEIGNE_P").get("ENS_ADRESSE"),
+                ens_cp: results[i].get("FLIP_ENSEIGNE_P").get("ENS_CODE_POSTAL"),
+                ens_ville: results[i].get("FLIP_ENSEIGNE_P").get("ENS_VILLE"),
+                lat: results[i].get("FLIP_ENSEIGNE_P").get("ENS_LATITUDE"),
+                lng: results[i].get("FLIP_ENSEIGNE_P").get("ENS_LONGITUDE"),
+                flip_datemaj: results[i].get("FLIP_DATMAJ"),
+                flip_id: results[i].get("FLIP_ID"),
+                flip_objectId: results[i].id
+            };
+            flipperArray.push(flip);
+
+            var ensId = flip.ens_objectId;
+            var tempFlipArray = [flip];
+
+            //if key is in map already
+            if (enseigneMap.get(ensId) != undefined) {
+                //add flip to fliparray in that key
+                tempFlipArray = tempFlipArray.concat(enseigneMap.get(ensId));
+            }
+            enseigneMap.set(ensId, tempFlipArray);
+        }
+    }
+    return enseigneMap;
+
+}
+//
+
 function geoqueryandplotmarkers() {
     //Definition of the innerquery
     var geoboxquery = new Parse.Query(Enseigne);
@@ -512,6 +610,7 @@ function geoqueryandplotmarkers() {
             if (results.length > 0) {
                 //var modele_nom, modele_annee, modele_marque, ens_nom, ens_adresse, ens_cp, ens_ville, lat, lng, flip_datemaj, flip_id, flip_objectId;
                 var flipperArray = [];
+                //ensMap is a Map<ensId, flip[]>
                 let ensMap = new Map();
                 for (var i = 0; i < results.length; i++) {
                     var flip = {
@@ -544,7 +643,7 @@ function geoqueryandplotmarkers() {
                 //snack(snackText);
                 //---old method (1 FLIP per Enseigne)
                 //plotMarkers(flipperArray);
-                plotMarkersNew(ensMap);
+                plotMarkers(ensMap);
             } else {
                 snack("Pas de flippers aux environs");
             }
@@ -559,22 +658,24 @@ function updateFlip(objectId) {
     const Flipper = Parse.Object.extend("FLIPPER");
     const query = new Parse.Query(Flipper);
     query.get(objectId)
-    .then((flipper) => {
-      // The object was retrieved successfully.
-      console.log("Object " + objectId + " was retrieved successfully");
-      flipper.set("FLIP_DATMAJ", formatDate(new Date()));
-      return flipper.save();
+        .then((flipper) => {
+            // The object was retrieved successfully.
+            console.log("Object " + objectId + " was retrieved successfully");
+            flipper.set("FLIP_DATMAJ", formatDate(new Date()));
+            var snackText = "Flipper confirmé. Merci ";
+            snack(snackText);
+            return flipper.save();
 
-    }, (error) => {
-      // The object was not retrieved successfully.
-      // error is a Parse.Error with an error code and message.
-      console.log("Error retrieving object " + objectId + " : " + error.code+ " : " +error.message);
-    });
+        }, (error) => {
+            // The object was not retrieved successfully.
+            // error is a Parse.Error with an error code and message.
+            console.log("Error retrieving object " + objectId + " : " + error.code + " : " + error.message);
+        });
 };
 
 function sendMail(flip_id) {
     var link = "mailto:flipper.finder2@gmail.com" +
-        "?subject=" + escape("Retrait du flipper no " + flip_id) +
+        "?subject=" + escape("Retrait du flipper no " + flip_id + "(Web)") +
         "&body=" + escape("ID : " + flip_id + "\nCe flipper n'existe plus");
     window.location.href = link;
 }

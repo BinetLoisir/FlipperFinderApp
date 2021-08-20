@@ -124,6 +124,7 @@ public class AdminActivity extends AppCompatActivity {
                 Flipper p = flipper;
                 if(p!= null) {
                     Intent infoActivite = new Intent(getApplicationContext(), PageInfoFlipperPager.class);
+                    infoActivite.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO, p);
                     infoActivite.putExtra(PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT, 0);
                     getApplicationContext().startActivity(infoActivite);

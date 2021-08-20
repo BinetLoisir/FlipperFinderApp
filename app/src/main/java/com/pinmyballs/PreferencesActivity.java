@@ -51,7 +51,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
     public static final String KEY_PREFERENCES_REMEMBER = "RememberCredentials";
     //DEFAULT VALUES
     public static final int DEFAULT_VALUE_RAYON = 150;
-    public static final int DEFAULT_VALUE_NB_MAX_LISTE = 100;
+    public static final int DEFAULT_VALUE_NB_MAX_LISTE = 75;
     public static final Boolean DEFAULT_VALUE_ADMIN_MODE = false;
 	public static final String DEFAULT_VALUE_PSEUDO = "AAA";
     public static final String DEFAULT_VALUE_LATITUDE= "0";

@@ -233,6 +233,7 @@
     <string name="sortChrono_field">Sort by Year</string>
     <string name="sortCount">Sort by Count</string>
     <string name="sortAZ_field">Sort AZ</string>
+    <string name="supprimé">Removed</string>
 
 
 </resources>

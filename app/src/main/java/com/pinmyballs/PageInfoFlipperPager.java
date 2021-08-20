@@ -118,12 +118,16 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         TextView nomEnseigne = findViewById(R.id.nomEnseigne);
         TextView dateMajFlip = findViewById(R.id.dateMajFlip);
         TextView exploitant = findViewById(R.id.tv_exploitant);
+        TextView deleted = findViewById(R.id.tv_deleted);
         nbflippercircle.setText(nbflippers);
 
         nomEnseigne.setText(flipper.getEnseigne().getNom());
         adresseEnseigne.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
         exploitant.setText(flipper.getExploitant());
         nbCredit2E.setOnClickListener(creditlistener);
+
+        //On cache le warning Supprimé
+        deleted.setVisibility(View.GONE);
 
         //Si la date de mise à jour est nulle, on affiche la valeur par défaut.
         if (flipper.getDateMaj() != null && flipper.getDateMaj().length() != 0) {
@@ -152,6 +156,11 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         } else linLayoutExpl.setVisibility(View.GONE);
         if (flipper.getExploitant() != null && flipper.getExploitant().equals("0")) linLayoutExpl.setVisibility(View.GONE);
 
+        //Si le flip est désactivé, on cache l'exploitant et on affiche Supprimé
+        if (!flipper.isActif()){
+            linLayoutExpl.setVisibility(View.GONE);
+            deleted.setVisibility(View.VISIBLE);
+        }
         //Title of the Activity
         mActionbar = getSupportActionBar();
         mActionbar.setTitle(flipper.getModele().getNom());
@@ -311,6 +320,7 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
 
             builder.setView(input);
 
+
             // Set up the buttons
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
@@ -318,7 +328,7 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
                     m_Text = input.getText().toString();
                     flipper.setNbCreditsDeuxEuros(m_Text);
                     ParseFlipperService parseFlipperService = new ParseFlipperService(null);
-                    parseFlipperService.updateInfoFlipper(null,flipper);
+                    parseFlipperService.updateInfoFlipper(PageInfoFlipperPager.this,flipper);
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

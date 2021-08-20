@@ -1,0 +1,57 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/radiobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingEnd="4dp"
+        android:paddingStart="4dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_baseline_radio_button_unchecked_24" />
+
+
+    <TextView
+        android:id="@+id/opdb_model"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:padding="2dp"
+
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/radiobutton"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="?attr/colorPrimary"
+        tools:text="@sample/modeles" />
+
+    <TextView
+
+        android:id="@+id/opdb_manufacturer"
+        android:padding="2dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/opdb_model"
+        app:layout_constraintStart_toEndOf="@+id/radiobutton"
+
+        android:text="Stern"/>
+
+    <TextView
+        android:id="@+id/opdb_year"
+        android:padding="2dp"
+
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@id/opdb_model"
+        app:layout_constraintStart_toEndOf="@id/opdb_manufacturer"
+        android:text="1987"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,35 +1,54 @@
 package com.pinmyballs.fragment;
 
 import android.app.AlertDialog;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Status;
+import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.api.model.PlaceLikelihood;
+import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
+import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
+import com.google.android.libraries.places.api.net.PlacesClient;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
+import com.pinmyballs.BuildConfig;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Enseigne;
 import com.pinmyballs.utils.LocationUtil;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.Manifest.permission.ACCESS_FINE_LOCATION;
+import static com.parse.Parse.getApplicationContext;
+
 public class FragmentSignalementAdresse extends SignalementWizardFragment {
 
     private static final String TAG = "FragmentSignalementAdre";
+    private PlacesClient placesClient;
 
     @BindView(R.id.place_attribution_wizard)
     TextView mPlaceAttribution;
+    @BindView(R.id.buttonMyLocation)
+    ImageButton mLocationButton;
     @BindView(R.id.champNomEnseigne)
     TextView champNomEnseigne;
     @BindView(R.id.champAdresse)
@@ -47,6 +66,14 @@ public class FragmentSignalementAdresse extends SignalementWizardFragment {
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this, rootView);
         setupPlaceAutocomplete();
+
+        if (!Places.isInitialized()) {
+            Places.initialize(getApplicationContext(), BuildConfig.ApiKey);
+        }
+        // Create a new PlacesClient instance
+        placesClient = Places.createClient(getParentActivity());
+        setupMyLocationButton();
+
         return rootView;
     }
 
@@ -77,6 +104,58 @@ public class FragmentSignalementAdresse extends SignalementWizardFragment {
             public void onError(Status status) {
                 // TODO: Handle the error.
                 Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+    }
+
+    private void setupMyLocationButton() {
+        mLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Use fields to define the data types to return.
+                //List<Place.Field> placeFields = Collections.singletonList(Place.Field.NAME);
+                List<Place.Field> placeFields = Arrays.asList(Place.Field.ID, Place.Field.NAME, Place.Field.LAT_LNG, Place.Field.ADDRESS);
+
+                // Use the builder to create a FindCurrentPlaceRequest.
+                FindCurrentPlaceRequest request = FindCurrentPlaceRequest.newInstance(placeFields);
+
+                // Call findCurrentPlace and handle the response (first check that the user has granted permission).
+                if (ContextCompat.checkSelfPermission(getParentActivity(), ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                    Task<FindCurrentPlaceResponse> placeResponse = placesClient.findCurrentPlace(request);
+                    placeResponse.addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            FindCurrentPlaceResponse response = task.getResult();
+                            for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods()) {
+                                //Log.i(TAG, String.format("Place '%s' has likelihood: %f",
+                                  //      placeLikelihood.getPlace().getName(),
+                                    //    placeLikelihood.getLikelihood()));
+                            }
+                            //Action
+                            Place place = response.getPlaceLikelihoods().get(0).getPlace();
+                            getParentActivity().setNewLocation(place.getLatLng());
+                            champNomEnseigne.setText(place.getName());
+                            HashMap HM = LocationUtil.getDetailsfromLatLng(getContext(), place.getLatLng());
+                            champAdresse.setText(String.valueOf(HM.get("address")));
+                            champCodePostal.setText(String.valueOf(HM.get("postalcode")));
+                            champVille.setText(String.valueOf(HM.get("city")));
+                            champPays.setText(String.valueOf(HM.get("country")));
+
+                        } else {
+                            Exception exception = task.getException();
+                            if (exception instanceof ApiException) {
+                                ApiException apiException = (ApiException) exception;
+                                Log.e(TAG, "Place not found: " + apiException.getStatusCode());
+                            }
+                        }
+                    });
+                } else {
+                    // A local method to request required permissions;
+                    // See https://developer.android.com/training/permissions/requesting
+                    //getLocationPermission();
+                }
+
+
             }
         });
     }

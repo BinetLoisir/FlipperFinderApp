@@ -101,7 +101,7 @@ public class ListeModelsActivity extends AppCompatActivity {
     private void initFAB() {
         FloatingActionButton fab = findViewById(R.id.fabmodel);
         fab.setOnClickListener(view -> {
-            Intent intentNewModel = new Intent(this, PopNewModel.class);
+            Intent intentNewModel = new Intent(this, PopNewModel2.class);
             startActivity(intentNewModel);
         });
         //Hide or show FAB
