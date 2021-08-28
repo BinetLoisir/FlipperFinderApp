@@ -42,7 +42,7 @@ function searchAround() {
     while (liste.firstChild) {
         liste.removeChild(liste.lastChild);
     }
-    list = getFlippers(defaultLocation, 40, 50);
+    list = getFlippers(MyLocation, 40, 50);
     //list = getEnseignes(defaultLocation, 100000, 20);
 }
 
