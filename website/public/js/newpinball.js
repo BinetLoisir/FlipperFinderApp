@@ -19,6 +19,10 @@ var firstmodel = "modeleflipper1";
 var defaultOption = 'Choisir Modèle';
 var modelsMap = new Map();
 
+init_modelsMap();
+
+
+
 function init_modelsMap() {
     var query = new Parse.Query(Parse.Object.extend("MODELE_FLIPPER"));
     query.limit(350);
@@ -29,11 +33,11 @@ function init_modelsMap() {
             if (results.length > 0) {
                 for (let i = 0; i < results.length; i++) {
                     modelsMap.set(results[i].id,
-                                  [results[i].attributes.MOFL_ID,
-                                  results[i].attributes.MOFL_NOM,
-                                  results[i].attributes.MOFL_ANNEE_LANCEMENT,
-                                  results[i].attributes.MOFL_MARQUE
-                                  ]);
+                        [results[i].attributes.MOFL_ID,
+                        results[i].attributes.MOFL_NOM,
+                        results[i].attributes.MOFL_ANNEE_LANCEMENT,
+                        results[i].attributes.MOFL_MARQUE
+                        ]);
                 }
                 //once modelsMap is initialized, fill first model dropdown
                 populate(firstmodel);
@@ -45,7 +49,6 @@ function init_modelsMap() {
     });
 }
 
-init_modelsMap();
 
 function initAutocomplete() {
     // Create the autocomplete object, restricting the search to geographical
@@ -127,7 +130,7 @@ function removeModel() {
 //-- -- -- -- -- - POPULATE DROPDOWN-- -- -- -- -- -- -
 function populate(selectElement) {
     let dropdown = document.getElementById(selectElement);
-    dropdown.length = 0;
+    //dropdown.length = 0;
     let defaultOption = document.createElement('option');
     defaultOption.text = 'Choisir Modèle';
     dropdown.add(defaultOption);
@@ -146,10 +149,7 @@ function populate(selectElement) {
         option.value = objectId;
         dropdown.add(option);
     };
-    //useful or not ?
-    $('#' + selectElement).selectpicker('refresh');
 }
-
 
 //-- -- -- -- -- - Parse interactions -- -- -- -- -- -
 
@@ -157,14 +157,14 @@ var Flipper = Parse.Object.extend("FLIPPER");
 var Enseigne = Parse.Object.extend("ENSEIGNE");
 var Modele = Parse.Object.extend("MODELE_FLIPPER");
 
-var modeleFields = {
+const modeleFields = {
     id: "MOFL_ID",
     name: "MOFL_NOM",
     year: "MOFL_ANNEE_LANCEMENT",
     brand: "MOFL_MARQUE"
 };
 
-var flipperFields = {
+const flipperFields = {
     id: "FLIP_ID",
     modele: "FLIP_MODELE",
     modele_p: "FLIP_MODELE_P",
@@ -174,7 +174,7 @@ var flipperFields = {
     actif: "FLIP_ACTIF"
 };
 
-var enseigneFields = {
+const enseigneFields = {
     id: "ENS_ID",
     name: "ENS_NOM",
     datemaj: "ENS_DATMAJ",
@@ -188,7 +188,7 @@ var enseigneFields = {
     nbflips: "ENS_NBFLIPS"
 };
 
-var commentFields = {
+const commentFields = {
     id: "COMM_ID",
     date: "COMM_DATE",
     text: "COMM_TEXTE",
@@ -260,12 +260,12 @@ function saveFlipperEnseigne(name, address, postcode, city, country, datemaj, la
     listToSave.push(newEnseigne);
 
     for (const modelObjectId of modelObjectIdArray) {
-        var i= 0;
+        var i = 0;
         var Flipper = Parse.Object.extend("FLIPPER");
         var Modele = Parse.Object.extend("MODELE_FLIPPER");
         var newFlipper = new Flipper();
 
-        newFlipper.set(flipperFields.id, new Date().getTime()+i);
+        newFlipper.set(flipperFields.id, new Date().getTime() + i);
         newFlipper.set(flipperFields.modele, getMODELID(modelObjectId));
         newFlipper.set(flipperFields.modele_p, Modele.createWithoutData(modelObjectId));
         newFlipper.set(flipperFields.enseigne, newEnseigne.get(enseigneFields.id));
@@ -277,7 +277,7 @@ function saveFlipperEnseigne(name, address, postcode, city, country, datemaj, la
         var Commentaire = Parse.Object.extend("COMMENTAIRE");
         var newCommentaire = new Commentaire();
 
-        newCommentaire.set(commentFields.id, new Date().getTime()+i);
+        newCommentaire.set(commentFields.id, new Date().getTime() + i);
         newCommentaire.set(commentFields.text, "Nouveau (web)");
         newCommentaire.set(commentFields.actif, true);
         newCommentaire.set(commentFields.date, datemaj);
@@ -413,7 +413,7 @@ function sendbutton() {
         place_name + "\n" +
         street_number + " " + route + "\n" +
         postal_code + " " + locality + "\n" +
-        country + "\n" 
+        country + "\n"
     );
     if (r == true) {
         saveFlipperEnseigne(
