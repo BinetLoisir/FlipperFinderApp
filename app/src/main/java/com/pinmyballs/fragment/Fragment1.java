@@ -55,7 +55,7 @@ public class Fragment1 extends Fragment {
         if (context instanceof Fragment1Listener){
             fragment1Listener = (Fragment1Listener) context;
         }else  {
-            throw new RuntimeException(context.toString()+ "must implement Fragment1Listener");
+            throw new RuntimeException(context + "must implement Fragment1Listener");
         }
     }
 

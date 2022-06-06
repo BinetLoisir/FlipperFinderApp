@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ParseScoreService {
     private static final String TAG = "ParseScoreService";
-    private FragmentHiScoreFlipper.FragmentCallback mFragmentCallback;
+    private final FragmentHiScoreFlipper.FragmentCallback mFragmentCallback;
 
     public ParseScoreService(FragmentHiScoreFlipper.FragmentCallback fragmentCallback) {
         mFragmentCallback = fragmentCallback;

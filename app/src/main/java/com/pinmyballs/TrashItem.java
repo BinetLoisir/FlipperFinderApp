@@ -50,7 +50,7 @@ public class TrashItem{
         this.processed = processed;
     }
 
-    public  TrashItem(){};
+    public  TrashItem(){}
 
     public TrashItem(Long flipId, String pseudo, Date date, boolean processed) {
         this.flipId = flipId;

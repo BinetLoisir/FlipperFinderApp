@@ -10,14 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pinmyballs.metier.Flipper;
-import com.pinmyballs.metier.ModeleFlipper;
 import com.pinmyballs.service.base.BaseFlipperService;
-import com.pinmyballs.service.base.BaseModeleService;
-import com.pinmyballs.utils.ModelAdapter;
 import com.pinmyballs.utils.UpdatesAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class LastUpdatesActivity extends AppCompatActivity {
 

@@ -133,7 +133,7 @@ public class FragmentDialogScore extends DialogFragment {
         if (context instanceof OnScoreSubmittedListener)
             onScoreSubmittedListener = (OnScoreSubmittedListener) context;
         else  {
-            throw new RuntimeException(context.toString()+ "must implement OnScoreSubmittedListener");
+            throw new RuntimeException(context + "must implement OnScoreSubmittedListener");
         }
     }
 

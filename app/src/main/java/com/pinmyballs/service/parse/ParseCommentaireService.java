@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class ParseCommentaireService {
-	private FragmentCallback mFragmentCallback;
+	private final FragmentCallback mFragmentCallback;
 
 	public ParseCommentaireService(FragmentCallback fragmentCallback) {
 		mFragmentCallback = fragmentCallback;
@@ -39,7 +39,7 @@ public class ParseCommentaireService {
 		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
 		try {
-			query.setLimit(5000);
+			query.setLimit(6000);
 			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.COMM_DATE, dateDerniereMaj);
 			listePo = query.find();
 		} catch (ParseException e1) {

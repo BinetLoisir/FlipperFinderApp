@@ -232,6 +232,7 @@ public class LocationUtil {
 		Location l = null;
 
 		for (int i=providers.size()-1; i>=0; i--) {
+			//TODO Add and test permission check
 			l = lm.getLastKnownLocation(providers.get(i));
 			if (l != null) break;
 		}
@@ -288,10 +289,10 @@ public class LocationUtil {
 			// On va ressortir l'adresse la plus proche parmi toute celle retournées
 			Address adresseARetourner = listeAdresseRetour.get(0);
 			Location.distanceBetween(latitude, longitude, adresseARetourner.getLatitude(), adresseARetourner.getLongitude(), resultDistance);
-			Float distanceRetour =  resultDistance[0];
+			float distanceRetour =  resultDistance[0];
 			for (Address adresseEnCours : listeAdresseRetour){
 				Location.distanceBetween(latitude, longitude, adresseEnCours.getLatitude(), adresseEnCours.getLongitude(), resultDistance);
-				Float distanceFloat = resultDistance[0];
+				float distanceFloat = resultDistance[0];
 				if (distanceFloat < distanceRetour){
 					adresseARetourner = adresseEnCours;
 				}

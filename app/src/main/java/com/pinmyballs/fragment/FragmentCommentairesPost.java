@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class FragmentCommentairesPost extends Fragment {
     private static final String TAG = "FragmentCommentairesPos";
-    private int NB_MAX_COMMENTAIRE = 50;
+    private final int NB_MAX_COMMENTAIRE = 50;
 
 
     @Nullable

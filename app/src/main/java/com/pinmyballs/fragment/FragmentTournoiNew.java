@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,10 +38,13 @@ import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.ProgressBarHandler;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -55,7 +59,7 @@ import static com.parse.Parse.getApplicationContext;
 
 public class FragmentTournoiNew extends Fragment{
     private static final String TAG = "FragmentTournoiNew";
-    private int AUTOCOMPLETE_REQUEST_CODE = 1;
+    private final int AUTOCOMPLETE_REQUEST_CODE = 1;
     public final static String INTENT_LATITUDE = "com.pinmyballs.FragmentTournoiNew.INTENT_LATITUDE";
     public final static String INTENT_LONGITUDE = "com.pinmyballs.FragmentTournoiNew.INTENT_LONGITUDE";
     public final static String INTENT_ADDRESSTEXT = "com.pinmyballs.FragmentTournoiNew.INTENT_ADDRESSTEXT";
@@ -308,23 +312,24 @@ public class FragmentTournoiNew extends Fragment{
      * @param year
      * @param month
      * @param day
-     *//*
-    @Override
+     **/
+
     public void onDateSet(DatePicker view, int year, int month, int day) {
         Calendar cal = new GregorianCalendar(year, month, day);
         setDate(cal);
     }
 
-    *//**
+    /**
      * To set date on TextView
      *
      * @param calendar
-     *//*
+     **/
+
     private void setDate(final Calendar calendar) {
         final DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT, Locale.FRANCE);
         Log.d("DEbug", dateFormat.format(calendar.getTime()));
         ((TextView) getView().findViewById(R.id.NewTournoiDate)).setText(dateFormat.format(calendar.getTime()));
-    }*/
+    }
 
 }
 

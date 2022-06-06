@@ -5,9 +5,10 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     tools:context=".PreferencesActivity"
-    android:paddingStart="8dp">
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
 
 
     <LinearLayout
@@ -38,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|center_vertical"
                 android:background="@null"
-                android:contentDescription="Clear"
+                android:contentDescription="@string/clear"
                 app:srcCompat="@drawable/ic_clear_black_24dp" />
 
         </FrameLayout>
@@ -242,40 +243,50 @@
         android:layout_marginBottom="4dp"
         android:background="?android:attr/listDivider" />
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+    <Button
+        android:id="@+id/MyAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:padding="8dp"
+        android:background="@color/warning"
+        android:text="@string/myaction_button" />
 
-        <Button
-            android:id="@+id/MyAction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:background="@color/warning"
-            android:text="@string/myaction_button" />
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:background="?android:attr/listDivider" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        >
+
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:hint="Enter query"
+            />
 
         <Button
             android:id="@+id/MyAction2"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="4dp"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-
+            android:layout_height="match_parent"
+            android:layout_weight="1"
             android:background="@color/accent"
             android:text="@string/myaction_button2" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <EditText
-        android:id="@+id/et_search"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter query"/>
+
 
     <TextView
         android:id="@+id/query_results"

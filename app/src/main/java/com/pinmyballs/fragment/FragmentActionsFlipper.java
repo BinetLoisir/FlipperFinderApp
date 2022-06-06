@@ -29,7 +29,6 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import androidx.annotation.LongDef;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -38,7 +37,6 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.pinmyballs.AdminActivity;
-import com.pinmyballs.PageInfoFlipperPager;
 import com.pinmyballs.PreferencesActivity;
 import com.pinmyballs.R;
 import com.pinmyballs.database.FlipperDatabaseHandler;
@@ -54,7 +52,6 @@ import com.pinmyballs.utils.NetworkUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -75,14 +72,14 @@ public class FragmentActionsFlipper extends Fragment {
     private BaseModeleService modeleFlipperService;
 
     private HashMap hashMapModeles;
-    private OnItemClickListener itemSelectionneNouveauModeleListener = new OnItemClickListener() {
+    private final OnItemClickListener itemSelectionneNouveauModeleListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(champNouveauModeleFlipper.getWindowToken(), 0);
         }
     };
-    private OnClickListener ChangerModeleListener = new OnClickListener() {
+    private final OnClickListener ChangerModeleListener = new OnClickListener() {
         public void onClick(View v) {
             boutonValideChangement.setEnabled(true);
             boutonValideChangement.setText(R.string.boutonValideChangementModele);
@@ -93,7 +90,7 @@ public class FragmentActionsFlipper extends Fragment {
             changeModeleLayout.startAnimation(slide);
         }
     };
-    private DialogInterface.OnClickListener ChangerModeleParMailListener = new DialogInterface.OnClickListener() {
+    private final DialogInterface.OnClickListener ChangerModeleParMailListener = new DialogInterface.OnClickListener() {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             String message = "ID : " + flipper.getId() + "\nEnseigne : " + flipper.getEnseigne().getId()
@@ -180,7 +177,7 @@ public class FragmentActionsFlipper extends Fragment {
             }
         }
     };
-    private OnClickListener NouveauFlipListener = new OnClickListener() {
+    private final OnClickListener NouveauFlipListener = new OnClickListener() {
         public void onClick(View v) {
             boutonValideChangement.setEnabled(true);
             boutonValideChangement.setText(R.string.boutonValideNouveauFlipper);
@@ -193,12 +190,12 @@ public class FragmentActionsFlipper extends Fragment {
         }
     };
 
-    private OnClickListener AnnuleChangementModeleListener = v -> {
+    private final OnClickListener AnnuleChangementModeleListener = v -> {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
         changeModeleLayout.setVisibility(View.GONE);
     };
-    private OnClickListener ValidationListener = new OnClickListener() {
+    private final OnClickListener ValidationListener = new OnClickListener() {
         public void onClick(View v) {
             if (NetworkUtil.isConnected(getActivity().getApplicationContext())) {
                 FlipperService flipperService = new FlipperService(new FragmentActionCallback() {
@@ -215,7 +212,7 @@ public class FragmentActionsFlipper extends Fragment {
         }
     };
 
-    private OnClickListener DisparitionListener = new OnClickListener() {
+    private final OnClickListener DisparitionListener = new OnClickListener() {
         public void onClick(View v) {
             //1-Envoi mail
             String message = "Le " + flipper.getModele().getNom()
@@ -267,7 +264,7 @@ public class FragmentActionsFlipper extends Fragment {
 
     //TODO Include this as a button on the FragmentCarteFlipper
 
-    private OnClickListener NavigationListener = new OnClickListener() {
+    private final OnClickListener NavigationListener = new OnClickListener() {
         public void onClick(View v) {
             Intent navIntentGoogleNav = new Intent(Intent.ACTION_VIEW, Uri.parse("google.navigation:q="
                     + flipper.getEnseigne().getAdresseCompleteSansPays()));
@@ -287,7 +284,7 @@ public class FragmentActionsFlipper extends Fragment {
 
         }
     };
-    private OnClickListener ExploitantListener = new OnClickListener() {
+    private final OnClickListener ExploitantListener = new OnClickListener() {
         String m_Text;
         @Override
         public void onClick(View view) {
@@ -339,7 +336,7 @@ public class FragmentActionsFlipper extends Fragment {
 
         }
     };
-    private OnClickListener CreditsListener = new OnClickListener() {
+    private final OnClickListener CreditsListener = new OnClickListener() {
         String m_Text;
         @Override
         public void onClick(View view) {

@@ -61,7 +61,7 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
     SharedPreferences settings;
     BaseModeleService modeleFlipperService;
 
-    private OnItemClickListener itemSelectionneListener = new OnItemClickListener() {
+    private final OnItemClickListener itemSelectionneListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);

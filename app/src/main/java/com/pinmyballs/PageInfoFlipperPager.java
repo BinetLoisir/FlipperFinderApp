@@ -52,15 +52,15 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
     public final static String INTENT_FLIPPER_ONGLET_DEFAUT = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_ONGLET_DEFAUT";
     public final static String INTENT_FLIPPER_POUR_INFO = "com.pinmyballs.PageInfoFlipperPager.INTENT_FLIPPER_POUR_INFO";
     private static final String TAG = "PageInfoFlipperPager";
-    private Context mContext = PageInfoFlipperPager.this;
+    private final Context mContext = PageInfoFlipperPager.this;
 
 
     ActionBar mActionbar;
     Flipper flipper;
     String nbflippers;
     String pseudo;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-    private DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+    private final DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
     private SharedPreferences settings;
     //AJOUT INTERFACE TEST
     private FragmentHiScoreFlipper fragmentHiScoreFlipper;
@@ -292,7 +292,7 @@ public class PageInfoFlipperPager extends AppCompatActivity implements FragmentD
         return false;
     }
 
-    private View.OnClickListener creditlistener    =   new View.OnClickListener() {
+    private final View.OnClickListener creditlistener    =   new View.OnClickListener() {
         String m_Text;
         @Override
         public void onClick(View view) {

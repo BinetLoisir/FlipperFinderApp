@@ -53,7 +53,7 @@ public class Fragment2 extends Fragment {
         if (context instanceof Fragment2Listener){
             fragment1Listener = (Fragment2Listener) context;
         }else  {
-            throw new RuntimeException(context.toString()+ "must implement Fragment1Listener");
+            throw new RuntimeException(context + "must implement Fragment1Listener");
         }
     }
 

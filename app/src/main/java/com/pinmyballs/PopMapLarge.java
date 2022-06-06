@@ -142,9 +142,6 @@ public class PopMapLarge extends AppCompatActivity implements OnMapReadyCallback
         if (nbJours < 365) {
             return morethanone ? R.mipmap.ic_flipsmarker_lightblue : R.mipmap.ic_flipmarker_lightblue;
         }
-        if (nbJours > 365) {
-            return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
-        }
         return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
     }
 }

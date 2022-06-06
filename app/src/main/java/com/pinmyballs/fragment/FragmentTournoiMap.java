@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -38,7 +39,7 @@ import java.util.Map;
 
 public class FragmentTournoiMap extends Fragment implements OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     private static final String TAG = "FragmentTournoiMap";
-    private Switch mSwitchTournois;
+    private SwitchCompat mSwitchTournois;
     private SupportMapFragment mapFragment;
     private GoogleMap mMap;
     private LatLngBounds mMapBounds;

@@ -23,10 +23,10 @@ import java.util.Locale;
 public class ListeScoresAdapter extends ArrayAdapter<Score>{
 
     private static final String TAG = ListeScoresAdapter.class.getSimpleName();
-    private int mResource;
-    private Context mContext;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-    private DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
+    private final int mResource;
+    private final Context mContext;
+    private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+    private final DateFormat df = DateFormat.getDateInstance(DateFormat.LONG, Locale.FRANCE);
 
     public ListeScoresAdapter(@NonNull Context mContext, int mResource, @NonNull ArrayList<Score> objects) {
         super(mContext, mResource, objects);

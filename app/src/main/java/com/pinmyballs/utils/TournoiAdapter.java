@@ -31,7 +31,7 @@ public class TournoiAdapter extends ArrayAdapter<Tournoi> {
     int mResource;
     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-    private Context mContext;
+    private final Context mContext;
 
 
     /**

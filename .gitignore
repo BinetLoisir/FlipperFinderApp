@@ -1,3 +1,16 @@
 *.swp
 *.class
 *.aab
+website/.DS_Store
+website/public/.DS_Store
+website/public/comments.html
+website/public/css/custom.css
+website/public/index.html
+website/public/js/comments.js
+website/public/js/list.js
+website/public/js/script.js
+website/public/js/tests.js
+website/public/list.html
+website/public/newpinball.html
+website/.DS_Store
+.DS_Store

@@ -35,7 +35,6 @@ build/
 #NDK
 obj/
 *.swp
-*.class
 
 # Gradle wrapper files on Windows
 gradlew

@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -17,17 +15,14 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 import com.pinmyballs.fragment.FragmentCommentairesDeleted;
 import com.pinmyballs.fragment.FragmentCommentairesNew;
 import com.pinmyballs.fragment.FragmentCommentairesPost;
-import com.pinmyballs.metier.Commentaire;
 import com.pinmyballs.utils.BottomNavigationViewHelper;
 import com.pinmyballs.utils.SectionsPagerAdapter;
-
-import java.util.ArrayList;
 
 public class CommentaireActivity extends AppCompatActivity {
 
 	private static final String TAG = "CommentaireActivity";
 	private static final int ACTIVITY_NUM = 1;
-	private Context mContext = CommentaireActivity.this;
+	private final Context mContext = CommentaireActivity.this;
     private FirebaseAnalytics firebaseAnalytics;
 
 	@Override

@@ -56,7 +56,7 @@ public class OtherFlipperAdapter extends ArrayAdapter<Flipper> {
         //return super.getView(position, convertView, parent);
     }
 
-    private View.OnClickListener OtherModelClickListener = new View.OnClickListener() {
+    private final View.OnClickListener OtherModelClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Flipper flipper = getItem((Integer) v.getTag());

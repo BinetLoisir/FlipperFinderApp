@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_lastupdates"
-        android:icon="@drawable/ic_centermap"
+        android:icon="@drawable/ic_baseline_access_time_24"
         android:title="LastUpdates"
         android:titleCondensed="Updates"
         pinmyballs:showAsAction="always|withText" />

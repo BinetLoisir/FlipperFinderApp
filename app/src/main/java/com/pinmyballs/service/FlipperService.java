@@ -11,14 +11,13 @@ import com.pinmyballs.service.base.BaseModeleService;
 import com.pinmyballs.service.parse.ParseFlipperService;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 public class FlipperService {
 
-    private FragmentActionCallback mFragmentCallback;
+    private final FragmentActionCallback mFragmentCallback;
 
     public FlipperService(FragmentActionCallback fragmentCallback) {
         mFragmentCallback = fragmentCallback;

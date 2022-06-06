@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="fa_icon_cup">Tournaments</string>
-    <string name="fa_icon_lock">Admin</string>
-    <string name="fa_icon_spotted">Spotted</string>
-    <string name="fa_icon_search">Search pinball</string>
-    <string name="fa_icon_new">Report a pinball</string>
     <string name="BoutonAccueilRechercher">Search pinball</string>
     <string name="BoutonAccueilSignaler">Report a pinball</string>
     <string name="HeaderTournois">Tournaments and Events</string>
@@ -69,10 +64,10 @@
     <string name="toastMajModele">%1$d pinball machines updated.</string>
     <string name="toastMajScore">%1$d score(s) added.</string>
     <string name="error_invalid_initials">Minimum 3 initials</string>
-    <string name="fulltextCommentaire"><Data><![CDATA[<b>%1$s</b> à propos d\'un %2$s à %3$s]]> </Data></string>
-    <string name="fulltextCommentaire2"><Data><![CDATA[<b>%1$s</b> sur le %2$s du <u>%4$s</u> à %3$s]]> </Data></string>
-    <string name="fulltextCommentaire3"><Data><![CDATA[<b>%1$s</b> sur le <font color="black">%2$s </font> du <u>%4$s</u> à %3$s]]> </Data></string>
-    <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> à propos d\'un %1$s à %2$s]]> </Data></string>
+    <string name="fulltextCommentaire"><Data><![CDATA[<b>%1$s</b> about a %2$s in %3$s]]> </Data></string>
+    <string name="fulltextCommentaire2"><Data><![CDATA[<b>%1$s</b> about the  %2$s at <u>%4$s</u> in %3$s]]> </Data></string>
+    <string name="fulltextCommentaire3"><Data><![CDATA[<b>%1$s</b> about the <font color="black">%2$s </font> at <u>%4$s</u> in %3$s]]> </Data></string>
+    <string name="fulltextCommentaireAnonyme"><Data><![CDATA[<b>Anonyme</b> about a %1$s à %2$s]]> </Data></string>
     <string name="actifst">actives</string>
     <string name="tab_text_2">Actions</string>
     <string name="legend_orange">Updated less than a month ago</string>
@@ -106,8 +101,6 @@
     <string name="reset_instructions">Enter your email to reset your password</string>
     <string name="etat">State</string>
     <string name="homeMenu_action_email">Feedback</string>
-    <string name="filter_field">Filter</string>
-    <string name="searchByNumberResultFlipEnseigneAdresse">MachineAddress</string>
     <string name="toastFlipAlreadyDeleted">Pinball already deactivated</string>
     <string name="ajout_default_comment">Additional machine</string>
     <string name="option_get_place">Get place</string>
@@ -129,7 +122,7 @@
     <string name="popupChangementFlipKO">Change of state of pinball failed.</string>
     <string name="popupChangementFlipOK">Change of state of pinball successful. Thanks.</string>
     <string name="popupChangementModeleKO">Change of state failed.</string>
-    <string name="popupChangementModeleOK">" Change of state acknowledged. Thanks."</string>
+    <string name="popupChangementModeleOK">Change of state acknowledged. Thanks.</string>
     <string name="homeMenu_action_legend_text">Legend</string>
     <string name="hintNouveauModele">The new machine</string>
     <string name="popupRetraitFlipOK">Removal of pinball acknoledged. Thanks.</string>
@@ -221,7 +214,7 @@
     <string name="mail_subject_new_pinball">New machine on PinMyBalls</string>
     <string name="mail_subject_replaced">Pinball replaced</string>
     <string name="texte_exploitant">Operator (optional)</string>
-    <string name="nbcredits">Nombre de crédits 2 euros</string>
+    <string name="nbcredits">Credits for 2 euros</string>
     <string name="exploitant">Operator:</string>
     <string name="renseigner_prix">Indicate price</string>
     <string name="dial_title_prix">Credits for 2euros</string>
@@ -229,11 +222,16 @@
     <string name="dial_title_exploitant">Operator</string>
     <string name="comment_typ_exploitant">"Operated by "</string>
     <string name="comment_typ_price">"Number of credits for 2 euros : "</string>
-    <string name="noTrashText">Aucun flip à supprimer</string>
+    <string name="noTrashText">No pinball to delete</string>
     <string name="sortChrono_field">Sort by Year</string>
     <string name="sortCount">Sort by Count</string>
     <string name="sortAZ_field">Sort AZ</string>
     <string name="supprimé">Removed</string>
+    <string name="title_activity_trash">Trash</string>
+    <string name="clear">Clear</string>
+    <string name="filter_field">Filter</string>
+    <string name="myaction_button">TestActivity</string>
+    <string name="title_support_me">Support Me</string>
 
 
 </resources>

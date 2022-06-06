@@ -43,7 +43,7 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
 		super(context, textViewResourceId);
 	}
 
-    private OnClickListener CommentaireClickListener = new OnClickListener() {
+    private final OnClickListener CommentaireClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
             Log.d(TAG, "onClick: clicked on comment no " + v.getTag());
@@ -57,7 +57,7 @@ public class ListeCommentaireAdapter extends ArrayAdapter<Commentaire> {
             }
         }
     };
-    private OnClickListener CommentaireEdit = new OnClickListener() {
+    private final OnClickListener CommentaireEdit = new OnClickListener() {
         @Override
         public void onClick(View v) {
             //Commentaire commentaire = listeCommentaire.get((Integer) v.getTag());

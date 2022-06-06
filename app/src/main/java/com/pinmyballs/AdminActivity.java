@@ -27,7 +27,6 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.pinmyballs.fragment.FragmentActionsFlipper;
@@ -93,6 +92,9 @@ public class AdminActivity extends AppCompatActivity {
 
     ActionBar mActionbar;
     SharedPreferences settings;
+
+    //Test update in background
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -288,62 +290,23 @@ public class AdminActivity extends AppCompatActivity {
         searchBynumberInput.setText("");
     }
 
-    @OnClick(R.id.MyAction2)
-    protected void MyAction2() {
-        mTextResult.setText("");
-        jsonParse();
-    }
+
 
     @OnClick(R.id.MyAction)
     protected void MyAction() {
         Intent intent = new Intent(this, TestActivity.class);
         startActivity(intent);
-
-
-        /*ParseObject parseObject;
-        ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(FlipperDatabaseHandler.FLIPPER_TABLE_NAME);
-        try {
-            query.whereEqualTo(FlipperDatabaseHandler.FLIPPER_ID, Long.parseLong("1535701556570"));
-            parseObject = query.getFirst();
-            Flipper flip = new ParseFactory().getFlipper(parseObject);
-            Log.d("Trouvé","Flip"+ flip.getId());
-        } catch (ParseException e1) {
-            e1.printStackTrace();
-        }*/
-
-
-        /*
-        BaseFlipperService baseFlipperService = new BaseFlipperService();
-        BaseModeleService baseModeleService = new BaseModeleService();
-        Flipper flipper = baseFlipperService.getFlipperById(getApplicationContext(), Long.parseLong( "1521283874065"));
-        Flipper newflipper = flipper;
-        newflipper.setId(Long.parseLong("999909999"));
-        ModeleFlipper playboy = baseModeleService.getModeleById(getApplicationContext(),Long.parseLong( "69"));
-        newflipper.setModele(playboy);
-
-        ParseFactory parseFactory = new ParseFactory();
-        //creation d'une liste d'envoi
-        ArrayList<ParseObject> objectsToSend = new ArrayList<ParseObject>();
-
-        // On créé l'objet du nouveau flipper et on l'ajoute à la liste d'envoi
-        //objectsToSend.add(parseFactory.getParseObjectWithPointers(flipper));
-        //objectsToSend.add(parseFactory.getParseObjectWithModel(newflipper));
-
-        ParseObject.saveAllInBackground(objectsToSend, new SaveCallback() {
-            @Override
-            public void done(ParseException e) {
-                Toast toast = Toast.makeText(getApplicationContext(), "Envoi effectué, Merci pour votre contribution :)", Toast.LENGTH_LONG);
-                toast.show();
-            }
-        });
-
-    */
-
-
     }
 
-    private void jsonParse() {
+    @OnClick(R.id.MyAction2)
+    protected void MyAction2() {
+        mTextResult.setText("");
         String queryString = SearchPinball.getText().toString();
+        jsonParseOPDB(queryString);
+    }
+
+    private void jsonParseOPDB(String queryString) {
+        //String queryString = SearchPinball.getText().toString();
         if (!queryString.isEmpty()) {
             //Build URL query
             String api_token = "IuBO3tLKv5giXQ3OqR5BHogsQVAEfgN2kXEORqtLz8p4bZMcrKn65Y3PUKx1";

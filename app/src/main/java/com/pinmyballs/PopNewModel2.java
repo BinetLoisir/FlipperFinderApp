@@ -3,8 +3,6 @@ package com.pinmyballs;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -17,7 +15,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -31,13 +28,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.textfield.TextInputEditText;
-import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.metier.ModeleFlipper;
 import com.pinmyballs.metier.ModeleOPDB;
 import com.pinmyballs.service.ModeleService;
-import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.parse.ParseModeleService;
-import com.pinmyballs.utils.LocationUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -288,8 +282,8 @@ public class PopNewModel2 extends AppCompatActivity {
     }
 
 
-    private class ModelOPDBArrayAdapter extends ArrayAdapter<ModeleOPDB> {
-        private List<ModeleOPDB> list;
+    private static class ModelOPDBArrayAdapter extends ArrayAdapter<ModeleOPDB> {
+        private final List<ModeleOPDB> list;
 
         public ModelOPDBArrayAdapter(Context context, int textViewResourceId, List<ModeleOPDB> items){
             super(context,textViewResourceId,items);

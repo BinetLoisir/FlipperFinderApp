@@ -2,7 +2,7 @@
 Parse.initialize("wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE", "HVHpDx5BgQG54UDLdZhLv7cFoontQUA8eIE8YC2D");
 Parse.serverURL = 'https://parseapi.back4app.com';
 
-var x = document.getElementById("demo");
+var topLine = document.getElementById("topLine");
 var tip = document.getElementById("tip");
 let liste = document.getElementById("myList");
 let button = document.getElementById("searchButton");
@@ -11,7 +11,9 @@ const defaultLocation = new Parse.GeoPoint({
     latitude: 48.883461,
     longitude: 2.340561
 });
-var MyLocation;
+var myLocation;
+//Comment for geolocalisation
+//runWithoutGeoloc();
 getLocation();
 
 
@@ -19,30 +21,38 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-        MyLocation = defaultLocation;
+        topLine.innerHTML = "Geolocation is not supported by this browser.";
+        myLocation = defaultLocation;
     }
 }
 
 function showPosition(position) {
-    console.log("Positon: " + "(" + position.coords.latitude +
+    console.log("Position: " + "(" + position.coords.latitude +
         "," + position.coords.longitude + ")");
-    MyLocation = new Parse.GeoPoint({
+    myLocation = new Parse.GeoPoint({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
     });
     //UI update
-    tip.innerText="";
+    tip.innerText = "";
+    button.disabled = false;
+}
+
+function runWithoutGeoloc(){
+    myLocation = defaultLocation;
+    //UI update
+    tip.innerText = "";
     button.disabled = false;
 }
 
 var list = [];
 
 function searchAround() {
+    //clear existing list items
     while (liste.firstChild) {
         liste.removeChild(liste.lastChild);
     }
-    list = getFlippers(defaultLocation, 40, 50);
+    list = getFlippers(myLocation, 40, 500);
     //list = getEnseignes(defaultLocation, 100000, 20);
 }
 
@@ -52,7 +62,7 @@ var Flipper = Parse.Object.extend("FLIPPER");
 var Enseigne = Parse.Object.extend("ENSEIGNE");
 var Modele = Parse.Object.extend("MODELE_FLIPPER");
 
-//Get the nearby flippers in a given radius
+//Get the nearby flippers in a given radius and populate list
 function getFlippers(center, radius, maxflippers) {
 
     //Definition of the geobox query  -- NOT USED
@@ -81,59 +91,13 @@ function getFlippers(center, radius, maxflippers) {
     query.include("FLIP_MODELE_P");
     query.limit(maxflippers);
 
-    /* 
-    withinkmquery.find({
-         success: function (results) {
-             if (results.length > 0) {
-                 console.log("Successfully retrieved " + results.length + " enseignes.");
- 
-                 var ensArray = [];
-                 for (var i = 0; i < results.length; i++) {
-                     var ens = {
-                         ens_ObjId: results[i].id,
-                         ens_id: results[i].get(enseigneFields.id),
-                         ens_name: results[i].get(enseigneFields.name),
-                         ens_address: results[i].get(enseigneFields.address),
-                         ens_cp: results[i].get(enseigneFields.postcode),
-                         ens_city: results[i].get(enseigneFields.city),
-                         ens_country: results[i].get(enseigneFields.country),
-                         ens_latlng: results[i].get(enseigneFields.latlng),
-                         ens_lat: results[i].get(enseigneFields.lat),
-                         ens_lng: results[i].get(enseigneFields.lng),
-                         ens_nbflips: results[i].get(enseigneFields.nbflips)
-                     }
-                     ensArray.push(ens);
-                     let li = document.createElement("li");
-                     var lat1 = center.latitude;
-                     var lng1 = center.longitude;
-                     var lat2 = ens.ens_lat;
-                     var lng2 = ens.ens_lng;
- 
-                     var dist = Math.round(10 * distance(lat1, lng1, lat2, lng2)) / 10;
-                     li.innerText = ens.ens_name + " " + ens.ens_city + " --dist: " + dist + "km";
-                     liste.appendChild(li);
-                 }
-             } else {
-                 snack("Pas de flippers aux environs");
-             }
- 
- 
-         },
-         error: function (error) {
-             alert("Error: " + error.code + " " + error.message);
-             console.log("Error: " + error.code + " " + error.message);
-         }
-     })
-     */
-
     query.find({
         success: function (results) {
             console.log("Successfully retrieved " + results.length + " flippers.");
-            //console.log(results);
-            //console.log(results[0]);
-
+            
             if (results.length > 0) {
                 var flipperArray = [];
+                let ensMap = new Map();
 
                 for (var i = 0; i < results.length; i++) {
 
@@ -141,6 +105,7 @@ function getFlippers(center, radius, maxflippers) {
                         modele_nom: results[i].get("FLIP_MODELE_P").get("MOFL_NOM"),
                         modele_annee: results[i].get("FLIP_MODELE_P").get("MOFL_ANNEE_LANCEMENT"),
                         modele_marque: results[i].get("FLIP_MODELE_P").get("MOFL_MARQUE"),
+                        ens_objectId: results[i].get("FLIP_ENSEIGNE_P").id,
                         ens_nom: results[i].get("FLIP_ENSEIGNE_P").get("ENS_NOM"),
                         ens_adresse: results[i].get("FLIP_ENSEIGNE_P").get("ENS_ADRESSE"),
                         ens_cp: results[i].get("FLIP_ENSEIGNE_P").get("ENS_CODE_POSTAL"),
@@ -152,8 +117,9 @@ function getFlippers(center, radius, maxflippers) {
                         flip_objectId: results[i].id,
                         flip_distance: 0,
                         flip_updatedAt: results[i].updatedAt
-                    
+
                     }
+                    console.log(flip)
                     var lat1 = center.latitude;
                     var lng1 = center.longitude;
                     var lat2 = flip.lat;
@@ -163,13 +129,26 @@ function getFlippers(center, radius, maxflippers) {
 
                     flipperArray.push(flip);
 
+                    var ensId = flip.ens_objectId;
+                    var tempFlipArray = [flip];
+
+                    //if key is in map already
+                    if (ensMap.get(ensId) != undefined) {
+                        //add flip to the array
+                        tempFlipArray = tempFlipArray.concat(ensMap.get(ensId));
+                    }
+                    //set or reset the key,value
+                    ensMap.set(ensId, tempFlipArray);
+
                 }
                 //var snackText = "Résultats de la recherche : " + results.length + " flippers.";
                 //snack(snackText);
 
                 flipperArray.sort((a, b) => a.flip_distance - b.flip_distance);
+                let mapSort = new Map([...ensMap.entries()].sort((a, b) => a[1][0].flip_distance - b[1][0].flip_distance));
 
-                populateList(flipperArray);
+                //populateList(flipperArray);
+                populateListEns(mapSort);
 
                 return flipperArray;
 
@@ -190,7 +169,7 @@ function getFlippers(center, radius, maxflippers) {
     });
 }
 
-//Get the nearby Enseignes in a given radius
+//Get the nearby Enseignes in a given radius and populate list
 function getEnseignes(center, radius, maxEnseigne) {
     var query = new Parse.Query(Enseigne);
     query.withinKilometers("ENS_GEO", center, radius, true);
@@ -231,7 +210,7 @@ function getEnseignes(center, radius, maxEnseigne) {
 
 
 
-                    //var distance = distance(MyLocation.latitude, MyLocation.longitude, ens.ens_lat, ens.ens_lng);
+                    //var distance = distance(myLocation.latitude, myLocation.longitude, ens.ens_lat, ens.ens_lng);
 
                     li.innerText = ens.ens_name + " " + ens.ens_city + " --dist: " + dist + "km";
                     liste.appendChild(li);
@@ -256,7 +235,7 @@ function getEnseignes(center, radius, maxEnseigne) {
 }
 
 //-- -- -- -- -- - UI -- -- -- -- -- --
-
+//populate from list of flips
 function populateList(list) {
 
     list.forEach(flip => {
@@ -305,11 +284,106 @@ function populateList(list) {
 
     });
 
-
-
-
-
 }
+//populates from map of Enseigne
+function populateListEns(map) {
+    //console.log(map);
+
+    map.forEach((flips, key) => {
+        //console.log(flips[0].ens_nom + " : "+ flips[0].modele_nom);
+        let li = document.createElement("li");
+        li.className = "list-group-item";
+        liste.appendChild(li);
+
+
+        let card = document.createElement("div");
+        card.className = "card";
+        li.appendChild(card);
+
+        let cardheader = document.createElement('div');
+        cardheader.className = "card-header d-flex justify-content-between align-items-center bg-primary text-white";
+        cardheader.innerText = flips[0].ens_nom + ", "+ flips[0].ens_ville;
+        //cardheader.innerText = flip.modele_nom + ", " + flip.modele_marque + " (" + flip.modele_annee + ")";
+        card.appendChild(cardheader);
+
+
+        let cardheaderright = document.createElement('span');
+        cardheaderright.className = "badge bg-dark";
+        let d = flips[0].flip_distance;
+        let text = d > 10 ? Math.round(d) + "km" : d + "km";
+        cardheaderright.innerText = text;
+        cardheader.appendChild(cardheaderright);
+
+
+        let cardbody = document.createElement('div');
+        cardbody.className = "card-body py-2";
+        card.appendChild(cardbody);
+
+        //let title = document.createElement('h6');
+        //title.className = "card-title";
+        //title.innerText = flips[0].modele_nom + ", " + flips[0].modele_marque + " (" + flips[0].modele_annee + ")";
+        //cardbody.appendChild(title);
+
+        let subtitle = document.createElement('p');
+        subtitle.className = "card-subtitle text-muted ";
+        subtitle.innerText = flips[0].ens_adresse + " " + flips[0].ens_cp + " " + flips[0].ens_ville;
+        cardbody.appendChild(subtitle);
+
+        let ul_flips = document.createElement("ul");
+        ul_flips.className = "list-group";
+        for (flip of flips) {
+            let li_flip = flipHtml(flip);
+            ul_flips.appendChild(li_flip);
+            cardbody.appendChild(ul_flips);
+
+        }
+
+        let cardfooter = document.createElement('div');
+        cardfooter.className = "card-footer text-muted";
+        cardfooter.innerHTML = vuSince(flips[0].flip_updatedAt);
+        card.appendChild(cardfooter);
+    });
+}
+
+function flipHtml(flip) {
+    let node = document.createElement("li");
+    node.className = "list-group-item py-1 px-2 d-flex justify-content-between align-items-center"
+
+    node.innerText = flip.modele_nom;
+
+    let btn_group = document.createElement("div");
+    btn_group.className = "btn-group ms-3";
+    btn_group.setAttribute("role", "group");
+
+    let btn_confirm = document.createElement("button");
+    btn_confirm.type = "button";
+    btn_confirm.className = "btn btn-primary btn-circle";
+    btn_confirm.title = "Actualiser";
+    btn_confirm.onclick = function () { refreshFlip(flip.flip_objectId) };
+    btn_confirm.innerHTML = '<i class="fas fa-clipboard-check"></i>';
+
+    let btn_refresh = document.createElement("button");
+    btn_refresh.type = "button";
+    btn_refresh.className = "btn btn-secondary btn-circle";
+    btn_refresh.title = "Changement";
+    btn_refresh.onclick = function () { };
+    btn_refresh.innerHTML = '<i class="fa fa-refresh"></i>';
+
+    let btn_delete = document.createElement("button");
+    btn_delete.type = "button";
+    btn_delete.className = "btn btn-danger btn-circle";
+    btn_delete.title = "Supprimer";
+    btn_delete.onclick = function () { deleteFlipMail(flip); };
+    btn_delete.innerHTML = '<i class="fa fa-trash"></i>';
+
+    btn_group.appendChild(btn_confirm);
+    btn_group.appendChild(btn_refresh);
+    btn_group.appendChild(btn_delete);
+    //node.appendChild(btn_group);
+
+    return node;
+}
+
 
 //-- -- -- -- -- - Const-- -- -- -- -- -
 
@@ -371,24 +445,24 @@ function formatDate(date) {
     return [year, month, day].join('/');
 }
 
-function diffDateDays(date){
+function diffDateDays(date) {
     var today = new Date();
     var Difference_In_Time = today.getTime() - date.getTime();
     var Difference_In_Days = Math.floor(Difference_In_Time / (1000 * 3600 * 24));
     return Difference_In_Days;
 }
 
-function vuSince(date){
+function vuSince(date) {
     var days = diffDateDays(date);
-    if (days > 360){
-        return '<i class="fas fa-exclamation-triangle"></i> Vu il y a '+ days + ' jours';
+    if (days > 360) {
+        return '<i class="fas fa-exclamation-triangle"></i> Vu il y a ' + days + ' jours';
     }
-    switch(days){
-        case 0 : return "Vu aujourdhui";
-        break;
-        case 1 : return "Vu hier";
-        break;
-        default : return "Vu il y a "+days+" jours";
+    switch (days) {
+        case 0: return "Vu(s) aujourdhui";
+            break;
+        case 1: return "Vu(s) hier";
+            break;
+        default: return "Vu(s) il y a " + days + " jours";
     }
 }
 
@@ -412,3 +486,5 @@ function distance(lat1, lon1, lat2, lon2) {
 function toRad(Value) {
     return Value * Math.PI / 180;
 }
+
+

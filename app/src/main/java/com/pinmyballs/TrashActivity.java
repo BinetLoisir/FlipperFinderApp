@@ -27,7 +27,7 @@ public class TrashActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private ArrayList<TrashItem> trashItemList = new ArrayList<>();
+    private final ArrayList<TrashItem> trashItemList = new ArrayList<>();
     private Button refreshButton;
     private TextView noFlipToDelete;
 

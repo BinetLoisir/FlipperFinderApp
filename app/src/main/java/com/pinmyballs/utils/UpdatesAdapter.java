@@ -2,39 +2,25 @@ package com.pinmyballs.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pinmyballs.PageInfoFlipperPager;
-import com.pinmyballs.PopMapLarge;
 import com.pinmyballs.R;
 import com.pinmyballs.metier.Flipper;
-import com.pinmyballs.metier.ModeleFlipper;
-import com.pinmyballs.service.base.BaseFlipperService;
-import com.pinmyballs.service.base.BaseModeleService;
-
-import org.parceler.Parcels;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHolder> {
     private static final String TAG = "ModelAdapter";
 
-    private Context context;
-    private ArrayList<Flipper> listFlips;
+    private final Context context;
+    private final ArrayList<Flipper> listFlips;
 
 
     public UpdatesAdapter(Context context, ArrayList<Flipper> listModels ) {
@@ -75,10 +61,10 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        private TextView TVdays;
-        private TextView TVmodel;
-        private TextView TVenseigne;
-        private TextView TVadresse;
+        private final TextView TVdays;
+        private final TextView TVmodel;
+        private final TextView TVenseigne;
+        private final TextView TVadresse;
 
         MyViewHolder(View v) {
             super(v);
@@ -89,7 +75,7 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
         }
 
         void setDetails(Flipper flipper) {
-            TVdays.setText(new StringBuilder().append(LocationUtil.getDaysSinceMajFlip(flipper)).append("j").toString());
+            TVdays.setText(LocationUtil.getDaysSinceMajFlip(flipper) + "j");
             TVmodel.setText(flipper.getModele().getNomComplet());
             TVenseigne.setText(flipper.getEnseigne().getNom());
             TVadresse.setText(flipper.getEnseigne().getVille());

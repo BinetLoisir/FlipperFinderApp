@@ -10,7 +10,7 @@ import com.pinmyballs.service.parse.ParseScoreService;
 import java.util.ArrayList;
 
 public class ScoreService {
-    private FragmentHiScoreFlipper.FragmentCallback mFragmentCallback;
+    private final FragmentHiScoreFlipper.FragmentCallback mFragmentCallback;
 
     public ScoreService(FragmentHiScoreFlipper.FragmentCallback fragmentCallback) {
         mFragmentCallback = fragmentCallback;

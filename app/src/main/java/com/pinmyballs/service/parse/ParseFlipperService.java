@@ -31,7 +31,7 @@ import java.util.Locale;
 public class ParseFlipperService {
 
     private static final String TAG = "ParseFlipperService";
-    private FragmentActionCallback mFragmentCallback;
+    private final FragmentActionCallback mFragmentCallback;
 
     public ParseFlipperService(FragmentActionCallback fragmentCallback) {
         mFragmentCallback = fragmentCallback;
@@ -153,7 +153,7 @@ public class ParseFlipperService {
                         retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_NOTE, flipper.getNote());
                     }
                     if(flipper.getNbCreditsDeuxEuros() != null) {
-                        retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, flipper.getNbCreditsDeuxEuros().toString());
+                        retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_NB_CREDITS_2E, flipper.getNbCreditsDeuxEuros());
                     }
                     if(flipper.getPhoto() != null) {
                         retrievedFlipper.put(FlipperDatabaseHandler.FLIPPER_PHOTO, flipper.getPhoto());
@@ -345,7 +345,7 @@ public class ParseFlipperService {
                                     mFragmentCallback.onTaskDone();
                                 }
                             } else {
-                                Log.d(TAG, "erreur : " + e.toString());
+                                Log.d(TAG, "erreur : " + e);
                                 Toast toast = Toast.makeText(pContext, pContext.getResources().getString(R.string.popupRetraitFlipKO), Toast.LENGTH_SHORT);
                                 toast.show();
                             }

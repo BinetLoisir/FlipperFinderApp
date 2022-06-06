@@ -19,8 +19,8 @@ import java.util.Locale;
 
 public class AsyncTaskMajDatabaseBackground extends AsyncTask<Object, Void, Boolean> {
 
-    private AppCompatActivity mContext;
-    private SharedPreferences mSettings;
+    private final AppCompatActivity mContext;
+    private final SharedPreferences mSettings;
     private String retourMaj = null;
 
     public AsyncTaskMajDatabaseBackground(AppCompatActivity context, SharedPreferences settings){
@@ -50,7 +50,7 @@ public class AsyncTaskMajDatabaseBackground extends AsyncTask<Object, Void, Bool
             // set la date de mise à jour à la valeur par défaut.
             mContext.deleteDatabase(FlipperDatabaseHandler.FLIPPER_BASE_NAME);
             editor.putString(PreferencesActivity.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
-            editor.commit();
+            editor.apply();
             return false;
         }
         return true;

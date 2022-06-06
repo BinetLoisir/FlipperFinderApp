@@ -26,8 +26,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.ViewPager;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -84,7 +82,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
     final Map<String, Flipper> markerObjMap = new HashMap<>();
     private final LatLng mDefaultLocation = new LatLng(48.858250, 2.294577); //Tour Eiffel
     SharedPreferences settings;
-    private Context mContext = HomeActivity.this;
+    private final Context mContext = HomeActivity.this;
     //FOR THE MAP--------------------------------------------------------
     private GoogleMap mMap;
     private FusedLocationProviderClient mFusedLocationProviderClient;
@@ -426,7 +424,7 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
 
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnCameraIdleListener(this);
         mMap.setOnInfoWindowClickListener(this);
@@ -437,12 +435,12 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
             @Override
             // Return null here, so that getInfoContents() is called next.
-            public View getInfoWindow(Marker arg0) {
+            public View getInfoWindow(@NonNull Marker arg0) {
                 return null;
             }
 
             @Override
-            public View getInfoContents(Marker marker) {
+            public View getInfoContents(@NonNull Marker marker) {
                 // Inflate the layouts for the info window, title and snippet.
                 View infoWindow = getLayoutInflater().inflate(R.layout.custom_info_contents, null);
 
@@ -573,14 +571,11 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         mLocationPermissionGranted = false;
         Log.d(TAG, "onRequestPermissionsResult: Result received");
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermissionGranted = true;
-                    Log.d(TAG, "onRequestPermissionsResult: Result : permission granted");
-                }
+        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {// If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionGranted = true;
+                Log.d(TAG, "onRequestPermissionsResult: Result : permission granted");
             }
         }
         updateLocationUI();

@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 public class ProgressBarHandler {
-    private ProgressBar mProgressBar;
+    private final ProgressBar mProgressBar;
 
     public ProgressBarHandler(Context context) {
 

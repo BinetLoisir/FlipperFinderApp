@@ -20,7 +20,7 @@ import com.pinmyballs.utils.SectionsPagerAdapter;
 public class TournoiActivity extends AppCompatActivity {
     private static final String TAG = "TournoiActivity";
     private static final int ACTIVITY_NUM = 0;
-    private Context mContext = TournoiActivity.this;
+    private final Context mContext = TournoiActivity.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

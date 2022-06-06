@@ -17,7 +17,6 @@ import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.SaveCallback;
 import com.pinmyballs.R;
 import com.pinmyballs.TrashItem;
 import com.pinmyballs.database.FlipperDatabaseHandler;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 
 public class TrashAdapter extends RecyclerView.Adapter<TrashAdapter.MyViewHolder> {
     Context context;
-    private ArrayList<TrashItem> mDataset;
+    private final ArrayList<TrashItem> mDataset;
 
     // Provide a reference to the views for each data item
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -72,8 +71,7 @@ public class TrashAdapter extends RecyclerView.Adapter<TrashAdapter.MyViewHolder
         View listItem = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.simple_list_item_trash, parent, false);
 
-        MyViewHolder vh = new MyViewHolder(listItem);
-        return vh;
+        return new MyViewHolder(listItem);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -82,6 +80,7 @@ public class TrashAdapter extends RecyclerView.Adapter<TrashAdapter.MyViewHolder
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final TrashItem trashItem = mDataset.get(position);
+
         Flipper flipper = new BaseFlipperService().getFlipperById(holder.tv_flipId.getContext(),trashItem.getFlipId());
 
         holder.tv_flipId.setText(trashItem.getFlipIdAsString());

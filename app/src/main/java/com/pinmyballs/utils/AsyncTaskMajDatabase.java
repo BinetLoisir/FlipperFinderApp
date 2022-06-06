@@ -23,8 +23,8 @@ import java.util.Locale;
 
 public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
 
-	private AppCompatActivity mContext;
-	private SharedPreferences mSettings;
+	private final AppCompatActivity mContext;
+	private final SharedPreferences mSettings;
 	private String retourMaj = null;
 	ProgressDialog mDialog = null;
 
@@ -69,8 +69,6 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
                 editor.putString(PreferencesActivity.KEY_PREFERENCES_DATABASE_VERSION, String.valueOf(FlipperDatabaseHandler.DATABASE_VERSION));
 				editor.apply();
 			}
-		} catch (InterruptedException ie){
-			String a = "a";
 		} catch (RuntimeException re){
 			String a = "a";
 		} catch (Exception e) {
@@ -79,7 +77,7 @@ public class AsyncTaskMajDatabase extends AsyncTask<Object, Void, Boolean> {
             //EasyTracker.getTracker().sendEvent("ui_error", "MAJ_DB_ERROR", "PreferencesActivity", 0L);
 			mContext.deleteDatabase(FlipperDatabaseHandler.FLIPPER_BASE_NAME);
             editor.putString(PreferencesActivity.KEY_PREFERENCES_DATE_LAST_UPDATE, FlipperDatabaseHandler.DATABASE_DATE_MAJ);
-			editor.commit();
+			editor.apply();
 			return false;
 		}
 		return true;

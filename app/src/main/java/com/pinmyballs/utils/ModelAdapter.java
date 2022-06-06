@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.pinmyballs.PopMapLarge;
@@ -31,12 +32,12 @@ import java.util.List;
 public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder> implements Filterable {
     private static final String TAG = "ModelAdapter";
 
-    private Context context;
-    private ArrayList<ModeleFlipper> listModels;
-    private ArrayList<ModeleFlipper> listModelsFull;
+    private final Context context;
+    private final ArrayList<ModeleFlipper> listModels;
+    private final ArrayList<ModeleFlipper> listModelsFull;
     //private HashMap<Long, Integer> countModelMap;
 
-    private Filter exampleFilter = new Filter() {
+    private final Filter exampleFilter = new Filter() {
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             List<ModeleFlipper> filteredList = new ArrayList<>();
@@ -117,10 +118,10 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        private HashMap<Long, Integer> ModelCountHM;
-        private TextView TVModelName;
-        private TextView TVModelBrand;
-        private TextView TVModelQty;
+        private final HashMap<Long, Integer> ModelCountHM;
+        private final TextView TVModelName;
+        private final TextView TVModelBrand;
+        private final TextView TVModelQty;
 
         MyViewHolder(View v) {
             super(v);
@@ -141,6 +142,8 @@ public class ModelAdapter extends RecyclerView.Adapter<ModelAdapter.MyViewHolder
                 TVModelQty.setBackgroundColor( context.getResources().getColor(R.color.grey));
             } else {
                 TVModelQty.setBackground( context.getResources().getDrawable(R.drawable.round_textview_full));
+                //TODO A TESTER ci dessous
+                //TVModelQty.setBackground(ResourcesCompat.getDrawable(context.getResources(), R.drawable.round_textview_full, context.getTheme()));
             }
         }
 

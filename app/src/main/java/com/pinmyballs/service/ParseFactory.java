@@ -37,8 +37,8 @@ public class ParseFactory {
 
     public ParseObject getParseObject(Enseigne enseigne){
         ParseObject parseEnseigne = new ParseObject(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
-        Double latitude = Double.valueOf(enseigne.getLatitude());
-        Double longitude = Double.valueOf(enseigne.getLongitude());
+        double latitude = Double.parseDouble(enseigne.getLatitude());
+        double longitude = Double.parseDouble(enseigne.getLongitude());
         ParseGeoPoint geopoint = new ParseGeoPoint(latitude,longitude);
 
         parseEnseigne.put(FlipperDatabaseHandler.ENSEIGNE_ID, enseigne.getId());
@@ -133,7 +133,7 @@ public class ParseFactory {
             cal.setTime(new SimpleDateFormat("yyyy/MM/dd").parse(tournoi.getDate()));
             cal.add(Calendar.HOUR_OF_DAY,12);
             Date realdate = cal.getTime();
-            Log.d(TAG,"Date transformed  " + tournoi.getDate() + " =>" +  realdate.toString());
+            Log.d(TAG,"Date transformed  " + tournoi.getDate() + " =>" + realdate);
             parseTournoi.put(FlipperDatabaseHandler.TOUR_REALDATE,realdate);
 
         } catch (java.text.ParseException e) {

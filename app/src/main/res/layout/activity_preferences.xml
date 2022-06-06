@@ -36,7 +36,8 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat"
         android:textSize="18sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/PrefPseudoText"
-        app:layout_constraintStart_toEndOf="@+id/PrefPseudoText" />
+        app:layout_constraintStart_toEndOf="@+id/PrefPseudoText"
+        />
 
     <TextView
         android:id="@+id/PrefRayonText"

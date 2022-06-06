@@ -40,7 +40,6 @@ import com.google.android.libraries.places.api.model.RectangularBounds;
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.pinmyballs.metier.Flipper;
 import com.pinmyballs.service.base.BaseFlipperService;
 import com.pinmyballs.service.base.BaseModeleService;
@@ -74,7 +73,7 @@ public class ListeActivity extends AppCompatActivity {
     @BindView(R.id.listViewFlippers)
     ListView listViewFlippers;
 
-    private Context mContext = ListeActivity.this;
+    private final Context mContext = ListeActivity.this;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private boolean mLocationPermissionGranted;
     private Location mLastKnownLocation;
@@ -174,15 +173,13 @@ public class ListeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Log.d(TAG, "onMenuItemClick: " + item);
-                switch (item.getItemId()) {
-                    case R.id.action_pref:
-                        Log.d(TAG, "onMenuItemClick: Navigating to Preference page");
-                        Intent intentPref = new Intent(mContext, PreferencesActivity.class);
-                        startActivity(intentPref);
-                        return true;
-                    default:
-                        return false;
+                if (item.getItemId() == R.id.action_pref) {
+                    Log.d(TAG, "onMenuItemClick: Navigating to Preference page");
+                    Intent intentPref = new Intent(mContext, PreferencesActivity.class);
+                    startActivity(intentPref);
+                    return true;
                 }
+                return false;
             }
         });
 
@@ -365,13 +362,10 @@ public class ListeActivity extends AppCompatActivity {
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
         mLocationPermissionGranted = false;
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    mLocationPermissionGranted = true;
-                }
+        if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {// If request is cancelled, the result arrays are empty.
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                mLocationPermissionGranted = true;
             }
         }
     }

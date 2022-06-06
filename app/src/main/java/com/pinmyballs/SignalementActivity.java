@@ -74,13 +74,13 @@ public class SignalementActivity extends AppCompatActivity {
     SharedPreferences settings;
     private SignalementPagerAdapter mPagerAdapter;
     private long newId;
-    private SimpleOnPageChangeListener pageChangeListener = new SimpleOnPageChangeListener() {
+    private final SimpleOnPageChangeListener pageChangeListener = new SimpleOnPageChangeListener() {
         @Override
         public void onPageSelected(int position) {
             updateBottomBar();
         }
     };
-    private OnClickListener NextClickListener = new OnClickListener() {
+    private final OnClickListener NextClickListener = new OnClickListener() {
         public void onClick(View v) {
             SignalementWizardFragment currentFragment = mPagerAdapter.getRegisteredFragment(mPager.getCurrentItem());
             if (currentFragment.mandatoryFieldsComplete()) {
@@ -89,7 +89,7 @@ public class SignalementActivity extends AppCompatActivity {
             }
         }
     };
-    private OnClickListener EnvoyerClickListener = new OnClickListener() {
+    private final OnClickListener EnvoyerClickListener = new OnClickListener() {
         public void onClick(View v) {
             // C'est bon, on envoie le mail
             Intent i = new Intent(Intent.ACTION_SEND);
@@ -162,15 +162,11 @@ public class SignalementActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_signalbymail:
-                ////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
-                Intent intent = new Intent(SignalementActivity.this, SignalementMailActivity.class);
-                startActivity(intent);
-                break;
-            default:
-                Log.i("Erreur action bar", "default");
-                break;
+        if (item.getItemId() == R.id.action_signalbymail) {////EasyTracker.getTracker().sendEvent("ui_action", "button_press", "preferences", 0L);
+            Intent intent = new Intent(SignalementActivity.this, SignalementMailActivity.class);
+            startActivity(intent);
+        } else {
+            Log.i("Erreur action bar", "default");
         }
         return false;
     }

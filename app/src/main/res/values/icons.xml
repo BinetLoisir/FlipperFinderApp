@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="fa_icon_search">&#xf002; \u00A0 Rechercher un flipper</string>
-    <string name="fa_icon_new">&#xf055; \u00A0  Signaler un flipper</string>
-    <string name="fa_icon_cup">&#xf091; \u00A0 Tournois LNJF</string>
-    <string name="fa_icon_lock">&#xf023; \u00A0 Admin</string>
-    <string name="fa_icon_spotted">&#xf06e; \u00A0 : </string>
-
-</resources>

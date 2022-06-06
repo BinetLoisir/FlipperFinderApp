@@ -10,7 +10,7 @@ import com.pinmyballs.service.parse.ParseCommentaireService;
 import java.util.ArrayList;
 
 public class CommentaireService {
-	private FragmentCallback mFragmentCallback;
+	private final FragmentCallback mFragmentCallback;
 
 	public CommentaireService(FragmentCallback fragmentCallback) {
 		mFragmentCallback = fragmentCallback;

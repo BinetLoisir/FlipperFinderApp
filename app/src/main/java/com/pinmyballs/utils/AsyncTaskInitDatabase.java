@@ -13,13 +13,8 @@ public class AsyncTaskInitDatabase extends AsyncTask<Object, Void, Boolean> {
 
 	private AppCompatActivity mContext;
 	private SharedPreferences mSettings;
-	private String retourMaj = null;
+	private final String retourMaj = null;
 	ProgressDialog mDialog = null;
-
-	public AsyncTaskInitDatabase(AppCompatActivity context, SharedPreferences settings){
-		mContext = context;
-		mSettings = settings;
-	}
 
 	@Override
 	protected void onPreExecute()

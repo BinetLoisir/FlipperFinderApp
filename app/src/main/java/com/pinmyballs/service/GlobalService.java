@@ -102,7 +102,7 @@ public class GlobalService {
 		return new BaseFlipperService().getFlipperById(pContext, id);
 	}
 
-	public String majBaseAvecNouveaute(Context pContext, String dateDerniereMaj) throws InterruptedException{
+	public String majBaseAvecNouveaute(Context pContext, String dateDerniereMaj) {
 
 		BaseModeleService baseModeleService = new BaseModeleService();
 		ParseModeleService parseModeleService = new ParseModeleService();
@@ -192,7 +192,7 @@ public class GlobalService {
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 				reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open(json), StandardCharsets.UTF_8));
 			} else {
-				reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open(json), Charset.forName("UTF-8")));
+				reader = new BufferedReader(new InputStreamReader(mContext.getAssets().open(json), StandardCharsets.UTF_8));
 			}
 			return reader;
 

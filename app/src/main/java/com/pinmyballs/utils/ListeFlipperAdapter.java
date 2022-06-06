@@ -31,7 +31,7 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
     private List<Flipper> listeFlippers;
     private double latitude = 0;
     private double longitude = 0;
-    private OnClickListener InfoFlipperClickListener = new OnClickListener() {
+    private final OnClickListener InfoFlipperClickListener = new OnClickListener() {
         @Override
         public void onClick(View v) {
             //EasyTracker.getTracker().sendEvent("ui_action", "button_press", "item_info_flipper", 0L);
@@ -156,9 +156,6 @@ public class ListeFlipperAdapter extends ArrayAdapter<Flipper> {
         }
         if (nbJours < 365) {
             return morethanone ? R.mipmap.ic_flipsmarker_lightblue : R.mipmap.ic_flipmarker_lightblue;
-        }
-        if (nbJours > 365) {
-            return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
         }
         return morethanone ? R.mipmap.ic_flipsmarker_grey : R.mipmap.ic_flipmarker_grey;
     }

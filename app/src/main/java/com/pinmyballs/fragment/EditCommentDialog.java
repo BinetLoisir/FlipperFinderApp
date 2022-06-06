@@ -23,7 +23,7 @@ public class EditCommentDialog extends DialogFragment {
 
     private static final String TAG = "EditCommentDialog";
     public OnInputSelected mOnInputSelected;
-    private String text = "Texte du commentaire";
+    private final String text = "Texte du commentaire";
     //widgets
     private EditText mInput;
     private TextView mActionOK, mActionCancel;
@@ -81,10 +81,10 @@ public class EditCommentDialog extends DialogFragment {
                         }
                     });
 
-                    Commentaire oldCommentaire = commentaire;
-                    Commentaire newCommentaire = oldCommentaire;
-                    newCommentaire.setTexte(htmlString);
-                    commentaireService.updateCommentaire(getActivity(), oldCommentaire, newCommentaire);
+                    Commentaire comments;
+                    comments = commentaire;
+                    comments.setTexte(htmlString);
+                    commentaireService.updateCommentaire(getActivity(), comments, comments);
 
                 }
                 getDialog().dismiss();

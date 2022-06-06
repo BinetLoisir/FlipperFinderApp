@@ -127,7 +127,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
         setupPreferences();
 	}
 
-    private TextWatcher textChangedListener = new TextWatcher() {
+    private final TextWatcher textChangedListener = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {
         }
@@ -141,7 +141,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
             Editor editor = settings.edit();
             editor.putString(PreferencesActivity.KEY_PSEUDO_FULL, s.toString());
             editor.apply();
-            Log.d(TAG, "New pseudo: " + s.toString());
+            Log.d(TAG, "New pseudo: " + s);
         }
     };
 
@@ -173,7 +173,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
         boolean adminMode = settings.getBoolean(KEY_PREFERENCES_ADMIN_MODE, DEFAULT_VALUE_ADMIN_MODE);
     }
 
-	private OnSeekBarChangeListener rayonChangeListener = new OnSeekBarChangeListener() {
+	private final OnSeekBarChangeListener rayonChangeListener = new OnSeekBarChangeListener() {
 
 		@Override
 		public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -193,7 +193,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 		}
 	};
 
-	private OnSeekBarChangeListener nbMaxListeChangeListener = new OnSeekBarChangeListener() {
+	private final OnSeekBarChangeListener nbMaxListeChangeListener = new OnSeekBarChangeListener() {
 
 		@Override
 		public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {

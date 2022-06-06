@@ -16,6 +16,7 @@ import android.widget.Switch;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import com.pinmyballs.R;
@@ -31,7 +32,7 @@ import java.util.Comparator;
 
 public class FragmentTournoiListe extends Fragment{
     private static final String TAG = "FragmentTournoiListe";
-    private Switch mSwitchTournois;
+    private SwitchCompat mSwitchTournois;
     private ImageView mSortButton;
     private boolean ascending;
     private  ArrayList tournois;

@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:text="@string/supprimé"
         android:textColor="@color/warning"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:layout_marginLeft="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nbflips" />
