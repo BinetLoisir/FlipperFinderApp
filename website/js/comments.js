@@ -53,6 +53,8 @@ var commentFields = {
     flipperid_p: "COMM_FLIPPER_ID_P"
 };
 
+//-------------END COMMON CONSTS------------
+
 var TYPE_POST = "POST";
 var TYPE_NEW = "NEW";
 var TYPE_DELETE = "DELETED";
@@ -78,8 +80,9 @@ function loadComments(max, type) {
     return list = getCommentaires(max, type);
 }
 
+//Get the latest comments of given type
 async function getCommentaires(max, commentType) {
-
+    //Query definition
     var query = new Parse.Query(Commentaire)
     query.limit(max)
     query.equalTo(commentFields.actif, true)
@@ -128,7 +131,7 @@ function populateList(posts) {
 
     posts.forEach(post => {
         let li = document.createElement("li");
-        li.className = "list-group-item";
+        li.className = "list-group-item list-comment-item list-big-card";
         liste.appendChild(li);
 
         let card = document.createElement("div");
@@ -137,12 +140,12 @@ function populateList(posts) {
 
         let cardheader = document.createElement('div');
         cardheader.className = "card-header d-flex justify-content-between align-items-center bg-primary text-white";
-        cardheader.innerText = post.enseigne + " (" + post.ville + ")";
+        cardheader.innerText = post.enseigne + ", " + post.ville;
         card.appendChild(cardheader);
 
         let cardheaderright = document.createElement('span');
         cardheaderright.className = "badge bg-dark";
-        cardheaderright.innerText = post.comment.com_pseudo;
+        cardheaderright.innerText = post.comment.com_pseudo.toUpperCase();
         cardheader.appendChild(cardheaderright);
 
 
@@ -154,13 +157,13 @@ function populateList(posts) {
         title.className = "card-title";
         title.innerText = post.modele;
         cardbody.appendChild(title);
+       
+        let cardText = document.createElement('div');
+        cardText.className = "card-text";
+        cardText.innerHTML = post.comment.com_texte;
+        cardbody.appendChild(cardText);
 
-        let subtitle = document.createElement('h7');
-        subtitle.className = "card-subtitle mb-2 text-muted";
-        subtitle.innerHTML = post.comment.com_texte;
-        cardbody.appendChild(subtitle);
-
-        let cardfooter = document.createElement('h9');
+        let cardfooter = document.createElement('div');
         cardfooter.className = "card-footer text-muted";
         cardfooter.innerHTML = postedSince(post.comment.com_createdAt);
         card.appendChild(cardfooter);

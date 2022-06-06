@@ -60,6 +60,7 @@
 
             <a class="navbar-brand" href="#">
                 <img alt="PinMyBalls" src="img/header_icon.png" class="brand">
+                Pin My Balls
             </a>
 
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar"
@@ -83,17 +84,18 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/newpinball.html">
-                            <i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
                         <a class="nav-link" href="/comments.html">
                             <i class="fa fa-fw fa-regular fa-comment"></i>&nbsp; Commentaires
 
                         </a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="/newpinball.html">
+                            <i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau
+                        </a>
+                    </li>
+
 
 
                 </ul>
@@ -135,15 +137,39 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div class="col text-center">
-        <button id="searchButton" class="btn btn-primary btn-block m-1" onclick="searchAround()" disabled>Chercher les flips aux alentours</button>
-        <p id="tip"> <i class="fas fa-spinner fa-spin"></i> Recherche de la position </p>
+    <div id = "tips" class="col text-center">
+        <!-- <button id="searchButton" class="btn btn-primary btn-block m-1" onclick="searchAround()" disabled>Chercher les flips aux alentours</button> -->
+        <div id="tip-geo" class="top-tip"> <i class="fas fa-spinner fa-spin"></i> Géolocalisation en cours </div>
+        <div id="tip-query" class="top-tip"> <i class="fas fa-spinner fa-spin"></i> Recherche des flippers </div>
     </div>
-
-    <p id="topLine"></p>
 
     <ul id="myList" class="list-group">
     </ul>
+
+     <!-- Modal -->
+     <div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sélection du nouveau modèle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id='newmodele'>
+                        <label for="modeleflipper"> Modèle </label>
+                        <select class="form-select" data-live-search="true" id="modeleflipper" data-width="100%"></select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button id= "confirm-change-btn" type="button" class="btn btn-primary">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- SnackBar -->
+        <div id="snackbar"></div>
 
     <!-- Script of List page -->
     <script src="js/list.js"></script>

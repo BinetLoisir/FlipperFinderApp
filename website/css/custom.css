@@ -8,7 +8,6 @@ body {
     display: flex;
     flex-flow: column;
     height: 100%;
-
 }
 
 .navbar-inverse .navbar-header .navbar-brand {
@@ -24,7 +23,7 @@ body {
     
     background-color: gainsboro;
     */
-    flex-grow : 1;
+    flex-grow: 1;
     visibility: hidden;
 }
 
@@ -40,6 +39,32 @@ body {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
+.top-tips {
+    font-size: 20px;
+}
+
+#tip-geo {
+    display: block
+}
+
+#tip-query {
+    display: none
+}
+
+#myList {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.list-big-card{
+    padding: 0px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    box-shadow: 1px 1px 1px;
+}
+
+
 
 img.brand {
     max-width: 40px;
@@ -51,6 +76,11 @@ img.brand {
     padding-right: 10px;
 }
 
+#iw-container2 .badge{
+    cursor: pointer;
+}
+
+/* before using BootStrap5
 #iw-container .iw-title {
     font-size: 14px;
     font-weight: 400;
@@ -59,7 +89,7 @@ img.brand {
     color: white;
     margin: 1px;
     border-radius: 0px 2px 0 0;
-    /* In accordance with the rounding of the default infowindow corners. */
+
 }
 
 #iw-container .iw-address {
@@ -77,6 +107,7 @@ img.brand {
     font-size: 12px;
     text-align: right;
 }
+*/
 
 /* the Searchbox */
 
@@ -86,7 +117,7 @@ img.brand {
     font-size: 15px;
     font-weight: 300;
     margin-left: 12px;
-    margin-right : 12px;
+    margin-right: 12px;
     padding: 0 11px 0 13px;
     text-overflow: ellipsis;
     max-width: 400px;
@@ -247,7 +278,27 @@ ul {
     padding: 0;
 }
 
-.page-header{
+.page-header {
     margin-top: 10px;
     text-align: center;
+}
+
+/* Comments style adjustment */
+
+
+.card-body {
+    padding: 8px;
+}
+
+.card-body p {
+    margin-bottom: 0px
+}
+
+.card-footer {
+    font-size: 14px;
+    text-align: right;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-right: 16px;
+    padding-left: 16px;
 }

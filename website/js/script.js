@@ -277,7 +277,7 @@ function initMap() {
 
         let ul_flips = document.createElement("ul");
         ul_flips.className = "list-group";
-        for (flip of flipArray) {
+        for (const flip of flipArray) {
             let li_flip = flipHtml(flip);
             ul_flips.appendChild(li_flip);
         }
@@ -299,7 +299,6 @@ function initMap() {
         node.setAttribute("data-flip-object-id", flip.flip_objectId)
         node.setAttribute("data-flip-id", flip.flip_id)
         node.setAttribute("data-flip-modele-nom", flip.modele_nom)
-
 
         let modelSpan = document.createElement('span')
         modelSpan.className = "model-span"
