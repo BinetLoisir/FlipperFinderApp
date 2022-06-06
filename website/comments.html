@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Liste</title>
+    <title>Comments</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -77,7 +77,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/list.html">
+                        <a class="nav-link"  href="/list.html">
                             <i class="fa fa-fw fa-list-ul"></i>&nbsp; Liste
                         </a>
                     </li>
@@ -89,9 +89,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/comments.html">
+                        <a class="nav-link active" aria-current="page" href="/comments.html">
                             <i class="fa fa-fw fa-regular fa-comment"></i>&nbsp; Commentaires
-
                         </a>
                     </li>
 
@@ -135,18 +134,15 @@
         <!-- /.container-fluid -->
     </nav>
 
-    <div class="col text-center">
-        <button id="searchButton" class="btn btn-primary btn-block m-1" onclick="searchAround()" disabled>Chercher les flips aux alentours</button>
-        <p id="tip"> <i class="fas fa-spinner fa-spin"></i> Recherche de la position </p>
+    <div id="top-banner" class="col text-center">
+        <p id="tip"> <i class="fas fa-spinner fa-spin"></i> Recherche</p>
     </div>
-
-    <p id="topLine"></p>
 
     <ul id="myList" class="list-group">
     </ul>
 
     <!-- Script of List page -->
-    <script src="js/list.js"></script>
+    <script src="js/comments.js"></script>
     <!-- GooglePlaces Autocomplete -->
     <!--     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWzLO7XJTK0qp3hWkX599YdiUWGc_yFYc&libraries=places&callback=initAutocomplete"

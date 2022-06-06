@@ -52,7 +52,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav navbar-expand-lg">
                     <li class="nav-item active">
                         <a class="nav-link" aria-current="page" href="/index.html">
                             <i class="fa fa-fw fa-map"></i>&nbsp; Carte
@@ -61,7 +61,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="/list.html">
+                        <a class="nav-link" href="/list.html">
                             <i class="fa fa-fw fa-list-ul"></i>&nbsp; Liste
                         </a>
                     </li>
@@ -70,6 +70,15 @@
                         <a class="nav-link " href="/newpinball.html">
                             <i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau
                         </a>
+
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/comments.html">
+                            <i class="fa fa-fw fa-regular fa-comment"></i>&nbsp; Commentaires
+
+                        </a>
+                    </li>
 
                 </ul>
 
@@ -110,9 +119,36 @@
         <!-- /.container-fluid -->
     </nav>
 
+    <!-- Loading -->
+    <div id="top-banner" class="col text-center">
+        <p id="tip"> <i class="fas fa-spinner fa-spin"></i> Recherche</p>
+    </div>
 
     <!-- Search Bar -->
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sélection du nouveau modèle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" id='newmodele'>
+                        <label for="modeleflipper"> Modèle </label>
+                        <select class="form-select" data-live-search="true" id="modeleflipper" data-width="100%"></select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button id= "confirm-change-btn" type="button" class="btn btn-primary">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Map -->
     <div id="map"></div>
@@ -122,9 +158,10 @@
 
 
 
+
+    <!-- End of Page Scripts -->
     <!-- Script of the index page -->
     <script src="js/script.js" defer></script>
-
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
