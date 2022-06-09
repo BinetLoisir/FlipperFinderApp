@@ -1,0 +1,44 @@
+{
+    "ens-objectId": "lfsoidnkf",
+    "ens-id": 154363636,
+    "ens-name": "Le Métro",
+    "ens-geo": {
+        "latitude": 3.3434343,
+        "longitude": 32.78656
+    },
+    "ens-addresse": "2, rue des trépons",
+    "ens-cp": "56435",
+    "ens-ville": "PLOUGASNOU",
+    "ens-pays": "FRANCE",
+    "ens_nbFlips": 0,
+    "ens-flips": [
+        {
+            "flip-objectId": "LkdfKCkdkc",
+            "flip-id": 1654535435,
+            "flip-datemaj": "2022/08/18",
+            "flip-actif": true,
+            "flip-modele": {
+                "modele-objectId": "KJBFSDJHBF",
+                "modele-id": "232",
+                "modele-name": "Monster Bash",
+                "modele-marque": "Bally",
+                "modele-year": 2022
+            },
+            "flip_updatedAt": "DATE",
+            "flip_createdAt": "DATE"
+        },
+        {
+            "flip-objectId": "LkdfKCkdkc",
+            "flip-id": 18774535435,
+            "flip-datemaj": "2021/08/18",
+            "flip-actif": true,
+            "flip-modele": {
+                "modele-objectId": "KJBFSDJHBF",
+                "modele-id": "230",
+                "modele-name": "Medieval Madness",
+                "modele-marque": "Bally",
+                "modele-year": 2017
+            }
+        }
+    ]
+}

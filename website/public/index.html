@@ -44,6 +44,8 @@
 
             <a class="navbar-brand" href="#">
                 <img alt="PinMyBalls" src="img/header_icon.png" class="brand">
+                Pin My Balls
+                
             </a>
 
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar"
@@ -52,9 +54,9 @@
             </button>
 
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="navbar-nav navbar-expand-lg">
-                    <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="/index.html">
+                <ul class="navbar-nav navbar-expand-md">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/index.html">
                             <i class="fa fa-fw fa-map"></i>&nbsp; Carte
                         </a>
                     </li>
@@ -67,17 +69,19 @@
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="/comments.html">
+                            <i class="fa fa-fw fa-regular fa-comment"></i>&nbsp; Commentaires
+
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a class="nav-link " href="/newpinball.html">
                             <i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau
                         </a>
 
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/comments.html">
-                            <i class="fa fa-fw fa-plus-circle"></i>&nbsp; Commentaires
-                        </a>
-                    </li>
 
                 </ul>
 
@@ -118,6 +122,11 @@
         <!-- /.container-fluid -->
     </nav>
 
+    <!-- Loading -->
+    <div id="top-banner" class="col text-center">
+        <p id="tip"> <i class="fas fa-spinner fa-spin"></i> Recherche</p>
+    </div>
+
     <!-- Search Bar -->
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 
@@ -139,6 +148,26 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                     <button id= "confirm-change-btn" type="button" class="btn btn-primary">Confirmer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Comments-->
+    <div class="modal fade" id="commentsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="commentModalLabel">Liste des commentaires</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="comments-list" class="list-group"></ul>
+                    
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
                 </div>
             </div>
         </div>
