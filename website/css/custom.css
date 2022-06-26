@@ -27,6 +27,10 @@ body {
     visibility: hidden;
 }
 
+
+
+
+
 .controls {
     margin-top: 10px;
     border: 1px solid transparent;
@@ -302,3 +306,25 @@ ul {
     padding-right: 16px;
     padding-left: 16px;
 }
+
+
+.location-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.location-text {
+    flex: 2;
+    margin-right: 10px;
+}  
+
+.location-map{
+    flex:1
+}
+
+#minimap {
+    height: 100%;
+    /* The height is 400 pixels */
+   width: 100%;
+    /* The width is the width of the web page */
+  }

@@ -63,7 +63,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="/list.html">
+                        <a class="nav-link" href="/list.html">
                             <i class="fa fa-fw fa-list-ul"></i>&nbsp; Liste
                         </a>
                     </li>
@@ -74,7 +74,7 @@
 
                         </a>
                     </li>
-                    
+
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/newpinball.html">
                             <i class="fa fa-fw fa-plus-square"></i>&nbsp; Nouveau
@@ -136,68 +136,78 @@
         </div>
 
         <form>
-            <div>
-                <div class="form-group">
-                    <label>Nom</label>
-                    <input class="form-control" id="place_name" disabled="false" placeholder="Nom de l'établissement">
+            <div class="location-container">
+                <div class="location-text">
+                    <div class="form-group">
+                        <label>Nom</label>
+                        <input class="form-control" id="place_name" disabled="false"
+                            placeholder="Nom de l'établissement">
+                    </div>
+                    <div class="form-group">
+                        <label>Adresse</label>
+                        <input class="form-control" id="street_number" disabled="false" placeholder="Numéro de rue">
+                        <input class="form-control" id="route" disabled="false" placeholder="Nom de la rue">
+                        <input class="form-control" id="postal_code" disabled="false" placeholder="Code postal">
+                        <input class="form-control" id="locality" disabled="false" placeholder="Ville">
+                        <input class="form-control" id="country" disabled="false" placeholder="Pays">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Adresse</label>
-                    <input class="form-control" id="street_number" disabled="false" placeholder="Numéro de rue">
-                    <input class="form-control" id="route" disabled="false" placeholder="Nom de la rue">
-                    <input class="form-control" id="postal_code" disabled="false" placeholder="Code postal">
-                    <input class="form-control" id="locality" disabled="false" placeholder="Ville">
-                    <input class="form-control" id="country" disabled="false" placeholder="Pays">
+                <div class="location-map">
+
+                    <!-- Map -->
+                    <div id="minimap"></div>
                 </div>
             </div>
-            <div>
-                <div class="form-group" id='modele1'>
-                    <label for="modeleflipper1"> Modèle </label>
-                    <select class="form-select" data-live-search="true" id="modeleflipper1" data-width="100%"></select>
-                </div>
-
-                <div class="form-group" id='modele2' style="display: none;">
-                    <label for="modeleflipper2"> Modèle 2</label>
-                    <select class="form-select" data-live-search="true" id="modeleflipper2" data-width="100%"></select>
-                </div>
-
-                <div class="form-group" id='modele3' style="display: none;">
-                    <label for="modeleflipper3"> Modèle 3</label>
-                    <select class="form-select" data-live-search="true" id="modeleflipper3" data-width="100%"></select>
-                </div>
-
-                <div class="form-group" id='modele4' style="display: none;">
-                    <label for="modeleflipper4"> Modèle 4</label>
-                    <select class="form-select" data-live-search="true" id="modeleflipper4" data-width="100%"></select>
-                </div>
-
-                <div class="form-group" id='modele5' style="display: none;">
-                    <label for="modeleflipper5"> Modèle 5</label>
-                    <select class="form-select" data-live-search="true" id="modeleflipper5" data-width="100%"></select>
-                </div>
-
-                <button type="button" class="btn btn-success btn-sm m-2" onClick="addModel(); return false;">
-                    <i class="fas fa-plus-circle"></i>
-                </button>
-
-                <button type="button" class="btn btn-danger btn-sm m-2" onClick="removeModel(); return false;">
-                    <i class="fas fa-minus-circle"></i>
-                </button>
-
+            <div class="form-group" id='modele1'>
+                <label for="modeleflipper1"> Modèle </label>
+                <select class="form-select" data-live-search="true" id="modeleflipper1" data-width="100%"></select>
             </div>
 
-            <!--    Submit button non fonctionnel car lié à l'objet form et ici pas d'action= "" défini      -->
-            <!--<div>
+            <div class="form-group" id='modele2' style="display: none;">
+                <label for="modeleflipper2"> Modèle 2</label>
+                <select class="form-select" data-live-search="true" id="modeleflipper2" data-width="100%"></select>
+            </div>
+
+            <div class="form-group" id='modele3' style="display: none;">
+                <label for="modeleflipper3"> Modèle 3</label>
+                <select class="form-select" data-live-search="true" id="modeleflipper3" data-width="100%"></select>
+            </div>
+
+            <div class="form-group" id='modele4' style="display: none;">
+                <label for="modeleflipper4"> Modèle 4</label>
+                <select class="form-select" data-live-search="true" id="modeleflipper4" data-width="100%"></select>
+            </div>
+
+            <div class="form-group" id='modele5' style="display: none;">
+                <label for="modeleflipper5"> Modèle 5</label>
+                <select class="form-select" data-live-search="true" id="modeleflipper5" data-width="100%"></select>
+            </div>
+
+            <button type="button" class="btn btn-success btn-sm m-2" onClick="addModel(); return false;">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+
+            <button type="button" class="btn btn-danger btn-sm m-2" onClick="removeModel(); return false;">
+                <i class="fas fa-minus-circle"></i>
+            </button>
+
+    </div>
+
+    <!--    Submit button non fonctionnel car lié à l'objet form et ici pas d'action= "" défini      -->
+    <!--<div>
                 <button type="submit" class="btn btn-primary btn-block" onclick="submit()">Soumettre par mail (workinprogress1) </button>
             </div>-->
 
-        </form>
+    </form>
 
-        <div class="d-grid gap-2">
-            <button class="btn btn-primary" onclick="sendbutton()">Soumettre</button>
-        </div>
+    <div class="d-grid gap-2">
+        <button class="btn btn-primary" onclick="sendbutton()">Soumettre</button>
+    </div>
+
 
     </div>
+
+
 
 
     <script>

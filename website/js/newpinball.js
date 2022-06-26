@@ -18,9 +18,9 @@ var nbmodelmax = 5;
 var firstmodel = "modeleflipper1";
 var defaultOption = 'Choisir Modèle';
 var modelsMap = new Map();
+var minimap
 
 init_modelsMap();
-
 
 
 function init_modelsMap() {
@@ -49,8 +49,30 @@ function init_modelsMap() {
     });
 }
 
+function initMap() {
+
+
+
+
+
+    // The location of Paris
+    const paris = { lat: 46.36, lng: 1.52 };
+
+    // The map, centered at Paris
+    minimap = new google.maps.Map(document.getElementById("minimap"), {
+        zoom: 4,
+        center: paris,
+        mapTypeControl : false,
+        streetViewControl: false
+    });
+
+}
+
+window.initMap = initMap;
+
 
 function initAutocomplete() {
+    initMap()
     // Create the autocomplete object, restricting the search to geographical
     // location types.
     autocomplete = new google.maps.places.Autocomplete(
@@ -83,6 +105,13 @@ function fillInAddress() {
         }
     }
     latlng = place.geometry.location;
+
+    //Add marker on minimap
+
+    minimap.setCenter(place.geometry.location)
+    minimap.setZoom(18)
+
+
 }
 
 // Bias the autocomplete object to the user's geographical location,
