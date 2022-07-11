@@ -18,10 +18,8 @@ var markers = []
 var myLocation
 //const defaultLocation = new google.maps.LatLng(48.883461, 2.340561)
 
-const QUERYLIMIT = 50
 
-
-//TODO HIDE ID and KEY for PARSE
+//TODO FIND A WAY TO HIDE ID and KEY for PARSE (cloud code ? aCL ?)
 Parse.initialize("wx8ZJI9628FDGq39REy6rMlZjKdP5ERUMXjZpqjE", "HVHpDx5BgQG54UDLdZhLv7cFoontQUA8eIE8YC2D")
 Parse.serverURL = 'https://parseapi.back4app.com'
 // Simple syntax to create a new subclass of Parse.Object.
@@ -30,6 +28,7 @@ var Enseigne = Parse.Object.extend("ENSEIGNE")
 var FlipTrash = Parse.Object.extend("FLIPTRASH")
 var Commentaire = Parse.Object.extend("COMMENTAIRE")
 var Modele = Parse.Object.extend("MODELE_FLIPPER")
+const QUERYLIMIT = 50
 
 const modeleFields = {
     id: "MOFL_ID",

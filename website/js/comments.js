@@ -65,7 +65,7 @@ var TYPE_ADDITIONAL = "ADDITIONAL";
 
 var MAX_COMMENTS = 50
 
-loadComments(MAX_COMMENTS,TYPE_POST)
+loadComments(MAX_COMMENTS, TYPE_POST)
 
 var list = [];
 
@@ -104,19 +104,25 @@ async function getCommentaires(max, commentType) {
             enseigne: "",
             ville: ""
         }
-        //Commentaire
-        var comment = commentFactory(comments[i])
-        post.comment = comment
-        //Modele
-        var modelePO = comments[i].get(commentFields.flipperid_p).get(flipperFields.modele_p)
-        post.modele = modeleFactory(modelePO);
-        //Enseigne
-        var enseignePO = comments[i].get(commentFields.flipperid_p).get(flipperFields.enseigne_p)
-        post.enseigne = enseigneFactory(enseignePO);
-        post.ville = villeFactory(enseignePO);
 
-        //console.log(post)
-        posts.push(post)
+        try {
+            //Commentaire
+            var comment = commentFactory(comments[i])
+            post.comment = comment
+            //Modele
+            var modelePO = comments[i].get(commentFields.flipperid_p).get(flipperFields.modele_p)
+            post.modele = modeleFactory(modelePO);
+            //Enseigne
+            var enseignePO = comments[i].get(commentFields.flipperid_p).get(flipperFields.enseigne_p)
+            post.enseigne = enseigneFactory(enseignePO);
+            post.ville = villeFactory(enseignePO);
+
+            //console.log(post)
+            posts.push(post)
+        } catch (error) {
+            console.log(error)
+            console.log(comments[i].id)
+        }
     }
 
     populateList(posts);
@@ -157,7 +163,7 @@ function populateList(posts) {
         title.className = "card-title";
         title.innerText = post.modele;
         cardbody.appendChild(title);
-       
+
         let cardText = document.createElement('div');
         cardText.className = "card-text";
         cardText.innerHTML = post.comment.com_texte;
