@@ -4,8 +4,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.2.0'
-        classpath 'com.google.gms:google-services:4.3.10'
+        classpath 'com.android.tools.build:gradle:7.3.1'
+        classpath 'com.google.gms:google-services:4.3.14'
     }
 }
 apply plugin: 'com.android.application'
@@ -24,8 +24,8 @@ android {
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 19
         targetSdkVersion 32
-        versionCode 64
-        versionName "3.23"
+        versionCode 65
+        versionName "3.24"
         buildConfigField('String', 'ApiKey', PinMyBalls_GoogleMapAPIKey)
         resValue('string', 'maps_api_key', PinMyBalls_GoogleMapAPIKey)
         multiDexEnabled = true
@@ -49,15 +49,15 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.android.material:material:1.7.0-alpha01'
-    implementation 'com.google.android.libraries.places:places:2.6.0'
+    implementation 'com.google.android.material:material:1.8.0-alpha02'
+    implementation 'com.google.android.libraries.places:places:2.7.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
     implementation 'com.google.code.gson:gson:2.9.0'
@@ -76,5 +76,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
 
     //old way ?
-    implementation 'com.google.android.gms:play-services-analytics:18.0.1'
+    implementation 'com.google.android.gms:play-services-analytics:18.0.2'
 }

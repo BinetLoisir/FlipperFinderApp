@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class FlipperDatabaseHandler extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 64;
+    public static final int DATABASE_VERSION = 65;
     // V41 le 04/10/2015
     public static final String DATABASE_DATE_MAJ = "2011/06/01";
     public static final String FLIPPER_BASE_NAME = "flipper.db";

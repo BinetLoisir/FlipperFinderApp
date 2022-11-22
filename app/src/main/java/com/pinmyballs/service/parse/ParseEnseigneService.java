@@ -20,7 +20,7 @@ public class ParseEnseigneService {
 		   List<ParseObject> listePo = new ArrayList<ParseObject>();
 		   ParseQuery query = new ParseQuery(FlipperDatabaseHandler.ENSEIGNE_TABLE_NAME);
 		   try {
-		   query.setLimit(2000);
+		   query.setLimit(6000);
 		   listePo = query.find();
 		   } catch (ParseException e1) {
 		   e1.printStackTrace();
@@ -54,7 +54,7 @@ public class ParseEnseigneService {
 		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<>("ENSEIGNE");
 		try {
-			query.setLimit(2000);
+			query.setLimit(10000);
 			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.ENSEIGNE_DATMAJ, dateDerniereMaj);
 			listePo = query.find();
 		} catch (ParseException e1) {

@@ -55,7 +55,7 @@ public class ParseModeleService {
 		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.MODELE_FLIPPER_TABLE_NAME);
 		try {
-			query.setLimit(400);
+			query.setLimit(600);
 			query.whereGreaterThan(FlipperDatabaseHandler.MODELE_FLIPPER_ID, id);
 			listePo = query.find();
 		} catch (ParseException e1) {

@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textView77"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
@@ -15,7 +15,7 @@
 
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView66"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
