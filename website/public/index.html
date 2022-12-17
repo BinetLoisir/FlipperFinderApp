@@ -37,7 +37,7 @@
 <body class="full">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
 
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -45,7 +45,7 @@
             <a class="navbar-brand" href="#">
                 <img alt="PinMyBalls" src="img/header_icon.png" class="brand">
                 Pin My Balls
-                
+
             </a>
 
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar"
@@ -110,7 +110,11 @@
                                         class="fa fa-fw fa-lightbulb-o"></i>&nbsp; Proposer une amélioration</a>
                             </li>
                             <li><a class="dropdown-item" href="mailto:?to=flipper.finder2@gmail.com&subject=Contact"><i
-                                        class="fa fa-fw fa-envelope-o"></i>&nbsp; Contactez-moi</a></li>
+                                        class="fa fa-fw fa-envelope-o"></i>&nbsp; Contactez-moi</a>
+                            </li>
+                            <li><a class="dropdown-item" href="/about.html"><i
+                                        class="fa fa-fw fa-circle-info"></i>&nbsp; A propos</a>
+                            </li>
 
                         </ul>
                     </li>
@@ -128,8 +132,9 @@
     </div>
 
     <!-- Search Bar -->
-    <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-
+    <div id="pac-container">
+        <input id="pac-input" class="controls" type="text" placeholder="Search a place, city, street...">
+    </div>
 
     <!-- Modal -->
     <div class="modal fade" id="changeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -142,12 +147,13 @@
                 <div class="modal-body">
                     <div class="form-group" id='newmodele'>
                         <label for="modeleflipper"> Modèle </label>
-                        <select class="form-select" data-live-search="true" id="modeleflipper" data-width="100%"></select>
+                        <select class="form-select" data-live-search="true" id="modeleflipper"
+                            data-width="100%"></select>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                    <button id= "confirm-change-btn" type="button" class="btn btn-primary">Confirmer</button>
+                    <button id="confirm-change-btn" type="button" class="btn btn-primary">Confirmer</button>
                 </div>
             </div>
         </div>
@@ -163,8 +169,8 @@
                 </div>
                 <div class="modal-body">
                     <ul id="comments-list" class="list-group"></ul>
-                    
-                    
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
@@ -179,6 +185,11 @@
     <!-- SnackBar -->
     <div id="snackbar"></div>
 
+
+    <!-- Model Filter -->
+    <div id="model-filter-container">
+        <select class="form-select" data-live-search="true" id="model-filter-select" data-width="100%"></select>
+    </div>
 
 
 

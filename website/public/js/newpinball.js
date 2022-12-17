@@ -51,10 +51,6 @@ function init_modelsMap() {
 
 function initMap() {
 
-
-
-
-
     // The location of Paris
     const paris = { lat: 46.36, lng: 1.52 };
 
@@ -106,10 +102,9 @@ function fillInAddress() {
     }
     latlng = place.geometry.location;
 
-    //Add marker on minimap
-
+    //Center Map
     minimap.setCenter(place.geometry.location)
-    minimap.setZoom(18)
+    minimap.setZoom(17)
 
 
 }
@@ -356,11 +351,11 @@ function saveParseObject(parseObject) {
 function saveAllParseObjects(listParseObjects) {
     Parse.Object.saveAll(listParseObjects, {
         success: function (listParseObjects) {
-            alert('All objects were saved');
+            console.log('All objects were saved');
         },
         error: function (error) {
             // An error occurred while saving one of the objects.
-            alert('Failed to create new object, with error code: ' + error.message);
+            console.log('Failed to create new object, with error code: ' + error.message);
         },
     });
 };

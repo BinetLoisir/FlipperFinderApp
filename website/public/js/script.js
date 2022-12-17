@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         var js_file = document.createElement('script')
         js_file.type = 'text/javascript'
-        js_file.src = 'https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyBWzLO7XJTK0qp3hWkX599YdiUWGc_yFYc&libraries=places&language=' + lang
+        js_file.src = 'https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyCPJQoFjDsZtSiRZ9cdfRPLO6x2_klYdeU&libraries=places&language=' + lang
         document.getElementsByTagName('head')[0].appendChild(js_file)
     }
 })
@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
 var map, bounds, ne, sw
 var markers = []
 var myLocation
+var selectFilter
 //const defaultLocation = new google.maps.LatLng(48.883461, 2.340561)
 
 
@@ -116,9 +117,10 @@ function initMap() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                //show the map
+                //show the map and the UI
                 document.querySelector('#map').style.visibility = 'visible'
-                document.querySelector('#pac-input').style.visibility = 'visible'
+                document.querySelector('#pac-container').style.visibility = 'visible'
+                document.querySelector('#model-filter-container').style.visibility = 'visible'
                 document.querySelector('#top-banner').style.display = "none"
 
                 //update location, center map and show marker
@@ -136,7 +138,8 @@ function initMap() {
                 console.warn(`ERROR(${err.code}): ${err.message}`)
                 //show the map and hide the loading animation
                 document.querySelector('#map').style.visibility = 'visible'
-                document.querySelector('#pac-input').style.visibility = 'visible'
+                document.querySelector('#pac-container').style.visibility = 'visible'
+                document.querySelector('#model-filter-container').style.visibility = 'visible'
                 document.querySelector('#top-banner').style.display = "none"
 
             },
@@ -159,6 +162,7 @@ function initMap() {
         //Adds the location button and search buttons on the map  
         addLocationButton(map, myMarker)
         addAutoCompleteSearchBox(map)
+        initModelFilter()
 
         //Load markers after map is loaded, and after map stops moving
         map.addListener('idle', function () {
@@ -171,6 +175,7 @@ function initMap() {
 }
 
 function geoqueryandplotmarkers() {
+
     //Definition of the innerquery
     var geoboxquery = new Parse.Query(Enseigne)
     geoboxquery.withinGeoBox(
@@ -185,10 +190,24 @@ function geoqueryandplotmarkers() {
         })
     )
 
+    //Model filter
+    var filterModelObjectId = selectFilter.value
+    var filterModelIndex = selectFilter.selectedIndex
+    var tempModel = new Modele()
+    var aModeleHasBeenSelected = (filterModelIndex != null && filterModelIndex > 0)
+    tempModel.id = filterModelObjectId
+    // If a model is selected, first remove all markers
+    if (aModeleHasBeenSelected) {
+        clearAllMarkers()
+    }
+
     //Definition of the FlipperQuery
     var query = new Parse.Query(Flipper)
     query.equalTo("FLIP_ACTIF", true)
     query.matchesQuery("FLIP_ENSEIGNE_P", geoboxquery)
+    if (aModeleHasBeenSelected) {
+        query.equalTo("FLIP_MODELE_P", tempModel)
+    }
     query.include("FLIP_ENSEIGNE_P")
     query.include("FLIP_MODELE_P")
     query.limit(QUERYLIMIT)
@@ -279,6 +298,14 @@ function plotMarkers(enseigneMap) {
     //map.fitBounds(bounds)
 }
 
+//Clear all markers from Map {
+function clearAllMarkers() {
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null)
+    }
+    markers = []
+}
+
 //Create Info Window - August2021
 function infoWindow(flipArray) {
     let node = document.createElement("div")
@@ -289,6 +316,10 @@ function infoWindow(flipArray) {
     iw_title.className = "badge bg-secondary"
     iw_title.innerText = flipArray[0].ens_nom
     iw_title_container.appendChild(iw_title)
+
+    let iw_title_expand = document.createElement("span")
+    iw_title_expand.className = "fa-solid fa-angle-down expand-icon"
+    iw_title_container.appendChild(iw_title_expand)
 
     let iw_subtitle_container = document.createElement("h7")
     iw_subtitle_container.style.display = "none"
@@ -401,8 +432,9 @@ async function fetchComments(flipId, max, commentType) {
     console.log("Successfully fetched " + comments.length + " comments")
 
     for (let i = 0; i < comments.length; i++) {
+        console.log(comments[i])
         var post = {
-            pseudo: comments[i].get(commentFields.pseudo).toUpperCase() ,
+            pseudo: comments[i].get(commentFields.pseudo).toUpperCase(),
             date: comments[i].get(commentFields.date),
             texte: comments[i].get(commentFields.text)
         }
@@ -642,6 +674,20 @@ function addAutoCompleteSearchBox(map) {
     })
     */
 
+}
+
+//------The Model Filter Select----------------------------
+function initModelFilter() {
+    selectFilter = document.getElementById("model-filter-select")
+    //console.log(    select.options)
+    selectFilter.addEventListener("change", () => {
+        console.log(selectFilter.value)
+        console.log(selectFilter.selectedIndex)
+        geoqueryandplotmarkers()
+
+
+
+    })
 }
 
 //-----SNACKBAR-----------------------
@@ -984,6 +1030,7 @@ function init_modelsMap() {
                 }
                 //once modelsMap is initialized, fill first model dropdown
                 populate("modeleflipper")
+                populate("model-filter-select")
             }
         },
         error: function (error) {
