@@ -49,9 +49,8 @@ import com.pinmyballs.utils.ListeFlipperAdapter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+
 
 public class ListeActivity extends AppCompatActivity {
     private static final String TAG = "ListActivity";
@@ -64,13 +63,13 @@ public class ListeActivity extends AppCompatActivity {
     int DISTANCE_MAX, ENSEIGNE_LIST_MAX_SIZE;
     ArrayList<Flipper> listeFlipper = new ArrayList<>();
 
-    @BindView(R.id.buttonMyLocation)
+
     ImageButton buttonMyLocation;
-    @BindView(R.id.buttonClearModeleFlipper)
+
     ImageButton buttonClearModeleFlipper;
-    @BindView(R.id.autocompleteModeleFlipper)
+
     AutoCompleteTextView autocompleteModeleFlipper;
-    @BindView(R.id.listViewFlippers)
+
     ListView listViewFlippers;
 
     private final Context mContext = ListeActivity.this;
@@ -85,7 +84,23 @@ public class ListeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        ButterKnife.bind(this);
+        buttonMyLocation = (ImageButton) findViewById(R.id.buttonMyLocation);
+        buttonClearModeleFlipper = (ImageButton) findViewById(R.id.buttonClearModeleFlipper);
+        autocompleteModeleFlipper = (AutoCompleteTextView) findViewById(R.id.autocompleteModeleFlipper);
+        listViewFlippers = (ListView) findViewById(R.id.listViewFlippers);
+        findViewById(R.id.buttonClearModeleFlipper).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearModeleFlipper();
+            }
+        });
+        findViewById(R.id.buttonMyLocation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findMyLocation();
+            }
+        });
+
 
         setupBottomNavigationView();
         setupToolBar();
@@ -361,6 +376,7 @@ public class ListeActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         mLocationPermissionGranted = false;
         if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {// If request is cancelled, the result arrays are empty.
             if (grantResults.length > 0
@@ -374,13 +390,13 @@ public class ListeActivity extends AppCompatActivity {
         return latLngListe;
     }
 
-    @OnClick(R.id.buttonMyLocation)
+
     public void findMyLocation() {
         getLocationPermission();
         getDeviceLocation();
     }
 
-    @OnClick(R.id.buttonClearModeleFlipper)
+
     public void clearModeleFlipper() {
         autocompleteModeleFlipper.setText("");
         searchFlip(latLngListe);

@@ -29,28 +29,28 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
+
 
 public class FragmentSignalementModele extends SignalementWizardFragment {
 
-    @BindView(R.id.champPseudo)
+
     EditText champPseudo;
-    @BindView(R.id.texteCommentaire)
+
     EditText champCommentaire;
-    @BindView(R.id.autocompletionModeleFlipper)
+
     AutoCompleteTextView champModeleFlipper;
-    @BindView(R.id.autocompletionModeleFlipper2)
+
     AutoCompleteTextView champModeleDeuxiemeFlipper;
-    @BindView(R.id.autocompletionModeleFlipper3)
+
     AutoCompleteTextView champModeleTroisiemeFlipper;
-    @BindView(R.id.autocompletionModeleFlipper4)
+
     AutoCompleteTextView champModeleQuatriemeFlipper;
-    @BindView(R.id.autocompletionModeleFlipper5)
+
     AutoCompleteTextView champModeleCinquiemeFlipper;
-    @BindView(R.id.champExploitant)
+
     EditText champExploitant;
-    @BindView(R.id.champNbCredits)
+
     EditText champNbCredits;
 
     ModeleFlipper modeleFlipper, modeleFlipper2, modeleFlipper3, modeleFlipper4, modeleFlipper5;
@@ -73,9 +73,18 @@ public class FragmentSignalementModele extends SignalementWizardFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_modele, container, false);
+        champPseudo = (EditText) rootView.findViewById(R.id.champPseudo);
+        champCommentaire = (EditText) rootView.findViewById(R.id.texteCommentaire);
+        champModeleFlipper = (AutoCompleteTextView) rootView.findViewById(R.id.autocompletionModeleFlipper);
+        champModeleDeuxiemeFlipper = (AutoCompleteTextView) rootView.findViewById(R.id.autocompletionModeleFlipper2);
+        champModeleTroisiemeFlipper = (AutoCompleteTextView) rootView.findViewById(R.id.autocompletionModeleFlipper3);
+        champModeleQuatriemeFlipper = (AutoCompleteTextView) rootView.findViewById(R.id.autocompletionModeleFlipper4);
+        champModeleCinquiemeFlipper = (AutoCompleteTextView) rootView.findViewById(R.id.autocompletionModeleFlipper5);
+        champExploitant = (EditText) rootView.findViewById(R.id.champExploitant);
+        champNbCredits = (EditText) rootView.findViewById(R.id.champNbCredits);
 
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this, rootView);
+
         modeleFlipperService = new BaseModeleService();
 
         //iniatilisation des listes

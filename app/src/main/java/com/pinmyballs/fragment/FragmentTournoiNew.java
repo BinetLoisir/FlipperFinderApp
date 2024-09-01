@@ -49,9 +49,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -69,32 +68,32 @@ public class FragmentTournoiNew extends Fragment{
     SimpleDateFormat dateTarget = new SimpleDateFormat("yyyy/MM/dd");
     SimpleDateFormat dateSource = new SimpleDateFormat("dd/MM/yyyy");
 
-    @BindView(R.id.NewTournoiNom)
+
     TextView NewTournoiNom;
-    @BindView(R.id.NewTournoiDate)
+
     TextView NewTournoiDate;
-    @BindView(R.id.NewTournoiURL)
+
     TextView NewTournoiURL;
-    @BindView(R.id.NewTournoiEnseigne)
+
     TextView NewTournoiEnseigne;
-    @BindView(R.id.NewTournoiAdresse)
+
     TextView NewTournoiAdresse;
-    @BindView(R.id.NewTournoiCP)
+
     TextView NewTournoiCP;
-    @BindView(R.id.NewTournoiVille)
+
     TextView NewTournoiVille;
-    @BindView(R.id.NewTournoiPays)
+
     TextView NewTournoiPays;
-    @BindView(R.id.picDateButton)
+
     ImageButton picDateButton;
-    @BindView(R.id.NewTournoiButtonSearchAdress)
+
     ImageButton NewTournoiButtonSearchAdress;
-    @BindView(R.id.NewTournoiButtonCheckAddress)
+
     ImageButton NewTournoiButtonCheckAdress;
 
-    @BindView(R.id.NewTournoiAnnuler)
+
     Button NewTournoiAnnuler;
-    @BindView(R.id.NewTournoiSuivant)
+
     Button NewTournoiSuivant;
 
     Tournoi newTournoi;
@@ -103,18 +102,55 @@ public class FragmentTournoiNew extends Fragment{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tournoi_new,container,false);
-        ButterKnife.bind(this, view);
+        NewTournoiNom = (TextView) view.findViewById(R.id.NewTournoiNom);
+        NewTournoiDate = (TextView) view.findViewById(R.id.NewTournoiDate);
+        NewTournoiURL = (TextView) view.findViewById(R.id.NewTournoiURL);
+        NewTournoiEnseigne = (TextView) view.findViewById(R.id.NewTournoiEnseigne);
+        NewTournoiAdresse = (TextView) view.findViewById(R.id.NewTournoiAdresse);
+        NewTournoiCP = (TextView) view.findViewById(R.id.NewTournoiCP);
+        NewTournoiVille = (TextView) view.findViewById(R.id.NewTournoiVille);
+        NewTournoiPays = (TextView) view.findViewById(R.id.NewTournoiPays);
+        picDateButton = (ImageButton) view.findViewById(R.id.picDateButton);
+        NewTournoiButtonSearchAdress = (ImageButton) view.findViewById(R.id.NewTournoiButtonSearchAdress);
+        NewTournoiButtonCheckAdress = (ImageButton) view.findViewById(R.id.NewTournoiButtonCheckAddress);
+        NewTournoiAnnuler = (Button) view.findViewById(R.id.NewTournoiAnnuler);
+        NewTournoiSuivant = (Button) view.findViewById(R.id.NewTournoiSuivant);
+        view.findViewById(R.id.NewTournoiSuivant).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                suivant();
+            }
+        });
+        view.findViewById(R.id.NewTournoiButtonCheckAddress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEnteredAddress();
+            }
+        });
+        view.findViewById(R.id.NewTournoiButtonSearchAdress).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usePlaceAutocomplete();
+            }
+        });
+        view.findViewById(R.id.picDateButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePicker((View) v);
+            }
+        });
+
         NewTournoiDate.setKeyListener(null);
         return view;
     }
 
-    @OnClick(R.id.picDateButton)
+
     public void datePicker(View view) {
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.show(getFragmentManager(), "date");
     }
 
-    @OnClick(R.id.NewTournoiButtonSearchAdress)
+
     public void usePlaceAutocomplete() {
         // Set the fields to specify which types of place data to
         // return after the user has made a selection.
@@ -127,7 +163,7 @@ public class FragmentTournoiNew extends Fragment{
         startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE);
     }
 
-    @OnClick(R.id.NewTournoiButtonCheckAddress)
+
     public void showEnteredAddress() {
 
         if (NewTournoiAdresse.getText().length() == 0 && NewTournoiVille.getText().length() == 0 && NewTournoiCP.getText().length() == 0) {
@@ -155,7 +191,7 @@ public class FragmentTournoiNew extends Fragment{
         startActivity(intentWithLatLng);
     }
 
-    @OnClick(R.id.NewTournoiSuivant)
+
     public void suivant() {
         if (FormNotCompleted()) {
             Log.d(TAG, "Form incomplete");

@@ -8,6 +8,7 @@ buildscript {
         classpath 'com.google.gms:google-services:4.3.14'
     }
 }
+
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
@@ -18,14 +19,15 @@ repositories {
 }
 
 android {
-    compileSdkVersion 32
+    namespace "com.pinmyballs"
+    compileSdk 34
     defaultConfig {
         applicationId "com.pinmyballs"
         vectorDrawables.useSupportLibrary = true
-        minSdkVersion 19
-        targetSdkVersion 32
-        versionCode 65
-        versionName "3.24"
+        minSdk 21
+        targetSdk 34
+        versionCode 69
+        versionName "3.32"
         buildConfigField('String', 'ApiKey', PinMyBalls_GoogleMapAPIKey)
         resValue('string', 'maps_api_key', PinMyBalls_GoogleMapAPIKey)
         multiDexEnabled = true
@@ -40,6 +42,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        buildConfig true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -62,8 +65,8 @@ dependencies {
     implementation 'com.google.maps.android:android-maps-utils:2.3.0'
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'com.github.parse-community.Parse-SDK-Android:parse:1.25.0'
-    implementation 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+   // implementation 'com.jakewharton:butterknife:10.2.3'
+    //annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
     implementation 'org.parceler:parceler-api:1.1.13'
     annotationProcessor 'org.parceler:parceler:1.1.13'
     implementation 'joda-time:joda-time:2.10.14'

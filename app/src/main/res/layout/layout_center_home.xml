@@ -45,6 +45,17 @@
 
             />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/autocomplete_fragment"
+            android:layout_marginTop="120dp"
+            android:padding="8dp"
+            android:gravity="center_horizontal"
+            android:text="FIN DE PINMYBALL LE 15 SEPTEMBRE \nTELECHARGEZ INSERT COIN"
+            android:background="@color/white"
+/>
+
 
     </RelativeLayout>
 

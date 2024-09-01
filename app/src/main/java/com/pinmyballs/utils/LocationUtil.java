@@ -1,5 +1,6 @@
 package com.pinmyballs.utils;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -11,6 +12,7 @@ import android.location.LocationManager;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.pinmyballs.metier.Flipper;
@@ -38,7 +40,7 @@ public class LocationUtil {
 	 * @param longitude
 	 * @return
 	 */
-	public static String getAdresseFromCoordGPS(Context context, double latitude, double longitude){
+	public static String getAdresseFromCoordGPS(Context context, double latitude, double longitude) {
 		String adresseCourante = "";
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
@@ -60,19 +62,19 @@ public class LocationUtil {
 		return adresseCourante;
 	}
 
-	public static String getCityFromLatLng(Context context, LatLng latlng){
+	public static String getCityFromLatLng(Context context, LatLng latlng) {
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
 		try {
-			addresses = geocoder.getFromLocation(latlng.latitude, latlng.longitude,1);
+			addresses = geocoder.getFromLocation(latlng.latitude, latlng.longitude, 1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-        return (addresses!=null )? addresses.get(0).getLocality()  :  "";
+		return (addresses != null) ? addresses.get(0).getLocality() : "";
 	}
 
 
-	public static String getAddress(Context context,double latitude, double longitude) {
+	public static String getAddress(Context context, double latitude, double longitude) {
 
 		Geocoder geocoder;
 		List<Address> addresses;
@@ -82,25 +84,24 @@ public class LocationUtil {
 		try {
 			addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
-		String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
-		String city = addresses.get(0).getLocality();
-		String state = addresses.get(0).getAdminArea();
-		String country = addresses.get(0).getCountryName();
-		String postalCode = addresses.get(0).getPostalCode();
-		String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
-            adresseCourante = address;
+			String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
+			String city = addresses.get(0).getLocality();
+			String state = addresses.get(0).getAdminArea();
+			String country = addresses.get(0).getCountryName();
+			String postalCode = addresses.get(0).getPostalCode();
+			String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
+			adresseCourante = address;
 			//adresseCourante = String.format("%s %s %s %s",address,postalCode,city,country);
-
 
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	return adresseCourante;
+		return adresseCourante;
 	}
 
 
-	public static String getAdresseFromCoordGPSwCP(Context context, double latitude, double longitude){
+	public static String getAdresseFromCoordGPSwCP(Context context, double latitude, double longitude) {
 		String adresseCourante = "";
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
@@ -122,12 +123,12 @@ public class LocationUtil {
 
 	}
 
-	public static String getCPfromLatLng(Context context, @NonNull LatLng latlng){
-		String CP=null;
+	public static String getCPfromLatLng(Context context, @NonNull LatLng latlng) {
+		String CP = null;
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
 		try {
-			addresses = geocoder.getFromLocation(latlng.latitude,latlng.longitude,1);
+			addresses = geocoder.getFromLocation(latlng.latitude, latlng.longitude, 1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -138,19 +139,19 @@ public class LocationUtil {
 		return CP;
 	}
 
-	public static HashMap getDetailsfromLatLng(Context context, @NonNull LatLng latlng){
+	public static HashMap getDetailsfromLatLng(Context context, @NonNull LatLng latlng) {
 		HashMap HM = new HashMap(4);
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
 		try {
-			addresses = geocoder.getFromLocation(latlng.latitude,latlng.longitude,1);
+			addresses = geocoder.getFromLocation(latlng.latitude, latlng.longitude, 1);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		if (addresses != null && addresses.size() > 0) {
 			Address address = addresses.get(0);
 			String addressline = address.getAddressLine(0);
-            String[] addressSplit = addressline.split(", ");
+			String[] addressSplit = addressline.split(", ");
 			HM.put("address", addressSplit[0]);
 			HM.put("postalcode", address.getPostalCode());
 			HM.put("city", address.getLocality());
@@ -160,8 +161,8 @@ public class LocationUtil {
 		return HM;
 	}
 
-	public static String getCPfromCity(Context context, String ville){
-		String CP=null;
+	public static String getCPfromCity(Context context, String ville) {
+		String CP = null;
 		Geocoder geocoder = new Geocoder(context, Locale.getDefault());
 		List<Address> addresses = null;
 		try {
@@ -190,8 +191,7 @@ public class LocationUtil {
 	 * @return End-point from the source given the desired range and bearing.
 	 */
 	public static PointF calculateDerivedPosition(PointF point,
-			double range, double bearing)
-	{
+												  double range, double bearing) {
 		double EarthRadius = 6371000; // m
 
 		double latA = Math.toRadians(point.x);
@@ -201,12 +201,12 @@ public class LocationUtil {
 
 		double lat = Math.asin(
 				Math.sin(latA) * Math.cos(angularDistance) +
-				Math.cos(latA) * Math.sin(angularDistance)
-				* Math.cos(trueCourse));
+						Math.cos(latA) * Math.sin(angularDistance)
+								* Math.cos(trueCourse));
 
 		double dlon = Math.atan2(
 				Math.sin(trueCourse) * Math.sin(angularDistance)
-				* Math.cos(latA),
+						* Math.cos(latA),
 				Math.cos(angularDistance) - Math.sin(latA) * Math.sin(lat));
 
 		double lon = ((lonA + dlon + Math.PI) % (Math.PI * 2)) - Math.PI;
@@ -224,21 +224,31 @@ public class LocationUtil {
 	 * @param context
 	 * @return
 	 */
-	public static Location getLastKnownLocation(Context context) {
+	/*public static Location getLastKnownLocation(Context context) {
 		LocationManager lm = (LocationManager) context.getSystemService(LOCATION_SERVICE);
 		List<String> providers = lm.getProviders(true);
 
-		/* Loop over the array backwards, and if you get an accurate location, then break out the loop*/
+		*//* Loop over the array backwards, and if you get an accurate location, then break out the loop*//*
 		Location l = null;
 
-		for (int i=providers.size()-1; i>=0; i--) {
+		for (int i = providers.size() - 1; i >= 0; i--) {
 			//TODO Add and test permission check
+			if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+				// TODO: Consider calling
+				//    ActivityCompat#requestPermissions
+				// here to request the missing permissions, and then overriding
+				//   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+				//                                          int[] grantResults)
+				// to handle the case where the user grants the permission. See the documentation
+				// for ActivityCompat#requestPermissions for more details.
+				return TODO;
+			}
 			l = lm.getLastKnownLocation(providers.get(i));
 			if (l != null) break;
 		}
 
 		return l;
-	}
+	}*/
 
 	/**
 	 * Permet de formater les distances pour un affichage propre

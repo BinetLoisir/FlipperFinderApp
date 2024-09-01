@@ -40,9 +40,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+
 
 import static android.widget.Toast.LENGTH_SHORT;
 
@@ -50,37 +49,37 @@ public class AdminActivity extends AppCompatActivity {
 
     private static final String TAG = AdminActivity.class.getSimpleName();
 
-    @BindView(R.id.searchByNumberEditText)
+
     TextView searchBynumberInput;
-    @BindView(R.id.boutonClearNumber)
+
     ImageButton clearNumberButton;
-    @BindView(R.id.pasteClipboardImagebutton)
+
     ImageButton PasteClipBoardImageButton;
-    @BindView(R.id.searchbynumberImagebutton)
+
     ImageButton searchBynumberImageButton;
-    @BindView(R.id.saveButton)
+
     Button saveButton;
-    @BindView(R.id.actifToggle)
+
     SwitchCompat actifToggle;
-    @BindView(R.id.actifState)
+
     TextView actifState;
-    @BindView(R.id.searchbynumberResultFlipID)
+
     TextView R_flipID;
-    @BindView(R.id.searchbynumberResultFlipEnseigneID)
+
     TextView R_flipEnseigneId;
-    @BindView(R.id.searchbynumberResultFlipEnseigne)
+
     TextView R_flipEnseigne;
-    @BindView(R.id.searchbynumberResultFlipEnseigneAdresse)
+
     TextView R_flipEnseigneAdresse;
-    @BindView(R.id.searchbynumberResultFlipModeleID)
+
     TextView R_flipModeleId;
-    @BindView(R.id.searchbynumberResultFlipModele)
+
     TextView R_flipModele;
-    @BindView(R.id.MyAction)
+
     Button myAction;
-    @BindView(R.id.MyAction2)
+
     Button MyAction2;
-    @BindView(R.id.et_search)
+
     EditText SearchPinball;
 
     Flipper flipper;
@@ -100,7 +99,59 @@ public class AdminActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
-        ButterKnife.bind(this);
+        searchBynumberInput = (TextView) findViewById(R.id.searchByNumberEditText);
+        clearNumberButton = (ImageButton) findViewById(R.id.boutonClearNumber);
+        PasteClipBoardImageButton = (ImageButton) findViewById(R.id.pasteClipboardImagebutton);
+        searchBynumberImageButton = (ImageButton) findViewById(R.id.searchbynumberImagebutton);
+        saveButton = (Button) findViewById(R.id.saveButton);
+        actifToggle = (SwitchCompat) findViewById(R.id.actifToggle);
+        actifState = (TextView) findViewById(R.id.actifState);
+        R_flipID = (TextView) findViewById(R.id.searchbynumberResultFlipID);
+        R_flipEnseigneId = (TextView) findViewById(R.id.searchbynumberResultFlipEnseigneID);
+        R_flipEnseigne = (TextView) findViewById(R.id.searchbynumberResultFlipEnseigne);
+        R_flipEnseigneAdresse = (TextView) findViewById(R.id.searchbynumberResultFlipEnseigneAdresse);
+        R_flipModeleId = (TextView) findViewById(R.id.searchbynumberResultFlipModeleID);
+        R_flipModele = (TextView) findViewById(R.id.searchbynumberResultFlipModele);
+        myAction = (Button) findViewById(R.id.MyAction);
+        MyAction2 = (Button) findViewById(R.id.MyAction2);
+        SearchPinball = (EditText) findViewById(R.id.et_search);
+        findViewById(R.id.MyAction2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyAction2();
+            }
+        });
+        findViewById(R.id.MyAction).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyAction();
+            }
+        });
+        findViewById(R.id.boutonClearNumber).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clearNumber();
+            }
+        });
+        findViewById(R.id.saveButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                saveState();
+            }
+        });
+        findViewById(R.id.searchbynumberImagebutton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchbynumber();
+            }
+        });
+        findViewById(R.id.pasteClipboardImagebutton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paste();
+            }
+        });
+
 
         settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
 
@@ -178,7 +229,7 @@ public class AdminActivity extends AppCompatActivity {
         return false;
     }
 
-    @OnClick(R.id.pasteClipboardImagebutton)
+
     public void paste() {
         final ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         ClipData clipData = clipboardManager.getPrimaryClip();
@@ -199,7 +250,7 @@ public class AdminActivity extends AppCompatActivity {
 
 
 
-    @OnClick(R.id.searchbynumberImagebutton)
+
     public void searchbynumber() {
 
         String inputString = searchBynumberInput.getText().toString();
@@ -251,7 +302,7 @@ public class AdminActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.saveButton)
+
     public void saveState() {
         String flipflop = searchBynumberInput.getText().toString();
         boolean flipactifinDB;
@@ -285,20 +336,20 @@ public class AdminActivity extends AppCompatActivity {
     }
 
 
-    @OnClick(R.id.boutonClearNumber)
+
     public void clearNumber() {
         searchBynumberInput.setText("");
     }
 
 
 
-    @OnClick(R.id.MyAction)
+
     protected void MyAction() {
         Intent intent = new Intent(this, TestActivity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.MyAction2)
+
     protected void MyAction2() {
         mTextResult.setText("");
         String queryString = SearchPinball.getText().toString();

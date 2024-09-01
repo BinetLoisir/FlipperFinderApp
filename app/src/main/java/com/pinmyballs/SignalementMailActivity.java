@@ -32,9 +32,8 @@ import com.pinmyballs.service.base.BaseModeleService;
 import com.pinmyballs.utils.LocationUtil;
 import com.pinmyballs.utils.MyLocation;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+
 
 //Signalement par mail
 public class SignalementMailActivity extends AppCompatActivity {
@@ -45,21 +44,21 @@ public class SignalementMailActivity extends AppCompatActivity {
     double latitude = 48.862731; // bar à côté du cirque d'hiver
     double longitude = 2.367354; // bar à côté du cirque d'hiver
 
-    @BindView(R.id.champAdresseLocalisation)
+
     EditText adresseUtilisateurTV;
-    @BindView(R.id.champNomEnseigne)
+
     EditText champNomEnseigne = null;
-    @BindView(R.id.boutonClearAdresse)
+
     ImageButton boutonClear;
-    @BindView(R.id.BoutonEnvoiInfosFlipper)
+
     Button boutonEnvoi;
-    @BindView(R.id.boutonLocalisation)
+
     ImageButton boutonLocalisation;
-    @BindView(R.id.autocompletionModeleFlipper)
+
     AutoCompleteTextView champModeleFlipper;
-    @BindView(R.id.champExploitant2)
+
     EditText champExploitant;
-    @BindView(R.id.champNbCredits2)
+
     EditText champNbCredits;
 
     ActionBar mActionbar;
@@ -80,7 +79,33 @@ public class SignalementMailActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signalement_mail);
-        ButterKnife.bind(this);
+        adresseUtilisateurTV = (EditText) findViewById(R.id.champAdresseLocalisation);
+        champNomEnseigne = (EditText) findViewById(R.id.champNomEnseigne);
+        boutonClear = (ImageButton) findViewById(R.id.boutonClearAdresse);
+        boutonEnvoi = (Button) findViewById(R.id.BoutonEnvoiInfosFlipper);
+        boutonLocalisation = (ImageButton) findViewById(R.id.boutonLocalisation);
+        champModeleFlipper = (AutoCompleteTextView) findViewById(R.id.autocompletionModeleFlipper);
+        champExploitant = (EditText) findViewById(R.id.champExploitant2);
+        champNbCredits = (EditText) findViewById(R.id.champNbCredits2);
+        findViewById(R.id.boutonLocalisation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                localiser((View) v);
+            }
+        });
+        findViewById(R.id.BoutonEnvoiInfosFlipper).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EnvoiParMail();
+            }
+        });
+        findViewById(R.id.boutonClearAdresse).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick((View) v);
+            }
+        });
+
 
         // Affichage du header
         mActionbar = getSupportActionBar();
@@ -106,12 +131,12 @@ public class SignalementMailActivity extends AppCompatActivity {
         getDeviceLocation();
     }
 
-    @OnClick(R.id.boutonClearAdresse)
+
     public void onClick(View v) {
         adresseUtilisateurTV.setText("");
     }
 
-    @OnClick(R.id.BoutonEnvoiInfosFlipper)
+
     public void EnvoiParMail() {
         // On regarde d'abord si les champs sont renseignés
         boolean isError = false;
@@ -161,7 +186,7 @@ public class SignalementMailActivity extends AppCompatActivity {
 
     }
 
-    @OnClick(R.id.boutonLocalisation)
+
     public void localiser(View v) {
         adresseUtilisateurTV.setText(GetMyLocation());
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -250,6 +275,7 @@ public class SignalementMailActivity extends AppCompatActivity {
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         mLocationPermissionGranted = false;
         if (requestCode == PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION) {// If request is cancelled, the result arrays are empty.
             if (grantResults.length > 0

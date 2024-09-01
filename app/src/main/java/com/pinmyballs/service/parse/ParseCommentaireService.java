@@ -39,7 +39,7 @@ public class ParseCommentaireService {
 		List<ParseObject> listePo;
 		ParseQuery<ParseObject> query = new ParseQuery<>(FlipperDatabaseHandler.COMMENTAIRE_TABLE_NAME);
 		try {
-			query.setLimit(10000);
+			query.setLimit(15000);
 			query.whereGreaterThanOrEqualTo(FlipperDatabaseHandler.COMM_DATE, dateDerniereMaj);
 			listePo = query.find();
 		} catch (ParseException e1) {

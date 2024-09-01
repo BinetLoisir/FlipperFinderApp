@@ -26,9 +26,8 @@ import com.pinmyballs.utils.LocationUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+
 
 public class FragmentSignalementMap extends SignalementWizardFragment implements OnMapReadyCallback {
 
@@ -37,7 +36,7 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
     private UiSettings mUiSettings;
     View mView;
 
-    @BindView(R.id.geolocaliseSignalement)
+
     Button boutonGeolocalisation;
 
     LatLng chosenPosition = null;
@@ -50,7 +49,14 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_wizard_map, container, false);
-        ButterKnife.bind(this, mView);
+        boutonGeolocalisation = (Button) mView.findViewById(R.id.geolocaliseSignalement);
+        mView.findViewById(R.id.geolocaliseSignalement).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                geolocaliseEnseigne();
+            }
+        });
+
 
         chosenPosition = getParentActivity().getNewLocation();
         return mView;
@@ -74,7 +80,7 @@ public class FragmentSignalementMap extends SignalementWizardFragment implements
         super.onResume();
     }
 
-    @OnClick(R.id.geolocaliseSignalement)
+
     public void geolocaliseEnseigne() {
 
         LatLng latLng = getParentActivity().getNewLocation();

@@ -1,21 +1,28 @@
 package com.pinmyballs;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.net.Uri;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -109,6 +116,10 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         // [END set_current_screen]
 
         setContentView(R.layout.activity_home);
+
+        // Appeler la méthode pour afficher le dialog
+        showCustomDialog();
+        
         setupSharedPreferences();
         setupBottomNavigationView();
         setupUI();
@@ -121,6 +132,78 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
         //updateDBinBackground();
         checkIfMajNeeded();
     }
+
+    private void showCustomDialog() {
+        // Créer le Dialog
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_custom);
+
+        // Configurer le bouton de fermeture
+        //ImageView closeButton = dialog.findViewById(R.id.close_button);
+        //closeButton.setOnClickListener(v -> dialog.dismiss());
+
+        // Configurer les icônes avec leurs liens
+        ImageView icon1 = dialog.findViewById(R.id.icon1);
+        ImageView icon2 = dialog.findViewById(R.id.icon2);
+        ImageView icon3 = dialog.findViewById(R.id.icon3);
+        ImageView icon4 = dialog.findViewById(R.id.icon4);
+
+
+
+        icon1.setOnClickListener(v -> {
+            // Ouvrir le Play Store à la page de l'application
+            Uri playStoreUri = Uri.parse("market://details?id=com.com.insertcoin");
+            Intent playStoreIntent = new Intent(Intent.ACTION_VIEW, playStoreUri);
+
+            // Vérifier si le Play Store est installé
+            if (playStoreIntent.resolveActivity(getPackageManager()) != null) {
+                startActivity(playStoreIntent);
+            } else {
+                // Si le Play Store n'est pas installé, ouvrir l'URL dans le navigateur
+                Uri webUri = Uri.parse("https://play.google.com/store/apps/details?id=com.insertcoin");
+                Intent webIntent = new Intent(Intent.ACTION_VIEW, webUri);
+                startActivity(webIntent);
+            }
+        });
+
+        icon2.setOnClickListener(v -> {
+            // Ouvrir le navigateur avec l'URL spécifiée
+            Intent browserIntentApple = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/insertcoinapp"));
+            startActivity(browserIntentApple);
+        });
+
+        icon3.setOnClickListener(v -> {
+            // Ouvrir le navigateur avec l'URL spécifiée
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.insertcoin.fr/"));
+            startActivity(browserIntent);
+        });
+
+        icon4.setOnClickListener(v -> {
+            // Ouvrir le navigateur avec l'URL spécifiée
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://apps.apple.com/fr/app/insert-coin/id6664072981/"));
+            startActivity(browserIntent);
+        });
+
+        // Obtenir les dimensions de l'écran
+        WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+        Window window = dialog.getWindow();
+        if (window != null) {
+            Display display = getWindowManager().getDefaultDisplay();
+            Point size = new Point();
+            display.getSize(size);
+            int width = size.x;
+            int height = size.y;
+
+            // Configurer les dimensions du Dialog
+            layoutParams.width = (int) (width * 1);  // 80% de la largeur de l'écran
+            layoutParams.height = (int) (height * 0.9); // 60% de la hauteur de l'écran
+            window.setAttributes(layoutParams);
+        }
+
+        // Afficher le Dialog
+        dialog.show();
+    }
+
 
     /**
      * Responsible for retrieving SharedPreferences settings
@@ -241,16 +324,11 @@ public class HomeActivity extends AppCompatActivity implements OnMapReadyCallbac
      */
     private void setupUI() {
         ImageButton mapInfoButton = findViewById(R.id.mapinfobutton);
-        mapInfoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onButtonClick: Popping Legend");
-                Intent intentPopLegend = new Intent(mContext, PopLegend.class);
-                startActivity(intentPopLegend);
-            }
+        mapInfoButton.setOnClickListener(v -> {
+            Log.d(TAG, "onButtonClick: Popping Legend");
+            Intent intentPopLegend = new Intent(mContext, PopLegend.class);
+            startActivity(intentPopLegend);
         });
-
-
     }
 
     /**

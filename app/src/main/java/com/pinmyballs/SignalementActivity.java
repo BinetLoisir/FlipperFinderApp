@@ -45,9 +45,8 @@ import com.pinmyballs.utils.ProgressBarHandler;
 import java.util.ArrayList;
 import java.util.Date;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+
+
 
 public class SignalementActivity extends AppCompatActivity {
 
@@ -55,11 +54,11 @@ public class SignalementActivity extends AppCompatActivity {
     LatLng newLocation = null;
     ProgressBarHandler mprogressBarHandler;
 
-    @BindView(R.id.next_button)
+
     Button mNextButton;
-    @BindView(R.id.prev_button)
+
     Button mPreviousButton;
-    @BindView(R.id.signalementPager)
+
     ViewPager mPager;
 
     ActionBar mActionbar;
@@ -124,9 +123,18 @@ public class SignalementActivity extends AppCompatActivity {
         currentLocation = new LatLng(48.862731, 2.367354);
 
         setContentView(R.layout.activity_signalement);
+        mNextButton = (Button) findViewById(R.id.next_button);
+        mPreviousButton = (Button) findViewById(R.id.prev_button);
+        mPager = (ViewPager) findViewById(R.id.signalementPager);
+        findViewById(R.id.prev_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                previousClickListener((View) v);
+            }
+        });
         settings = getSharedPreferences(PreferencesActivity.PREFERENCES_FILENAME, 0);
 
-        ButterKnife.bind(this);
+
 
         mprogressBarHandler = new ProgressBarHandler(this);
 
@@ -191,7 +199,7 @@ public class SignalementActivity extends AppCompatActivity {
         editor.apply();
     }
 
-    @OnClick(R.id.prev_button)
+
     public void previousClickListener(View view) {
         mPager.setCurrentItem(mPager.getCurrentItem() - 1, true);
     }

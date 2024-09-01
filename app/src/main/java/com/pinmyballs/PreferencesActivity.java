@@ -28,11 +28,6 @@ import com.pinmyballs.service.GlobalService;
 
 import java.util.HashMap;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnLongClick;
-
 public class PreferencesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     public static final String PREFERENCES_FILENAME = "FlipperLocPrefs.txt";
     public static final String KEY_PREFERENCES_ADMIN_MODE = "AdminMode";
@@ -65,29 +60,29 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 
 
     //BINDS
-	@BindView(R.id.TVPseudoPref)
+
     EditText tvPseudo;
-	@BindView(R.id.TVRayon)
+
 	TextView tvRayon;
-	@BindView(R.id.seekBarRayon)
+
 	SeekBar seekBarRayon;
-	@BindView(R.id.TVMaxResult)
+
 	TextView tvNbMaxListe;
-	@BindView(R.id.seekBarNbMax)
+
 	SeekBar seekBarNbMaxListe;
-	@BindView(R.id.languageSpinner)
+
 	Spinner langageSpinner;
 
-	@BindView(R.id.currentlatlng)
+
 	TextView currentLatLng;
-	@BindView(R.id.dbchrono)
+
 	TextView dbchrono;
-	@BindView(R.id.datedernieremaj)
+
 	TextView datedernieremaj;
-	@BindView(R.id.nbflips)
+
 	TextView nbflips;
 
-    @BindView(R.id.eraseDBbutton)
+
     Button EraseDB;
 
 	ActionBar mActionbar;
@@ -97,7 +92,32 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_preferences);
-		ButterKnife.bind(this);
+		tvPseudo = (EditText) findViewById(R.id.TVPseudoPref);
+		tvRayon = (TextView) findViewById(R.id.TVRayon);
+		seekBarRayon = (SeekBar) findViewById(R.id.seekBarRayon);
+		tvNbMaxListe = (TextView) findViewById(R.id.TVMaxResult);
+		seekBarNbMaxListe = (SeekBar) findViewById(R.id.seekBarNbMax);
+		langageSpinner = (Spinner) findViewById(R.id.languageSpinner);
+		currentLatLng = (TextView) findViewById(R.id.currentlatlng);
+		dbchrono = (TextView) findViewById(R.id.dbchrono);
+		datedernieremaj = (TextView) findViewById(R.id.datedernieremaj);
+		nbflips = (TextView) findViewById(R.id.nbflips);
+		EraseDB = (Button) findViewById(R.id.eraseDBbutton);
+		findViewById(R.id.eraseDBbutton).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				EraseDB();
+			}
+		});
+
+		findViewById(R.id.eraseDBbutton).setOnLongClickListener(new View.OnLongClickListener() {
+			@Override
+			public boolean onLongClick(View v) {
+				ToggleAdminMode();
+				return false;
+			}
+		});
+
 
 		//spinnersetup
 		langageSpinner = findViewById(R.id.languageSpinner);
@@ -223,7 +243,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 		return super.onOptionsItemSelected(item);
 	}
 
-	@OnClick(R.id.eraseDBbutton)
+
 	public void EraseDB() {
 		getApplicationContext().deleteDatabase(FlipperDatabaseHandler.FLIPPER_BASE_NAME);
 		SharedPreferences.Editor editor = settings.edit();
@@ -241,7 +261,7 @@ public class PreferencesActivity extends AppCompatActivity implements AdapterVie
 		setupPreferences();
 	}
 
-    @OnLongClick(R.id.eraseDBbutton)
+    //@OnLongClick(R.id.eraseDBbutton)
     public void ToggleAdminMode() {
 
         boolean adminMode = settings.getBoolean(KEY_PREFERENCES_ADMIN_MODE, DEFAULT_VALUE_ADMIN_MODE);

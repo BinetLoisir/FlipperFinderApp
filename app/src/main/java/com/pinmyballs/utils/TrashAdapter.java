@@ -80,49 +80,52 @@ public class TrashAdapter extends RecyclerView.Adapter<TrashAdapter.MyViewHolder
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         final TrashItem trashItem = mDataset.get(position);
+        //final TrashItem trashItem = mDataset.get(holder.getBindingAdapterPosition());
 
-        Flipper flipper = new BaseFlipperService().getFlipperById(holder.tv_flipId.getContext(),trashItem.getFlipId());
+        Flipper flipper = new BaseFlipperService().getFlipperById(holder.tv_flipId.getContext(), trashItem.getFlipId());
 
         holder.tv_flipId.setText(trashItem.getFlipIdAsString());
         holder.tv_pseudo.setText(trashItem.getPseudo());
         holder.tv_date.setText(trashItem.getDateFormatted());
-            if(flipper != null) {
-                holder.tv_model.setText(flipper.getModele().getNomComplet());
-                holder.tv_enseigne.setText(flipper.getEnseigne().getNom());
-                holder.tv_address.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
-                holder.sw_actif.setChecked(flipper.isActif());
-            }
+        if (flipper != null) {
+            holder.tv_model.setText(flipper.getModele().getNomComplet());
+            holder.tv_enseigne.setText(flipper.getEnseigne().getNom());
+            holder.tv_address.setText(flipper.getEnseigne().getAdresseCompleteSansPays());
+            holder.sw_actif.setChecked(flipper.isActif());
+        }
         holder.iv_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FlipperService flipperService = new FlipperService(null);
-                if( flipper.isActif() )
-                flipperService.modifieEtatFlip(view.getContext(), flipper,trashItem.getPseudo());
-
-                //Mise à jour de la Trash List dans Back4App avec Processed = True
-                ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
-                //query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_FLIP_ID, flipper.getId());
-                query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_PROCESSED, false);
-
-                query.getFirstInBackground(new GetCallback<ParseObject>() {
-                    @Override
-                    public void done(ParseObject object, ParseException e) {
-                        if (e == null) {
-                            Log.d("trashitems", "TrashFlipper found :  "+ object.getObjectId());
-                            object.put(FlipperDatabaseHandler.FLIPTRASH_PROCESSED,true);
-                            object.saveInBackground(e1 -> {
-                                if (e1 == null){
-                                    Log.d("trashitems", "Processed = true");
-                                    mDataset.remove(position);
-                                    notifyDataSetChanged();
-                                    //Toast.makeText(view.getContext(),trashItem.getFlipIdAsString() + " deactivated", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                        } else {
-                            Log.d("trashFlipper : ", "Error: " + e.getMessage());
-                        }
+                int currentPosition = holder.getBindingAdapterPosition();
+                if (currentPosition != RecyclerView.NO_POSITION) {
+                    FlipperService flipperService = new FlipperService(null);
+                    if (flipper != null && flipper.isActif()) {
+                        flipperService.modifieEtatFlip(view.getContext(), flipper, trashItem.getPseudo());
                     }
-                });
+
+                    // Mise à jour de la Trash List dans Back4App avec Processed = True
+                    ParseQuery<ParseObject> query = ParseQuery.getQuery(FlipperDatabaseHandler.FLIPTRASH_TABLE_NAME);
+                    query.whereEqualTo(FlipperDatabaseHandler.FLIPTRASH_PROCESSED, false);
+
+                    query.getFirstInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject object, ParseException e) {
+                            if (e == null) {
+                                Log.d("trashitems", "TrashFlipper found :  " + object.getObjectId());
+                                object.put(FlipperDatabaseHandler.FLIPTRASH_PROCESSED, true);
+                                object.saveInBackground(e1 -> {
+                                    if (e1 == null) {
+                                        Log.d("trashitems", "Processed = true");
+                                        mDataset.remove(currentPosition);
+                                        notifyItemRemoved(currentPosition);
+                                    }
+                                });
+                            } else {
+                                Log.d("trashFlipper : ", "Error: " + e.getMessage());
+                            }
+                        }
+                    });
+                }
             }
         });
     }

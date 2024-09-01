@@ -99,10 +99,10 @@
         app:srcCompat="@android:drawable/stat_sys_warning"
         app:layout_constraintEnd_toStartOf="@id/dateMaj"
         app:layout_constraintBottom_toBottomOf="@id/dateMaj"
-        android:tint="@color/warning"
         android:visibility="gone"
         android:layout_marginRight="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="8dp"
+        app:tint="@color/warning" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

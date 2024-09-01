@@ -33,8 +33,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+
+
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
 import static com.parse.Parse.getApplicationContext;
@@ -44,26 +44,33 @@ public class FragmentSignalementAdresse extends SignalementWizardFragment {
     private static final String TAG = "FragmentSignalementAdre";
     private PlacesClient placesClient;
 
-    @BindView(R.id.place_attribution_wizard)
+
     TextView mPlaceAttribution;
-    @BindView(R.id.buttonMyLocation)
+
     ImageButton mLocationButton;
-    @BindView(R.id.champNomEnseigne)
+
     TextView champNomEnseigne;
-    @BindView(R.id.champAdresse)
+
     TextView champAdresse;
-    @BindView(R.id.champCodePostal)
+
     TextView champCodePostal;
-    @BindView(R.id.champVille)
+
     TextView champVille;
-    @BindView(R.id.champPays)
+
     TextView champPays;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_wizard_adresse, container, false);
+        mPlaceAttribution = (TextView) rootView.findViewById(R.id.place_attribution_wizard);
+        mLocationButton = (ImageButton) rootView.findViewById(R.id.buttonMyLocation);
+        champNomEnseigne = (TextView) rootView.findViewById(R.id.champNomEnseigne);
+        champAdresse = (TextView) rootView.findViewById(R.id.champAdresse);
+        champCodePostal = (TextView) rootView.findViewById(R.id.champCodePostal);
+        champVille = (TextView) rootView.findViewById(R.id.champVille);
+        champPays = (TextView) rootView.findViewById(R.id.champPays);
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this, rootView);
+
         setupPlaceAutocomplete();
 
         if (!Places.isInitialized()) {

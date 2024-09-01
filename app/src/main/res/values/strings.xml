@@ -273,6 +273,20 @@
     <string name="filter_field">Filter</string>
     <string name="myaction_button">TestActivity</string>
     <string name="title_support_me">Support Me</string>
+    <string name="close">close button</string>
+    <string name="message_welcome_title">"📢 PinMyBalls évolue ! 🎉"</string>
+
+
+    <string name="icon1_playstore_desc">Playstore icon</string>
+    <string name="icon4_apple_desc">App Store icon</string>
+    <string name="icon2_fb">FB icon</string>
+    <string name="icon3_chrome_desc">Chrome browser icon</string>
+
+    <string name="message1"><b>PinMyBalls</b> devient <b>Insert Coin</b> grâce à Simon, à qui je passe la main sur le développement de l\'application.</string>
+    <string name="message2"><b>Ce qui change :</b> nouveau nom, nouvelle interface, applis iOS, Android, web et des mises à jour régulières</string>
+    <string name="message3"><b>Ce qui reste :</b> vos fonctionnalités et vos flippers préférés.</string>
+    <string name="message5">À très bientôt dans <b>Insert Coin</b> ! 🚀\nBon flip\n\nJulien</string>
+    <string name="message4">📲 Cliquez sur les liens ci-dessous pour découvrir les nouveautés ! \nrelease Android : 10 sept / iOS : dispo</string>
 
 
     <!-- OLD FRENCH DEFAULT VALUES-->
